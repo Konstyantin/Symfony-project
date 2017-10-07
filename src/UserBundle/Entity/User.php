@@ -32,8 +32,6 @@ class User extends BaseUser
      */
     protected $facebook_access_token;
 
-
-
     /**
      * Get id
      *
