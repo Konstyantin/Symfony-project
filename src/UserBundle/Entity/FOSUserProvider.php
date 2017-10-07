@@ -81,6 +81,10 @@ class FOSUserProvider extends BaseClass
             $user->setEmail($userData->email);
             $user->setPassword($username);
             $user->setEnabled(true);
+
+            // add role OAUTH for permission profile
+            $user->addRole('ROLE_OAUTH');
+
             $this->userManager->updateUser($user);
 
             return $user;

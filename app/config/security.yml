@@ -3,6 +3,7 @@ security:
         FOS\UserBundle\Model\UserInterface: bcrypt
 
     role_hierarchy:
+        ROLE_OAUTH:       ROLE_OAUTH
         ROLE_ADMIN:       ROLE_USER
         ROLE_SUPER_ADMIN: ROLE_ADMIN
 
@@ -24,6 +25,7 @@ security:
                 username_parameter: _username
                 password_parameter: _password
                 require_previous_session: false
+            access_denied_handler: AppBundle\Security\AccessDeniedHandler
             oauth:
                 resource_owners:
                     facebook:           "/login/check-facebook"
@@ -56,4 +58,5 @@ security:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/profile/edit,  allow_if: "!has_role('ROLE_OAUTH')" }
         - { path: ^/admin/, role: ROLE_ADMIN }
