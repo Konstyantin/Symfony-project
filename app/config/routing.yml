@@ -1,3 +1,7 @@
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
 user:
     resource: "@UserBundle/Resources/config/routing.yml"
     prefix:   /user
@@ -37,7 +41,11 @@ hwi_oauth_redirect:
 facebook_login:
     path: /login/check-facebook
 
+google_login:
+    path: /login/check-google
 
-app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
+login_social_facebook:
+    path: /login/facebook
+
+login_social_google:
+    path: /login/google

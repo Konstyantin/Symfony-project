@@ -20,3 +20,6 @@ parameters:
 
     facebook_client_id: 162523607661454
     facebook_client_secret: 5f37167c25d02a74fe8c8e0f8151fbab
+
+    google_client_id: 723467426441-3j1rs5a35ga3uqcvs6tna2i7eaoqgfki.apps.googleusercontent.com
+    google_client_secret: 6KeCeIeSE2PMMxdJmA0bQ7z2
