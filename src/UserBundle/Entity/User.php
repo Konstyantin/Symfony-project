@@ -35,7 +35,7 @@ use Doctrine\ORM\Mapping\AttributeOverrides;
 class User extends BaseUser
 {
     /**
-     * @var int
+     * @var $id int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -44,24 +44,32 @@ class User extends BaseUser
     protected $id;
 
     /**
+     * @var $facebook_id string
+     *
      * @ORM\Column(name="facebook_id", type="string", length=255, nullable=true)
      */
     protected $facebook_id;
 
     /**
+     * @var $facebook_access_token string
+     *
      * @ORM\Column(name="facebook_access_token", type="string", length=255, nullable=true)
      */
     protected $facebook_access_token;
 
     /**
+     * @var $google_id string
+     *
      * @ORM\Column(name="google_id", type="string", length=255, nullable=true)
      */
     protected $google_id;
+
     /**
+     * @var $google_access_token string
+     *
      * @ORM\Column(name="google_access_token", type="string", length=255, nullable=true)
      */
     protected $google_access_token;
-
 
     /**
      * Get id

@@ -98,6 +98,7 @@ fos_user:
         form:
             type: UserBundle\Form\ChangePasswordFormType
 
+# HWIOAuth configuration
 hwi_oauth:
     #this is my custom user provider, created from FOSUBUserProvider - will manage the
     #automatic user registration on your site, with data from the provider (facebook. google, etc.)
