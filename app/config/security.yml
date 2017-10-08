@@ -25,7 +25,7 @@ security:
                 username_parameter: _username
                 password_parameter: _password
                 require_previous_session: false
-            access_denied_handler: AppBundle\Security\AccessDeniedHandler
+            access_denied_handler: app.access_denied_handler
             oauth:
                 resource_owners:
                     facebook:           "/login/check-facebook"
@@ -55,8 +55,9 @@ security:
                 #always_remember_me: true
 
     access_control:
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login$, allow_if: "!has_role('ROLE_USER')" }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/profile/edit,  allow_if: "!has_role('ROLE_OAUTH')" }
+        - { path: ^/profile/change-password,  allow_if: "!has_role('ROLE_OAUTH')" }
         - { path: ^/admin/, role: ROLE_ADMIN }

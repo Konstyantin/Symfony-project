@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Http\Authorization\AccessDeniedHandlerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use UserBundle\Handler\RequestRedirectHandler;
 
 
 /**
@@ -23,6 +24,20 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
  */
 class AccessDeniedHandler implements AccessDeniedHandlerInterface
 {
+    /**
+     * @var RequestRedirectHandler $redirectHandler
+     */
+    private $redirectHandler;
+
+    /**
+     * AccessDeniedHandler constructor.
+     * @param RequestRedirectHandler $redirectHandler
+     */
+    public function __construct(RequestRedirectHandler $redirectHandler)
+    {
+        $this->redirectHandler = $redirectHandler;
+    }
+
     /**
      * Handle an access denied faulure
      *
@@ -36,12 +51,8 @@ class AccessDeniedHandler implements AccessDeniedHandlerInterface
      */
     public function handle(Request $request, AccessDeniedException $accessDeniedException)
     {
-        $redirectTo = $request->headers->get('referer');
+        $path = $this->redirectHandler->handleRedirect($request);
 
-        if (!$redirectTo) {
-            $redirectTo = '/';
-        }
-
-        return new RedirectResponse($redirectTo, 302);
+        return $this->redirectHandler->redirectTo($path);
     }
 }

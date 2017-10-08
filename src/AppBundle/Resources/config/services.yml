@@ -1,0 +1,10 @@
+parameters:
+    request_foundation.class: Symfony\Component\HttpFoundation\Request
+
+services:
+    request_redirect_handler:
+        class: UserBundle\Handler\RequestRedirectHandler
+
+    app.access_denied_handler:
+        class: AppBundle\Security\AccessDeniedHandler
+        arguments: ['@request_redirect_handler']
