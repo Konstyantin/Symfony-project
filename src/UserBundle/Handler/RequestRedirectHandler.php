@@ -28,25 +28,9 @@ class RequestRedirectHandler
     private $redirectPath = '/';
 
     /**
-     * Handle redirect
-     *
-     * @param Request $request
-     * @return bool|string
-     */
-    public function handleRedirect(Request $request)
-    {
-        $this->checkIsOAuthRoute($request);
-
-        $resultRedirect = $this->checkIsOAuthRoute($request);
-
-        return ($resultRedirect) ? $resultRedirect : $this->redirectPath;
-
-    }
-
-    /**
      * Check is OAuth route
      *
-     * @param $request
+     * @param $request Request
      * @return bool
      */
     public function checkIsOAuthRoute($request)
@@ -61,7 +45,9 @@ class RequestRedirectHandler
     }
 
     /**
-     * Check store substring in route
+     * Check store substring
+     *
+     * Check store route substring which contain oauth route element
      *
      * @param string $route
      * @param string $rule
@@ -78,7 +64,7 @@ class RequestRedirectHandler
     /**
      * Redirect to path
      *
-     * Call redirect to path which sender as path paran
+     * Call redirect to path which sender route path param
      *
      * @param string $path
      * @return RedirectResponse
@@ -86,5 +72,20 @@ class RequestRedirectHandler
     public function redirectTo(string $path)
     {
         return new RedirectResponse($path, 302);
+    }
+
+    /**
+     * Handle redirect
+     *
+     * Handle redirect to prevent route path or home page
+     *
+     * @param Request $request
+     * @return bool|string
+     */
+    public function handleRedirect(Request $request)
+    {
+        $resultRedirect = $this->checkIsOAuthRoute($request);
+
+        return ($resultRedirect) ? $resultRedirect : $this->redirectPath;
     }
 }
