@@ -30,5 +30,5 @@ services:
         class: UserBundle\Admin\UserAdmin
         arguments: [~, UserBundle\Entity\User, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: User }
+            - { name: sonata.admin, manager_type: orm, label: User, group: UserBundle }
         public: true
