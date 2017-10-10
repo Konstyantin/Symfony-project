@@ -25,3 +25,10 @@ services:
     email_user_provider:
         class: UserBundle\Security\EmailUserProvider
         arguments: ['@fos_user.user_manager.default']
+
+    admin.category:
+        class: UserBundle\Admin\UserAdmin
+        arguments: [~, UserBundle\Entity\User, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: User }
+        public: true
