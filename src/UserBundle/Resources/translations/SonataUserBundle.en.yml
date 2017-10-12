@@ -1,0 +1,26 @@
+service:
+  label: 'User'
+  group: 'UserBundle'
+
+form:
+  label:
+    username: 'Username'
+    email: 'Email'
+    password: 'Password'
+    roles: 'Roles'
+    enable: 'Enable'
+  placeholder:
+    username: 'Username'
+    email: 'Email'
+    password: 'Password'
+    roles: 'Roles'
+
+datagrid:
+  filters:
+    id: 'Id'
+    username: 'Username'
+    email: 'Email'
+  list:
+    id: 'Id'
+    username: 'Username'
+    email: 'Email'

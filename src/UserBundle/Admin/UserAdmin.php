@@ -26,6 +26,11 @@ use UserBundle\Entity\User;
 class UserAdmin extends AbstractAdmin
 {
     /**
+     * @var string $translationDomain
+     */
+    protected $translationDomain = 'SonataUserBundle';
+
+    /**
      * Configure form field
      *
      * Set configuration for form field which are displayed on the edit
@@ -37,17 +42,30 @@ class UserAdmin extends AbstractAdmin
     {
         $form
             ->add('username', TextType::class,[
-                'label' => 'Username'
+                'label' => 'form.label.username',
+                'translation_domain' => 'SonataUserBundle',
+                'attr' => [
+                    'placeholder' => 'form.placeholder.username'
+                ]
             ])
             ->add('email', EmailType::class, [
-                'label' => 'Email'
+                'label' => 'form.label.email',
+                'translation_domain' => 'SonataUserBundle',
+                'attr' => [
+                    'placeholder' => 'form.placeholder.email'
+                ]
             ])
             ->add('password', PasswordType::class, [
-                'label' => 'Password',
+                'label' => 'form.label.password',
+                'translation_domain' => 'SonataUserBundle',
+                'attr' => [
+                    'placeholder' => 'form.placeholder.password'
+                ]
             ])
             ->add('roles', ChoiceType::class, [
-                'label' => 'Roles',
-                'placeholder' => 'Choose an role',
+                'label' => 'form.label.roles',
+                'translation_domain' => 'SonataUserBundle',
+                'placeholder' => 'form.placeholder.roles',
                 'choices' => [
                     'ROLE_OAUTH' => 'ROLE_OAUTH',
                     'ROLE_ADMIN' => 'ROLE_ADMIN',
@@ -58,7 +76,8 @@ class UserAdmin extends AbstractAdmin
             ])
             ->add('enabled', CheckboxType::class, [
                 'required' => false,
-                'label' => 'Enabled'
+                'translation_domain' => 'SonataUserBundle',
+                'label' => 'form.label.enable',
             ])
         ;
     }
@@ -74,9 +93,9 @@ class UserAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $filter)
     {
         $filter
-            ->add('id')
-            ->add('username')
-            ->add('email');
+            ->add('id', null, ['label' => 'datagrid.filters.id'])
+            ->add('username', null, ['label' => 'datagrid.filters.username'])
+            ->add('email', null, ['label' => 'datagrid.filters.email']);
     }
 
     /**
@@ -90,11 +109,11 @@ class UserAdmin extends AbstractAdmin
     {
         $list
             ->addIdentifier('id', null, [
-                'label' => 'Id',
+                'label' => 'datagrid.list.id',
                 'row_align' => 'left',
             ])
-            ->addIdentifier('username')
-            ->addIdentifier('email');
+            ->addIdentifier('username', null, ['label' => 'datagrid.list.username'])
+            ->addIdentifier('email', null, ['label' => 'datagrid.list.email']);
     }
 
     /**
