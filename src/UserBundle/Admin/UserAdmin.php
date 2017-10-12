@@ -17,6 +17,8 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use UserBundle\Entity\User;
 
 /**
@@ -46,6 +48,14 @@ class UserAdmin extends AbstractAdmin
                 'translation_domain' => 'SonataUserBundle',
                 'attr' => [
                     'placeholder' => 'form.placeholder.username'
+                ],
+                'required' => false,
+                'constraints' => [
+                    new NotBlank(),
+                    new Length([
+                        'min' => 3,
+                        'max' => 45
+                    ])
                 ]
             ])
             ->add('email', EmailType::class, [
@@ -53,6 +63,14 @@ class UserAdmin extends AbstractAdmin
                 'translation_domain' => 'SonataUserBundle',
                 'attr' => [
                     'placeholder' => 'form.placeholder.email'
+                ],
+                'required' => false,
+                'constraints' => [
+                    new NotBlank(),
+                    new Length([
+                        'min' => 7,
+                        'max' => 45
+                    ]),
                 ]
             ])
             ->add('password', PasswordType::class, [
@@ -60,6 +78,14 @@ class UserAdmin extends AbstractAdmin
                 'translation_domain' => 'SonataUserBundle',
                 'attr' => [
                     'placeholder' => 'form.placeholder.password'
+                ],
+                'required' => false,
+                'constraints' => [
+                    new NotBlank(),
+                    new Length([
+                        'min' => 5,
+                        'max' => 45
+                    ])
                 ]
             ])
             ->add('roles', ChoiceType::class, [
