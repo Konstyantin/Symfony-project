@@ -2,6 +2,7 @@
 
 <div class="container">
     <div class="col-lg-offset-3 col-lg-6">
+        <h2>Login page</h2>
         {% if error %}
             <div class="alert alert-danger alert-dismissable fade in">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -9,7 +10,7 @@
             </div>
         {% endif %}
 
-        <form action="{{ path("fos_user_security_check") }}" method="post">
+        <form action="{{ path("fos_user_security_check") }}" method="post" id="login_form">
             {% if csrf_token %}
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
             {% endif %}

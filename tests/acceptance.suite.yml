@@ -1,7 +1,7 @@
 modules:
    enabled:
       - WebDriver:
-          url: 'http://symfony-project/'
+          url: 'http://symfony-project.com/'
           window_size: false # disabled in ChromeDriver
           browser: chrome
           capabilities:
