@@ -17,3 +17,6 @@
 /web/bundles/
 /web/assets/vendor
 .idea
+
+tests/_output/*
+tests/_output/*
