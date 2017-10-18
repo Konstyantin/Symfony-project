@@ -26,7 +26,7 @@ services:
         class: UserBundle\Security\EmailUserProvider
         arguments: ['@fos_user.user_manager.default']
 
-    admin.category:
+    admin.user:
         class: UserBundle\Admin\UserAdmin
         arguments: [~, UserBundle\Entity\User, ~]
         tags:
