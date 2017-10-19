@@ -1,0 +1,3 @@
+car_homepage:
+    path:     /
+    defaults: { _controller: CarBundle:Index:index }
