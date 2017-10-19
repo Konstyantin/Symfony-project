@@ -1,0 +1,18 @@
+service:
+  label: 'Model'
+  group: 'ModelBundle'
+
+form:
+  label:
+    parent: 'Parent'
+    name: 'Name'
+  placeholder:
+    name: 'Name'
+
+datagrid:
+  filters:
+    id: 'Id'
+    username: 'Name'
+  list:
+    id: 'Id'
+    username: 'Name'
