@@ -139,7 +139,13 @@ class UserAdmin extends AbstractAdmin
                 'row_align' => 'left',
             ])
             ->addIdentifier('username', null, ['label' => 'datagrid.list.username'])
-            ->addIdentifier('email', null, ['label' => 'datagrid.list.email']);
+            ->addIdentifier('email', null, ['label' => 'datagrid.list.email'])
+            ->add('_action', null, [
+                'actions' => [
+                    'delete' => [],
+                    'edit' => []
+                ]
+            ]);
     }
 
     /**

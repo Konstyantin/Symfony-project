@@ -68,14 +68,16 @@ class CategoryAdmin extends AbstractAdmin
     {
         $list
             ->addIdentifier('id', null, [
-                'label' => 'Id'
+                'label' => 'Id',
+                'row_align' => 'left'
             ])
-            ->add('name', null, [
+            ->addIdentifier('name', null, [
                 'label' => 'name'
             ])
             ->add('_action', null, [
                 'actions' => [
-                    'delete' => []
+                    'delete' => [],
+                    'edit' => []
                 ]
             ]);
     }
