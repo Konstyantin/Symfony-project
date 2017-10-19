@@ -1,0 +1,18 @@
+service:
+  label: 'Category'
+  group: 'CategoryBundle'
+
+form:
+  label:
+    parent: 'Parent'
+    name: 'Name'
+  placeholder:
+    name: 'Username'
+
+datagrid:
+  filters:
+    id: 'Id'
+    username: 'Username'
+  list:
+    id: 'Id'
+    username: 'Username'

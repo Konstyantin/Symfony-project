@@ -23,6 +23,11 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 class CategoryAdmin extends AbstractAdmin
 {
     /**
+     * @var string $translationDomain
+     */
+    protected $translationDomain = 'SonataCategoryBundle';
+
+    /**
      * Configure form field
      *
      * Set configuration for form field which are displayed on the edit
@@ -40,7 +45,12 @@ class CategoryAdmin extends AbstractAdmin
                 'required' => false,
             ])
             ->add('name', TextType::class, [
-                'label' => 'Name'
+                'label' => 'Name',
+                'translation_domain' => 'SonataCategoryBundle',
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'form.placeholder.name'
+                ]
             ]);
     }
 
@@ -54,7 +64,7 @@ class CategoryAdmin extends AbstractAdmin
      */
     protected function configureDatagridFilters(DatagridMapper $filter)
     {
-        $filter->add('name', null, ['label' => 'Name']);
+        $filter->add('name', null, ['label' => 'datagrid.filters.username']);
     }
 
     /**
@@ -68,11 +78,11 @@ class CategoryAdmin extends AbstractAdmin
     {
         $list
             ->addIdentifier('id', null, [
-                'label' => 'Id',
+                'label' => 'datagrid.list.id',
                 'row_align' => 'left'
             ])
             ->addIdentifier('name', null, [
-                'label' => 'name'
+                'label' => 'datagrid.list.username'
             ])
             ->add('_action', null, [
                 'actions' => [
