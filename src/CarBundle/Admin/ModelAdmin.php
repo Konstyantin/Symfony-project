@@ -15,6 +15,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 /**
  * Class ModelAdmin
@@ -46,12 +47,20 @@ class ModelAdmin extends AbstractAdmin
             ])
             ->add('name', TextType::class, [
                 'label' => 'Name',
-                'translation_domain' => 'SonataCategoryBundle',
+                'translation_domain' => 'SonataModelBundle',
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.name'
                 ]
-            ]);
+            ])
+            ->add('imageFile', VichImageType::class, [
+                'label' => false,
+                'required' => false,
+                'allow_delete' => true,
+                'download_link' => true,
+//                'help' => 'asd'
+            ])
+        ;
     }
 
     /**
