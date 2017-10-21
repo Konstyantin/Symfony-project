@@ -145,13 +145,14 @@ sonata_block:
         sonata.admin.block.search_result:
             contexts: [admin]
 
+# Sonata admin configuration
 sonata_admin:
     templates:
         # other configuration options
         search:              SonataAdminBundle:Core:search.html.twig
         search_result_block: SonataAdminBundle:Block:block_search_result.html.twig
 
-# Vich_uploader
+# Vich_uploader configuration
 vich_uploader:
     db_driver:  orm
     mappings:
