@@ -10,6 +10,8 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    upload_image_prefix: '/uploads/images'
+    upload_image_path: '%kernel.root_dir%/../web/uploads/images'
 
 framework:
     #esi: ~
@@ -154,8 +156,8 @@ vich_uploader:
     db_driver:  orm
     mappings:
         model_image:
-            uri_prefix:         /uploads/images/models # uri prefix to resource
-            upload_destination: '%kernel.root_dir%/../web/uploads/images/models'
+            uri_prefix:         '%upload_image_prefix%/models' # uri prefix to resource
+            upload_destination: '%upload_image_path%/models'
 
             inject_on_load:     false
             delete_on_update:   true

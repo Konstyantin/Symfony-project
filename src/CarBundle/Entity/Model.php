@@ -74,13 +74,6 @@ class Model
     private $imageName;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
-     *
-     * @var integer
-     */
-    private $imageSize;
-
-    /**
      * @ORM\Column(type="datetime")
      *
      * @var \DateTime
@@ -240,23 +233,15 @@ class Model
     }
 
     /**
-     * @param integer $imageSize
+     * Get web path
      *
-     * @return Model
+     * Get web path to upload image if record have image
+     *
+     * @return string
      */
-    public function setImageSize($imageSize)
+    public function getWebPath()
     {
-        $this->imageSize = $imageSize;
-
-        return $this;
-    }
-
-    /**
-     * @return integer|null
-     */
-    public function getImageSize()
-    {
-        return $this->imageSize;
+        return ($this->imageName) ? $this->imageName : false;
     }
 }
 
