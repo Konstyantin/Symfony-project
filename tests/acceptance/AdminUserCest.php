@@ -1,8 +1,15 @@
 <?php
 
-
+/**
+ * Class AdminUserCest
+ */
 class AdminUserCest
 {
+    /**
+     * Before test method make login as SUPER_ADMIN
+     *
+     * @param NoGuy $I
+     */
     public function _before(NoGuy $I)
     {
         $I->amOnPage('/login');
