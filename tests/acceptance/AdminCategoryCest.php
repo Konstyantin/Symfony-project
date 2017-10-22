@@ -1,10 +1,9 @@
 <?php
 
-
 /**
- * Class AdminModelCest
+ * Class AdminCategoryCest
  */
-class AdminModelCest
+class AdminCategoryCest
 {
     /**
      * Before test method make login as SUPER_ADMIN
@@ -25,35 +24,34 @@ class AdminModelCest
     {
     }
 
-
     /**
-     * Admin dashboard model page test
+     * Admin dashboard category page test
      *
-     * Test load admin model dashboard page test
+     * Test load admin category dashboard page test
      *
      * @param NoGuy $I
      */
-    public function adminDashboardModelPageTest(NoGuy $I)
+    public function adminDashboardCategoryPageTest(NoGuy $I)
     {
-        $I->amOnPage('/admin/car/model/list');
+        $I->amOnPage('/admin/app/category/list');
 
         $I->see('Sonata Admin', 'span');
         $I->see('No result', 'span.info-box-text');
-        $I->dontSee('Category', 'h4.box-title');
+        $I->dontSee('Model', 'h4.box-title');
     }
 
     /**
-     * Admin create model page test
+     * Admin create category page test
      *
-     * Test load admin model dashboard page test
+     * Test load admin category dashboard page test
      *
      * @param NoGuy $I
      */
-    public function adminCreateModelPageTest(NoGuy $I)
+    public function adminCreateCategoryPageTest(NoGuy $I)
     {
-        $I->amOnPage('/admin/car/model/create');
-        $I->see('Model', 'h4.box-title');
-        $I->dontSee('Category', 'h4.box-title');
+        $I->amOnPage('/admin/app/category/create');
+        $I->see('Category', 'h4.box-title');
+        $I->dontSee('Model', 'h4.box-title');
 
         $I->see('Parent', 'label');
         $I->see('Name', 'label');

@@ -27,7 +27,7 @@ matrix:
 
 # Define an environment variable
 env:
-  - SYMFONY_VERSION="3.0.*" DB=mysql
+  - SYMFONY_VERSION="3.3.*" DB=mysql
 
 # Update composer
 before-install:
@@ -44,7 +44,8 @@ install:
 
 # Run script
 script:
-  - ./vendor/bin/simple-phpunit
+  - ./vendor/bin/codecept run
+  - ./vendor/bin/phpunit
 
 # After a build, send email notification with the build results
 notifications:
