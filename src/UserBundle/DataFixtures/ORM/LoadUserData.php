@@ -28,10 +28,10 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
     {
         $user = new User();
 
-        $user->setUsername('Kostya');
-        $user->setEmail('kostyannagula@gmail.com');
+        $user->setUsername('adminuser');
+        $user->setEmail('admin@mail.com');
         $user->setEnabled(true);
-        $user->setPassword('$2y$13$dgY.X0Zl6biZE0Y0lA3yju3QG/tc3FXxaPSjKqGoHwX/z2J1rc5aq'); // 123456789q
+        $user->setPassword('$2y$13$.ZOC/S5AkL5sKhMoChoRDuvJKcE2xTn74mHjgkh2wJnaEBt5JVb6C'); // admin
         $user->setRoles(['ROLE_SUPER_ADMIN']);
 
         $manager->persist($user);
