@@ -32,6 +32,11 @@ class TransmissionType
     protected $title;
 
     /**
+     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Transmission", mappedBy="type")
+     */
+    protected $transmission;
+
+    /**
      * Get id
      *
      * @return int
@@ -63,5 +68,46 @@ class TransmissionType
     public function getTitle()
     {
         return $this->title;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->transmission = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add transmission
+     *
+     * @param \CarBundle\Entity\Transmission $transmission
+     *
+     * @return TransmissionType
+     */
+    public function addTransmission(\CarBundle\Entity\Transmission $transmission)
+    {
+        $this->transmission[] = $transmission;
+
+        return $this;
+    }
+
+    /**
+     * Remove transmission
+     *
+     * @param \CarBundle\Entity\Transmission $transmission
+     */
+    public function removeTransmission(\CarBundle\Entity\Transmission $transmission)
+    {
+        $this->transmission->removeElement($transmission);
+    }
+
+    /**
+     * Get transmission
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTransmission()
+    {
+        return $this->transmission;
     }
 }
