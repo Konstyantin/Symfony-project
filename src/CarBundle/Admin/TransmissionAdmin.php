@@ -74,6 +74,7 @@ class TransmissionAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $filter)
     {
         $filter
+            ->add('id', null, ['label' => 'datagrid.filters.id'])
             ->add('name', null, ['label' => 'datagrid.filters.name'])
             ->add('steps', null, ['label' => 'datagrid.filters.steps'])
             ->add('type', null, ['label' => 'datagrid.filters.type']);

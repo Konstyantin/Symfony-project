@@ -8,7 +8,6 @@
 
 namespace CarBundle\Admin;
 
-use CarBundle\Entity\Transmission;
 use CarBundle\Entity\TransmissionType;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -23,6 +22,11 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 class TransmissionTypeAdmin extends AbstractAdmin
 {
     /**
+     * @var string $translationDomain
+     */
+    protected $translationDomain = 'SonataTransmissionTypeBundle';
+
+    /**
      * Configure form field
      *
      * Set configuration for form field which are displayed on the edit
@@ -33,12 +37,13 @@ class TransmissionTypeAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $form)
     {
         $form->add('title', TextType::class, [
-                'label' => 'Title',
-                'required' => false,
-                'attr' => [
-                    'placeholder' => 'Title'
-                ]
-            ]);
+            'label' => 'form.label.title',
+            'translation_domain' => 'SonataTransmissionTypeBundle',
+            'required' => false,
+            'attr' => [
+                'placeholder' => 'form.label.title'
+            ]
+        ]);
     }
 
     /**
@@ -51,7 +56,9 @@ class TransmissionTypeAdmin extends AbstractAdmin
      */
     protected function configureDatagridFilters(DatagridMapper $filter)
     {
-        $filter->add('title');
+        $filter
+            ->add('id', null, ['label' => 'datagrid.filters.id'])
+            ->add('title', null, ['label' => 'datagrid.filters.title']);
     }
 
     /**
@@ -64,8 +71,8 @@ class TransmissionTypeAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $list)
     {
         $list
-            ->addIdentifier('id', null, ['row_align' => 'left'])
-            ->addIdentifier('title', null, ['row_align' => 'left'])
+            ->addIdentifier('id', null, ['label' => 'datagrid.list.id', 'row_align' => 'left'])
+            ->addIdentifier('title', null, ['label' => 'datagrid.list.title', 'row_align' => 'left'])
             ->add('_action', null, [
                 'actions' => [
                     'delete' => [],

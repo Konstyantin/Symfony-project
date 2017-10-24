@@ -13,6 +13,7 @@ form:
 datagrid:
   filters:
     id: 'Id'
+    name: 'Name'
     steps: 'Steps'
     type: 'Type'
   list:

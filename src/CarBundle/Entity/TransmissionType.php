@@ -111,8 +111,13 @@ class TransmissionType
         return $this->transmission;
     }
 
+    /**
+     * Call magic method __toString
+     *
+     * @return string
+     */
     public function __toString()
     {
-        return $this->getTitle();
+        return (string) $this->getTitle();
     }
 }

@@ -1,0 +1,17 @@
+service:
+  label: 'TranslationType'
+  group: 'ModelBundle'
+
+form:
+  label:
+    title: 'Title'
+  placeholder:
+    title: 'Title'
+
+datagrid:
+  filters:
+    id: 'Id'
+    title: 'Title'
+  list:
+    id: 'Id'
+    title: 'Title'
