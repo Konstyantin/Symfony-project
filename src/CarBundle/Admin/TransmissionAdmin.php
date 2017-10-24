@@ -24,6 +24,11 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 class TransmissionAdmin extends AbstractAdmin
 {
     /**
+     * @var string $translationDomain
+     */
+    protected $translationDomain = 'SonataTransmissionBundle';
+
+    /**
      * Configure form field
      *
      * Set configuration for form field which are displayed on the edit
@@ -35,17 +40,19 @@ class TransmissionAdmin extends AbstractAdmin
     {
         $form
             ->add('name', TextType::class, [
-                'label' => 'Name',
+                'label' => 'form.label.name',
                 'required' => false,
+                'translation_domain' => 'SonataTransmissionBundle',
                 'attr' => [
-                    'placeholder' => 'Name'
+                    'placeholder' => 'form.placeholder.name'
                 ]
             ])
             ->add('steps', NumberType::class, [
-                'label' => 'Steps',
+                'label' => 'form.label.steps',
                 'required' => false,
+                'translation_domain' => 'SonataTransmissionBundle',
                 'attr' => [
-                    'placeholder' => 'Steps'
+                    'placeholder' => 'form.placeholder.steps'
                 ]
             ])
             ->add('type', EntityType::class, [
@@ -67,9 +74,9 @@ class TransmissionAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $filter)
     {
         $filter
-            ->add('name', null, ['label' => 'Name'])
-            ->add('steps', null, ['label' => 'Steps'])
-            ->add('type', null, ['label' => 'Type']);
+            ->add('name', null, ['label' => 'datagrid.filters.name'])
+            ->add('steps', null, ['label' => 'datagrid.filters.steps'])
+            ->add('type', null, ['label' => 'datagrid.filters.type']);
     }
 
     /**
@@ -82,9 +89,10 @@ class TransmissionAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $list)
     {
         $list
-            ->addIdentifier('id', null, ['label' => 'Id', 'row_align' => 'left'])
-            ->addIdentifier('name', null, ['label' => 'Steps'])
-            ->addIdentifier('type', null, ['label' => 'Type']);
+            ->addIdentifier('id', null, ['label' => 'datagrid.list.id', 'row_align' => 'left'])
+            ->addIdentifier('name', null, ['label' => 'datagrid.list.name'])
+            ->addIdentifier('steps', null, ['label' => 'datagrid.list.steps', 'row_align' => 'left'])
+            ->addIdentifier('type', null, ['label' => 'datagrid.list.type']);
     }
 
     /**

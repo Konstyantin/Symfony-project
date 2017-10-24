@@ -1,0 +1,22 @@
+service:
+  label: 'Translation'
+  group: 'ModelBundle'
+
+form:
+  label:
+    name: 'Name'
+    steps: 'Steps'
+  placeholder:
+    name: 'Name'
+    steps: 'Steps'
+
+datagrid:
+  filters:
+    id: 'Id'
+    steps: 'Steps'
+    type: 'Type'
+  list:
+    id: 'Id'
+    name: 'Name'
+    steps: 'Steps'
+    type: 'Type'
