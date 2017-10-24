@@ -3,7 +3,7 @@
 /**
  * Class TranslationCest
  */
-class TranslationTypeCest
+class TranslationCest
 {
     /**
      * Before test method make login as SUPER_ADMIN
@@ -25,15 +25,15 @@ class TranslationTypeCest
     }
 
     /**
-     * Admin dashboard translation type page test
+     * Admin dashboard translation page test
      *
-     * Test load admin translation type dashboard page test
+     * Test load admin translation dashboard page test
      *
      * @param NoGuy $I
      */
     public function adminDashboardTransmissionTypePageTest(NoGuy $I)
     {
-        $I->amOnPage('/admin/car/transmissiontype/list');
+        $I->amOnPage('/admin/car/transmission/list');
 
         $I->see('Sonata Admin', 'span');
         $I->see('No result', 'span.info-box-text');
@@ -41,18 +41,18 @@ class TranslationTypeCest
     }
 
     /**
-     * Admin create translation type page test
+     * Admin create translation page test
      *
-     * Test load admin translation type dashboard page test
+     * Test load admin translation dashboard page test
      *
      * @param NoGuy $I
      */
     public function adminCreateTransmissionTypePageTest(NoGuy $I)
     {
-        $I->amOnPage('/admin/car/transmissiontype/create');
-        $I->see('TransmissionType', 'h4.box-title');
+        $I->amOnPage('/admin/car/transmission/create');
+        $I->see('Transmission', 'h4.box-title');
         $I->dontSee('Category', 'h4.box-title');
 
-        $I->see('Title', 'label');
+        $I->see('Name', 'label');
     }
 }
