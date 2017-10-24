@@ -110,4 +110,9 @@ class TransmissionType
     {
         return $this->transmission;
     }
+
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
 }
