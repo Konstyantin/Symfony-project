@@ -55,6 +55,14 @@ class TransmissionAdmin extends AbstractAdmin
                     'placeholder' => 'form.placeholder.steps'
                 ]
             ])
+            ->add('price', NumberType::class, [
+                'label' => 'form.label.price',
+                'required' => false,
+                'translation_domain' => 'SonataTransmissionBundle',
+                'attr' => [
+                    'placeholder' => 'form.placeholder.price'
+                ]
+            ])
             ->add('type', EntityType::class, [
                 'class' => 'CarBundle:TransmissionType',
                 'choice_label' => 'title',
@@ -77,6 +85,7 @@ class TransmissionAdmin extends AbstractAdmin
             ->add('id', null, ['label' => 'datagrid.filters.id'])
             ->add('name', null, ['label' => 'datagrid.filters.name'])
             ->add('steps', null, ['label' => 'datagrid.filters.steps'])
+            ->add('price', null, ['label' => 'datagrid.filters.price'])
             ->add('type', null, ['label' => 'datagrid.filters.type']);
     }
 
@@ -93,6 +102,7 @@ class TransmissionAdmin extends AbstractAdmin
             ->addIdentifier('id', null, ['label' => 'datagrid.list.id', 'row_align' => 'left'])
             ->addIdentifier('name', null, ['label' => 'datagrid.list.name'])
             ->addIdentifier('steps', null, ['label' => 'datagrid.list.steps', 'row_align' => 'left'])
+            ->addIdentifier('price', null, ['label' => 'datagrid.list.price', 'row_align' => 'left'])
             ->addIdentifier('type', null, ['label' => 'datagrid.list.type']);
     }
 

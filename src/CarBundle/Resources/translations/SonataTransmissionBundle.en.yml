@@ -6,18 +6,22 @@ form:
   label:
     name: 'Name'
     steps: 'Steps'
+    price: 'Price'
   placeholder:
     name: 'Name'
     steps: 'Steps'
+    price: 'Price'
 
 datagrid:
   filters:
     id: 'Id'
     name: 'Name'
     steps: 'Steps'
+    price: 'Price'
     type: 'Type'
   list:
     id: 'Id'
     name: 'Name'
     steps: 'Steps'
+    price: 'Price'
     type: 'Type'

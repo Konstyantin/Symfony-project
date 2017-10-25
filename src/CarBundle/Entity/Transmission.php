@@ -41,6 +41,14 @@ class Transmission
     protected $steps;
 
     /**
+     * @var integer
+     *
+     * @Assert\NotBlank()
+     * @ORM\Column(name="price", type="integer")
+     */
+    protected $price;
+
+    /**
      * @ORM\ManyToOne(targetEntity="CarBundle\Entity\TransmissionType", inversedBy="transmission")
      * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
      */
@@ -126,5 +134,29 @@ class Transmission
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set price
+     *
+     * @param integer $price
+     *
+     * @return Transmission
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return integer
+     */
+    public function getPrice()
+    {
+        return $this->price;
     }
 }
