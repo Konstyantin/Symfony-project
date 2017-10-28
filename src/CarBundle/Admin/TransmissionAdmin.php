@@ -9,6 +9,7 @@
 namespace CarBundle\Admin;
 
 use CarBundle\Entity\Transmission;
+use CarBundle\Entity\TransmissionType;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -68,7 +69,11 @@ class TransmissionAdmin extends AbstractAdmin
                 'choice_label' => 'title',
                 'multiple' => false,
                 'required' => false,
+            ])
+            ->add('type', 'sonata_type_model', [
+                'class' => 'CarBundle:TransmissionType',
             ]);
+        ;
     }
 
     /**

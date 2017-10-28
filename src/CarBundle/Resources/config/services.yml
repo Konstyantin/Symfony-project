@@ -1,4 +1,6 @@
 services:
+
+    # Model admin service component
     admin.model:
         class: CarBundle\Admin\ModelAdmin
         arguments: [~, CarBundle\Entity\Model, ~]
@@ -8,6 +10,8 @@ services:
               group: CarBundle
               label: 'service.label'
               label_catalogue: ModelBundle
+
+    # TransmissionType admin service component
     admin.trasmission_type:
         class: CarBundle\Admin\TransmissionTypeAdmin
         arguments: [~, CarBundle\Entity\TransmissionType, ~]
@@ -17,6 +21,9 @@ services:
               group: CarBundle
               label: 'TransmissionType'
               label_catalogue: 'TransmissionType'
+        public: true
+
+    # Transmission admin service component
     admin.transmission:
         class: CarBundle\Admin\TransmissionAdmin
         arguments: [~, CarBundle\Entity\Transmission, ~]
@@ -26,5 +33,5 @@ services:
               group: CarBundle
               label: 'Transmission'
               label_catalogue: 'Transmission'
-
+        public: true
 
