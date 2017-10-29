@@ -1,0 +1,23 @@
+service:
+  label:
+    car: 'Car'
+  group: 'CarBundle'
+
+form:
+  label:
+    name: 'Name'
+    price: 'Price'
+    model: 'Model'
+  placeholder:
+    name: 'Name'
+    price: 'Price'
+    model: 'Model'
+
+datagrid:
+  filters:
+    name: 'Name'
+    price: 'Price'
+  list:
+    id: 'Id'
+    name: 'Name'
+    price: 'Price'

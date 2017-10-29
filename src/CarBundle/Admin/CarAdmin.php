@@ -9,14 +9,12 @@
 namespace CarBundle\Admin;
 
 use CarBundle\Entity\Car;
-use CarBundle\Entity\Model;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Vich\UploaderBundle\Form\Type\VichImageType;
 
 /**
  * Class ModelAdmin
@@ -41,19 +39,19 @@ class CarAdmin extends AbstractAdmin
     {
         $form
             ->add('name', TextType::class, [
-                'label' => 'Name',
+                'label' => 'form.label.name',
                 'translation_domain' => 'SonataCarBundle',
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Name'
+                    'placeholder' => 'form.placeholder.name'
                 ]
             ])
             ->add('price', TextType::class, [
-                'label' => 'Price',
+                'label' => 'form.label.price',
                 'translation_domain' => 'SonataCarBundle',
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Price'
+                    'placeholder' => 'form.label.price'
                 ]
             ])
             ->add('model', EntityType::class, [
@@ -79,7 +77,7 @@ class CarAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $filter)
     {
         $filter
-            ->add('name', null, ['label' => 'Name'])
+            ->add('name', null, ['label' => 'datagrid.filters.name'])
             ->add('price', null, ['label' => 'Price']);
     }
 
@@ -94,14 +92,14 @@ class CarAdmin extends AbstractAdmin
     {
         $list
             ->addIdentifier('id', null, [
-                'label' => 'Id',
+                'label' => 'datagrid.list.id',
                 'row_align' => 'left'
             ])
             ->addIdentifier('name', null, [
-                'label' => 'Name'
+                'label' => 'datagrid.list.name'
             ])
             ->addIdentifier('price', null, [
-                'label' => 'Price',
+                'label' => 'datagrid.list.price',
                 'row_align' => 'left'
             ])
             ->add('_action', null, [
