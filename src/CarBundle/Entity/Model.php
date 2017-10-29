@@ -53,6 +53,12 @@ class Model
     protected $parent;
 
     /**
+     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Car", mappedBy="model")
+     */
+    protected $car;
+
+
+    /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
      * @Assert\Image(
@@ -245,5 +251,62 @@ class Model
     {
         return ($this->imageName) ? $this->imageName : false;
     }
-}
 
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return Model
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Add car
+     *
+     * @param \CarBundle\Entity\Car $car
+     *
+     * @return Model
+     */
+    public function addCar(\CarBundle\Entity\Car $car)
+    {
+        $this->car[] = $car;
+
+        return $this;
+    }
+
+    /**
+     * Remove car
+     *
+     * @param \CarBundle\Entity\Car $car
+     */
+    public function removeCar(\CarBundle\Entity\Car $car)
+    {
+        $this->car->removeElement($car);
+    }
+
+    /**
+     * Get car
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCar()
+    {
+        return $this->car;
+    }
+}

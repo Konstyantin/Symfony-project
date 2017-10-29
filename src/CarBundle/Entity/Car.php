@@ -39,6 +39,12 @@ class Car
      */
     protected $price;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Model", inversedBy="car")
+     * @ORM\JoinColumn(name="model_id", referencedColumnName="id")
+     */
+    protected $model;
+
 
     /**
      * Get id
@@ -96,5 +102,29 @@ class Car
     public function getPrice()
     {
         return $this->price;
+    }
+
+    /**
+     * Set model
+     *
+     * @param \CarBundle\Entity\Model $model
+     *
+     * @return Car
+     */
+    public function setModel(\CarBundle\Entity\Model $model = null)
+    {
+        $this->model = $model;
+
+        return $this;
+    }
+
+    /**
+     * Get model
+     *
+     * @return \CarBundle\Entity\Model
+     */
+    public function getModel()
+    {
+        return $this->model;
     }
 }
