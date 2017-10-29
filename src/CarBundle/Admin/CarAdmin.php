@@ -8,6 +8,7 @@
  */
 namespace CarBundle\Admin;
 
+use CarBundle\Entity\Car;
 use CarBundle\Entity\Model;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -21,12 +22,12 @@ use Vich\UploaderBundle\Form\Type\VichImageType;
  * Class ModelAdmin
  * @package CarBundle\Admin
  */
-class ModelAdmin extends AbstractAdmin
+class CarAdmin extends AbstractAdmin
 {
     /**
      * @var string $translationDomain
      */
-    protected $translationDomain = 'SonataModelBundle';
+    protected $translationDomain = 'SonataCarBundle';
 
     /**
      * Configure form field
@@ -39,27 +40,31 @@ class ModelAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $form)
     {
         $form
-            ->add('parent', EntityType::class, [
+            ->add('name', TextType::class, [
+                'label' => 'Name',
+                'translation_domain' => 'SonataCarBundle',
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'Name'
+                ]
+            ])
+            ->add('price', TextType::class, [
+                'label' => 'Price',
+                'translation_domain' => 'SonataCarBundle',
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'Price'
+                ]
+            ])
+            ->add('model', EntityType::class, [
                 'class' => 'CarBundle:Model',
                 'choice_label' => 'name',
                 'multiple' => false,
                 'required' => false,
             ])
-            ->add('name', TextType::class, [
-                'label' => 'Name',
-                'translation_domain' => 'SonataModelBundle',
-                'required' => false,
-                'attr' => [
-                    'placeholder' => 'form.placeholder.name'
-                ]
-            ])
-            ->add('imageFile', VichImageType::class, [
-                'label' => false,
-                'required' => false,
-                'help' => $this->fullPathImage(),
-                'allow_delete' => true,
-                'download_link' => true,
-            ])
+            ->add('model', 'sonata_type_model', [
+                'class' => 'CarBundle:Model',
+            ]);
         ;
     }
 
@@ -67,19 +72,21 @@ class ModelAdmin extends AbstractAdmin
      * Configure datagrid filters
      *
      * Configure datagrid filters which will used for filtered and sort
-     * the list of model
+     * the list of car
      *
      * @param DatagridMapper $filter
      */
     protected function configureDatagridFilters(DatagridMapper $filter)
     {
-        $filter->add('name', null, ['label' => 'datagrid.filters.username']);
+        $filter
+            ->add('name', null, ['label' => 'Name'])
+            ->add('price', null, ['label' => 'Price']);
     }
 
     /**
      * Configure list fields
      *
-     * Specific fields which are show all model are listed
+     * Specific fields which are show all car are listed
      *
      * @param ListMapper $list
      */
@@ -87,11 +94,15 @@ class ModelAdmin extends AbstractAdmin
     {
         $list
             ->addIdentifier('id', null, [
-                'label' => 'datagrid.list.id',
+                'label' => 'Id',
                 'row_align' => 'left'
             ])
             ->addIdentifier('name', null, [
-                'label' => 'datagrid.list.username'
+                'label' => 'Name'
+            ])
+            ->addIdentifier('price', null, [
+                'label' => 'Price',
+                'row_align' => 'left'
             ])
             ->add('_action', null, [
                 'actions' => [
@@ -109,33 +120,10 @@ class ModelAdmin extends AbstractAdmin
      */
     public function toString($object)
     {
-        if ($object instanceof Model) {
+        if ($object instanceof Car) {
             return $object->getName();
         }
 
-        return 'Model';
-    }
-
-    /**
-     * Full path image
-     *
-     * Get full path image to upload image file model record
-     *
-     * @return bool|string
-     */
-    public function fullPathImage()
-    {
-        $image = $this->getSubject();
-
-        if ($image && ($webPath = $image->getWebPath())) {
-
-            $container = $this->getConfigurationPool()->getContainer();
-
-            $fullPath = $container->getParameter('upload_image_prefix') . '/models/' . $webPath;
-
-            return '<img src="' . $fullPath . '" class="admin-preview" alt="Picture don\'t exists"/>';
-        }
-
-        return $image->getWebPath();
+        return 'Car';
     }
 }

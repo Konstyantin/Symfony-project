@@ -309,4 +309,14 @@ class Model
     {
         return $this->car;
     }
+
+    /**
+     * Call magic method __toString
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getName();
+    }
 }
