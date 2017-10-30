@@ -64,6 +64,11 @@ class Body
     protected $weight;
 
     /**
+     * @ORM\OneToOne(targetEntity="CarBundle\Entity\Car", mappedBy="body")
+     */
+    protected $car;
+
+    /**
      * Get id
      *
      * @return int
@@ -215,5 +220,29 @@ class Body
     public function getWeight()
     {
         return $this->weight;
+    }
+
+    /**
+     * Set car
+     *
+     * @param \CarBundle\Entity\Car $car
+     *
+     * @return Body
+     */
+    public function setCar(\CarBundle\Entity\Car $car = null)
+    {
+        $this->car = $car;
+
+        return $this;
+    }
+
+    /**
+     * Get car
+     *
+     * @return \CarBundle\Entity\Car
+     */
+    public function getCar()
+    {
+        return $this->car;
     }
 }

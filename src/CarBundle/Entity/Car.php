@@ -45,6 +45,12 @@ class Car
      */
     protected $model;
 
+    /**
+     * @ORM\OneToOne(targetEntity="CarBundle\Entity\Body", inversedBy="car")
+     * @ORM\JoinColumn(name="body_id", referencedColumnName="id")
+     */
+    protected $body;
+
 
     /**
      * Get id
@@ -126,5 +132,29 @@ class Car
     public function getModel()
     {
         return $this->model;
+    }
+
+    /**
+     * Set body
+     *
+     * @param \CarBundle\Entity\Body $body
+     *
+     * @return Car
+     */
+    public function setBody(\CarBundle\Entity\Body $body = null)
+    {
+        $this->body = $body;
+
+        return $this;
+    }
+
+    /**
+     * Get body
+     *
+     * @return \CarBundle\Entity\Body
+     */
+    public function getBody()
+    {
+        return $this->body;
     }
 }
