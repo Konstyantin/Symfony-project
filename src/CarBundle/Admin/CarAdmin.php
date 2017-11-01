@@ -9,6 +9,7 @@
 namespace CarBundle\Admin;
 
 use CarBundle\Entity\Car;
+use CarBundle\Form\BodyType;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -37,32 +38,48 @@ class CarAdmin extends AbstractAdmin
      */
     protected function configureFormFields(FormMapper $form)
     {
+        $bodyBuilder = $form->getFormBuilder()->getFormFactory()->createBuilder(BodyType::class);
+
         $form
-            ->add('name', TextType::class, [
-                'label' => 'form.label.name',
-                'translation_domain' => 'SonataCarBundle',
-                'required' => false,
-                'attr' => [
-                    'placeholder' => 'form.placeholder.name'
-                ]
-            ])
-            ->add('price', TextType::class, [
-                'label' => 'form.label.price',
-                'translation_domain' => 'SonataCarBundle',
-                'required' => false,
-                'attr' => [
-                    'placeholder' => 'form.label.price'
-                ]
-            ])
-            ->add('model', EntityType::class, [
-                'class' => 'CarBundle:Model',
-                'choice_label' => 'name',
-                'multiple' => false,
-                'required' => false,
-            ])
-            ->add('model', 'sonata_type_model', [
-                'class' => 'CarBundle:Model',
-            ]);
+            ->tab('Car')
+                ->with('Car')
+                    ->add('name', TextType::class, [
+                        'label' => 'form.label.name',
+                        'translation_domain' => 'SonataCarBundle',
+                        'required' => false,
+                        'attr' => [
+                            'placeholder' => 'form.placeholder.name'
+                        ]
+                    ])
+                    ->add('price', TextType::class, [
+                        'label' => 'form.label.price',
+                        'translation_domain' => 'SonataCarBundle',
+                        'required' => false,
+                        'attr' => [
+                            'placeholder' => 'form.label.price'
+                        ]
+                    ])
+                    ->add('model', EntityType::class, [
+                        'class' => 'CarBundle:Model',
+                        'choice_label' => 'name',
+                        'multiple' => false,
+                        'required' => false,
+                    ])
+                    ->add('model', 'sonata_type_model', [
+                        'class' => 'CarBundle:Model',
+                    ])
+                ->end()
+            ->end()
+            ->tab('Body')
+                ->with('Body')
+                ->add($bodyBuilder->get('length'))
+                ->add($bodyBuilder->get('width'))
+                ->add($bodyBuilder->get('height'))
+                ->add($bodyBuilder->get('wheel_base'))
+                ->add($bodyBuilder->get('aerodynamic_coefficient'))
+                ->add($bodyBuilder->get('weight'))
+                ->end()
+            ->end()
         ;
     }
 
