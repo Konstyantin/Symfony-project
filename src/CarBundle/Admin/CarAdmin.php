@@ -10,6 +10,8 @@ namespace CarBundle\Admin;
 
 use CarBundle\Entity\Car;
 use CarBundle\Form\BodyType;
+use CarBundle\Helper\BodyHelper;
+use Doctrine\ORM\Mapping as ORM;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -72,15 +74,47 @@ class CarAdmin extends AbstractAdmin
             ->end()
             ->tab('Body')
                 ->with('Body')
-                ->add($bodyBuilder->get('length'))
-                ->add($bodyBuilder->get('width'))
-                ->add($bodyBuilder->get('height'))
-                ->add($bodyBuilder->get('wheel_base'))
-                ->add($bodyBuilder->get('aerodynamic_coefficient'))
-                ->add($bodyBuilder->get('weight'))
+                    ->add($bodyBuilder->get('length'))
+                    ->add($bodyBuilder->get('width'))
+                    ->add($bodyBuilder->get('height'))
+                    ->add($bodyBuilder->get('wheel_base'))
+                    ->add($bodyBuilder->get('aerodynamic_coefficient'))
+                    ->add($bodyBuilder->get('weight'))
                 ->end()
             ->end()
         ;
+    }
+
+    /**
+     * Extent prepersist data
+     *
+     * @param mixed $object
+     */
+    public function prePersist($object)
+    {
+        $data = $this->getFormData();
+
+        $bodyHelper = new BodyHelper();
+
+        $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
+
+        $body = $bodyHelper->createBodyRecord($em, $data);
+
+        $object->setBody($body);
+    }
+
+    /**
+     * Get form data
+     *
+     * Get form data from send request
+     *
+     * @return mixed
+     */
+    public function getFormData()
+    {
+        $uniqid = $this->getRequest()->query->get('uniqid');
+
+        return $this->getRequest()->request->get($uniqid);
     }
 
     /**
