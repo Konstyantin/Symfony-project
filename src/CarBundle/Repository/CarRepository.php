@@ -10,4 +10,20 @@ namespace CarBundle\Repository;
  */
 class CarRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Get body data
+     *
+     * Return body data by car id
+     *
+     * @param int $id
+     * @return mixed
+     */
+    public function getBodyData(int $id)
+    {
+        $query = $this->createQueryBuilder('c')
+            ->join('CarBundle:Body', 'b', 'WITH', 'c.body = b.id')
+            ->getQuery();
+
+        return $query->getSingleResult();
+    }
 }
