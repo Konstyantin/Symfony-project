@@ -24,13 +24,16 @@ class BodyType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $data = $options['data'];
+
         $builder
             ->add('length', NumberType::class, [
                 'label' => 'Length',
                 'required' => false,
                 'mapped' => false,
                 'attr' => [
-                    'placeholder' => 'Length'
+                    'placeholder' => 'Length',
+                    'value' => $data->getLength(),
                 ],
                 'constraints' => [
                     new NotBlank()
@@ -41,7 +44,8 @@ class BodyType extends AbstractType
                 'required' => false,
                 'mapped' => false,
                 'attr' => [
-                    'placeholder' => 'Width'
+                    'placeholder' => 'Width',
+                    'value' => $data->getWidth(),
                 ],
                 'constraints' => [
                     new NotBlank()
@@ -52,7 +56,8 @@ class BodyType extends AbstractType
                 'required' => false,
                 'mapped' => false,
                 'attr' => [
-                    'placeholder' => 'Height'
+                    'placeholder' => 'Height',
+                    'value' => $data->getHeight(),
                 ],
                 'constraints' => [
                     new NotBlank()
@@ -63,7 +68,8 @@ class BodyType extends AbstractType
                 'required' => false,
                 'mapped' => false,
                 'attr' => [
-                    'placeholder' => 'Wheel base'
+                    'placeholder' => 'Wheel base',
+                    'value' => $data->getWheelBase(),
                 ],
                 'constraints' => [
                     new NotBlank()
@@ -74,7 +80,8 @@ class BodyType extends AbstractType
                 'required' => false,
                 'mapped' => false,
                 'attr' => [
-                    'placeholder' => 'Aerodynamic Coefficient'
+                    'placeholder' => 'Aerodynamic Coefficient',
+                    'value' => $data->getAerodynamicCoefficient(),
                 ],
                 'constraints' => [
                     new NotBlank()
@@ -85,7 +92,8 @@ class BodyType extends AbstractType
                 'required' => false,
                 'mapped' => false,
                 'attr' => [
-                    'placeholder' => 'Weight'
+                    'placeholder' => 'Weight',
+                    'value' => $data->getWeight()
                 ],
                 'constraints' => [
                     new NotBlank()

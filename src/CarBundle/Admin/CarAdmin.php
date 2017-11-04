@@ -8,6 +8,7 @@
  */
 namespace CarBundle\Admin;
 
+use CarBundle\Entity\Body;
 use CarBundle\Entity\Car;
 use CarBundle\Form\BodyType;
 use CarBundle\Helper\BodyHelper;
@@ -26,6 +27,11 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 class CarAdmin extends AbstractAdmin
 {
     /**
+     * @var \Doctrine\Common\Persistence\ObjectManager|object $em
+     */
+    private $em;
+
+    /**
      * @var string $translationDomain
      */
     protected $translationDomain = 'SonataCarBundle';
@@ -40,7 +46,9 @@ class CarAdmin extends AbstractAdmin
      */
     protected function configureFormFields(FormMapper $form)
     {
-        $bodyBuilder = $form->getFormBuilder()->getFormFactory()->createBuilder(BodyType::class);
+        $bodyData = $this->getData();
+
+        $bodyBuilder = $form->getFormBuilder()->getFormFactory()->createBuilder(BodyType::class, $bodyData);
 
         $form
             ->tab('Car')
@@ -174,5 +182,18 @@ class CarAdmin extends AbstractAdmin
         }
 
         return 'Car';
+    }
+
+    public function getData()
+    {
+        $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
+
+        $carId = $this->getRequest()->get('id');
+
+        if ($carId) {
+            return $bodyData = $em->getRepository('CarBundle:Car')->getBodyData($carId)->getBody();
+        }
+
+        return new Body();
     }
 }
