@@ -22,6 +22,8 @@ class CarRepository extends \Doctrine\ORM\EntityRepository
     {
         $query = $this->createQueryBuilder('c')
             ->join('CarBundle:Body', 'b', 'WITH', 'c.body = b.id')
+            ->where('c.id = :id')
+            ->setParameter('id', $id)
             ->getQuery();
 
         return $query->getSingleResult();

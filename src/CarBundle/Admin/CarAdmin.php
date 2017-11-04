@@ -46,7 +46,7 @@ class CarAdmin extends AbstractAdmin
      */
     protected function configureFormFields(FormMapper $form)
     {
-        $bodyData = $this->getData();
+        $bodyData = $this->getRecordData();
 
         $bodyBuilder = $form->getFormBuilder()->getFormFactory()->createBuilder(BodyType::class, $bodyData);
 
@@ -94,7 +94,7 @@ class CarAdmin extends AbstractAdmin
     }
 
     /**
-     * Extent prepersist data
+     * Extend prePersist event
      *
      * @param mixed $object
      */
@@ -109,6 +109,24 @@ class CarAdmin extends AbstractAdmin
         $body = $bodyHelper->createBodyRecord($em, $data);
 
         $object->setBody($body);
+    }
+
+    /**
+     * Extent preUpdate event
+     *
+     * @param mixed $object
+     */
+    public function preUpdate($object)
+    {
+        $data = $this->getFormData();
+
+        $bodyHelper = new BodyHelper();
+
+        $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
+
+        $body = $this->getRecordData();
+
+        $bodyHelper->updateBodyRecord($em, $data, $body);
     }
 
     /**
@@ -184,14 +202,17 @@ class CarAdmin extends AbstractAdmin
         return 'Car';
     }
 
-    public function getData()
+    /**
+     * @return Body
+     */
+    public function getRecordData()
     {
         $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
 
         $carId = $this->getRequest()->get('id');
 
         if ($carId) {
-            return $bodyData = $em->getRepository('CarBundle:Car')->getBodyData($carId)->getBody();
+            return $em->getRepository('CarBundle:Car')->getBodyData($carId)->getBody();
         }
 
         return new Body();

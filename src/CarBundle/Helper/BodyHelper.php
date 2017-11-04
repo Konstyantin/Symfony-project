@@ -77,6 +77,31 @@ class BodyHelper
     }
 
     /**
+     * Update body record
+     *
+     * Update body record data for sender body
+     *
+     * @param EntityManager $em
+     * @param $data
+     * @param $body
+     */
+    public function updateBodyRecord(EntityManager $em, $data, Body $body)
+    {
+        $this->defineBodyData($data);
+
+        $body->setWidth($this->width);
+        $body->setWeight($this->weight);
+        $body->setLength($this->length);
+        $body->setHeight($this->height);
+        $body->setWeight($this->weight);
+        $body->setWheelBase($this->wheel_base);
+        $body->setAerodynamicCoefficient($this->aerodynamic_coefficient);
+
+        $em->persist($body);
+        $em->flush();
+    }
+
+    /**
      * Define body data
      *
      * Define body data as helper property form sender data array
