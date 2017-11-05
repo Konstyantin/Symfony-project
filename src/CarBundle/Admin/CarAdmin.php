@@ -27,11 +27,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 class CarAdmin extends AbstractAdmin
 {
     /**
-     * @var \Doctrine\Common\Persistence\ObjectManager|object $em
-     */
-    private $em;
-
-    /**
      * @var string $translationDomain
      */
     protected $translationDomain = 'SonataCarBundle';
@@ -203,6 +198,8 @@ class CarAdmin extends AbstractAdmin
     }
 
     /**
+     * Get record data
+     *
      * @return Body
      */
     public function getRecordData()
