@@ -16,11 +16,16 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
 /**
- * Class ModelAdmin
+ * Class EngineAdmin
  * @package CarBundle\Admin
  */
 class EngineAdmin extends AbstractAdmin
 {
+    /**
+     * @var string $translationDomain
+     */
+    protected $translationDomain = 'SonataEngineBundle';
+
     /**
      * Configure form field
      *
@@ -33,21 +38,24 @@ class EngineAdmin extends AbstractAdmin
     {
         $form
             ->add('num_cylinders', NumberType::class, [
-                'label' => 'Number cylinders',
+                'label' => 'form.label.number_cylinders',
+                'translation_domain' => 'SonataEngineBundle',
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Number Cylinders'
+                    'placeholder' => 'form.placeholder.number_cylinders'
                 ]
             ])
             ->add('engine_volume', NumberType::class, [
-                'label' => 'Engine volume',
+                'label' => 'form.label.engine_volume',
+                'translation_domain' => 'SonataEngineBundle',
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Engine Volume'
+                    'placeholder' => 'form.placeholder.engine_volume'
                 ]
             ])
             ->add('car_drive', 'choice', [
-                'label' => 'Car drive',
+                'label' => 'form.label.car_drive',
+                'translation_domain' => 'SonataEngineBundle',
                 'required' => false,
                 'choices' => [
                     'Font' => 'front',
@@ -56,31 +64,35 @@ class EngineAdmin extends AbstractAdmin
                 ]
             ])
             ->add('power', NumberType::class, [
-                'label' => 'Power',
+                'label' => 'form.label.power',
+                'translation_domain' => 'SonataEngineBundle',
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Power'
+                    'placeholder' => 'form.placeholder.power'
                 ]
             ])
             ->add('r_hv', NumberType::class, [
-                'label' => 'R/Hv',
+                'label' => 'form.label.r_hv',
+                'translation_domain' => 'SonataEngineBundle',
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'R/Hv'
+                    'placeholder' => 'form.placeholder.r_hv'
                 ]
             ])
             ->add('max_torque', NumberType::class, [
-                'label' => 'Max torque',
+                'label' => 'form.label.max_torque',
+                'translation_domain' => 'SonataEngineBundle',
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Max torque'
+                    'placeholder' => 'form.placeholder.max_torque'
                 ]
             ])
             ->add('compression', NumberType::class, [
-                'label' => 'Compression',
+                'label' => 'form.label.compression',
+                'translation_domain' => 'SonataEngineBundle',
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Compression'
+                    'placeholder' => 'form.placeholder.compression'
                 ]
             ])
         ;
@@ -90,25 +102,25 @@ class EngineAdmin extends AbstractAdmin
      * Configure datagrid filters
      *
      * Configure datagrid filters which will used for filtered and sort
-     * the list of model
+     * the list of engine
      *
      * @param DatagridMapper $filter
      */
     protected function configureDatagridFilters(DatagridMapper $filter)
     {
         $filter
-            ->add('num_cylinders', null, ['label' => 'Num ylinders'])
-            ->add('engine_volume', null, ['label' => 'Engine volume'])
-            ->add('car_drive', null, ['label' => 'Car Drive'])
-            ->add('power', null, ['label' => 'power'])
-            ->add('max_torque', null, ['label' => 'Max torque'])
-            ->add('compression', null, ['label' => 'Compression']);
+            ->add('num_cylinders', null, ['label' => 'datagrid.filters.number_cylinders'])
+            ->add('engine_volume', null, ['label' => 'datagrid.filters.engine_volume'])
+            ->add('car_drive', null, ['label' => 'datagrid.filters.car_drive'])
+            ->add('power', null, ['label' => 'datagrid.filters.power'])
+            ->add('max_torque', null, ['label' => 'datagrid.filters.max_torque'])
+            ->add('compression', null, ['label' => 'datagrid.filters.compression']);
     }
 
     /**
      * Configure list fields
      *
-     * Specific fields which are show all model are listed
+     * Specific fields which are show all engine are listed
      *
      * @param ListMapper $list
      */
@@ -116,23 +128,23 @@ class EngineAdmin extends AbstractAdmin
     {
         $list
             ->addIdentifier('id', null, [
-                'label' => 'Id',
+                'label' => 'datagrid.list.id',
                 'row_align' => 'left'
             ])
             ->addIdentifier('num_cylinders', null, [
-                'label' => 'Num ylinders',
+                'label' => 'datagrid.list.number_cylinders',
                 'row_align' => 'left'
             ])
             ->addIdentifier('engine_volume', null, [
-                'label' => 'Engine volume',
+                'label' => 'datagrid.list.engine_volume',
                 'row_align' => 'left'
             ])
             ->addIdentifier('power', null, [
-                'label' => 'Power',
+                'label' => 'datagrid.list.power',
                 'row_align' => 'left'
             ])
             ->addIdentifier('max_torque', null, [
-                'label' => 'Max torque',
+                'label' => 'datagrid.list.max_torque',
                 'row_align' => 'left'
             ])
             ->add('_action', null, [
