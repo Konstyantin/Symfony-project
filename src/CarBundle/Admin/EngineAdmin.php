@@ -14,6 +14,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 /**
  * Class EngineAdmin
@@ -37,6 +38,13 @@ class EngineAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $form)
     {
         $form
+            ->add('model_name', TextType::class, [
+                'label' => 'form.label.engine_model',
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'form.placeholder.engine_model'
+                ]
+            ])
             ->add('num_cylinders', NumberType::class, [
                 'label' => 'form.label.number_cylinders',
                 'translation_domain' => 'SonataEngineBundle',
@@ -109,6 +117,7 @@ class EngineAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $filter)
     {
         $filter
+            ->add('model_name', null, ['label' => 'datagrid.filters.model_name'])
             ->add('num_cylinders', null, ['label' => 'datagrid.filters.number_cylinders'])
             ->add('engine_volume', null, ['label' => 'datagrid.filters.engine_volume'])
             ->add('car_drive', null, ['label' => 'datagrid.filters.car_drive'])
@@ -129,6 +138,10 @@ class EngineAdmin extends AbstractAdmin
         $list
             ->addIdentifier('id', null, [
                 'label' => 'datagrid.list.id',
+                'row_align' => 'left'
+            ])
+            ->addIdentifier('model_name', null, [
+                'label' => 'datagrid.list.model_name',
                 'row_align' => 'left'
             ])
             ->addIdentifier('num_cylinders', null, [

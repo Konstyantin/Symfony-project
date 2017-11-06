@@ -23,6 +23,15 @@ class Engine
     private $id;
 
     /**
+     * @var string
+     *
+     * @Assert\NotBlank()
+     * @Assert\NotNull()
+     * @ORM\Column(name="model_name", type="string")
+     */
+    protected $model_name;
+
+    /**
      * @var integer
      *
      * @Assert\NotBlank()
@@ -77,6 +86,11 @@ class Engine
      * @ORM\Column(name="compression", type="integer")
      */
     protected $compression;
+
+    /**
+     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Car", mappedBy="engine")
+     */
+    protected $car;
 
     /**
      * Get id
@@ -254,5 +268,79 @@ class Engine
     public function getCompression()
     {
         return $this->compression;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->car = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add car
+     *
+     * @param \CarBundle\Entity\Car $car
+     *
+     * @return Engine
+     */
+    public function addCar(\CarBundle\Entity\Car $car)
+    {
+        $this->car[] = $car;
+
+        return $this;
+    }
+
+    /**
+     * Remove car
+     *
+     * @param \CarBundle\Entity\Car $car
+     */
+    public function removeCar(\CarBundle\Entity\Car $car)
+    {
+        $this->car->removeElement($car);
+    }
+
+    /**
+     * Get car
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCar()
+    {
+        return $this->car;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getModelName();
+    }
+
+
+    /**
+     * Set modelName
+     *
+     * @param string $modelName
+     *
+     * @return Engine
+     */
+    public function setModelName($modelName)
+    {
+        $this->model_name = $modelName;
+
+        return $this;
+    }
+
+    /**
+     * Get modelName
+     *
+     * @return string
+     */
+    public function getModelName()
+    {
+        return $this->model_name;
     }
 }

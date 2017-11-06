@@ -51,6 +51,12 @@ class Car
      */
     protected $body;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Engine", inversedBy="car")
+     * @ORM\JoinColumn(name="engine_id", referencedColumnName="id")
+     */
+    protected $engine;
+
 
     /**
      * Get id
@@ -156,5 +162,29 @@ class Car
     public function getBody()
     {
         return $this->body;
+    }
+
+    /**
+     * Set engine
+     *
+     * @param \CarBundle\Entity\Engine $engine
+     *
+     * @return Car
+     */
+    public function setEngine(\CarBundle\Entity\Engine $engine = null)
+    {
+        $this->engine = $engine;
+
+        return $this;
+    }
+
+    /**
+     * Get engine
+     *
+     * @return \CarBundle\Entity\Engine
+     */
+    public function getEngine()
+    {
+        return $this->engine;
     }
 }

@@ -73,6 +73,9 @@ class CarAdmin extends AbstractAdmin
                     ->add('model', 'sonata_type_model', [
                         'class' => 'CarBundle:Model',
                     ])
+                    ->add('engine', 'sonata_type_model', [
+                        'class' => 'CarBundle:Engine',
+                    ])
                 ->end()
             ->end()
             ->tab('Body')
