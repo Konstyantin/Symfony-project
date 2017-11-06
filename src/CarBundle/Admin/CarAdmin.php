@@ -203,6 +203,8 @@ class CarAdmin extends AbstractAdmin
     }
 
     /**
+     * Get record data
+     *
      * @return Body
      */
     public function getRecordData()
