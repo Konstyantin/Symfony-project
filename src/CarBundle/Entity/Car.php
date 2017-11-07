@@ -27,6 +27,7 @@ class Car
      *
      * @Assert\NotBlank()
      * @Assert\Length(min="3", max="45")
+     * @Assert\NotNull()
      * @ORM\Column(name="name", type="string")
      */
     protected $name;
@@ -35,6 +36,7 @@ class Car
      * @var string
      *
      * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @ORM\Column(name="price", type="integer")
      */
     protected $price;

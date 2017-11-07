@@ -26,6 +26,7 @@ class Transmission
      * @var string
      *
      * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @Assert\Length(max="45")
      * @ORM\Column(name="name", type="string", length=45)
      */
@@ -35,6 +36,7 @@ class Transmission
      * @var integer
      *
      * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @Assert\Length(max="2")
      * @ORM\Column(name="steps", type="integer")
      */
@@ -44,6 +46,7 @@ class Transmission
      * @var integer
      *
      * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @ORM\Column(name="price", type="integer")
      */
     protected $price;

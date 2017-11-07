@@ -35,6 +35,7 @@ class Engine
      * @var integer
      *
      * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @ORM\Column(name="num_cylinders", type="integer")
      */
     protected $num_cylinders;
@@ -43,6 +44,7 @@ class Engine
      * @var integer
      *
      * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @ORM\Column(name="engine_volume", type="integer")
      */
     protected $engine_volume;
@@ -51,6 +53,7 @@ class Engine
      * @var string
      *
      * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @ORM\Column(name="car_drive", type="string", columnDefinition="ENUM('front', 'full', 'back')")
      */
     protected $car_drive;
@@ -59,6 +62,7 @@ class Engine
      * @var integer
      *
      * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @ORM\Column(name="power", type="integer")
      */
     protected $power;
@@ -67,6 +71,7 @@ class Engine
      * @var integer
      *
      * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @ORM\Column(name="r_hv", type="integer")
      */
     protected $r_hv;
@@ -75,6 +80,7 @@ class Engine
      * @var integer
      *
      * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @ORM\Column(name="max_torque", type="integer")
      */
     protected $max_torque;
@@ -83,6 +89,7 @@ class Engine
      * @var integer
      *
      * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @ORM\Column(name="compression", type="integer")
      */
     protected $compression;

@@ -36,6 +36,7 @@ class Model
      * @var string
      *
      * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @Assert\Length(min="3", max="45")
      * @ORM\Column(name="name", type="string", length=45)
      */
