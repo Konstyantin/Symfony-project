@@ -58,6 +58,11 @@ class Fuel
     protected $emission;
 
     /**
+     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Car", mappedBy="fuel")
+     */
+    protected $car;
+
+    /**
      * Get id
      *
      * @return int
@@ -161,5 +166,46 @@ class Fuel
     public function getEmission()
     {
         return $this->emission;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->car = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add car
+     *
+     * @param \CarBundle\Entity\Car $car
+     *
+     * @return Fuel
+     */
+    public function addCar(\CarBundle\Entity\Car $car)
+    {
+        $this->car[] = $car;
+
+        return $this;
+    }
+
+    /**
+     * Remove car
+     *
+     * @param \CarBundle\Entity\Car $car
+     */
+    public function removeCar(\CarBundle\Entity\Car $car)
+    {
+        $this->car->removeElement($car);
+    }
+
+    /**
+     * Get car
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCar()
+    {
+        return $this->car;
     }
 }

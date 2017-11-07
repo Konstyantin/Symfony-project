@@ -59,6 +59,17 @@ class Car
      */
     protected $engine;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Fuel", inversedBy="car")
+     * @ORM\JoinColumn(name="fuel_id", referencedColumnName="id")
+     */
+    protected $fuel;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Dynamics", inversedBy="car")
+     * @ORM\JoinColumn(name="dynamics_id", referencedColumnName="id")
+     */
+    protected $dynamics;
 
     /**
      * Get id
@@ -188,5 +199,53 @@ class Car
     public function getEngine()
     {
         return $this->engine;
+    }
+
+    /**
+     * Set fuel
+     *
+     * @param \CarBundle\Entity\Fuel $fuel
+     *
+     * @return Car
+     */
+    public function setFuel(\CarBundle\Entity\Fuel $fuel = null)
+    {
+        $this->fuel = $fuel;
+
+        return $this;
+    }
+
+    /**
+     * Get fuel
+     *
+     * @return \CarBundle\Entity\Fuel
+     */
+    public function getFuel()
+    {
+        return $this->fuel;
+    }
+
+    /**
+     * Set dynamics
+     *
+     * @param \CarBundle\Entity\Dynamics $dynamics
+     *
+     * @return Car
+     */
+    public function setDynamics(\CarBundle\Entity\Dynamics $dynamics = null)
+    {
+        $this->dynamics = $dynamics;
+
+        return $this;
+    }
+
+    /**
+     * Get dynamics
+     *
+     * @return \CarBundle\Entity\Dynamics
+     */
+    public function getDynamics()
+    {
+        return $this->dynamics;
     }
 }

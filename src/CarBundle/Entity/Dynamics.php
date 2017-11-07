@@ -38,6 +38,12 @@ class Dynamics
      * @ORM\Column(name="speed", type="integer")
      */
     protected $speed;
+
+    /**
+     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Car", mappedBy="dynamics")
+     */
+    protected $car;
+
     /**
      * Get id
      *
@@ -94,5 +100,46 @@ class Dynamics
     public function getSpeed()
     {
         return $this->speed;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->car = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add car
+     *
+     * @param \CarBundle\Entity\Car $car
+     *
+     * @return Dynamics
+     */
+    public function addCar(\CarBundle\Entity\Car $car)
+    {
+        $this->car[] = $car;
+
+        return $this;
+    }
+
+    /**
+     * Remove car
+     *
+     * @param \CarBundle\Entity\Car $car
+     */
+    public function removeCar(\CarBundle\Entity\Car $car)
+    {
+        $this->car->removeElement($car);
+    }
+
+    /**
+     * Get car
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCar()
+    {
+        return $this->car;
     }
 }
