@@ -11,6 +11,7 @@ namespace CarBundle\Admin;
 use CarBundle\Entity\Body;
 use CarBundle\Entity\Car;
 use CarBundle\Form\BodyType;
+use CarBundle\Form\FuelType;
 use CarBundle\Helper\BodyHelper;
 use Doctrine\ORM\Mapping as ORM;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
@@ -44,6 +45,7 @@ class CarAdmin extends AbstractAdmin
         $bodyData = $this->getRecordData();
 
         $bodyBuilder = $form->getFormBuilder()->getFormFactory()->createBuilder(BodyType::class, $bodyData);
+        $fuelBuilder = $form->getFormBuilder()->getFormFactory()->createBuilder(FuelType::class);
 
         $form
             ->tab('Car')
@@ -86,6 +88,14 @@ class CarAdmin extends AbstractAdmin
                     ->add($bodyBuilder->get('wheel_base'))
                     ->add($bodyBuilder->get('aerodynamic_coefficient'))
                     ->add($bodyBuilder->get('weight'))
+                ->end()
+            ->end()
+            ->tab('Fuel')
+                ->with('Fuel')
+                    ->add($fuelBuilder->get('city'))
+                    ->add($fuelBuilder->get('country'))
+                    ->add($fuelBuilder->get('combined'))
+                    ->add($fuelBuilder->get('emission'))
                 ->end()
             ->end()
         ;
