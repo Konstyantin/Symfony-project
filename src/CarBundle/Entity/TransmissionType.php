@@ -26,6 +26,7 @@ class TransmissionType
      * @var string
      *
      * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @Assert\Length(max="45")
      * @ORM\Column(name="title", type="string", length=45)
      */

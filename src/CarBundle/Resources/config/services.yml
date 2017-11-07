@@ -11,6 +11,7 @@ services:
               label: 'service.label'
               label_catalogue: ModelBundle
 
+    # Car admin service component
     admin.car:
         class: CarBundle\Admin\CarAdmin
         arguments: [~, CarBundle\Entity\Car, ~]
@@ -45,3 +46,14 @@ services:
               label_catalogue: 'Transmission'
         public: true
 
+    # Engine admin service component
+    admin.engine:
+        class: CarBundle\Admin\EngineAdmin
+        arguments: [~, CarBundle\Entity\Engine, ~]
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              group: CarBundle
+              label: 'Engine'
+              label_catalogue: 'Engine'
+        public: true

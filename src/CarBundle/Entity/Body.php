@@ -3,6 +3,7 @@
 namespace CarBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Body
@@ -24,6 +25,7 @@ class Body
     /**
      * @var int
      *
+     * @Assert\NotNull()
      * @ORM\Column(name="length", type="integer")
      */
     protected $length;
@@ -31,6 +33,7 @@ class Body
     /**
      * @var int
      *
+     * @Assert\NotNull()
      * @ORM\Column(name="width", type="integer")
      */
     protected $width;
@@ -38,6 +41,7 @@ class Body
     /**
      * @var int
      *
+     * @Assert\NotNull()
      * @ORM\Column(name="height", type="integer")
      */
     protected $height;
@@ -45,6 +49,7 @@ class Body
     /**
      * @var int
      *
+     * @Assert\NotNull()
      * @ORM\Column(name="wheel_base", type="integer")
      */
     protected $wheel_base;
@@ -52,6 +57,7 @@ class Body
     /**
      * @var int
      *
+     * @Assert\NotNull()
      * @ORM\Column(name="aerodynamic_coefficient", type="integer")
      */
     protected $aerodynamic_coefficient;
@@ -59,6 +65,7 @@ class Body
     /**
      * @var int
      *
+     * @Assert\NotNull()
      * @ORM\Column(name="weight", type="integer")
      */
     protected $weight;

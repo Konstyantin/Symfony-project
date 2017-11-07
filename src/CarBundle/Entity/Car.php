@@ -27,6 +27,7 @@ class Car
      *
      * @Assert\NotBlank()
      * @Assert\Length(min="3", max="45")
+     * @Assert\NotNull()
      * @ORM\Column(name="name", type="string")
      */
     protected $name;
@@ -35,6 +36,7 @@ class Car
      * @var string
      *
      * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @ORM\Column(name="price", type="integer")
      */
     protected $price;
@@ -51,6 +53,23 @@ class Car
      */
     protected $body;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Engine", inversedBy="car")
+     * @ORM\JoinColumn(name="engine_id", referencedColumnName="id")
+     */
+    protected $engine;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Fuel", inversedBy="car")
+     * @ORM\JoinColumn(name="fuel_id", referencedColumnName="id")
+     */
+    protected $fuel;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Dynamics", inversedBy="car")
+     * @ORM\JoinColumn(name="dynamics_id", referencedColumnName="id")
+     */
+    protected $dynamics;
 
     /**
      * Get id
@@ -156,5 +175,77 @@ class Car
     public function getBody()
     {
         return $this->body;
+    }
+
+    /**
+     * Set engine
+     *
+     * @param \CarBundle\Entity\Engine $engine
+     *
+     * @return Car
+     */
+    public function setEngine(\CarBundle\Entity\Engine $engine = null)
+    {
+        $this->engine = $engine;
+
+        return $this;
+    }
+
+    /**
+     * Get engine
+     *
+     * @return \CarBundle\Entity\Engine
+     */
+    public function getEngine()
+    {
+        return $this->engine;
+    }
+
+    /**
+     * Set fuel
+     *
+     * @param \CarBundle\Entity\Fuel $fuel
+     *
+     * @return Car
+     */
+    public function setFuel(\CarBundle\Entity\Fuel $fuel = null)
+    {
+        $this->fuel = $fuel;
+
+        return $this;
+    }
+
+    /**
+     * Get fuel
+     *
+     * @return \CarBundle\Entity\Fuel
+     */
+    public function getFuel()
+    {
+        return $this->fuel;
+    }
+
+    /**
+     * Set dynamics
+     *
+     * @param \CarBundle\Entity\Dynamics $dynamics
+     *
+     * @return Car
+     */
+    public function setDynamics(\CarBundle\Entity\Dynamics $dynamics = null)
+    {
+        $this->dynamics = $dynamics;
+
+        return $this;
+    }
+
+    /**
+     * Get dynamics
+     *
+     * @return \CarBundle\Entity\Dynamics
+     */
+    public function getDynamics()
+    {
+        return $this->dynamics;
     }
 }
