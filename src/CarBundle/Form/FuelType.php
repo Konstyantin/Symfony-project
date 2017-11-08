@@ -12,13 +12,16 @@ class FuelType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $data = $options['data'];
+
         $builder
             ->add('city', NumberType::class, [
                 'label' => 'City',
                 'required' => false,
                 'mapped' => false,
                 'attr' => [
-                    'placeholder' => 'City'
+                    'placeholder' => 'City',
+                    'value' => $data->getCity()
                 ],
                 'constraints' => [
                     new NotBlank()
@@ -29,7 +32,8 @@ class FuelType extends AbstractType
                 'mapped' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Country'
+                    'placeholder' => 'Country',
+                    'value' => $data->getCountry()
                 ],
                 'constraints' => [
                     new NotBlank()
@@ -41,6 +45,7 @@ class FuelType extends AbstractType
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'Combined',
+                    'value' => $data->getCombined()
                 ],
                 'constraints' => [
                     new NotBlank()
@@ -51,7 +56,8 @@ class FuelType extends AbstractType
                 'mapped' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Emission'
+                    'placeholder' => 'Emission',
+                    'value' => $data->getEmission()
                 ],
                 'constraints' => [
                     new NotBlank()

@@ -61,7 +61,7 @@ class DynamicsHelper
      */
     public function updateDynamicsRecord(EntityManager $em, $data, Dynamics $dynamics)
     {
-        $this->defineBodyData($data);
+        $this->defineDynamicsData($data);
 
         $dynamics->setAcceleration($this->acceleration);
         $dynamics->setSpeed($this->speed);

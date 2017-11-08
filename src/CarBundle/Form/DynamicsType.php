@@ -2,6 +2,7 @@
 
 namespace CarBundle\Form;
 
+use Sonata\AdminBundle\Form\Type\CollectionType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -20,24 +21,28 @@ class DynamicsType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $data = $options['data'];
+
         $builder
             ->add('acceleration', NumberType::class, [
                 'label' => 'Acceleration',
                 'required' => false,
                 'mapped' => false,
                 'attr' => [
-                    'placeholder' => 'Acceleration'
+                    'placeholder' => 'Acceleration',
+                    'value' => $data->getAcceleration()
                 ],
                 'constraints' => [
                     new NotBlank()
                 ]
             ])
-            ->add('speed', NumberType::class, [
+            ->add('speed', CollectionType::class, [
                 'label' => 'Speed',
                 'required' => false,
                 'mapped' => false,
                 'attr' => [
-                    'placeholder' => 'Speed'
+                    'placeholder' => 'Speed',
+                    'value' => $data->getSpeed()
                 ],
                 'constraints' => [
                     new NotBlank()

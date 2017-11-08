@@ -10,6 +10,8 @@ namespace CarBundle\Admin;
 
 use CarBundle\Entity\Body;
 use CarBundle\Entity\Car;
+use CarBundle\Entity\Dynamics;
+use CarBundle\Entity\Fuel;
 use CarBundle\Form\BodyType;
 use CarBundle\Form\DynamicsType;
 use CarBundle\Form\FuelType;
@@ -46,10 +48,12 @@ class CarAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $form)
     {
         $bodyData = $this->getBodyRecordData();
+        $dynamicsData = $this->getDynamicsRecordData();
+        $fuelData = $this->getFuelRecordData();
 
         $bodyBuilder = $form->getFormBuilder()->getFormFactory()->createBuilder(BodyType::class, $bodyData);
-        $fuelBuilder = $form->getFormBuilder()->getFormFactory()->createBuilder(FuelType::class);
-        $dynamicsBuilder = $form->getFormBuilder()->getFormFactory()->createBuilder(DynamicsType::class);
+        $fuelBuilder = $form->getFormBuilder()->getFormFactory()->createBuilder(FuelType::class, $fuelData);
+        $dynamicsBuilder = $form->getFormBuilder()->getFormFactory()->createBuilder(DynamicsType::class, $dynamicsData);
 
         $form
             ->tab('Car')
@@ -145,12 +149,18 @@ class CarAdmin extends AbstractAdmin
         $data = $this->getFormData();
 
         $bodyHelper = new BodyHelper();
+        $dynamicsHelper = new DynamicsHelper();
+        $fuelHelper = new FuelHelper();
 
         $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
 
         $body = $this->getBodyRecordData();
+        $dynamics = $this->getDynamicsRecordData();
+        $fuel = $this->getFuelRecordData();
 
         $bodyHelper->updateBodyRecord($em, $data, $body);
+        $dynamicsHelper->updateDynamicsRecord($em, $data, $dynamics);
+        $fuelHelper->updateFuelRecord($em, $data, $fuel);
     }
 
     /**
@@ -227,7 +237,7 @@ class CarAdmin extends AbstractAdmin
     }
 
     /**
-     * Get record data
+     * Get fuel record data
      *
      * @return Body
      */
@@ -242,5 +252,41 @@ class CarAdmin extends AbstractAdmin
         }
 
         return new Body();
+    }
+
+    /**
+     * Get dynamics record data
+     *
+     * @return Dynamics
+     */
+    public function getDynamicsRecordData()
+    {
+        $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
+
+        $carId = $this->getRequest()->get('id');
+
+        if ($carId) {
+            return $em->getRepository('CarBundle:Car')->getDynamicsData($carId)->getDynamics();
+        }
+
+        return new Dynamics();
+    }
+
+    /**
+     * Get fuel record data
+     *
+     * @return Fuel
+     */
+    public function getFuelRecordData()
+    {
+        $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
+
+        $carId = $this->getRequest()->get('id');
+
+        if ($carId) {
+            return $em->getRepository('CarBundle:Car')->getFuelData($carId)->getFuel();
+        }
+
+        return new Fuel();
     }
 }
