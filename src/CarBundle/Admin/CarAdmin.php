@@ -14,6 +14,8 @@ use CarBundle\Form\BodyType;
 use CarBundle\Form\DynamicsType;
 use CarBundle\Form\FuelType;
 use CarBundle\Helper\BodyHelper;
+use CarBundle\Helper\DynamicsHelper;
+use CarBundle\Helper\FuelHelper;
 use Doctrine\ORM\Mapping as ORM;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -43,7 +45,7 @@ class CarAdmin extends AbstractAdmin
      */
     protected function configureFormFields(FormMapper $form)
     {
-        $bodyData = $this->getRecordData();
+        $bodyData = $this->getBodyRecordData();
 
         $bodyBuilder = $form->getFormBuilder()->getFormFactory()->createBuilder(BodyType::class, $bodyData);
         $fuelBuilder = $form->getFormBuilder()->getFormFactory()->createBuilder(FuelType::class);
@@ -119,12 +121,18 @@ class CarAdmin extends AbstractAdmin
         $data = $this->getFormData();
 
         $bodyHelper = new BodyHelper();
+        $dynamicsHelper = new DynamicsHelper();
+        $fuelHelper = new FuelHelper();
 
         $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
 
         $body = $bodyHelper->createBodyRecord($em, $data);
+        $dynamics = $dynamicsHelper->createDynamicsRecord($em, $data);
+        $fuel = $fuelHelper->createFuelRecord($em, $data);
 
         $object->setBody($body);
+        $object->setDynamics($dynamics);
+        $object->setFuel($fuel);
     }
 
     /**
@@ -140,7 +148,7 @@ class CarAdmin extends AbstractAdmin
 
         $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
 
-        $body = $this->getRecordData();
+        $body = $this->getBodyRecordData();
 
         $bodyHelper->updateBodyRecord($em, $data, $body);
     }
@@ -223,7 +231,7 @@ class CarAdmin extends AbstractAdmin
      *
      * @return Body
      */
-    public function getRecordData()
+    public function getBodyRecordData()
     {
         $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
 
