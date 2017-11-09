@@ -2,7 +2,6 @@
 
 namespace CarBundle\Form;
 
-use Sonata\AdminBundle\Form\Type\CollectionType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -15,6 +14,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
  */
 class DynamicsType extends AbstractType
 {
+    protected $test;
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
@@ -36,7 +36,7 @@ class DynamicsType extends AbstractType
                     new NotBlank()
                 ]
             ])
-            ->add('speed', CollectionType::class, [
+            ->add('speed', NumberType::class, [
                 'label' => 'Speed',
                 'required' => false,
                 'mapped' => false,

@@ -102,7 +102,9 @@ class BodyType extends AbstractType
     }
 
     /**
-     * Configure options
+     * Configuration options
+     *
+     * Set configuration params for current form
      *
      * @param OptionsResolver $resolver
      */

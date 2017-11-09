@@ -65,6 +65,13 @@ class FuelType extends AbstractType
             ]);
     }
 
+    /**
+     * Configuration options
+     *
+     * Set configuration params for current form
+     *
+     * @param OptionsResolver $resolver
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
 
