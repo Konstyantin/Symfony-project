@@ -41,9 +41,9 @@ class StrategyCarData
     /**
      * StrategyCarData constructor.
      * @param EntityManager $em
-     * @param int $id
+     * @param int|null $id
      */
-    public function __construct(EntityManager $em, int $id)
+    public function __construct(EntityManager $em, int $id = null)
     {
         $this->em = $em;
         $this->id = $id;

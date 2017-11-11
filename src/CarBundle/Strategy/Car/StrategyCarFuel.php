@@ -22,10 +22,10 @@ class StrategyCarFuel extends AbstractCarData
      * Get record data
      *
      * @param EntityManager $em
-     * @param int $id
+     * @param int|null $id
      * @return Fuel
      */
-    public function getRecordData(EntityManager $em, int $id)
+    public function getRecordData(EntityManager $em, int $id = null)
     {
         $record = $em->getRepository('CarBundle:Car')->getFuelData($id);
 
