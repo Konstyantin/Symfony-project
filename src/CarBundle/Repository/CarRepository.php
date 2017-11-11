@@ -26,7 +26,7 @@ class CarRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('id', $id)
             ->getQuery();
 
-        return $query->getSingleResult();
+        return $query->getOneOrNullResult();
     }
 
     /**
@@ -45,7 +45,7 @@ class CarRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('id', $id)
             ->getQuery();
 
-        return $query->getSingleResult();
+        return $query->getOneOrNullResult();
     }
 
     /**
@@ -64,6 +64,6 @@ class CarRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('id', $id)
             ->getQuery();
 
-        return $query->getSingleResult();
+        return $query->getOneOrNullResult();
     }
 }
