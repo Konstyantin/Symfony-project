@@ -1,0 +1,11 @@
+form:
+  label:
+    city: 'City'
+    country: 'Country'
+    combined: 'Combined'
+    emission: 'Emission'
+  placeholder:
+    city: 'City'
+    country: 'Country'
+    combined: 'Combined'
+    emission: 'Emission'

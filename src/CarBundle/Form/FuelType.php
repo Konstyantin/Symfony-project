@@ -16,11 +16,12 @@ class FuelType extends AbstractType
 
         $builder
             ->add('city', NumberType::class, [
-                'label' => 'City',
+                'translation_domain' => 'FuelType',
+                'label' => 'form.label.city',
                 'required' => false,
                 'mapped' => false,
                 'attr' => [
-                    'placeholder' => 'City',
+                    'placeholder' => 'form.placeholder.city',
                     'value' => $data->getCity()
                 ],
                 'constraints' => [
@@ -28,11 +29,12 @@ class FuelType extends AbstractType
                 ]
             ])
             ->add('country', NumberType::class, [
-                'label' => 'Country',
+                'translation_domain' => 'FuelType',
+                'label' => 'form.label.country',
                 'mapped' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Country',
+                    'placeholder' => 'form.placeholder.country',
                     'value' => $data->getCountry()
                 ],
                 'constraints' => [
@@ -40,11 +42,12 @@ class FuelType extends AbstractType
                 ]
             ])
             ->add('combined', NumberType::class, [
-                'label' => 'Combined',
+                'translation_domain' => 'FuelType',
+                'label' => 'form.label.combined',
                 'mapped' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Combined',
+                    'placeholder' => 'form.placeholder.combined',
                     'value' => $data->getCombined()
                 ],
                 'constraints' => [
@@ -52,11 +55,12 @@ class FuelType extends AbstractType
                 ]
             ])
             ->add('emission', NumberType::class, [
-                'label' => 'Emission',
+                'translation_domain' => 'FuelType',
+                'label' => 'form.label.emission',
                 'mapped' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Emission',
+                    'placeholder' => 'form.placeholder.emission',
                     'value' => $data->getEmission()
                 ],
                 'constraints' => [

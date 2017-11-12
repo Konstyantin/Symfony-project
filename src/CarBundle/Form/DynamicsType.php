@@ -25,11 +25,12 @@ class DynamicsType extends AbstractType
 
         $builder
             ->add('acceleration', NumberType::class, [
-                'label' => 'Acceleration',
+                'translation_domain' => 'DynamicsType',
+                'label' => 'form.label.acceleration',
                 'required' => false,
                 'mapped' => false,
                 'attr' => [
-                    'placeholder' => 'Acceleration',
+                    'placeholder' => 'form.placeholder.acceleration',
                     'value' => $data->getAcceleration()
                 ],
                 'constraints' => [
@@ -37,11 +38,12 @@ class DynamicsType extends AbstractType
                 ]
             ])
             ->add('speed', NumberType::class, [
-                'label' => 'Speed',
+                'translation_domain' => 'DynamicsType',
+                'label' => 'form.label.speed',
                 'required' => false,
                 'mapped' => false,
                 'attr' => [
-                    'placeholder' => 'Speed',
+                    'placeholder' => 'form.placeholder.speed',
                     'value' => $data->getSpeed()
                 ],
                 'constraints' => [
@@ -51,11 +53,23 @@ class DynamicsType extends AbstractType
         ;
     }
 
+    /**
+     * Configuration options
+     *
+     * Set configuration params for current form
+     *
+     * @param OptionsResolver $resolver
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
 
     }
 
+    /**
+     * Get block prefix
+     *
+     * @return string
+     */
     public function getBlockPrefix()
     {
         return 'car_bundle_dynamics_type';
