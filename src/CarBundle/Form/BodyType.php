@@ -28,11 +28,12 @@ class BodyType extends AbstractType
 
         $builder
             ->add('length', NumberType::class, [
-                'label' => 'Length',
+                'translation_domain' => 'BodyType',
+                'label' => 'form.label.length',
                 'required' => false,
                 'mapped' => false,
                 'attr' => [
-                    'placeholder' => 'Length',
+                    'placeholder' => 'form.placeholder.length',
                     'value' => $data->getLength(),
                 ],
                 'constraints' => [
@@ -40,11 +41,12 @@ class BodyType extends AbstractType
                 ]
             ])
             ->add('width', NumberType::class, [
-                'label' => 'Width',
+                'translation_domain' => 'BodyType',
+                'label' => 'form.label.width',
                 'required' => false,
                 'mapped' => false,
                 'attr' => [
-                    'placeholder' => 'Width',
+                    'placeholder' => 'form.placeholder.width',
                     'value' => $data->getWidth(),
                 ],
                 'constraints' => [
@@ -52,11 +54,12 @@ class BodyType extends AbstractType
                 ]
             ])
             ->add('height', NumberType::class, [
-                'label' => 'Height',
+                'translation_domain' => 'BodyType',
+                'label' => 'form.label.height',
                 'required' => false,
                 'mapped' => false,
                 'attr' => [
-                    'placeholder' => 'Height',
+                    'placeholder' => 'form.label.height',
                     'value' => $data->getHeight(),
                 ],
                 'constraints' => [
@@ -64,11 +67,12 @@ class BodyType extends AbstractType
                 ]
             ])
             ->add('wheel_base', NumberType::class, [
-                'label' => 'Wheel base',
+                'translation_domain' => 'BodyType',
+                'label' => 'form.label.wheel_base',
                 'required' => false,
                 'mapped' => false,
                 'attr' => [
-                    'placeholder' => 'Wheel base',
+                    'placeholder' => 'form.placeholder.wheel_base',
                     'value' => $data->getWheelBase(),
                 ],
                 'constraints' => [
@@ -76,11 +80,12 @@ class BodyType extends AbstractType
                 ]
             ])
             ->add('aerodynamic_coefficient', NumberType::class, [
-                'label' => 'Aerodynamic Coefficient',
+                'translation_domain' => 'BodyType',
+                'label' => 'form.label.aerodynamic_coefficient',
                 'required' => false,
                 'mapped' => false,
                 'attr' => [
-                    'placeholder' => 'Aerodynamic Coefficient',
+                    'placeholder' => 'form.placeholder.aerodynamic_coefficient',
                     'value' => $data->getAerodynamicCoefficient(),
                 ],
                 'constraints' => [
@@ -88,11 +93,12 @@ class BodyType extends AbstractType
                 ]
             ])
             ->add('weight', NumberType::class, [
-                'label' => 'Weight',
+                'translation_domain' => 'BodyType',
+                'label' => 'form.label.weight',
                 'required' => false,
                 'mapped' => false,
                 'attr' => [
-                    'placeholder' => 'Weight',
+                    'placeholder' => 'form.placeholder.weight',
                     'value' => $data->getWeight()
                 ],
                 'constraints' => [
@@ -102,7 +108,9 @@ class BodyType extends AbstractType
     }
 
     /**
-     * Configure options
+     * Configuration options
+     *
+     * Set configuration params for current form
      *
      * @param OptionsResolver $resolver
      */

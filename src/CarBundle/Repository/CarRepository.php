@@ -18,7 +18,7 @@ class CarRepository extends \Doctrine\ORM\EntityRepository
      * @param int $id
      * @return mixed
      */
-    public function getBodyData(int $id)
+    public function getBodyData($id)
     {
         $query = $this->createQueryBuilder('c')
             ->join('CarBundle:Body', 'b', 'WITH', 'c.body = b.id')
@@ -26,6 +26,44 @@ class CarRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('id', $id)
             ->getQuery();
 
-        return $query->getSingleResult();
+        return $query->getOneOrNullResult();
+    }
+
+    /**
+     * Get dynamics data
+     *
+     * Return dynamics data by car id
+     *
+     * @param int $id
+     * @return mixed
+     */
+    public function getDynamicsData($id)
+    {
+        $query = $this->createQueryBuilder('c')
+            ->join('CarBundle:Dynamics', 'd', 'WITH', 'c.dynamics = d.id')
+            ->where('c.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery();
+
+        return $query->getOneOrNullResult();
+    }
+
+    /**
+     * Get fuel data
+     *
+     * Return fuel data by car id
+     *
+     * @param int $id
+     * @return mixed
+     */
+    public function getFuelData($id)
+    {
+        $query = $this->createQueryBuilder('c')
+            ->join('CarBundle:Fuel', 'f', 'WITH', 'c.fuel = f.id')
+            ->where('c.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery();
+
+        return $query->getOneOrNullResult();
     }
 }

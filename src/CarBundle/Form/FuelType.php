@@ -12,46 +12,56 @@ class FuelType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $data = $options['data'];
+
         $builder
             ->add('city', NumberType::class, [
-                'label' => 'City',
+                'translation_domain' => 'FuelType',
+                'label' => 'form.label.city',
                 'required' => false,
                 'mapped' => false,
                 'attr' => [
-                    'placeholder' => 'City'
+                    'placeholder' => 'form.placeholder.city',
+                    'value' => $data->getCity()
                 ],
                 'constraints' => [
                     new NotBlank()
                 ]
             ])
             ->add('country', NumberType::class, [
-                'label' => 'Country',
+                'translation_domain' => 'FuelType',
+                'label' => 'form.label.country',
                 'mapped' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Country'
+                    'placeholder' => 'form.placeholder.country',
+                    'value' => $data->getCountry()
                 ],
                 'constraints' => [
                     new NotBlank()
                 ]
             ])
             ->add('combined', NumberType::class, [
-                'label' => 'Combined',
+                'translation_domain' => 'FuelType',
+                'label' => 'form.label.combined',
                 'mapped' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Combined',
+                    'placeholder' => 'form.placeholder.combined',
+                    'value' => $data->getCombined()
                 ],
                 'constraints' => [
                     new NotBlank()
                 ]
             ])
             ->add('emission', NumberType::class, [
-                'label' => 'Emission',
+                'translation_domain' => 'FuelType',
+                'label' => 'form.label.emission',
                 'mapped' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Emission'
+                    'placeholder' => 'form.placeholder.emission',
+                    'value' => $data->getEmission()
                 ],
                 'constraints' => [
                     new NotBlank()
@@ -59,6 +69,13 @@ class FuelType extends AbstractType
             ]);
     }
 
+    /**
+     * Configuration options
+     *
+     * Set configuration params for current form
+     *
+     * @param OptionsResolver $resolver
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
 

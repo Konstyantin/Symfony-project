@@ -1,0 +1,7 @@
+form:
+  label:
+    acceleration: 'Acceleration'
+    speed: 'Speed'
+  placeholder:
+    acceleration: 'Acceleration'
+    speed: 'Speed'

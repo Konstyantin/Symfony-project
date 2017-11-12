@@ -1,0 +1,15 @@
+form:
+  label:
+    length: 'Length'
+    width: 'Width'
+    height: 'Height'
+    wheel_base: 'Wheel base'
+    aerodynamic_coefficient: 'Aerodynamic coefficient'
+    weight: 'Weight'
+  placeholder:
+    length: 'Length'
+    width: 'Width'
+    height: 'Height'
+    wheel_base: 'Wheel base'
+    aerodynamic_coefficient: 'Aerodynamic coefficient'
+    weight: 'Weight'

@@ -117,7 +117,7 @@ class EngineAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $filter)
     {
         $filter
-            ->add('model_name', null, ['label' => 'datagrid.filters.model_name'])
+            ->add('model_name', null, ['label' => 'datagrid.filters.engine_model'])
             ->add('num_cylinders', null, ['label' => 'datagrid.filters.number_cylinders'])
             ->add('engine_volume', null, ['label' => 'datagrid.filters.engine_volume'])
             ->add('car_drive', null, ['label' => 'datagrid.filters.car_drive'])
@@ -141,7 +141,7 @@ class EngineAdmin extends AbstractAdmin
                 'row_align' => 'left'
             ])
             ->addIdentifier('model_name', null, [
-                'label' => 'datagrid.list.model_name',
+                'label' => 'datagrid.list.engine_model',
                 'row_align' => 'left'
             ])
             ->addIdentifier('num_cylinders', null, [

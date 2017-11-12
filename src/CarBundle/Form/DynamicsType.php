@@ -14,30 +14,37 @@ use Symfony\Component\Validator\Constraints\NotBlank;
  */
 class DynamicsType extends AbstractType
 {
+    protected $test;
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $data = $options['data'];
+
         $builder
             ->add('acceleration', NumberType::class, [
-                'label' => 'Acceleration',
+                'translation_domain' => 'DynamicsType',
+                'label' => 'form.label.acceleration',
                 'required' => false,
                 'mapped' => false,
                 'attr' => [
-                    'placeholder' => 'Acceleration'
+                    'placeholder' => 'form.placeholder.acceleration',
+                    'value' => $data->getAcceleration()
                 ],
                 'constraints' => [
                     new NotBlank()
                 ]
             ])
             ->add('speed', NumberType::class, [
-                'label' => 'Speed',
+                'translation_domain' => 'DynamicsType',
+                'label' => 'form.label.speed',
                 'required' => false,
                 'mapped' => false,
                 'attr' => [
-                    'placeholder' => 'Speed'
+                    'placeholder' => 'form.placeholder.speed',
+                    'value' => $data->getSpeed()
                 ],
                 'constraints' => [
                     new NotBlank()
@@ -46,11 +53,23 @@ class DynamicsType extends AbstractType
         ;
     }
 
+    /**
+     * Configuration options
+     *
+     * Set configuration params for current form
+     *
+     * @param OptionsResolver $resolver
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
 
     }
 
+    /**
+     * Get block prefix
+     *
+     * @return string
+     */
     public function getBlockPrefix()
     {
         return 'car_bundle_dynamics_type';
