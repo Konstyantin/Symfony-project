@@ -26,6 +26,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 /**
  * Class ModelAdmin
@@ -100,6 +101,13 @@ class CarAdmin extends AbstractAdmin
                     ])
                     ->add('engine', 'sonata_type_model', [
                         'class' => 'CarBundle:Engine',
+                    ])
+                    ->add('imageFile', VichImageType::class, [
+                        'label' => false,
+                        'required' => false,
+                        'help' => $this->fullPathImage(),
+                        'allow_delete' => true,
+                        'download_link' => true,
                     ])
                 ->end()
             ->end()
@@ -264,5 +272,28 @@ class CarAdmin extends AbstractAdmin
         $this->bodyData = $strategyCarData->getRecord('Body');
         $this->fuelData = $strategyCarData->getRecord('Fuel');
         $this->dynamicsData = $strategyCarData->getRecord('Dynamics');
+    }
+
+    /**
+     * Full path image
+     *
+     * Get full path image to upload image file model record
+     *
+     * @return bool|string
+     */
+    public function fullPathImage()
+    {
+        $image = $this->getSubject();
+
+        if ($image && ($webPath = $image->getWebPath())) {
+
+            $container = $this->getConfigurationPool()->getContainer();
+
+            $fullPath = $container->getParameter('upload_image_prefix') . '/cars/' . $webPath;
+
+            return '<img src="' . $fullPath . '" class="admin-preview" alt="Picture don\'t exists"/>';
+        }
+
+        return $image->getWebPath();
     }
 }

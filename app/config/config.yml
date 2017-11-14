@@ -161,6 +161,15 @@ sonata_admin:
 vich_uploader:
     db_driver:  orm
     mappings:
+        car_image:
+            uri_prefix:         '%upload_image_prefix%/cars' # uri prefix to resource
+            upload_destination: '%upload_image_path%/cars'
+
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+            namer:              vich_uploader.namer_uniqid
+
         model_image:
             uri_prefix:         '%upload_image_prefix%/models' # uri prefix to resource
             upload_destination: '%upload_image_path%/models'
