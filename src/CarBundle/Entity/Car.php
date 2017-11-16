@@ -103,6 +103,12 @@ class Car
     protected $dynamics;
 
     /**
+     * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Feature", inversedBy="car")
+     * @ORM\JoinTable(name="car_features")
+     */
+    protected $feature;
+
+    /**
      * Get id
      *
      * @return int
@@ -365,5 +371,46 @@ class Car
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->feature = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add feature
+     *
+     * @param \CarBundle\Entity\Feature $feature
+     *
+     * @return Car
+     */
+    public function addFeature(\CarBundle\Entity\Feature $feature)
+    {
+        $this->feature[] = $feature;
+
+        return $this;
+    }
+
+    /**
+     * Remove feature
+     *
+     * @param \CarBundle\Entity\Feature $feature
+     */
+    public function removeFeature(\CarBundle\Entity\Feature $feature)
+    {
+        $this->feature->removeElement($feature);
+    }
+
+    /**
+     * Get feature
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFeature()
+    {
+        return $this->feature;
     }
 }

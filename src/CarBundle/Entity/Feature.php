@@ -40,6 +40,11 @@ class Feature
      */
     protected $full_description;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Car", inversedBy="feature")
+     */
+    protected $car;
+
 
     /**
      * Get id
@@ -97,5 +102,46 @@ class Feature
     public function getFullDescription()
     {
         return $this->full_description;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->car = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add car
+     *
+     * @param \CarBundle\Entity\Car $car
+     *
+     * @return Feature
+     */
+    public function addCar(\CarBundle\Entity\Car $car)
+    {
+        $this->car[] = $car;
+
+        return $this;
+    }
+
+    /**
+     * Remove car
+     *
+     * @param \CarBundle\Entity\Car $car
+     */
+    public function removeCar(\CarBundle\Entity\Car $car)
+    {
+        $this->car->removeElement($car);
+    }
+
+    /**
+     * Get car
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCar()
+    {
+        return $this->car;
     }
 }
