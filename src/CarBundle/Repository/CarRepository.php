@@ -58,12 +58,12 @@ class CarRepository extends \Doctrine\ORM\EntityRepository
      */
     public function getFuelData($id)
     {
-        $query = $this->createQueryBuilder('c')
-            ->join('CarBundle:Fuel', 'f', 'WITH', 'c.fuel = f.id')
-            ->where('c.id = :id')
-            ->setParameter('id', $id)
-            ->getQuery();
-
-        return $query->getOneOrNullResult();
+//        $query = $this->createQueryBuilder('c')
+//            ->join('CarBundle:Fuel', 'f', 'WITH', 'c.fuel = f.id')
+//            ->where('c.id = :id')
+//            ->setParameter('id', $id)
+//            ->getQuery();
+//
+//        return $query->getOneOrNullResult();
     }
 }

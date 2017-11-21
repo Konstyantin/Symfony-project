@@ -12,8 +12,6 @@ class FuelType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $data = $options['data'];
-
         $builder
             ->add('city', NumberType::class, [
                 'translation_domain' => 'FuelType',
@@ -22,7 +20,6 @@ class FuelType extends AbstractType
                 'mapped' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.city',
-                    'value' => $data->getCity()
                 ],
                 'constraints' => [
                     new NotBlank()
@@ -35,7 +32,6 @@ class FuelType extends AbstractType
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.country',
-                    'value' => $data->getCountry()
                 ],
                 'constraints' => [
                     new NotBlank()
@@ -48,7 +44,6 @@ class FuelType extends AbstractType
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.combined',
-                    'value' => $data->getCombined()
                 ],
                 'constraints' => [
                     new NotBlank()
@@ -61,7 +56,6 @@ class FuelType extends AbstractType
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.emission',
-                    'value' => $data->getEmission()
                 ],
                 'constraints' => [
                     new NotBlank()
@@ -78,7 +72,9 @@ class FuelType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-
+        $resolver->setDefaults([
+            'data_class' => 'CarBundle\Entity\Fuel'
+        ]);
     }
 
     public function getBlockPrefix()

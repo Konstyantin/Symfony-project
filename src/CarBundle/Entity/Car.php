@@ -91,8 +91,7 @@ class Car
     protected $engine;
 
     /**
-     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Fuel", inversedBy="car")
-     * @ORM\JoinColumn(name="fuel_id", referencedColumnName="id")
+     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Fuel", mappedBy="car")
      */
     protected $fuel;
 
@@ -379,6 +378,8 @@ class Car
         $this->feature = new \Doctrine\Common\Collections\ArrayCollection();
         $this->addDynamic(new Dynamics());
         $this->addDynamic(new Dynamics());
+        $this->addFuel(new Fuel());
+        $this->addFuel(new Fuel());
     }
 
     /**
@@ -439,4 +440,28 @@ class Car
         $this->dynamics->removeElement($dynamic);
     }
 
+
+    /**
+     * Add fuel
+     *
+     * @param \CarBundle\Entity\Fuel $fuel
+     *
+     * @return Car
+     */
+    public function addFuel(\CarBundle\Entity\Fuel $fuel)
+    {
+        $this->fuel[] = $fuel;
+
+        return $this;
+    }
+
+    /**
+     * Remove fuel
+     *
+     * @param \CarBundle\Entity\Fuel $fuel
+     */
+    public function removeFuel(\CarBundle\Entity\Fuel $fuel)
+    {
+        $this->fuel->removeElement($fuel);
+    }
 }

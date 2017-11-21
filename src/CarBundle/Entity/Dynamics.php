@@ -41,7 +41,7 @@ class Dynamics
 
     /**
      * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Car", inversedBy="dynamics")
-     * @ORM\JoinColumn(name="car_id")
+     * @ORM\JoinColumn(name="car_id", referencedColumnName="id")
      */
     protected $car;
 

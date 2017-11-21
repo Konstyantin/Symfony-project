@@ -69,8 +69,6 @@ class CarAdmin extends AbstractAdmin
 
         $formFactory = $form->getFormBuilder()->getFormFactory();
         $bodyBuilder = $formFactory->createBuilder(BodyType::class, $this->bodyData);
-        $fuelBuilder = $formFactory->createBuilder(FuelType::class, $this->fuelData);
-//        $dynamicsBuilder = $formFactory->createBuilder(DynamicsType::class, $this->dynamicsData);
 
         $form
             ->tab('Car')
@@ -129,10 +127,10 @@ class CarAdmin extends AbstractAdmin
             ->end()
             ->tab('Fuel')
                 ->with('Fuel')
-                    ->add($fuelBuilder->get('city'))
-                    ->add($fuelBuilder->get('country'))
-                    ->add($fuelBuilder->get('combined'))
-                    ->add($fuelBuilder->get('emission'))
+                    ->add('fuel', CollectionType::class, [
+                        'label' => false,
+                        'entry_type' => FuelType::class
+                    ])
                 ->end()
             ->end()
             ->tab('Dynamics')
