@@ -68,7 +68,6 @@ class CarAdmin extends AbstractAdmin
         $this->setCarData();
 
         $formFactory = $form->getFormBuilder()->getFormFactory();
-        $bodyBuilder = $formFactory->createBuilder(BodyType::class, $this->bodyData);
 
         $form
             ->tab('Car')
@@ -117,12 +116,10 @@ class CarAdmin extends AbstractAdmin
             ->end()
             ->tab('Body')
                 ->with('Body')
-                    ->add($bodyBuilder->get('length'))
-                    ->add($bodyBuilder->get('width'))
-                    ->add($bodyBuilder->get('height'))
-                    ->add($bodyBuilder->get('wheel_base'))
-                    ->add($bodyBuilder->get('aerodynamic_coefficient'))
-                    ->add($bodyBuilder->get('weight'))
+                    ->add('body', CollectionType::class, [
+                        'label' => false,
+                        'entry_type' => BodyType::class
+                    ])
                 ->end()
             ->end()
             ->tab('Fuel')
@@ -149,47 +146,47 @@ class CarAdmin extends AbstractAdmin
      *
      * @param mixed $object
      */
-    public function prePersist($object)
-    {
-        $data = $this->getFormData();
-
-        $bodyHelper = new BodyHelper();
-        $fuelHelper = new FuelHelper();
-        $dynamicsHelper = new DynamicsHelper();
-
-        $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
-
-        $fuel = $fuelHelper->createFuelRecord($em, $data);
-        $body = $bodyHelper->createBodyRecord($em, $data);
-        $dynamics = $dynamicsHelper->createDynamicsRecord($em, $data);
-
-        $object->setFuel($fuel);
-        $object->setBody($body);
-        $object->setDynamics($dynamics);
-    }
+//    public function prePersist($object)
+//    {
+//        $data = $this->getFormData();
+//
+//        $bodyHelper = new BodyHelper();
+//        $fuelHelper = new FuelHelper();
+//        $dynamicsHelper = new DynamicsHelper();
+//
+//        $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
+//
+//        $fuel = $fuelHelper->createFuelRecord($em, $data);
+//        $body = $bodyHelper->createBodyRecord($em, $data);
+//        $dynamics = $dynamicsHelper->createDynamicsRecord($em, $data);
+//
+//        $object->setFuel($fuel);
+//        $object->setBody($body);
+//        $object->setDynamics($dynamics);
+//    }
 
     /**
      * Extent preUpdate event
      *
      * @param mixed $object
      */
-    public function preUpdate($object)
-    {
-        $data = $this->getFormData();
-
-        $bodyHelper = new BodyHelper();
-        $fuelHelper = new FuelHelper();
-        $dynamicsHelper = new DynamicsHelper();
-
-        $body = $this->bodyData;
-        $fuel = $this->fuelData;
-        $dynamics = $this->dynamicsData;
-        $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
-
-        $fuelHelper->updateFuelRecord($em, $data, $fuel);
-        $bodyHelper->updateBodyRecord($em, $data, $body);
-        $dynamicsHelper->updateDynamicsRecord($em, $data, $dynamics);
-    }
+//    public function preUpdate($object)
+//    {
+//        $data = $this->getFormData();
+//
+//        $bodyHelper = new BodyHelper();
+//        $fuelHelper = new FuelHelper();
+//        $dynamicsHelper = new DynamicsHelper();
+//
+//        $body = $this->bodyData;
+//        $fuel = $this->fuelData;
+//        $dynamics = $this->dynamicsData;
+//        $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
+//
+//        $fuelHelper->updateFuelRecord($em, $data, $fuel);
+//        $bodyHelper->updateBodyRecord($em, $data, $body);
+//        $dynamicsHelper->updateDynamicsRecord($em, $data, $dynamics);
+//    }
 
     /**
      * Get form data

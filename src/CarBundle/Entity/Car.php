@@ -79,8 +79,7 @@ class Car
     protected $model;
 
     /**
-     * @ORM\OneToOne(targetEntity="CarBundle\Entity\Body", inversedBy="car")
-     * @ORM\JoinColumn(name="body_id", referencedColumnName="id")
+     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Body", mappedBy="car")
      */
     protected $body;
 
@@ -380,6 +379,8 @@ class Car
         $this->addDynamic(new Dynamics());
         $this->addFuel(new Fuel());
         $this->addFuel(new Fuel());
+        $this->addBody(new Body());
+        $this->addBody(new Body());
     }
 
     /**
@@ -463,5 +464,29 @@ class Car
     public function removeFuel(\CarBundle\Entity\Fuel $fuel)
     {
         $this->fuel->removeElement($fuel);
+    }
+
+    /**
+     * Add body
+     *
+     * @param \CarBundle\Entity\Body $body
+     *
+     * @return Car
+     */
+    public function addBody(\CarBundle\Entity\Body $body)
+    {
+        $this->body[] = $body;
+
+        return $this;
+    }
+
+    /**
+     * Remove body
+     *
+     * @param \CarBundle\Entity\Body $body
+     */
+    public function removeBody(\CarBundle\Entity\Body $body)
+    {
+        $this->body->removeElement($body);
     }
 }

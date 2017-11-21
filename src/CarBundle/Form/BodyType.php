@@ -24,8 +24,6 @@ class BodyType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $data = $options['data'];
-
         $builder
             ->add('length', NumberType::class, [
                 'translation_domain' => 'BodyType',
@@ -34,7 +32,6 @@ class BodyType extends AbstractType
                 'mapped' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.length',
-                    'value' => $data->getLength(),
                 ],
                 'constraints' => [
                     new NotBlank()
@@ -47,7 +44,6 @@ class BodyType extends AbstractType
                 'mapped' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.width',
-                    'value' => $data->getWidth(),
                 ],
                 'constraints' => [
                     new NotBlank()
@@ -60,7 +56,6 @@ class BodyType extends AbstractType
                 'mapped' => false,
                 'attr' => [
                     'placeholder' => 'form.label.height',
-                    'value' => $data->getHeight(),
                 ],
                 'constraints' => [
                     new NotBlank()
@@ -73,7 +68,6 @@ class BodyType extends AbstractType
                 'mapped' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.wheel_base',
-                    'value' => $data->getWheelBase(),
                 ],
                 'constraints' => [
                     new NotBlank()
@@ -86,7 +80,6 @@ class BodyType extends AbstractType
                 'mapped' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.aerodynamic_coefficient',
-                    'value' => $data->getAerodynamicCoefficient(),
                 ],
                 'constraints' => [
                     new NotBlank()
@@ -99,7 +92,6 @@ class BodyType extends AbstractType
                 'mapped' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.weight',
-                    'value' => $data->getWeight()
                 ],
                 'constraints' => [
                     new NotBlank()
@@ -116,7 +108,9 @@ class BodyType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-
+        $resolver->setDefaults([
+            'data_class' => 'CarBundle\Entity\Body'
+        ]);
     }
 
     /**
