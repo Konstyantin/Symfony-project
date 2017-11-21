@@ -24,6 +24,7 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Form\Type\CollectionType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
@@ -69,7 +70,7 @@ class CarAdmin extends AbstractAdmin
         $formFactory = $form->getFormBuilder()->getFormFactory();
         $bodyBuilder = $formFactory->createBuilder(BodyType::class, $this->bodyData);
         $fuelBuilder = $formFactory->createBuilder(FuelType::class, $this->fuelData);
-        $dynamicsBuilder = $formFactory->createBuilder(DynamicsType::class, $this->dynamicsData);
+//        $dynamicsBuilder = $formFactory->createBuilder(DynamicsType::class, $this->dynamicsData);
 
         $form
             ->tab('Car')
@@ -136,8 +137,10 @@ class CarAdmin extends AbstractAdmin
             ->end()
             ->tab('Dynamics')
                 ->with('Dynamics')
-                    ->add($dynamicsBuilder->get('acceleration'))
-                    ->add($dynamicsBuilder->get('speed'))
+                    ->add('dynamics', CollectionType::class, [
+                        'label' => false,
+                        'entry_type' => DynamicsType::class
+                    ])
                 ->end()
             ->end()
         ;

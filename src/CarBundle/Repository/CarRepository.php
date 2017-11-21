@@ -39,13 +39,13 @@ class CarRepository extends \Doctrine\ORM\EntityRepository
      */
     public function getDynamicsData($id)
     {
-        $query = $this->createQueryBuilder('c')
-            ->join('CarBundle:Dynamics', 'd', 'WITH', 'c.dynamics = d.id')
-            ->where('c.id = :id')
-            ->setParameter('id', $id)
-            ->getQuery();
-
-        return $query->getOneOrNullResult();
+//        $query = $this->createQueryBuilder('c')
+//            ->join('CarBundle:Dynamics', 'd', 'WITH', 'c.dynamics = d.id')
+//            ->where('c.id = :id')
+//            ->setParameter('id', $id)
+//            ->getQuery();
+//
+//        return $query->getOneOrNullResult();
     }
 
     /**

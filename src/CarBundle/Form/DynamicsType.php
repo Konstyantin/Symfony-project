@@ -7,6 +7,7 @@ use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  * Class DynamicsType
@@ -21,7 +22,7 @@ class DynamicsType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $data = $options['data'];
+//        $data = $options['data'];
 
         $builder
             ->add('acceleration', NumberType::class, [
@@ -31,7 +32,7 @@ class DynamicsType extends AbstractType
                 'mapped' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.acceleration',
-                    'value' => $data->getAcceleration()
+//                    'value' => $data->getAcceleration()
                 ],
                 'constraints' => [
                     new NotBlank()
@@ -44,7 +45,7 @@ class DynamicsType extends AbstractType
                 'mapped' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.speed',
-                    'value' => $data->getSpeed()
+//                    'value' => $data->getSpeed()
                 ],
                 'constraints' => [
                     new NotBlank()
@@ -62,8 +63,11 @@ class DynamicsType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-
+        $resolver->setDefaults([
+            'data_class' => 'CarBundle\Entity\Dynamics'
+        ]);
     }
+
 
     /**
      * Get block prefix

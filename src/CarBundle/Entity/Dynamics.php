@@ -40,7 +40,8 @@ class Dynamics
     protected $speed;
 
     /**
-     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Car", mappedBy="dynamics")
+     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Car", inversedBy="dynamics")
+     * @ORM\JoinColumn(name="car_id")
      */
     protected $car;
 
@@ -141,5 +142,19 @@ class Dynamics
     public function getCar()
     {
         return $this->car;
+    }
+
+    /**
+     * Set car
+     *
+     * @param \CarBundle\Entity\Car $car
+     *
+     * @return Dynamics
+     */
+    public function setCar(\CarBundle\Entity\Car $car = null)
+    {
+        $this->car = $car;
+
+        return $this;
     }
 }
