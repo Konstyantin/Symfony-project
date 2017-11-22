@@ -254,6 +254,9 @@ class Body
         return $this->car;
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return (string) $this->getId();

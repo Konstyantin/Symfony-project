@@ -3,6 +3,7 @@
 namespace CarBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -29,7 +30,6 @@ class BodyType extends AbstractType
                 'translation_domain' => 'BodyType',
                 'label' => 'form.label.length',
                 'required' => false,
-                'mapped' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.length',
                 ],
@@ -41,7 +41,6 @@ class BodyType extends AbstractType
                 'translation_domain' => 'BodyType',
                 'label' => 'form.label.width',
                 'required' => false,
-                'mapped' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.width',
                 ],
@@ -53,7 +52,6 @@ class BodyType extends AbstractType
                 'translation_domain' => 'BodyType',
                 'label' => 'form.label.height',
                 'required' => false,
-                'mapped' => false,
                 'attr' => [
                     'placeholder' => 'form.label.height',
                 ],
@@ -65,7 +63,6 @@ class BodyType extends AbstractType
                 'translation_domain' => 'BodyType',
                 'label' => 'form.label.wheel_base',
                 'required' => false,
-                'mapped' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.wheel_base',
                 ],
@@ -77,7 +74,6 @@ class BodyType extends AbstractType
                 'translation_domain' => 'BodyType',
                 'label' => 'form.label.aerodynamic_coefficient',
                 'required' => false,
-                'mapped' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.aerodynamic_coefficient',
                 ],
@@ -89,14 +85,15 @@ class BodyType extends AbstractType
                 'translation_domain' => 'BodyType',
                 'label' => 'form.label.weight',
                 'required' => false,
-                'mapped' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.weight',
                 ],
                 'constraints' => [
                     new NotBlank()
                 ]
-            ]);
+            ])
+            ->add('car', HiddenType::class)
+        ;
     }
 
     /**

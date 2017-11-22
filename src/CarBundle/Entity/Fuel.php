@@ -58,7 +58,7 @@ class Fuel
     protected $emission;
 
     /**
-     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Car", inversedBy="fuel")
+     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Car", inversedBy="fuel", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="car_id", referencedColumnName="id")
      *
      * @var \Doctrine\Common\Collections\ArrayCollection
@@ -224,5 +224,10 @@ class Fuel
         $this->car = $car;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->id;
     }
 }

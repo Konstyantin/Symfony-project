@@ -79,7 +79,7 @@ class Car
     protected $model;
 
     /**
-     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Body", mappedBy="car")
+     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Body", mappedBy="car", cascade={"persist", "remove"})
      */
     protected $body;
 
@@ -90,12 +90,12 @@ class Car
     protected $engine;
 
     /**
-     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Fuel", mappedBy="car")
+     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Fuel", mappedBy="car", cascade={"persist", "remove"})
      */
     protected $fuel;
 
     /**
-     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Dynamics", mappedBy="car")
+     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Dynamics", mappedBy="car", cascade={"persist", "remove"})
      */
     protected $dynamics;
 

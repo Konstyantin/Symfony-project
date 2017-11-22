@@ -3,11 +3,11 @@
 namespace CarBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  * Class DynamicsType
@@ -22,17 +22,13 @@ class DynamicsType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-//        $data = $options['data'];
-
         $builder
             ->add('acceleration', NumberType::class, [
                 'translation_domain' => 'DynamicsType',
                 'label' => 'form.label.acceleration',
                 'required' => false,
-                'mapped' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.acceleration',
-//                    'value' => $data->getAcceleration()
                 ],
                 'constraints' => [
                     new NotBlank()
@@ -42,15 +38,14 @@ class DynamicsType extends AbstractType
                 'translation_domain' => 'DynamicsType',
                 'label' => 'form.label.speed',
                 'required' => false,
-                'mapped' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.speed',
-//                    'value' => $data->getSpeed()
                 ],
                 'constraints' => [
                     new NotBlank()
                 ]
             ])
+            ->add('car', HiddenType::class)
         ;
     }
 

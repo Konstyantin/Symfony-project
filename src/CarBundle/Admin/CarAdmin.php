@@ -15,9 +15,6 @@ use CarBundle\Entity\Fuel;
 use CarBundle\Form\BodyType;
 use CarBundle\Form\DynamicsType;
 use CarBundle\Form\FuelType;
-use CarBundle\Helper\BodyHelper;
-use CarBundle\Helper\DynamicsHelper;
-use CarBundle\Helper\FuelHelper;
 use CarBundle\Strategy\Car\StrategyCarData;
 use Doctrine\ORM\Mapping as ORM;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
@@ -65,8 +62,6 @@ class CarAdmin extends AbstractAdmin
      */
     protected function configureFormFields(FormMapper $form)
     {
-        $this->setCarData();
-
         $formFactory = $form->getFormBuilder()->getFormFactory();
 
         $form
@@ -140,53 +135,6 @@ class CarAdmin extends AbstractAdmin
             ->end()
         ;
     }
-
-    /**
-     * Extend prePersist event
-     *
-     * @param mixed $object
-     */
-//    public function prePersist($object)
-//    {
-//        $data = $this->getFormData();
-//
-//        $bodyHelper = new BodyHelper();
-//        $fuelHelper = new FuelHelper();
-//        $dynamicsHelper = new DynamicsHelper();
-//
-//        $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
-//
-//        $fuel = $fuelHelper->createFuelRecord($em, $data);
-//        $body = $bodyHelper->createBodyRecord($em, $data);
-//        $dynamics = $dynamicsHelper->createDynamicsRecord($em, $data);
-//
-//        $object->setFuel($fuel);
-//        $object->setBody($body);
-//        $object->setDynamics($dynamics);
-//    }
-
-    /**
-     * Extent preUpdate event
-     *
-     * @param mixed $object
-     */
-//    public function preUpdate($object)
-//    {
-//        $data = $this->getFormData();
-//
-//        $bodyHelper = new BodyHelper();
-//        $fuelHelper = new FuelHelper();
-//        $dynamicsHelper = new DynamicsHelper();
-//
-//        $body = $this->bodyData;
-//        $fuel = $this->fuelData;
-//        $dynamics = $this->dynamicsData;
-//        $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
-//
-//        $fuelHelper->updateFuelRecord($em, $data, $fuel);
-//        $bodyHelper->updateBodyRecord($em, $data, $body);
-//        $dynamicsHelper->updateDynamicsRecord($em, $data, $dynamics);
-//    }
 
     /**
      * Get form data

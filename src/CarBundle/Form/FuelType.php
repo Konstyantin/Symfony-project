@@ -3,6 +3,7 @@
 namespace CarBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,7 +18,6 @@ class FuelType extends AbstractType
                 'translation_domain' => 'FuelType',
                 'label' => 'form.label.city',
                 'required' => false,
-                'mapped' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.city',
                 ],
@@ -28,7 +28,6 @@ class FuelType extends AbstractType
             ->add('country', NumberType::class, [
                 'translation_domain' => 'FuelType',
                 'label' => 'form.label.country',
-                'mapped' => false,
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.country',
@@ -40,7 +39,6 @@ class FuelType extends AbstractType
             ->add('combined', NumberType::class, [
                 'translation_domain' => 'FuelType',
                 'label' => 'form.label.combined',
-                'mapped' => false,
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.combined',
@@ -52,7 +50,6 @@ class FuelType extends AbstractType
             ->add('emission', NumberType::class, [
                 'translation_domain' => 'FuelType',
                 'label' => 'form.label.emission',
-                'mapped' => false,
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.emission',
@@ -60,7 +57,9 @@ class FuelType extends AbstractType
                 'constraints' => [
                     new NotBlank()
                 ]
-            ]);
+            ])
+            ->add('car', HiddenType::class)
+        ;
     }
 
     /**
@@ -77,6 +76,11 @@ class FuelType extends AbstractType
         ]);
     }
 
+    /**
+     * Get block prefix
+     *
+     * @return string
+     */
     public function getBlockPrefix()
     {
         return 'car_bundle_fuel_type';
