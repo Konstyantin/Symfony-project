@@ -95,11 +95,6 @@ class CarAdmin extends AbstractAdmin
                     ->add('engine', 'sonata_type_model', [
                         'class' => 'CarBundle:Engine',
                     ])
-                    ->add('feature', 'sonata_type_model', [
-                        'class' => 'CarBundle:Feature',
-                        'multiple' => true,
-                        'by_reference' => false
-                    ])
                     ->add('imageFile', VichImageType::class, [
                         'label' => false,
                         'required' => false,

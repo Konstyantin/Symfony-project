@@ -100,12 +100,6 @@ class Car
     protected $dynamics;
 
     /**
-     * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Feature", inversedBy="car")
-     * @ORM\JoinTable(name="car_features")
-     */
-    protected $feature;
-
-    /**
      * Get id
      *
      * @return int

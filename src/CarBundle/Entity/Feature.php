@@ -39,12 +39,7 @@ class Feature
      * @ORM\Column(name="full_description", type="string")
      */
     protected $full_description;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Car", inversedBy="feature")
-     */
-    protected $car;
-
+    
 
     /**
      * Get id
