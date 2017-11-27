@@ -62,7 +62,7 @@ class CarAdmin extends AbstractAdmin
      */
     protected function configureFormFields(FormMapper $form)
     {
-        $formFactory = $form->getFormBuilder()->getFormFactory();
+        $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
 
         $form
             ->tab('Car')
@@ -143,6 +143,33 @@ class CarAdmin extends AbstractAdmin
         $uniqid = $this->getRequest()->query->get('uniqid');
 
         return $this->getRequest()->request->get($uniqid);
+    }
+
+    public function postPersist($object)
+    {
+        $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
+
+        $bodyList = $object->getBody();
+        $fuelList = $object->getFuel();
+        $dynamicsList = $object->getDynamics();
+
+        foreach ($bodyList as $item) {
+            $item->setCar($object);
+            $em->persist($item);
+            $em->flush();
+        }
+
+        foreach ($fuelList as $item) {
+            $item->setCar($object);
+            $em->persist($item);
+            $em->flush();
+        }
+
+        foreach ($dynamicsList as $item) {
+            $item->setCar($object);
+            $em->persist($item);
+            $em->flush();
+        }
     }
 
     /**

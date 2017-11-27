@@ -483,4 +483,9 @@ class Car
     {
         $this->body->removeElement($body);
     }
+
+    public function __toString()
+    {
+        return (string) $this->getId();
+    }
 }
