@@ -15,7 +15,6 @@ use CarBundle\Entity\Fuel;
 use CarBundle\Form\BodyType;
 use CarBundle\Form\DynamicsType;
 use CarBundle\Form\FuelType;
-use CarBundle\Strategy\Car\StrategyCarData;
 use Doctrine\ORM\Mapping as ORM;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -62,8 +61,6 @@ class CarAdmin extends AbstractAdmin
      */
     protected function configureFormFields(FormMapper $form)
     {
-        $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
-
         $form
             ->tab('Car')
                 ->with('Car')
@@ -132,41 +129,33 @@ class CarAdmin extends AbstractAdmin
     }
 
     /**
-     * Get form data
+     * Handle post persist event
      *
-     * Get form data from send request
-     *
-     * @return mixed
+     * @param mixed $object
      */
-    public function getFormData()
-    {
-        $uniqid = $this->getRequest()->query->get('uniqid');
-
-        return $this->getRequest()->request->get($uniqid);
-    }
-
     public function postPersist($object)
     {
-        $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
-
         $bodyList = $object->getBody();
         $fuelList = $object->getFuel();
         $dynamicsList = $object->getDynamics();
 
-        foreach ($bodyList as $item) {
-            $item->setCar($object);
-            $em->persist($item);
-            $em->flush();
-        }
+        $this->setRelationData($bodyList, $object);
+        $this->setRelationData($fuelList, $object);
+        $this->setRelationData($dynamicsList, $object);
+    }
 
-        foreach ($fuelList as $item) {
-            $item->setCar($object);
-            $em->persist($item);
-            $em->flush();
-        }
+    /**
+     * Set relation data
+     *
+     * @param $collection
+     * @param Car $car
+     */
+    public function setRelationData($collection, Car $car)
+    {
+        $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
 
-        foreach ($dynamicsList as $item) {
-            $item->setCar($object);
+        foreach ($collection as $item) {
+            $item->setCar($car);
             $em->persist($item);
             $em->flush();
         }
@@ -229,22 +218,6 @@ class CarAdmin extends AbstractAdmin
         }
 
         return 'Car';
-    }
-
-    /**
-     * Set car data
-     */
-    public function setCarData()
-    {
-        $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
-
-        $carId = $this->getRequest()->get('id');
-
-        $strategyCarData = new StrategyCarData($em, $carId);
-
-        $this->bodyData = $strategyCarData->getRecord('Body');
-        $this->fuelData = $strategyCarData->getRecord('Fuel');
-        $this->dynamicsData = $strategyCarData->getRecord('Dynamics');
     }
 
     /**
