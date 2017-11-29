@@ -71,7 +71,8 @@ class Body
     protected $weight;
 
     /**
-     * @ORM\OneToOne(targetEntity="CarBundle\Entity\Car", mappedBy="body")
+     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Car", inversedBy="body", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="car_id", referencedColumnName="id")
      */
     protected $car;
 
@@ -251,5 +252,13 @@ class Body
     public function getCar()
     {
         return $this->car;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getId();
     }
 }

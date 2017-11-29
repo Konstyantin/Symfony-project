@@ -3,6 +3,7 @@
 namespace CarBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -12,17 +13,13 @@ class FuelType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $data = $options['data'];
-
         $builder
             ->add('city', NumberType::class, [
                 'translation_domain' => 'FuelType',
                 'label' => 'form.label.city',
                 'required' => false,
-                'mapped' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.city',
-                    'value' => $data->getCity()
                 ],
                 'constraints' => [
                     new NotBlank()
@@ -31,11 +28,9 @@ class FuelType extends AbstractType
             ->add('country', NumberType::class, [
                 'translation_domain' => 'FuelType',
                 'label' => 'form.label.country',
-                'mapped' => false,
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.country',
-                    'value' => $data->getCountry()
                 ],
                 'constraints' => [
                     new NotBlank()
@@ -44,11 +39,9 @@ class FuelType extends AbstractType
             ->add('combined', NumberType::class, [
                 'translation_domain' => 'FuelType',
                 'label' => 'form.label.combined',
-                'mapped' => false,
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.combined',
-                    'value' => $data->getCombined()
                 ],
                 'constraints' => [
                     new NotBlank()
@@ -57,16 +50,16 @@ class FuelType extends AbstractType
             ->add('emission', NumberType::class, [
                 'translation_domain' => 'FuelType',
                 'label' => 'form.label.emission',
-                'mapped' => false,
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.emission',
-                    'value' => $data->getEmission()
                 ],
                 'constraints' => [
                     new NotBlank()
                 ]
-            ]);
+            ])
+            ->add('car', HiddenType::class)
+        ;
     }
 
     /**
@@ -78,9 +71,16 @@ class FuelType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-
+        $resolver->setDefaults([
+            'data_class' => 'CarBundle\Entity\Fuel'
+        ]);
     }
 
+    /**
+     * Get block prefix
+     *
+     * @return string
+     */
     public function getBlockPrefix()
     {
         return 'car_bundle_fuel_type';

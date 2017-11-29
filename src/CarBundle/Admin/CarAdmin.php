@@ -15,17 +15,15 @@ use CarBundle\Entity\Fuel;
 use CarBundle\Form\BodyType;
 use CarBundle\Form\DynamicsType;
 use CarBundle\Form\FuelType;
-use CarBundle\Helper\BodyHelper;
-use CarBundle\Helper\DynamicsHelper;
-use CarBundle\Helper\FuelHelper;
-use CarBundle\Strategy\Car\StrategyCarData;
 use Doctrine\ORM\Mapping as ORM;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Form\Type\CollectionType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 /**
  * Class ModelAdmin
@@ -63,13 +61,6 @@ class CarAdmin extends AbstractAdmin
      */
     protected function configureFormFields(FormMapper $form)
     {
-        $this->setCarData();
-
-        $formFactory = $form->getFormBuilder()->getFormFactory();
-        $bodyBuilder = $formFactory->createBuilder(BodyType::class, $this->bodyData);
-        $fuelBuilder = $formFactory->createBuilder(FuelType::class, $this->fuelData);
-        $dynamicsBuilder = $formFactory->createBuilder(DynamicsType::class, $this->dynamicsData);
-
         $form
             ->tab('Car')
                 ->with('Car')
@@ -101,94 +92,73 @@ class CarAdmin extends AbstractAdmin
                     ->add('engine', 'sonata_type_model', [
                         'class' => 'CarBundle:Engine',
                     ])
+                    ->add('imageFile', VichImageType::class, [
+                        'label' => false,
+                        'required' => false,
+                        'help' => $this->fullPathImage(),
+                        'allow_delete' => true,
+                        'download_link' => true,
+                    ])
                 ->end()
             ->end()
             ->tab('Body')
                 ->with('Body')
-                    ->add($bodyBuilder->get('length'))
-                    ->add($bodyBuilder->get('width'))
-                    ->add($bodyBuilder->get('height'))
-                    ->add($bodyBuilder->get('wheel_base'))
-                    ->add($bodyBuilder->get('aerodynamic_coefficient'))
-                    ->add($bodyBuilder->get('weight'))
+                    ->add('body', CollectionType::class, [
+                        'label' => false,
+                        'entry_type' => BodyType::class
+                    ])
                 ->end()
             ->end()
             ->tab('Fuel')
                 ->with('Fuel')
-                    ->add($fuelBuilder->get('city'))
-                    ->add($fuelBuilder->get('country'))
-                    ->add($fuelBuilder->get('combined'))
-                    ->add($fuelBuilder->get('emission'))
+                    ->add('fuel', CollectionType::class, [
+                        'label' => false,
+                        'entry_type' => FuelType::class
+                    ])
                 ->end()
             ->end()
             ->tab('Dynamics')
                 ->with('Dynamics')
-                    ->add($dynamicsBuilder->get('acceleration'))
-                    ->add($dynamicsBuilder->get('speed'))
+                    ->add('dynamics', CollectionType::class, [
+                        'label' => false,
+                        'entry_type' => DynamicsType::class
+                    ])
                 ->end()
             ->end()
         ;
     }
 
     /**
-     * Extend prePersist event
+     * Handle post persist event
      *
      * @param mixed $object
      */
-    public function prePersist($object)
+    public function postPersist($object)
     {
-        $data = $this->getFormData();
+        $bodyList = $object->getBody();
+        $fuelList = $object->getFuel();
+        $dynamicsList = $object->getDynamics();
 
-        $bodyHelper = new BodyHelper();
-        $fuelHelper = new FuelHelper();
-        $dynamicsHelper = new DynamicsHelper();
-
-        $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
-
-        $fuel = $fuelHelper->createFuelRecord($em, $data);
-        $body = $bodyHelper->createBodyRecord($em, $data);
-        $dynamics = $dynamicsHelper->createDynamicsRecord($em, $data);
-
-        $object->setFuel($fuel);
-        $object->setBody($body);
-        $object->setDynamics($dynamics);
+        $this->setRelationData($bodyList, $object);
+        $this->setRelationData($fuelList, $object);
+        $this->setRelationData($dynamicsList, $object);
     }
 
     /**
-     * Extent preUpdate event
+     * Set relation data
      *
-     * @param mixed $object
+     * @param $collection
+     * @param Car $car
      */
-    public function preUpdate($object)
+    public function setRelationData($collection, Car $car)
     {
-        $data = $this->getFormData();
-
-        $bodyHelper = new BodyHelper();
-        $fuelHelper = new FuelHelper();
-        $dynamicsHelper = new DynamicsHelper();
-
-        $body = $this->bodyData;
-        $fuel = $this->fuelData;
-        $dynamics = $this->dynamicsData;
         $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
 
-        $fuelHelper->updateFuelRecord($em, $data, $fuel);
-        $bodyHelper->updateBodyRecord($em, $data, $body);
-        $dynamicsHelper->updateDynamicsRecord($em, $data, $dynamics);
-    }
-
-    /**
-     * Get form data
-     *
-     * Get form data from send request
-     *
-     * @return mixed
-     */
-    public function getFormData()
-    {
-        $uniqid = $this->getRequest()->query->get('uniqid');
-
-        return $this->getRequest()->request->get($uniqid);
+        foreach ($collection as $item) {
+            $item->setCar($car);
+            $em->persist($item);
+            $em->flush();
+        }
     }
 
     /**
@@ -251,18 +221,25 @@ class CarAdmin extends AbstractAdmin
     }
 
     /**
-     * Set car data
+     * Full path image
+     *
+     * Get full path image to upload image file model record
+     *
+     * @return bool|string
      */
-    public function setCarData()
+    public function fullPathImage()
     {
-        $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
+        $image = $this->getSubject();
 
-        $carId = $this->getRequest()->get('id');
+        if ($image && ($webPath = $image->getWebPath())) {
 
-        $strategyCarData = new StrategyCarData($em, $carId);
+            $container = $this->getConfigurationPool()->getContainer();
 
-        $this->bodyData = $strategyCarData->getRecord('Body');
-        $this->fuelData = $strategyCarData->getRecord('Fuel');
-        $this->dynamicsData = $strategyCarData->getRecord('Dynamics');
+            $fullPath = $container->getParameter('upload_image_prefix') . '/cars/' . $webPath;
+
+            return '<img src="' . $fullPath . '" class="admin-preview" alt="Picture don\'t exists"/>';
+        }
+
+        return $image->getWebPath();
     }
 }

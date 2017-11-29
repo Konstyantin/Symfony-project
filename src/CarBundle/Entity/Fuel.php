@@ -58,7 +58,10 @@ class Fuel
     protected $emission;
 
     /**
-     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Car", mappedBy="fuel")
+     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Car", inversedBy="fuel", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="car_id", referencedColumnName="id")
+     *
+     * @var \Doctrine\Common\Collections\ArrayCollection
      */
     protected $car;
 
@@ -207,5 +210,24 @@ class Fuel
     public function getCar()
     {
         return $this->car;
+    }
+
+    /**
+     * Set car
+     *
+     * @param \CarBundle\Entity\Car $car
+     *
+     * @return Fuel
+     */
+    public function setCar(\CarBundle\Entity\Car $car = null)
+    {
+        $this->car = $car;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->id;
     }
 }

@@ -3,6 +3,7 @@
 namespace CarBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -24,17 +25,13 @@ class BodyType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $data = $options['data'];
-
         $builder
             ->add('length', NumberType::class, [
                 'translation_domain' => 'BodyType',
                 'label' => 'form.label.length',
                 'required' => false,
-                'mapped' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.length',
-                    'value' => $data->getLength(),
                 ],
                 'constraints' => [
                     new NotBlank()
@@ -44,10 +41,8 @@ class BodyType extends AbstractType
                 'translation_domain' => 'BodyType',
                 'label' => 'form.label.width',
                 'required' => false,
-                'mapped' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.width',
-                    'value' => $data->getWidth(),
                 ],
                 'constraints' => [
                     new NotBlank()
@@ -57,10 +52,8 @@ class BodyType extends AbstractType
                 'translation_domain' => 'BodyType',
                 'label' => 'form.label.height',
                 'required' => false,
-                'mapped' => false,
                 'attr' => [
                     'placeholder' => 'form.label.height',
-                    'value' => $data->getHeight(),
                 ],
                 'constraints' => [
                     new NotBlank()
@@ -70,10 +63,8 @@ class BodyType extends AbstractType
                 'translation_domain' => 'BodyType',
                 'label' => 'form.label.wheel_base',
                 'required' => false,
-                'mapped' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.wheel_base',
-                    'value' => $data->getWheelBase(),
                 ],
                 'constraints' => [
                     new NotBlank()
@@ -83,10 +74,8 @@ class BodyType extends AbstractType
                 'translation_domain' => 'BodyType',
                 'label' => 'form.label.aerodynamic_coefficient',
                 'required' => false,
-                'mapped' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.aerodynamic_coefficient',
-                    'value' => $data->getAerodynamicCoefficient(),
                 ],
                 'constraints' => [
                     new NotBlank()
@@ -96,15 +85,15 @@ class BodyType extends AbstractType
                 'translation_domain' => 'BodyType',
                 'label' => 'form.label.weight',
                 'required' => false,
-                'mapped' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.weight',
-                    'value' => $data->getWeight()
                 ],
                 'constraints' => [
                     new NotBlank()
                 ]
-            ]);
+            ])
+            ->add('car', HiddenType::class)
+        ;
     }
 
     /**
@@ -116,7 +105,9 @@ class BodyType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-
+        $resolver->setDefaults([
+            'data_class' => 'CarBundle\Entity\Body'
+        ]);
     }
 
     /**

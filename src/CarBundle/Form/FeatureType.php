@@ -3,50 +3,48 @@
 namespace CarBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
- * Class DynamicsType
+ * Class FeatureType
  * @package CarBundle\Form
  */
-class DynamicsType extends AbstractType
+class FeatureType extends AbstractType
 {
-    protected $test;
     /**
+     * Build form
+     *
+     * Define form field and set attributes for each form field
+     *
      * @param FormBuilderInterface $builder
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('acceleration', NumberType::class, [
-                'translation_domain' => 'DynamicsType',
-                'label' => 'form.label.acceleration',
+            ->add('short_description', TextType::class, [
+                'label' => 'Short Description',
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'form.placeholder.acceleration',
+                    'placeholder' => 'Short Description'
                 ],
                 'constraints' => [
                     new NotBlank()
                 ]
             ])
-            ->add('speed', NumberType::class, [
-                'translation_domain' => 'DynamicsType',
-                'label' => 'form.label.speed',
+            ->add('full_description', TextType::class, [
+                'label' => 'Full Description',
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'form.placeholder.speed',
+                    'placeholder' => 'Full Description'
                 ],
                 'constraints' => [
                     new NotBlank()
                 ]
-            ])
-            ->add('car', HiddenType::class)
-        ;
+            ]);
     }
 
     /**
@@ -58,11 +56,8 @@ class DynamicsType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
-            'data_class' => 'CarBundle\Entity\Dynamics'
-        ]);
-    }
 
+    }
 
     /**
      * Get block prefix
@@ -71,6 +66,6 @@ class DynamicsType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'car_bundle_dynamics_type';
+        return 'car_bundle_feature_type';
     }
 }

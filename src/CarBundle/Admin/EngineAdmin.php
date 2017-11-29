@@ -40,6 +40,7 @@ class EngineAdmin extends AbstractAdmin
         $form
             ->add('model_name', TextType::class, [
                 'label' => 'form.label.engine_model',
+                'translation_domain' => 'SonataEngineBundle',
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.engine_model'
@@ -177,7 +178,7 @@ class EngineAdmin extends AbstractAdmin
     public function toString($object)
     {
         if ($object instanceof Engine) {
-            return $object->getId();
+            return $object->getModelName();
         }
 
         return 'Engine';

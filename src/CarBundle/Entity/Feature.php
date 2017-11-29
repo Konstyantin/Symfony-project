@@ -6,12 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Dynamics
+ * Feature
  *
- * @ORM\Table(name="dynamics")
- * @ORM\Entity(repositoryClass="CarBundle\Repository\DynamicsRepository")
+ * @ORM\Table(name="feature")
+ * @ORM\Entity(repositoryClass="CarBundle\Repository\FeatureRepository")
  */
-class Dynamics
+class Feature
 {
     /**
      * @var int
@@ -23,27 +23,23 @@ class Dynamics
     private $id;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @Assert\NotBlank()
      * @Assert\NotNull()
-     * @ORM\Column(name="acceleration", type="integer")
+     * @Assert\NotBlank()
+     * @ORM\Column(name="short_description", type="string")
      */
-    protected $acceleration;
+    protected $short_description;
 
     /**
-     * @var integer
-     * @Assert\NotBlank()
+     * @var string
+     *
      * @Assert\NotNull()
-     * @ORM\Column(name="speed", type="integer")
+     * @Assert\NotBlank()
+     * @ORM\Column(name="full_description", type="string")
      */
-    protected $speed;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Car", inversedBy="dynamics")
-     * @ORM\JoinColumn(name="car_id", referencedColumnName="id")
-     */
-    protected $car;
+    protected $full_description;
+    
 
     /**
      * Get id
@@ -56,51 +52,51 @@ class Dynamics
     }
 
     /**
-     * Set acceleration
+     * Set shortDescription
      *
-     * @param integer $acceleration
+     * @param string $shortDescription
      *
-     * @return Dynamics
+     * @return Feature
      */
-    public function setAcceleration($acceleration)
+    public function setShortDescription($shortDescription)
     {
-        $this->acceleration = $acceleration;
+        $this->short_description = $shortDescription;
 
         return $this;
     }
 
     /**
-     * Get acceleration
+     * Get shortDescription
      *
-     * @return integer
+     * @return string
      */
-    public function getAcceleration()
+    public function getShortDescription()
     {
-        return $this->acceleration;
+        return $this->short_description;
     }
 
     /**
-     * Set speed
+     * Set fullDescription
      *
-     * @param integer $speed
+     * @param string $fullDescription
      *
-     * @return Dynamics
+     * @return Feature
      */
-    public function setSpeed($speed)
+    public function setFullDescription($fullDescription)
     {
-        $this->speed = $speed;
+        $this->full_description = $fullDescription;
 
         return $this;
     }
 
     /**
-     * Get speed
+     * Get fullDescription
      *
-     * @return integer
+     * @return string
      */
-    public function getSpeed()
+    public function getFullDescription()
     {
-        return $this->speed;
+        return $this->full_description;
     }
     /**
      * Constructor
@@ -115,7 +111,7 @@ class Dynamics
      *
      * @param \CarBundle\Entity\Car $car
      *
-     * @return Dynamics
+     * @return Feature
      */
     public function addCar(\CarBundle\Entity\Car $car)
     {
@@ -142,19 +138,5 @@ class Dynamics
     public function getCar()
     {
         return $this->car;
-    }
-
-    /**
-     * Set car
-     *
-     * @param \CarBundle\Entity\Car $car
-     *
-     * @return Dynamics
-     */
-    public function setCar(\CarBundle\Entity\Car $car = null)
-    {
-        $this->car = $car;
-
-        return $this;
     }
 }
