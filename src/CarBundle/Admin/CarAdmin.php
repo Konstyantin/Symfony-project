@@ -105,7 +105,8 @@ class CarAdmin extends AbstractAdmin
                 ->with('Body')
                     ->add('body', CollectionType::class, [
                         'label' => false,
-                        'entry_type' => BodyType::class
+                        'entry_type' => BodyType::class,
+                        'allow_add' => true,
                     ])
                 ->end()
             ->end()
@@ -113,7 +114,8 @@ class CarAdmin extends AbstractAdmin
                 ->with('Fuel')
                     ->add('fuel', CollectionType::class, [
                         'label' => false,
-                        'entry_type' => FuelType::class
+                        'entry_type' => FuelType::class,
+                        'allow_add' => true
                     ])
                 ->end()
             ->end()
@@ -121,7 +123,8 @@ class CarAdmin extends AbstractAdmin
                 ->with('Dynamics')
                     ->add('dynamics', CollectionType::class, [
                         'label' => false,
-                        'entry_type' => DynamicsType::class
+                        'entry_type' => DynamicsType::class,
+                        'allow_add' => true,
                     ])
                 ->end()
             ->end()
