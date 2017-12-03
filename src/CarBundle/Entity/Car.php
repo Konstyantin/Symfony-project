@@ -2,11 +2,13 @@
 
 namespace CarBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
-use Symfony\Component\Validator\Constraints as Assert;/**
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
  * Car
  * @Vich\Uploadable
  * @ORM\Table(name="car")
@@ -276,6 +278,7 @@ class Car
     {
         return $this->dynamics;
     }
+
     /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
      * of 'UploadedFile' is injected into this setter to trigger the  update. If this
@@ -478,6 +481,11 @@ class Car
         $this->body->removeElement($body);
     }
 
+    /**
+     * Call magic method toString
+     *
+     * @return string
+     */
     public function __toString()
     {
         return (string) $this->getId();

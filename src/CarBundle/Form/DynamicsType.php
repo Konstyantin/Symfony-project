@@ -15,7 +15,6 @@ use Symfony\Component\Validator\Constraints\NotBlank;
  */
 class DynamicsType extends AbstractType
 {
-    protected $test;
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
