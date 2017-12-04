@@ -41,7 +41,8 @@ class Feature
     protected $full_description;
 
     /**
-     * @ORM\OneToOne(targetEntity="CarBundle\Entity\Car", mappedBy="feature")
+     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Car", inversedBy="feature")
+     * @ORM\JoinColumn(name="car_id", referencedColumnName="id", nullable=true)
      */
     protected $car;
 
@@ -156,5 +157,10 @@ class Feature
         $this->car = $car;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->getId();
     }
 }

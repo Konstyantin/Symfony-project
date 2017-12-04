@@ -61,8 +61,12 @@ class FuelType extends AbstractType
                 ]
             ])
             ->add('car', EntityType::class, [
+                'label' => false,
                 'class' => Car::class,
-                'choice_label' => 'id'
+                'choice_label' => 'id',
+                'attr' => [
+                    'style' => 'display:none'
+                ]
             ])
         ;
     }

@@ -5,7 +5,6 @@ namespace CarBundle\Form;
 use CarBundle\Entity\Car;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -95,8 +94,12 @@ class BodyType extends AbstractType
                 ]
             ])
             ->add('car', EntityType::class, [
+                'label' => false,
                 'class' => Car::class,
-                'choice_label' => 'id'
+                'choice_label' => 'id',
+                'attr' => [
+                    'style' => 'display:none'
+                ]
             ])
         ;
     }

@@ -3,6 +3,8 @@
 namespace CarBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -35,7 +37,7 @@ class FeatureType extends AbstractType
                     new NotBlank()
                 ]
             ])
-            ->add('full_description', TextType::class, [
+            ->add('full_description', TextareaType::class, [
                 'label' => 'Full Description',
                 'required' => false,
                 'attr' => [
@@ -44,7 +46,9 @@ class FeatureType extends AbstractType
                 'constraints' => [
                     new NotBlank()
                 ]
-            ]);
+            ])
+            ->add('car', HiddenType::class)
+        ;
     }
 
     /**
@@ -56,7 +60,9 @@ class FeatureType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-
+        $resolver->setDefaults([
+            'data_class' => 'CarBundle\Entity\Feature'
+        ]);
     }
 
     /**

@@ -14,6 +14,7 @@ use CarBundle\Entity\Dynamics;
 use CarBundle\Entity\Fuel;
 use CarBundle\Form\BodyType;
 use CarBundle\Form\DynamicsType;
+use CarBundle\Form\FeatureType;
 use CarBundle\Form\FuelType;
 use Doctrine\ORM\Mapping as ORM;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
@@ -61,8 +62,6 @@ class CarAdmin extends AbstractAdmin
      */
     protected function configureFormFields(FormMapper $form)
     {
-        $this->setCollectionData();
-
         $form
             ->tab('Car')
                 ->with('Car')
@@ -93,6 +92,12 @@ class CarAdmin extends AbstractAdmin
                     ])
                     ->add('engine', 'sonata_type_model', [
                         'class' => 'CarBundle:Engine',
+                    ])
+                    ->add('feature', CollectionType::class, [
+                        'label' => 'Feature',
+                        'entry_type' => FeatureType::class,
+                        'allow_add' => true,
+                        'allow_delete' => true
                     ])
                     ->add('imageFile', VichImageType::class, [
                         'label' => false,
@@ -140,25 +145,30 @@ class CarAdmin extends AbstractAdmin
         $bodyList = $object->getBody();
         $fuelList = $object->getFuel();
         $dynamicsList = $object->getDynamics();
+        $featureList = $object->getFeature();
 
         $this->setRelationData($bodyList, $object);
         $this->setRelationData($fuelList, $object);
         $this->setRelationData($dynamicsList, $object);
+        $this->setRelationData($featureList, $object);
     }
 
     /**
-     * Set collection data
+     * Handle post update event
+     *
+     * @param mixed $object
      */
-    public function setCollectionData()
+    public function postUpdate($object)
     {
-        $subject = $this->getSubject();
+        $bodyList = $object->getBody();
+        $fuelList = $object->getFuel();
+        $dynamicsList = $object->getDynamics();
+        $featureList = $object->getFeature();
 
-        $subject->addDynamic(new Dynamics());
-        $subject->addDynamic(new Dynamics());
-        $subject->addFuel(new Fuel());
-        $subject->addFuel(new Fuel());
-        $subject->addBody(new Body());
-        $subject->addBody(new Body());
+        $this->setRelationData($bodyList, $object);
+        $this->setRelationData($fuelList, $object);
+        $this->setRelationData($dynamicsList, $object);
+        $this->setRelationData($featureList, $object);
     }
 
     /**
