@@ -39,7 +39,11 @@ class Feature
      * @ORM\Column(name="full_description", type="string")
      */
     protected $full_description;
-    
+
+    /**
+     * @ORM\OneToOne(targetEntity="CarBundle\Entity\Car", mappedBy="feature")
+     */
+    protected $car;
 
     /**
      * Get id
@@ -138,5 +142,19 @@ class Feature
     public function getCar()
     {
         return $this->car;
+    }
+
+    /**
+     * Set car
+     *
+     * @param \CarBundle\Entity\Car $car
+     *
+     * @return Feature
+     */
+    public function setCar(\CarBundle\Entity\Car $car = null)
+    {
+        $this->car = $car;
+
+        return $this;
     }
 }

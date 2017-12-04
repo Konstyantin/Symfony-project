@@ -61,6 +61,8 @@ class CarAdmin extends AbstractAdmin
      */
     protected function configureFormFields(FormMapper $form)
     {
+        $this->setCollectionData();
+
         $form
             ->tab('Car')
                 ->with('Car')
@@ -142,6 +144,21 @@ class CarAdmin extends AbstractAdmin
         $this->setRelationData($bodyList, $object);
         $this->setRelationData($fuelList, $object);
         $this->setRelationData($dynamicsList, $object);
+    }
+
+    /**
+     * Set collection data
+     */
+    public function setCollectionData()
+    {
+        $subject = $this->getSubject();
+
+        $subject->addDynamic(new Dynamics());
+        $subject->addDynamic(new Dynamics());
+        $subject->addFuel(new Fuel());
+        $subject->addFuel(new Fuel());
+        $subject->addBody(new Body());
+        $subject->addBody(new Body());
     }
 
     /**

@@ -102,6 +102,12 @@ class Car
     protected $dynamics;
 
     /**
+     * @ORM\OneToOne(targetEntity="CarBundle\Entity\Feature", inversedBy="car")
+     * @ORM\JoinColumn(name="feature", referencedColumnName="id")
+     */
+    protected $feature;
+
+    /**
      * Get id
      *
      * @return int
@@ -372,13 +378,6 @@ class Car
     public function __construct()
     {
         $this->feature = new ArrayCollection();
-
-        $this->addDynamic(new Dynamics());
-        $this->addDynamic(new Dynamics());
-        $this->addFuel(new Fuel());
-        $this->addFuel(new Fuel());
-        $this->addBody(new Body());
-        $this->addBody(new Body());
     }
 
     /**
@@ -496,5 +495,19 @@ class Car
     public function __toString()
     {
         return (string) $this->getId();
+    }
+
+    /**
+     * Set feature
+     *
+     * @param \CarBundle\Entity\Feature $feature
+     *
+     * @return Car
+     */
+    public function setFeature(\CarBundle\Entity\Feature $feature = null)
+    {
+        $this->feature = $feature;
+
+        return $this;
     }
 }
