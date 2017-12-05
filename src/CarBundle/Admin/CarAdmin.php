@@ -185,12 +185,14 @@ class CarAdmin extends AbstractAdmin
      */
     public function setRelationData($collection, Car $car)
     {
-        $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
+        if ($collection) {
+            $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
 
-        foreach ($collection as $item) {
-            $item->setCar($car);
-            $em->persist($item);
-            $em->flush();
+            foreach ($collection as $item) {
+                $item->setCar($car);
+                $em->persist($item);
+                $em->flush();
+            }
         }
     }
 

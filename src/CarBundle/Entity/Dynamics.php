@@ -26,7 +26,7 @@ class Dynamics
      * @var integer
      *
      * @Assert\NotBlank()
-     * @Assert\NotNull()
+     *
      * @ORM\Column(name="acceleration", type="integer")
      */
     protected $acceleration;
@@ -34,7 +34,7 @@ class Dynamics
     /**
      * @var integer
      * @Assert\NotBlank()
-     * @Assert\NotNull()
+     *
      * @ORM\Column(name="speed", type="integer")
      */
     protected $speed;

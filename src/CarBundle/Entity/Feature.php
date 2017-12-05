@@ -25,7 +25,6 @@ class Feature
     /**
      * @var string
      *
-     * @Assert\NotNull()
      * @Assert\NotBlank()
      * @ORM\Column(name="short_description", type="string")
      */
@@ -34,7 +33,6 @@ class Feature
     /**
      * @var string
      *
-     * @Assert\NotNull()
      * @Assert\NotBlank()
      * @ORM\Column(name="full_description", type="string")
      */

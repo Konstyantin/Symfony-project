@@ -26,7 +26,7 @@ class Fuel
      * @var integer
      *
      * @Assert\NotBlank()
-     * @Assert\NotNull()
+     *
      * @ORM\Column(name="city", type="integer")
      */
     protected $city;
@@ -35,7 +35,7 @@ class Fuel
      * @var integer
      *
      * @Assert\NotBlank()
-     * @Assert\NotNull()
+     *
      * @ORM\Column(name="country", type="integer")
      */
     protected $country;
@@ -44,7 +44,7 @@ class Fuel
      * @var integer
      *
      * @Assert\NotBlank()
-     * @Assert\NotNull()
+     *
      * @ORM\Column(name="combined", type="integer")
      */
     protected $combined;
@@ -52,7 +52,7 @@ class Fuel
     /**
      * @var integer
      * @Assert\NotBlank()
-     * @Assert\NotNull()
+     *
      * @ORM\Column(name="emission", type="integer")
      */
     protected $emission;
