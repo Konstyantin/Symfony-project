@@ -8,10 +8,7 @@
  */
 namespace CarBundle\Admin;
 
-use CarBundle\Entity\Body;
 use CarBundle\Entity\Car;
-use CarBundle\Entity\Dynamics;
-use CarBundle\Entity\Fuel;
 use CarBundle\Form\BodyType;
 use CarBundle\Form\DynamicsType;
 use CarBundle\Form\FeatureType;
@@ -36,21 +33,6 @@ class CarAdmin extends AbstractAdmin
      * @var string $translationDomain
      */
     protected $translationDomain = 'SonataCarBundle';
-
-    /**
-     * @var $bodyData Body
-     */
-    protected $bodyData;
-
-    /**
-     * @var $fuelData Fuel
-     */
-    protected $fuelData;
-
-    /**
-     * @var $dynamicsData Dynamics
-     */
-    protected $dynamicsData;
 
     /**
      * Configure form field

@@ -9,8 +9,10 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Car
+ * Car Entity
+ *
  * @Vich\Uploadable
+ *
  * @ORM\Table(name="car")
  * @ORM\Entity(repositoryClass="CarBundle\Repository\CarRepository")
  */
@@ -375,13 +377,6 @@ class Car
     public function __construct()
     {
         $this->feature = new ArrayCollection();
-
-//        $this->addDynamic(new Dynamics());
-//        $this->addDynamic(new Dynamics());
-//        $this->addFuel(new Fuel());
-//        $this->addFuel(new Fuel());
-//        $this->addBody(new Body());
-//        $this->addBody(new Body());
     }
 
     /**
