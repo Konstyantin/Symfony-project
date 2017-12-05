@@ -81,7 +81,7 @@ class Car
     protected $model;
 
     /**
-     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Body", mappedBy="car", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Body", mappedBy="car", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     protected $body;
 
@@ -92,17 +92,17 @@ class Car
     protected $engine;
 
     /**
-     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Fuel", mappedBy="car", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Fuel", mappedBy="car", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     protected $fuel;
 
     /**
-     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Dynamics", mappedBy="car", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Dynamics", mappedBy="car", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     protected $dynamics;
 
     /**
-     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Feature", mappedBy="car", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Feature", mappedBy="car", cascade={"persist"}, orphanRemoval=true)
      */
     protected $feature;
 
@@ -378,12 +378,12 @@ class Car
     {
         $this->feature = new ArrayCollection();
 
-        $this->addDynamic(new Dynamics());
-        $this->addDynamic(new Dynamics());
-        $this->addFuel(new Fuel());
-        $this->addFuel(new Fuel());
-        $this->addBody(new Body());
-        $this->addBody(new Body());
+//        $this->addDynamic(new Dynamics());
+//        $this->addDynamic(new Dynamics());
+//        $this->addFuel(new Fuel());
+//        $this->addFuel(new Fuel());
+//        $this->addBody(new Body());
+//        $this->addBody(new Body());
     }
 
     /**
