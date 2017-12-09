@@ -27,6 +27,12 @@ class AppKernel extends Kernel
             new Sonata\AdminBundle\SonataAdminBundle(),
             new CarBundle\CarBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
+            new Sonata\MediaBundle\SonataMediaBundle(),
+            new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
+
+            // You need to add this dependency to make media functional
+            new JMS\SerializerBundle\JMSSerializerBundle(),
+            new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle()
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
