@@ -78,6 +78,12 @@ class Feature
     protected $car;
 
     /**
+     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\GalleryHasMedia", inversedBy="feature", cascade={"persist"})
+     * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
+     */
+    protected $image;
+
+    /**
      * Get id
      *
      * @return int
@@ -286,5 +292,29 @@ class Feature
     public function __toString()
     {
         return (string) $this->getId();
+    }
+
+    /**
+     * Set image
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\GalleryHasMedia $image
+     *
+     * @return Feature
+     */
+    public function setImage(\Application\Sonata\MediaBundle\Entity\GalleryHasMedia $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\GalleryHasMedia
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

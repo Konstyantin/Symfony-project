@@ -11,7 +11,6 @@
 
 namespace Application\Sonata\MediaBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Sonata\MediaBundle\Entity\BaseGalleryHasMedia as BaseGalleryHasMedia;
 
 /**
@@ -30,11 +29,6 @@ class GalleryHasMedia extends BaseGalleryHasMedia
      * @var int $id
      */
     protected $id;
-
-    /**
-     * @ORM\OneToOne(targetEntity="CarBundle\Entity\Feature", mappedBy="image")
-     */
-    protected $feature;
 
     /**
      * Get id

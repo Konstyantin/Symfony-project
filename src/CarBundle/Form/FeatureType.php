@@ -58,11 +58,10 @@ class FeatureType extends AbstractType
                     'style' => 'display: none'
                 ]
             ])
-            ->add('imageFile', VichImageType::class, [
-                'label' => false,
-                'required' => false,
-                'allow_delete' => true,
-                'download_link' => true,
+            ->add('imageFile', VichImageType::class, [])
+            ->add('image', 'sonata_media_type', [
+                'provider' => 'sonata.media.provider.image',
+                'context'  => 'default'
             ])
         ;
     }

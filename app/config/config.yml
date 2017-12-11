@@ -44,7 +44,7 @@ twig:
     strict_variables: '%kernel.debug%'
     form_themes:
           - "bootstrap_3_layout.html.twig"
-
+          - 'SonataMediaBundle:Form:media_widgets.html.twig'
 
 # Doctrine Configuration
 doctrine:
@@ -201,10 +201,10 @@ vich_uploader:
 # Sonata media configuration
 sonata_media:
     # if you don't use default namespace configuration
-    #class:
-    #    media: MyVendor\MediaBundle\Entity\Media
-    #    gallery: MyVendor\MediaBundle\Entity\Gallery
-    #    gallery_has_media: MyVendor\MediaBundle\Entity\GalleryHasMedia
+    class:
+#        media: MyVendor\MediaBundle\Entity\Media
+#        gallery: MyVendor\MediaBundle\Entity\Gallery
+        gallery_has_media: MyVendor\MediaBundle\Entity\GalleryHasMedia
     db_driver: doctrine_orm # or doctrine_mongodb, doctrine_phpcr it is mandatory to choose one here
     default_context: default # you need to set a context
     contexts:
