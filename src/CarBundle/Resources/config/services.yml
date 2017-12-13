@@ -1,18 +1,5 @@
 services:
 
-    gallery.transformer:
-        class: CarBundle\Form\DataTransformer\GalleryToMediaTransformer
-        arguments:
-            - "@doctrine.orm.entity_manager"
-        tags:
-            - { name: form.type, alias: gallery_transformer }
-
-    form.feature:
-        class: CarBundle\Form\FeatureType
-        arguments:
-            - "@gallery.transformer"
-        tags:
-            - { name: form.type, alias: form_feature }
     # Model admin service component
     admin.model:
         class: CarBundle\Admin\ModelAdmin

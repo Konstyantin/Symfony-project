@@ -32,11 +32,6 @@ class GalleryHasMedia extends BaseGalleryHasMedia
     protected $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="CarBundle\Entity\Feature", mappedBy="image")
-     */
-    protected $feature;
-
-    /**
      * Get id
      *
      * @return int $id

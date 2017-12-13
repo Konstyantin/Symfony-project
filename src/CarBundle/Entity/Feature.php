@@ -58,7 +58,7 @@ class Feature
     private $imageFile;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      *
      * @var string
      */
@@ -76,12 +76,6 @@ class Feature
      * @ORM\JoinColumn(name="car_id", referencedColumnName="id", nullable=true)
      */
     protected $car;
-
-    /**
-     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\GalleryHasMedia", inversedBy="feature", cascade={"persist"})
-     * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
-     */
-    protected $image;
 
     /**
      * Get id

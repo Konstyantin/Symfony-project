@@ -11,7 +11,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Vich\UploaderBundle\Form\Type\VichImageType;
-use CarBundle\Form\DataTransformer\GalleryToMediaTransformer;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
+
 
 /**
  * Class FeatureType
@@ -19,20 +21,6 @@ use CarBundle\Form\DataTransformer\GalleryToMediaTransformer;
  */
 class FeatureType extends AbstractType
 {
-    /**
-     * @var GalleryToMediaTransformer $transformer
-     */
-    private $transformer;
-
-    /**
-     * FeatureType constructor.
-     * @param GalleryToMediaTransformer $transformer
-     */
-    public function __construct(GalleryToMediaTransformer $transformer)
-    {
-        $this->transformer = $transformer;
-    }
-
     /**
      * Build form
      *
@@ -71,14 +59,11 @@ class FeatureType extends AbstractType
                     'style' => 'display: none'
                 ]
             ])
-            ->add('imageFile', VichImageType::class, [])
-            ->add('image', 'sonata_media_type', [
-                'provider' => 'sonata.media.provider.image',
-                'context'  => 'default'
+            ->add('imageFile', VichImageType::class, [
+                'required' => false,
+                'allow_delete' => true,
             ])
         ;
-
-        $builder->get('image')->addModelTransformer($this->transformer);
     }
 
     /**
