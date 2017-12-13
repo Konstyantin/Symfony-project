@@ -43,8 +43,9 @@ twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
     form_themes:
-          - "bootstrap_3_layout.html.twig"
+          - 'bootstrap_3_layout.html.twig'
           - 'SonataMediaBundle:Form:media_widgets.html.twig'
+          - 'VichUploaderBundle:Form:fields.html.twig'
 
 # Doctrine Configuration
 doctrine:

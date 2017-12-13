@@ -9,7 +9,6 @@
 namespace CarBundle\Admin;
 
 use CarBundle\Entity\Transmission;
-use CarBundle\Entity\TransmissionType;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;

@@ -84,7 +84,6 @@ class CarAdmin extends AbstractAdmin
                     ->add('imageFile', VichImageType::class, [
                         'label' => false,
                         'required' => false,
-                        'help' => $this->fullPathImage(),
                         'allow_delete' => true,
                         'download_link' => true,
                     ])
@@ -235,28 +234,5 @@ class CarAdmin extends AbstractAdmin
         }
 
         return 'Car';
-    }
-
-    /**
-     * Full path image
-     *
-     * Get full path image to upload image file model record
-     *
-     * @return bool|string
-     */
-    public function fullPathImage()
-    {
-        $image = $this->getSubject();
-
-        if ($image && ($webPath = $image->getWebPath())) {
-
-            $container = $this->getConfigurationPool()->getContainer();
-
-            $fullPath = $container->getParameter('upload_image_prefix') . '/cars/' . $webPath;
-
-            return '<img src="' . $fullPath . '" class="admin-preview" alt="Picture don\'t exists"/>';
-        }
-
-        return $image->getWebPath();
     }
 }
