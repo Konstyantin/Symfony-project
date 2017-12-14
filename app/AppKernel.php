@@ -32,7 +32,8 @@ class AppKernel extends Kernel
 
             // You need to add this dependency to make media functional
             new JMS\SerializerBundle\JMSSerializerBundle(),
-            new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle()
+            new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
+            new Snc\RedisBundle\SncRedisBundle()
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
