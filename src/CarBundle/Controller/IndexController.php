@@ -19,6 +19,7 @@ class IndexController extends Controller
      */
     public function indexAction()
     {
+        
         return $this->render('CarBundle:Index:index.html.twig');
     }
 }

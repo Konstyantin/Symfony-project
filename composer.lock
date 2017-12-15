@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "1f4aafd469efcf3589ef134cdf9854ad",
+    "content-hash": "a9d1087871e8c4737c5284008fc511db",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -3021,6 +3021,91 @@
                 "redis"
             ],
             "time": "2015-09-18T14:40:58+00:00"
+        },
+        {
+            "name": "sonata-project/classification-bundle",
+            "version": "3.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sonata-project/SonataClassificationBundle.git",
+                "reference": "a9064060ab2e8b38ae2d137fc15d34d6f0e3ceb2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sonata-project/SonataClassificationBundle/zipball/a9064060ab2e8b38ae2d137fc15d34d6f0e3ceb2",
+                "reference": "a9064060ab2e8b38ae2d137fc15d34d6f0e3ceb2",
+                "shasum": ""
+            },
+            "require": {
+                "cocur/slugify": "^1.4 || ^2.0",
+                "php": "^5.3 || ^7.0",
+                "sonata-project/admin-bundle": "^3.1",
+                "sonata-project/datagrid-bundle": "^2.2.1",
+                "sonata-project/doctrine-orm-admin-bundle": "^3.0",
+                "sonata-project/easy-extends-bundle": "^2.2",
+                "symfony/config": "^2.3.9 || ^3.0",
+                "symfony/console": "^2.3 || ^3.0",
+                "symfony/dependency-injection": "^2.3.3 || ^3.0",
+                "symfony/form": "^2.3.5 || ^3.0",
+                "symfony/http-foundation": "^2.3 || ^3.0",
+                "symfony/http-kernel": "^2.3 || ^3.0",
+                "symfony/options-resolver": "^2.3 || ^3.0",
+                "twig/twig": "^1.14.2 || ^2.0"
+            },
+            "conflict": {
+                "jms/serializer": "<0.13",
+                "sonata-project/block-bundle": "<3.0 || >=4.0",
+                "sonata-project/media-bundle": "<3.0 || >=4.0"
+            },
+            "require-dev": {
+                "friendsofsymfony/rest-bundle": "^1.1 || ^2.0",
+                "jms/serializer-bundle": "^0.13 || ^1.0",
+                "sllh/php-cs-fixer-styleci-bridge": "^2.0",
+                "sonata-project/block-bundle": "^3.3.1",
+                "sonata-project/media-bundle": "^3.0",
+                "symfony/phpunit-bridge": "^2.7 || ^3.0"
+            },
+            "suggest": {
+                "sonata-project/block-bundle": "For rendering dynamic list blocks on a page.",
+                "sonata-project/media-bundle": "For media management"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sonata\\ClassificationBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sonata Community",
+                    "homepage": "https://github.com/sonata-project/SonataClassificationBundle/contributors"
+                },
+                {
+                    "name": "Thomas Rabaix",
+                    "email": "thomas.rabaix@sonata-project.org",
+                    "homepage": "https://sonata-project.org"
+                }
+            ],
+            "description": "Symfony SonataClassificationBundle",
+            "homepage": "https://sonata-project.org/bundles/classification",
+            "keywords": [
+                "category",
+                "tag",
+                "taxonomy"
+            ],
+            "time": "2017-09-06T18:02:52+00:00"
         },
         {
             "name": "sonata-project/core-bundle",
