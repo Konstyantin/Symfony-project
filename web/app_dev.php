@@ -21,7 +21,7 @@ use Symfony\Component\Debug\Debug;
 /** @var \Composer\Autoload\ClassLoader $loader */
 $loader = require __DIR__.'/../vendor/autoload.php';
 Debug::enable();
-
+$test='123';
 $kernel = new AppKernel('dev', true);
 if (PHP_VERSION_ID < 70000) {
     $kernel->loadClassCache();
