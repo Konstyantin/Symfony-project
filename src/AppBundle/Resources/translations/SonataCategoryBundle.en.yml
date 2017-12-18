@@ -7,12 +7,10 @@ form:
     parent: 'Parent'
     name: 'Name'
   placeholder:
-    name: 'Username'
+    name: 'Name'
 
 datagrid:
   filters:
-    id: 'Id'
-    username: 'Username'
+    name: 'Name'
   list:
-    id: 'Id'
-    username: 'Username'
+    name: 'Name'

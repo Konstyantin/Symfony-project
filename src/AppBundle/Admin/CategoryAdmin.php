@@ -64,7 +64,7 @@ class CategoryAdmin extends AbstractAdmin
      */
     protected function configureDatagridFilters(DatagridMapper $filter)
     {
-        $filter->add('name', null, ['label' => 'datagrid.filters.username']);
+        $filter->add('name', null, ['label' => 'datagrid.filters.name']);
     }
 
     /**
@@ -77,12 +77,8 @@ class CategoryAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $list)
     {
         $list
-            ->addIdentifier('id', null, [
-                'label' => 'datagrid.list.id',
-                'row_align' => 'left'
-            ])
             ->addIdentifier('name', null, [
-                'label' => 'datagrid.list.username'
+                'label' => 'datagrid.list.name'
             ])
             ->add('_action', null, [
                 'actions' => [
