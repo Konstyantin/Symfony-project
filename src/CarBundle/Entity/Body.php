@@ -52,7 +52,7 @@ class Body
      * @Assert\NotBlank()
      * @ORM\Column(name="wheel_base", type="integer")
      */
-    protected $wheel_base;
+    protected $wheelBase;
 
     /**
      * @var int
@@ -60,7 +60,7 @@ class Body
      * @Assert\NotBlank()
      * @ORM\Column(name="aerodynamic_coefficient", type="integer")
      */
-    protected $aerodynamic_coefficient;
+    protected $aerodynamicCoefficient;
 
     /**
      * @var int

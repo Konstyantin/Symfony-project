@@ -75,6 +75,10 @@ class CarAdmin extends AbstractAdmin
                     ->add('engine', 'sonata_type_model', [
                         'class' => 'CarBundle:Engine',
                     ])
+                    ->add('transmission', 'sonata_type_model', [
+                        'class' => 'CarBundle:Transmission',
+                        'multiple' => true
+                    ])
                     ->add('feature', CollectionType::class, [
                         'label' => 'Feature',
                         'entry_type' => FeatureType::class,

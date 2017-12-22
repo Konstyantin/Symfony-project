@@ -107,6 +107,12 @@ class Car
     protected $feature;
 
     /**
+     * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Transmission", inversedBy="car")
+     * @ORM\JoinTable(name="car_transmission")
+     */
+    protected $transmission;
+
+    /**
      * Get id
      *
      * @return int
@@ -508,5 +514,39 @@ class Car
         $this->feature = $feature;
 
         return $this;
+    }
+
+    /**
+     * Add transmission
+     *
+     * @param \CarBundle\Entity\Transmission $transmission
+     *
+     * @return Car
+     */
+    public function addTransmission(\CarBundle\Entity\Transmission $transmission)
+    {
+        $this->transmission[] = $transmission;
+
+        return $this;
+    }
+
+    /**
+     * Remove transmission
+     *
+     * @param \CarBundle\Entity\Transmission $transmission
+     */
+    public function removeTransmission(\CarBundle\Entity\Transmission $transmission)
+    {
+        $this->transmission->removeElement($transmission);
+    }
+
+    /**
+     * Get transmission
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTransmission()
+    {
+        return $this->transmission;
     }
 }
