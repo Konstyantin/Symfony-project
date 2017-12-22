@@ -86,8 +86,8 @@ class Car
     protected $body;
 
     /**
-     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Engine", inversedBy="car")
-     * @ORM\JoinColumn(name="engine_id", referencedColumnName="id")
+     * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Engine", inversedBy="car")
+     * @ORM\JoinTable(name="car_engines")
      */
     protected $engine;
 
@@ -548,5 +548,29 @@ class Car
     public function getTransmission()
     {
         return $this->transmission;
+    }
+
+    /**
+     * Add engine
+     *
+     * @param \CarBundle\Entity\Engine $engine
+     *
+     * @return Car
+     */
+    public function addEngine(\CarBundle\Entity\Engine $engine)
+    {
+        $this->engine[] = $engine;
+
+        return $this;
+    }
+
+    /**
+     * Remove engine
+     *
+     * @param \CarBundle\Entity\Engine $engine
+     */
+    public function removeEngine(\CarBundle\Entity\Engine $engine)
+    {
+        $this->engine->removeElement($engine);
     }
 }

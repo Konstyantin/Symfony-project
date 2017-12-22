@@ -252,6 +252,7 @@ sonata_media:
         image:
             resizer: sonata.media.resizer.square
 
+# Sonata Classification config
 sonata_classification:
     class:
         tag:          Application\Sonata\ClassificationBundle\Entity\Tag

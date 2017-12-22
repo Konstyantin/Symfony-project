@@ -95,7 +95,7 @@ class Engine
     protected $compression;
 
     /**
-     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Car", mappedBy="engine")
+     * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Car", mappedBy="engine")
      */
     protected $car;
 
