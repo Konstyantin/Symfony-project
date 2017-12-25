@@ -10,4 +10,35 @@ namespace CarBundle\Repository;
  */
 class ModelRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Get models list
+     *
+     * Get all model list which exists
+     *
+     * @return mixed
+     */
+    public function getModelsList()
+    {
+        $query = $this->createQueryBuilder('m')
+            ->orderBy('m.name', 'DESC')
+            ->getQuery();
+
+        return $query->execute();
+    }
+
+    /**
+     * Get Parent model
+     *
+     * Get Model list which don't have child model
+     *
+     * @return mixed
+     */
+    public function getParentModel()
+    {
+        $query = $this->createQueryBuilder('m')
+            ->where('m.parent IS NULL')
+            ->getQuery();
+
+        return $query->execute();
+    }
 }

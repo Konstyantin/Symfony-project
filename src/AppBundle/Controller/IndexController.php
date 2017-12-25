@@ -17,6 +17,8 @@ class IndexController extends Controller
      */
     public function indexAction()
     {
+        $em = $this->getDoctrine()->getEntityManager();
+        
         return $this->render('@App/Index/index.html.twig');
     }
 }
