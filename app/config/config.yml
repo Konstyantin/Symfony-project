@@ -175,7 +175,7 @@ vich_uploader:
     db_driver:  orm
     mappings:
         car_image:
-            uri_prefix:         '%upload_image_prefix%/cars' # uri prefix to resource
+            uri_prefix:         '%path_to_project%/%upload_image_prefix%/cars' # uri prefix to resource
             upload_destination: '%upload_image_path%/cars'
 
             inject_on_load:     false
@@ -184,7 +184,7 @@ vich_uploader:
             namer:              vich_uploader.namer_uniqid
 
         model_image:
-            uri_prefix:         '%upload_image_prefix%/models' # uri prefix to resource
+            uri_prefix:         '%path_to_project%/%upload_image_prefix%/models' # uri prefix to resource
             upload_destination: '%upload_image_path%/models'
 
             inject_on_load:     false
@@ -193,7 +193,7 @@ vich_uploader:
             namer:              vich_uploader.namer_uniqid
 
         feature_image:
-            uri_prefix:         '%upload_image_prefix%/feature' # uri prefix to resource
+            uri_prefix:         '%path_to_project%//%upload_image_prefix%/feature' # uri prefix to resource
             upload_destination: '%upload_image_path%/feature'
 
             inject_on_load:     false
@@ -242,7 +242,7 @@ sonata_media:
 
     cdn:
         server:
-            path: /uploads/media # http://media.sonata-project.org/
+            path: "%path_to_project%/uploads/media" # http://media.sonata-project.org/
 
     filesystem:
         local:
