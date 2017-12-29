@@ -24,7 +24,7 @@ class IndexController extends Controller
 
         $sliderList = $em->getRepository('ApplicationSonataMediaBundle:Media')
             ->findBy(['category' => $sliderCategory]);
-        
+
         return $this->render('@App/Index/index.html.twig', [
             'sliderList' => $sliderList
         ]);

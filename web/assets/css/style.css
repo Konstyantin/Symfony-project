@@ -1,0 +1,12 @@
+.app-navigation nav {
+    background-color: #ffffff;
+    border: none;
+}
+
+.app-navigation nav .navbar-nav {
+    margin: 40px 10%;
+}
+
+.app-navigation nav .navbar-nav .caret {
+    margin-left: 10px;
+}
