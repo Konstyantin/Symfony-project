@@ -39,12 +39,6 @@ class ModelAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $form)
     {
         $form
-            ->add('parent', EntityType::class, [
-                'class' => 'CarBundle:Model',
-                'choice_label' => 'name',
-                'multiple' => false,
-                'required' => false,
-            ])
             ->add('name', TextType::class, [
                 'label' => 'Name',
                 'translation_domain' => 'SonataModelBundle',

@@ -43,17 +43,6 @@ class Model
     protected $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Model", mappedBy="parent")
-     */
-    protected $children;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Model", inversedBy="children")
-     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
-     */
-    protected $parent;
-
-    /**
      * @ORM\OneToMany(targetEntity="CarBundle\Entity\Car", mappedBy="model")
      */
     protected $car;
@@ -143,50 +132,6 @@ class Model
         $this->children[] = $child;
 
         return $this;
-    }
-
-    /**
-     * Remove child
-     *
-     * @param \CarBundle\Entity\Model $child
-     */
-    public function removeChild(\CarBundle\Entity\Model $child)
-    {
-        $this->children->removeElement($child);
-    }
-
-    /**
-     * Get children
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getChildren()
-    {
-        return $this->children;
-    }
-
-    /**
-     * Set parent
-     *
-     * @param \CarBundle\Entity\Model $parent
-     *
-     * @return Model
-     */
-    public function setParent(\CarBundle\Entity\Model $parent = null)
-    {
-        $this->parent = $parent;
-
-        return $this;
-    }
-
-    /**
-     * Get parent
-     *
-     * @return \CarBundle\Entity\Model
-     */
-    public function getParent()
-    {
-        return $this->parent;
     }
 
     /**
