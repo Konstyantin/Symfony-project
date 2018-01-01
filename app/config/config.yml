@@ -175,7 +175,7 @@ vich_uploader:
     db_driver:  orm
     mappings:
         car_image:
-            uri_prefix:         '%upload_image_prefix%/cars' # uri prefix to resource
+            uri_prefix:         '%path_to_project%/%upload_image_prefix%/cars' # uri prefix to resource
             upload_destination: '%upload_image_path%/cars'
 
             inject_on_load:     false
@@ -184,7 +184,7 @@ vich_uploader:
             namer:              vich_uploader.namer_uniqid
 
         model_image:
-            uri_prefix:         '%upload_image_prefix%/models' # uri prefix to resource
+            uri_prefix:         '%path_to_project%/%upload_image_prefix%/models' # uri prefix to resource
             upload_destination: '%upload_image_path%/models'
 
             inject_on_load:     false
@@ -193,7 +193,7 @@ vich_uploader:
             namer:              vich_uploader.namer_uniqid
 
         feature_image:
-            uri_prefix:         '%upload_image_prefix%/feature' # uri prefix to resource
+            uri_prefix:         '%path_to_project%//%upload_image_prefix%/feature' # uri prefix to resource
             upload_destination: '%upload_image_path%/feature'
 
             inject_on_load:     false
@@ -210,9 +210,9 @@ sonata_media:
         gallery_has_media: Application\Sonata\MediaBundle\Entity\GalleryHasMedia
         category: Application\Sonata\ClassificationBundle\Entity\Category
     db_driver: doctrine_orm # or doctrine_mongodb, doctrine_phpcr it is mandatory to choose one here
-    default_context: default # you need to set a context
+    default_context: Application # you need to set a context
     contexts:
-        default:  # the default context is mandatory
+        Application:  # the default context is mandatory
             providers:
                 - sonata.media.provider.dailymotion
                 - sonata.media.provider.youtube
@@ -221,10 +221,10 @@ sonata_media:
                 - sonata.media.provider.vimeo
 
             formats:
-                small: { width: 100 , quality: 70}
-                big:   { width: 500 , quality: 70}
+                small: { width: 100 , quality: 100}
+                big:   { width: 500 , quality: 100}
 
-        sonata_collection:
+        Collection:
             providers:
               - sonata.media.provider.image
 
@@ -232,7 +232,7 @@ sonata_media:
                 preview: { width: 100, quality: 100}
                 wide:    { width: 820, quality: 100}
 
-        sonata_category:
+        Category:
             providers:
               - sonata.media.provider.image
 
@@ -242,7 +242,7 @@ sonata_media:
 
     cdn:
         server:
-            path: /uploads/media # http://media.sonata-project.org/
+            path: "%path_to_project%/uploads/media" # http://media.sonata-project.org/
 
     filesystem:
         local:
@@ -252,6 +252,7 @@ sonata_media:
         image:
             resizer: sonata.media.resizer.square
 
+# Sonata Classification config
 sonata_classification:
     class:
         tag:          Application\Sonata\ClassificationBundle\Entity\Tag

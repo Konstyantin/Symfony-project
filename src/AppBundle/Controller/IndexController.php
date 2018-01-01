@@ -17,6 +17,16 @@ class IndexController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('@App/Index/index.html.twig');
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $sliderCategory = $em->getRepository('ApplicationSonataClassificationBundle:Category')
+            ->findOneBy(['name' => 'Slider']);
+
+        $sliderList = $em->getRepository('ApplicationSonataMediaBundle:Media')
+            ->findBy(['category' => $sliderCategory]);
+
+        return $this->render('@App/Index/index.html.twig', [
+            'sliderList' => $sliderList
+        ]);
     }
 }

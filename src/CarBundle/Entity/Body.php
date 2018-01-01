@@ -52,7 +52,7 @@ class Body
      * @Assert\NotBlank()
      * @ORM\Column(name="wheel_base", type="integer")
      */
-    protected $wheel_base;
+    protected $wheelBase;
 
     /**
      * @var int
@@ -60,7 +60,7 @@ class Body
      * @Assert\NotBlank()
      * @ORM\Column(name="aerodynamic_coefficient", type="integer")
      */
-    protected $aerodynamic_coefficient;
+    protected $aerodynamicCoefficient;
 
     /**
      * @var int
@@ -167,7 +167,7 @@ class Body
      */
     public function setWheelBase($wheelBase)
     {
-        $this->wheel_base = $wheelBase;
+        $this->wheelBase = $wheelBase;
 
         return $this;
     }
@@ -179,7 +179,7 @@ class Body
      */
     public function getWheelBase()
     {
-        return $this->wheel_base;
+        return $this->wheelBase;
     }
 
     /**
@@ -191,7 +191,7 @@ class Body
      */
     public function setAerodynamicCoefficient($aerodynamicCoefficient)
     {
-        $this->aerodynamic_coefficient = $aerodynamicCoefficient;
+        $this->aerodynamicCoefficient = $aerodynamicCoefficient;
 
         return $this;
     }
@@ -203,7 +203,7 @@ class Body
      */
     public function getAerodynamicCoefficient()
     {
-        return $this->aerodynamic_coefficient;
+        return $this->aerodynamicCoefficient;
     }
 
     /**

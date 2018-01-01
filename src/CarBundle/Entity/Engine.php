@@ -29,7 +29,7 @@ class Engine
      *
      * @ORM\Column(name="model_name", type="string")
      */
-    protected $model_name;
+    protected $modelName;
 
     /**
      * @var integer
@@ -38,7 +38,7 @@ class Engine
      *
      * @ORM\Column(name="num_cylinders", type="integer")
      */
-    protected $num_cylinders;
+    protected $numCylinders;
 
     /**
      * @var integer
@@ -47,7 +47,7 @@ class Engine
      *
      * @ORM\Column(name="engine_volume", type="integer")
      */
-    protected $engine_volume;
+    protected $engineVolume;
 
     /**
      * @var string
@@ -56,7 +56,7 @@ class Engine
      *
      * @ORM\Column(name="car_drive", type="string", columnDefinition="ENUM('front', 'full', 'back')")
      */
-    protected $car_drive;
+    protected $carDrive;
 
     /**
      * @var integer
@@ -74,7 +74,7 @@ class Engine
      *
      * @ORM\Column(name="r_hv", type="integer")
      */
-    protected $r_hv;
+    protected $rHv;
 
     /**
      * @var integer
@@ -83,7 +83,7 @@ class Engine
      *
      * @ORM\Column(name="max_torque", type="integer")
      */
-    protected $max_torque;
+    protected $maxTorque;
 
     /**
      * @var integer
@@ -95,18 +95,50 @@ class Engine
     protected $compression;
 
     /**
-     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Car", mappedBy="engine")
+     * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Car", mappedBy="engine")
      */
     protected $car;
 
     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->car = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set modelName
+     *
+     * @param string $modelName
+     *
+     * @return Engine
+     */
+    public function setModelName($modelName)
+    {
+        $this->modelName = $modelName;
+
+        return $this;
+    }
+
+    /**
+     * Get modelName
+     *
+     * @return string
+     */
+    public function getModelName()
+    {
+        return $this->modelName;
     }
 
     /**
@@ -118,7 +150,7 @@ class Engine
      */
     public function setNumCylinders($numCylinders)
     {
-        $this->num_cylinders = $numCylinders;
+        $this->numCylinders = $numCylinders;
 
         return $this;
     }
@@ -130,7 +162,7 @@ class Engine
      */
     public function getNumCylinders()
     {
-        return $this->num_cylinders;
+        return $this->numCylinders;
     }
 
     /**
@@ -142,7 +174,7 @@ class Engine
      */
     public function setEngineVolume($engineVolume)
     {
-        $this->engine_volume = $engineVolume;
+        $this->engineVolume = $engineVolume;
 
         return $this;
     }
@@ -154,7 +186,7 @@ class Engine
      */
     public function getEngineVolume()
     {
-        return $this->engine_volume;
+        return $this->engineVolume;
     }
 
     /**
@@ -166,7 +198,7 @@ class Engine
      */
     public function setCarDrive($carDrive)
     {
-        $this->car_drive = $carDrive;
+        $this->carDrive = $carDrive;
 
         return $this;
     }
@@ -178,7 +210,7 @@ class Engine
      */
     public function getCarDrive()
     {
-        return $this->car_drive;
+        return $this->carDrive;
     }
 
     /**
@@ -214,7 +246,7 @@ class Engine
      */
     public function setRHv($rHv)
     {
-        $this->r_hv = $rHv;
+        $this->rHv = $rHv;
 
         return $this;
     }
@@ -226,7 +258,7 @@ class Engine
      */
     public function getRHv()
     {
-        return $this->r_hv;
+        return $this->rHv;
     }
 
     /**
@@ -238,7 +270,7 @@ class Engine
      */
     public function setMaxTorque($maxTorque)
     {
-        $this->max_torque = $maxTorque;
+        $this->maxTorque = $maxTorque;
 
         return $this;
     }
@@ -250,7 +282,7 @@ class Engine
      */
     public function getMaxTorque()
     {
-        return $this->max_torque;
+        return $this->maxTorque;
     }
 
     /**
@@ -275,13 +307,6 @@ class Engine
     public function getCompression()
     {
         return $this->compression;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->car = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -319,35 +344,12 @@ class Engine
     }
 
     /**
+     *
+     *
      * @return string
      */
     public function __toString()
     {
         return (string) $this->getModelName();
-    }
-
-
-    /**
-     * Set modelName
-     *
-     * @param string $modelName
-     *
-     * @return Engine
-     */
-    public function setModelName($modelName)
-    {
-        $this->model_name = $modelName;
-
-        return $this;
-    }
-
-    /**
-     * Get modelName
-     *
-     * @return string
-     */
-    public function getModelName()
-    {
-        return $this->model_name;
     }
 }

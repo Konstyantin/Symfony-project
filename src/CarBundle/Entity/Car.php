@@ -68,7 +68,7 @@ class Car
     private $imageName;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      *
      * @var \DateTime
      */
@@ -86,8 +86,8 @@ class Car
     protected $body;
 
     /**
-     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Engine", inversedBy="car")
-     * @ORM\JoinColumn(name="engine_id", referencedColumnName="id")
+     * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Engine", inversedBy="car")
+     * @ORM\JoinTable(name="car_engines")
      */
     protected $engine;
 
@@ -105,6 +105,12 @@ class Car
      * @ORM\OneToMany(targetEntity="CarBundle\Entity\Feature", mappedBy="car", cascade={"persist"}, orphanRemoval=true)
      */
     protected $feature;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Transmission", inversedBy="car")
+     * @ORM\JoinTable(name="car_transmission")
+     */
+    protected $transmission;
 
     /**
      * Get id
@@ -508,5 +514,63 @@ class Car
         $this->feature = $feature;
 
         return $this;
+    }
+
+    /**
+     * Add transmission
+     *
+     * @param \CarBundle\Entity\Transmission $transmission
+     *
+     * @return Car
+     */
+    public function addTransmission(\CarBundle\Entity\Transmission $transmission)
+    {
+        $this->transmission[] = $transmission;
+
+        return $this;
+    }
+
+    /**
+     * Remove transmission
+     *
+     * @param \CarBundle\Entity\Transmission $transmission
+     */
+    public function removeTransmission(\CarBundle\Entity\Transmission $transmission)
+    {
+        $this->transmission->removeElement($transmission);
+    }
+
+    /**
+     * Get transmission
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTransmission()
+    {
+        return $this->transmission;
+    }
+
+    /**
+     * Add engine
+     *
+     * @param \CarBundle\Entity\Engine $engine
+     *
+     * @return Car
+     */
+    public function addEngine(\CarBundle\Entity\Engine $engine)
+    {
+        $this->engine[] = $engine;
+
+        return $this;
+    }
+
+    /**
+     * Remove engine
+     *
+     * @param \CarBundle\Entity\Engine $engine
+     */
+    public function removeEngine(\CarBundle\Entity\Engine $engine)
+    {
+        $this->engine->removeElement($engine);
     }
 }
