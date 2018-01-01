@@ -57,3 +57,9 @@ services:
               label: 'Engine'
               label_catalogue: 'Engine'
         public: true
+
+    model_management:
+        class: CarBundle\Services\ModelManagement
+        arguments: [ '@doctrine.orm.entity_manager' ]
+
+

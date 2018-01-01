@@ -46,6 +46,9 @@ twig:
           - 'bootstrap_3_layout.html.twig'
           - 'SonataMediaBundle:Form:media_widgets.html.twig'
           - 'VichUploaderBundle:Form:fields.html.twig'
+    globals:
+        model_management: '@model_management'
+
 
 # Doctrine Configuration
 doctrine:
