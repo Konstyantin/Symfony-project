@@ -10,3 +10,51 @@
 .app-navigation nav .navbar-nav .caret {
     margin-left: 10px;
 }
+
+.model-nav-list, .model-list, .dropdown-menu-item {
+    padding: 0;
+}
+
+.dropdown-menu-item .menu-item a {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:focus,
+.navbar-default .navbar-nav>.open>a:hover,
+.model-nav-list .dropdown:hover .dropdown-toggle {
+    color: #c00;
+    background-color: #fff;
+}
+
+.model-list {
+    width: 310px;
+}
+
+.model-list .model-item {
+    padding: 5px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.model-list .model-item .item-name {
+    padding: 30px 15px;
+}
+
+.model-list .model-item .item-name span {
+    text-decoration: none;
+    color: #000000;
+}
+
+.model-list .model-item:hover,
+.model-list .model-item:hover .item-name span,
+.dropdown-menu-item .menu-item:hover a{
+    background-color: #c00;
+    color: #fff;
+    cursor: pointer;
+}
+
+.model-list .model-item .col-sm-7 img {
+    width: 100%;
+}
+

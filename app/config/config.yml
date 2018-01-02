@@ -48,6 +48,7 @@ twig:
           - 'VichUploaderBundle:Form:fields.html.twig'
     globals:
         model_management: '@model_management'
+        uploda_image_path: 'uploads/images/'
 
 
 # Doctrine Configuration

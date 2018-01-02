@@ -24,14 +24,23 @@
                     </button>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav model-nav-list">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Models
                                 <span class="caret"></span>
                             </a>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu model-list">
                                 {% for model in model_management.getList %}
-                                    <li><a href="">{{ model.name }}</a></li>
+                                    <a href="">
+                                        <li class="model-item clearfix">
+                                            <div class="col-sm-5 item-name">
+                                                <span>{{ model.name }}</span>
+                                            </div>
+                                            <div class="col-sm-7 item-logo">
+                                                <img src="{{ uploda_image_path }}/models/{{ model.imageName }}" alt="">
+                                            </div>
+                                        </li>
+                                    </a>
                                 {% endfor %}
                             </ul>
                         </li>
@@ -39,70 +48,104 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cars with mileage
                                 <span class="caret"></span>
                             </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li class="dropdown-header">Nav header</li>
-                                <li><a href="#">Separated link</a></li>
-                                <li><a href="#">One more separated link</a></li>
+                            <ul class="dropdown-menu dropdown-menu-item">
+                                <li class="menu-item">
+                                    <a href="#">Porsche Approved Cars with mileage</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">Service subscriber service program</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">Search for cars with mileage</a>
+                                </li>
                             </ul>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Events
                                 <span class="caret"></span>
                             </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li class="dropdown-header">Nav header</li>
-                                <li><a href="#">Separated link</a></li>
-                                <li><a href="#">One more separated link</a></li>
+                            <ul class="dropdown-menu dropdown-menu-item">
+                                <li class="menu-item">
+                                    <a href="#">AutoSport</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">Porshe Clubs</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">Porshe Driving Experience</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">Porshe Golf Club</a>
+                                </li>
                             </ul>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services
                                 <span class="caret"></span>
                             </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li class="dropdown-header">Nav header</li>
-                                <li><a href="#">Separated link</a></li>
-                                <li><a href="#">One more separated link</a></li>
+                            <ul class="dropdown-menu dropdown-menu-item">
+                                <li class="menu-item">
+                                    <a href="#">Porshe Services</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">Services Calculator</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">Porshe Exclusive Programm</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">Porshe Tequipment</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">Porshe Driver Selection</a>
+                                </li>
                             </ul>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Proposition
                                 <span class="caret"></span>
                             </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li class="dropdown-header">Nav header</li>
-                                <li><a href="#">Separated link</a></li>
-                                <li><a href="#">One more separated link</a></li>
+                            <ul class="dropdown-menu dropdown-menu-item">
+                                <li class="menu-item">
+                                    <a href="#">Special Proposition</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">Service Proposition</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">Winner Finance</a>
+                                </li>
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About Porshe
                                 <span class="caret"></span>
                             </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li class="dropdown-header">Nav header</li>
-                                <li><a href="#">Separated link</a></li>
-                                <li><a href="#">One more separated link</a></li>
+                            <ul class="dropdown-menu dropdown-menu-item">
+                                <li class="menu-item">
+                                    <a href="#" class="menu-item">Principles of Porsche</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">News and press</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">Porsche E-Performance</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">Corporate culture and vacancies</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">Porsche Museum</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">Christophorus Magazine</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">Porsche News</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">Contact us</a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
@@ -111,8 +154,11 @@
         </nav>
     </div>
 
-    {% block body %}{% endblock %}
-        {% block javascripts %}
-        {% endblock %}
+    {% block body %}
+    {% endblock %}
+
+    <script type="text/javascript" src="{{ asset('assets/js/app.js') }}"></script>
+    {% block javascripts %}
+    {% endblock %}
     </body>
 </html>
