@@ -53,9 +53,7 @@ class Model
      *
      * @Assert\Image(
      *     mimeTypes={"image/jpeg", "image/png"},
-     *     mimeTypesMessage = "Wrong file type (jpg,gif)",
-     *     maxHeight="290",
-     *     maxWidth="520"
+     *     mimeTypesMessage = "Wrong file type (jpg,gif)"
      * )
      *
      * @Vich\UploadableField(mapping="model_image", fileNameProperty="imageName", size="imageSize")
