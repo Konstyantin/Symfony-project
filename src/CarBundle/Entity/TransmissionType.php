@@ -33,7 +33,7 @@ class TransmissionType
     protected $title;
 
     /**
-     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Transmission", mappedBy="type")
+     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Transmission", mappedBy="type", cascade={"persist", "remove"})
      */
     protected $transmission;
 

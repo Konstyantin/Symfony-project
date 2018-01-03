@@ -75,7 +75,7 @@ class Car
     private $updatedAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Model", inversedBy="car")
+     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Model", inversedBy="car", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="model_id", referencedColumnName="id")
      */
     protected $model;
@@ -86,7 +86,7 @@ class Car
     protected $body;
 
     /**
-     * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Engine", inversedBy="car")
+     * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Engine", inversedBy="car", cascade={"persist", "remove"})
      * @ORM\JoinTable(name="car_engines")
      */
     protected $engine;
@@ -102,7 +102,7 @@ class Car
     protected $dynamics;
 
     /**
-     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Feature", mappedBy="car", cascade={"persist"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Feature", mappedBy="car", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     protected $feature;
 

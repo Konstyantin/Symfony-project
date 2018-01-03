@@ -1,33 +1,36 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    Application
+{% endblock %}
+
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('assets/vendor/owl.carousel/dist/assets/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendor/owl.carousel/dist/assets/owl.theme.default.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/bxslider-4/dist/jquery.bxslider.min.css') }}">
 {% endblock %}
 
 {% block body %}
-    {#<div class="slider-container">#}
-        {#<div class="owl-carousel">#}
-            {#{% for slide in sliderList %}#}
-                {#<div><img src="{% path slide, 'reference' %}" alt=""> </div>#}
-            {#{% endfor %}#}
+
+    <div class="slider">
+        {% for slide in sliderList %}
+        <div class="slide-item">
+            <img src="{% path slide, 'reference' %}" alt="">
+        </div>
+        {#<div>#}
+            {#<img src="http://php5.codeit.pro/roman.kovalenko/portalforce_test/info/wp-content/uploads/2016/06/Banner-Sales.jpg" alt="">#}
         {#</div>#}
-    {#</div>#}
+        {#<div>#}
+            {#<img src="http://php5.codeit.pro/roman.kovalenko/portalforce_test/info/wp-content/uploads/2016/06/Banner-Home.jpg.jpg" alt="">#}
+        {#</div>#}
+        {% endfor %}
+    </div>
 {% endblock %}
 
 {% block javascripts %}
     <script type="text/javascript" src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/vendor/owl.carousel/dist/owl.carousel.min.js') }}"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $(".owl-carousel").owlCarousel({
-                loop:true,
-                animateOut: 'slideOutDown',
-                animateIn: 'flipInX',
-                items:1,
-                autoplay:true,
-                autoplayTimeout:1000
-            })
+    <script type="text/javascript" src="{{ asset('assets/vendor/bxslider-4/dist/jquery.bxslider.min.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('.slider').bxSlider();
         });
     </script>
 {% endblock %}

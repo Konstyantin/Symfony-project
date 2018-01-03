@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "owl.carousel": "^2.2.1"
+    "owl.carousel": "^2.2.1",
+    "bxslider-4": "^4.2.12"
   }
 }

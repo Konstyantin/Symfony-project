@@ -43,7 +43,7 @@ class Model
     protected $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Car", mappedBy="model")
+     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Car", mappedBy="model", cascade={"persist", "remove"})
      */
     protected $car;
 

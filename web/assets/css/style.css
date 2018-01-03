@@ -1,10 +1,15 @@
 .app-navigation nav {
-    background-color: #ffffff;
     border: none;
+    background: #fff;
+    width: 100%;
+}
+
+.navbar {
+    margin-bottom: 0;
 }
 
 .app-navigation nav .navbar-nav {
-    margin: 40px 10%;
+    margin: 20px 10% 10px;
 }
 
 .app-navigation nav .navbar-nav .caret {
@@ -58,3 +63,14 @@
     width: 100%;
 }
 
+.bx-wrapper {
+    border: none;
+}
+
+.bx-wrapper .bx-controls-auto, .bx-wrapper .bx-pager {
+    bottom: 15px;
+}
+
+.slider .slide-item img {
+    width: 100%;
+}
