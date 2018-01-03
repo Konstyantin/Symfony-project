@@ -16,15 +16,20 @@
         },
 
         /**
-         * Menu hover
+         * Open dropdown list on mouseenter event and
+         * close dorpdown list on mouseleave event
          */
         menuHover: function () {
 
             var navList = $('.model-nav-list>li');
 
-            navList.hover(function () {
+            navList.on('mouseenter', function () {
                 navList.removeClass('open');
                 $(this).addClass('open');
+            });
+
+            navList.on('mouseleave', function () {
+                navList.removeClass('open');
             });
         }
     };
