@@ -4,7 +4,7 @@
     width: 100%;
 }
 
-.navbar {
+.navbar, .bx-wrapper {
     margin-bottom: 0;
 }
 
@@ -73,4 +73,21 @@
 
 .slider .slide-item img {
     width: 100%;
+}
+
+.models-section .models-list {
+    list-style: none;
+}
+
+.models-section .models-list .models-item img {
+    width: 100%;
+}
+
+.models-section .models-list .models-item  {
+    text-align: center;
+}
+
+.models-section .models-list .models-item a {
+    text-decoration: none;
+    color: #000;
 }
