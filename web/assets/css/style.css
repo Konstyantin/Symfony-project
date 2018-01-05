@@ -87,6 +87,7 @@
     border-bottom: 1px solid #eeeeee;
     color: #000;
     text-decoration: none;
+    background: #fff;
 }
 
 .model-list .model-item:hover,
@@ -127,5 +128,23 @@
 
 .models-section .models-list .models-item a {
     text-decoration: none;
+    color: #000;
+}
+
+.item-car-description {
+    position: absolute;
+    top: -1px;
+    left: 309px;
+    width: 500px;
+    border: 1px solid  rgba(0,0,0,.15);
+    display: none;
+    background: #fff;
+}
+
+.item-car-description .car-image-preview img {
+    width: 100%;
+}
+
+.item-car-description .car-title-name {
     color: #000;
 }

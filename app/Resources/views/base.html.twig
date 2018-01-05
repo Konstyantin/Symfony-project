@@ -52,7 +52,19 @@
                                         <ul class="model-car-list" id="car-id-{{ model.id }}">
                                             {% for car in model.car %}
                                                 <a href="">
-                                                    <li class="model-car-item">{{ car.name }}</li>
+                                                    <li class="model-car-item" id="{{ car.id }}">
+                                                        <span class="car-list-item-name">{{ car.name }}</span>
+                                                        <div class="item-car-description" id="car-description-id-{{ car.id }}">
+                                                            <div class="car-image-preview">
+                                                                <img src="http://porsche.ua/images/doc/1/b/1b7410b-porsche-normal.jpg" alt="">
+                                                            </div>
+                                                            <div class="car-item-content">
+                                                                <div class="car-title-name">
+                                                                    <span>{{ car.name }}</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
                                                 </a>
                                             {% endfor %}
                                         </ul>
