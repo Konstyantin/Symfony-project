@@ -39,7 +39,7 @@
                                 </a>
                                 {% for model in model_management.getList %}
                                     <a href="">
-                                        <li class="model-item clearfix">
+                                        <li class="model-item clearfix" id="{{ model.id }}">
                                             <div class="col-sm-5 item-name">
                                                 <span>{{ model.name }}</span>
                                             </div>
@@ -48,6 +48,13 @@
                                             </div>
                                         </li>
                                     </a>
+                                    <ul class="model-car-list" id="{{ model.id }}">
+                                        {% for car in model.car %}
+                                            <a href="">
+                                                <li class="model-car-item">{{ car.name }}</li>
+                                            </a>
+                                        {% endfor %}
+                                    </ul>
                                 {% endfor %}
                             </ul>
                         </li>
