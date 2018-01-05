@@ -21,7 +21,8 @@
          */
         menuHover: function () {
 
-            var navList = $('.model-nav-list>li');
+            var navList = $('.model-nav-list > li'),
+                modelItem = $('.model-item');
 
             navList.on('mouseenter', function () {
                 navList.removeClass('open');
@@ -30,6 +31,15 @@
 
             navList.on('mouseleave', function () {
                 navList.removeClass('open');
+            });
+
+            modelItem.on('mouseenter', function () {
+               var $this = $(this),
+                   modelId = $this.attr('id');
+
+                $('.model-car-list').hide();
+
+               $('#car-id-' + modelId + '').show();
             });
         }
     };

@@ -31,7 +31,7 @@
                             </a>
                             <ul class="dropdown-menu model-list">
                                 <a href="">
-                                    <li class="model-item clearfix">
+                                    <li class="model-item clearfix" id="">
                                         <div class="col-sm-5 item-name">
                                             <span>All Models</span>
                                         </div>
@@ -48,13 +48,15 @@
                                             </div>
                                         </li>
                                     </a>
-                                    <ul class="model-car-list" id="{{ model.id }}">
-                                        {% for car in model.car %}
-                                            <a href="">
-                                                <li class="model-car-item">{{ car.name }}</li>
-                                            </a>
-                                        {% endfor %}
-                                    </ul>
+                                    {% if model.car is not empty %}
+                                        <ul class="model-car-list" id="car-id-{{ model.id }}">
+                                            {% for car in model.car %}
+                                                <a href="">
+                                                    <li class="model-car-item">{{ car.name }}</li>
+                                                </a>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
                                 {% endfor %}
                             </ul>
                         </li>
