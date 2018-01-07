@@ -116,6 +116,23 @@
     width: 100%;
 }
 
+.slider .slide-item-description {
+    position: absolute;
+    top: 75%;
+    left: 5%;
+    color: #fff;
+}
+
+.slide-item-description a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.slide-item-description:hover a {
+    color: #c00;
+    cursor: pointer;
+}
+
 .models-section .models-list {
     list-style: none;
 }

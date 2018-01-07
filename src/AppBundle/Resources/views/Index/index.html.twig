@@ -14,6 +14,9 @@
         {% for slide in sliderList %}
         <div class="slide-item">
             <img src="{% path slide, 'reference' %}" alt="">
+            <h1 class="slide-item-description">
+                <a>{{ slide.description }}</a>
+            </h1>
         </div>
         {% endfor %}
     </div>
