@@ -38,12 +38,12 @@ class EngineAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $form)
     {
         $form
-            ->add('modelName', TextType::class, [
-                'label' => 'form.label.engine_model',
+            ->add('name', TextType::class, [
+                'label' => 'form.label.name',
                 'translation_domain' => 'SonataEngineBundle',
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'form.placeholder.engine_model'
+                    'placeholder' => 'form.placeholder.name'
                 ]
             ])
             ->add('numCylinders', NumberType::class, [
@@ -118,7 +118,7 @@ class EngineAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $filter)
     {
         $filter
-            ->add('modelName', null, ['label' => 'datagrid.filters.engine_model'])
+            ->add('name', null, ['label' => 'datagrid.filters.name'])
             ->add('numCylinders', null, ['label' => 'datagrid.filters.number_cylinders'])
             ->add('engineVolume', null, ['label' => 'datagrid.filters.engine_volume'])
             ->add('carDrive', null, ['label' => 'datagrid.filters.car_drive'])
@@ -137,12 +137,8 @@ class EngineAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $list)
     {
         $list
-            ->addIdentifier('id', null, [
-                'label' => 'datagrid.list.id',
-                'row_align' => 'left'
-            ])
-            ->addIdentifier('modelName', null, [
-                'label' => 'datagrid.list.engine_model',
+            ->addIdentifier('name', null, [
+                'label' => 'datagrid.list.name',
                 'row_align' => 'left'
             ])
             ->addIdentifier('numCylinders', null, [
@@ -178,7 +174,7 @@ class EngineAdmin extends AbstractAdmin
     public function toString($object)
     {
         if ($object instanceof Engine) {
-            return $object->getModelName();
+            return $object->getName();
         }
 
         return 'Engine';

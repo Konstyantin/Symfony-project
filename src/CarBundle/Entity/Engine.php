@@ -27,9 +27,9 @@ class Engine
      *
      * @Assert\NotBlank()
      *
-     * @ORM\Column(name="model_name", type="string")
+     * @ORM\Column(name="name", type="string")
      */
-    protected $modelName;
+    protected $name;
 
     /**
      * @var integer
@@ -95,6 +95,15 @@ class Engine
     protected $compression;
 
     /**
+     * @var integer
+     *
+     * @Assert\NotBlank()
+     *
+     * @ORM\Column(name="price", type="integer")
+     */
+    protected $price;
+
+    /**
      * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Car", mappedBy="engine")
      */
     protected $car;
@@ -118,27 +127,27 @@ class Engine
     }
 
     /**
-     * Set modelName
+     * Set name
      *
-     * @param string $modelName
+     * @param string $name
      *
      * @return Engine
      */
-    public function setModelName($modelName)
+    public function setName($name)
     {
-        $this->modelName = $modelName;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get modelName
+     * Get name
      *
      * @return string
      */
-    public function getModelName()
+    public function getName()
     {
-        return $this->modelName;
+        return $this->name;
     }
 
     /**
@@ -310,6 +319,30 @@ class Engine
     }
 
     /**
+     * Set price
+     *
+     * @param integer $price
+     *
+     * @return Engine
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return integer
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
      * Add car
      *
      * @param \CarBundle\Entity\Car $car
@@ -344,12 +377,12 @@ class Engine
     }
 
     /**
-     *
+     * Call magic method __toString
      *
      * @return string
      */
     public function __toString()
     {
-        return (string) $this->getModelName();
+        return (string) $this->getName();
     }
 }
