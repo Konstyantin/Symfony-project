@@ -237,16 +237,18 @@
     color: #000;
 }
 
-/* Login section */
-.login-container {
-    margin: 0 11%;
+/* User section */
+.login-container, .register-container {
+    margin: 0 10.5%;
 }
 
-.login-container .form-group .form-control {
+.login-container .form-group .form-control,
+.register-container .form-group .form-control {
     border-radius: 0;
 }
 
-.login-container .login-submit-btn {
+.login-container .login-submit-btn,
+.register-container .register-submit-btn {
     border-radius: 0;
     background-color: #c00;
     color: #fff;
