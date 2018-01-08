@@ -4,6 +4,10 @@
     width: 100%;
 }
 
+.app-navigation .navbar-nav>li>.dropdown-menu {
+    margin-top: 10px;
+}
+
 .navbar, .bx-wrapper {
     margin-bottom: 0;
 }
@@ -27,6 +31,11 @@
 .dropdown-menu-item .menu-item a {
     padding: 10px;
     border-bottom: 1px solid #eee;
+    font-size: 15px;
+}
+
+.navbar-default .navbar-nav>li>a {
+    font-size: 15px;
 }
 
 .navbar-default .navbar-nav>.open>a,
@@ -46,6 +55,10 @@
     border-bottom: 1px solid #eee;
 }
 
+.model-list .model-item:last-child {
+    border-bottom: none;
+}
+
 .dropdown-menu-item .menu-item:last-child a {
    border: none;
 }
@@ -57,31 +70,7 @@
 .model-list .model-item .item-name span {
     text-decoration: none;
     color: #000000;
-}
-
-.model-car-list {
-    position: absolute;
-    bottom: 0;
-    left: 308px;
-    list-style: none;
-    padding: 0;
-    width: 310px;
-    display: none;
-    border: 1px solid  rgba(0,0,0,.15);
-}
-
-.model-car-list a {
-    color: #000;
-    text-decoration: none;
-}
-
-.model-car-list .model-car-item:hover {
-    text-decoration: none;
-    background-color: #c00;
-}
-
-.model-car-list .model-car-item:hover .car-list-item-name {
-    color: #fff;
+    font-size: 15px;
 }
 
 .model-car-list .model-car-item {
@@ -147,66 +136,5 @@
 
 .models-section .models-list .models-item a {
     text-decoration: none;
-    color: #000;
-}
-
-.item-car-description {
-    position: absolute;
-    top: -1px;
-    left: 309px;
-    width: 500px;
-    border: 1px solid  rgba(0,0,0,.15);
-    display: none;
-    background: #fff;
-}
-
-.item-car-description .car-image-preview img {
-    width: 100%;
-}
-
-.item-car-description .car-title-name {
-    color: #000;
-}
-
-.item-car-description .car-item-content {
-    padding: 20px;
-}
-
-.item-content-menu,
-.item-content-data,
-.item-content-menu .menu-list li a{
-    color: #000;
-}
-
-.item-content-menu .menu-list {
-    padding: 0;
-    list-style: none;
-}
-
-.car-item-content .car-title-name span {
-    font-size: 16px;
-}
-
-.car-item-content .car-title-name,
-.item-content-menu .menu-list li {
-    padding: 15px 0;
-}
-
-.item-content-menu .menu-list li a {
-    font-size: 15px;
-}
-
-.item-content-menu .menu-list .view-car a {
-    color: #fff;
-    background-color: #c00;
-    padding: 12px 20px;
-
-}
-
-.item-content-menu .menu-list li:hover a {
-    color: #c00;
-}
-
-.car-item-content .car-title-name span {
     color: #000;
 }
