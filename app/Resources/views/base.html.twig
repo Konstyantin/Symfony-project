@@ -25,7 +25,7 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav model-nav-list">
-                        <li class="dropdown open">
+                        <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Models
                                 <span class="caret"></span>
                             </a>
@@ -44,9 +44,9 @@
                                             <img src="{{ uploda_image_path }}/models/{{ model.imageName }}" alt="">
                                         </div>
                                         {% if model.car is not empty %}
-                                            <ul class="model-list-car">
+                                            <ul class="model-list-car" id="{{ model.id }}">
                                                 {% for car in model.car %}
-                                                    <li class="list-car-item">
+                                                    <li class="list-car-item" id="car-item-{{ model.id }}">
                                                         <span>{{ car.name }}</span>
                                                         <div class="car-data">
                                                             <img src="http://porsche.ua/images/doc/1/b/1b7410b-porsche-normal.jpg" alt="">

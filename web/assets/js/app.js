@@ -12,7 +12,7 @@
          * Init methods
          */
         init: function () {
-            // this.menuHover();
+            this.menuHover();
         },
 
         /**
@@ -23,39 +23,55 @@
 
             var navList = $('.model-nav-list > li'),
                 modelItem = navList.find('.model-item'),
-                modelCarItem = navList.find('.model-car-item');
+                modelCarItem = navList.find('.list-car-item');
 
+            // show menu nav list on mouseenter event
             navList.on('mouseenter', function () {
                 navList.removeClass('open');
                 $(this).addClass('open');
             });
 
-            navList.on('mouseleave', function () {
-                navList.removeClass('open');
-            });
-
+            // show car list on mouseenter event model item
             modelItem.on('mouseenter', function () {
-               var $this = $(this),
-                   modelId = $this.attr('id');
-
-                $('.model-car-list').hide();
-                $('.item-car-description').hide();
-
-               $('#car-id-' + modelId + '').show();
-            });
-
-            modelItem.on('mouseleave', function () {
-                $('.item-car-description').hide();
-            });
-
-            modelCarItem.on('mouseenter', function () {
-
                 var $this = $(this),
-                    carId = $this.attr('id');
+                    modelId = $this.attr('id'),
+                    carModelId = '#car-item-' + modelId,
+                    carsModel = $(carModelId);
 
-                $('.item-car-description').hide();
+                // if model item has id and model has car
+                if (modelId && carsModel.length) {
+                    var modelList = $('.model-list-car');
 
-                $('#car-description-id-' + carId + '').show();
+                    // check which model list show
+                    $.each(modelList, function () {
+                        var that = $(this);
+
+                        if (that.attr('id') == modelId) {
+                            that.show();
+                        }
+                    });
+                }
+            });
+
+            // hide car list on mouseleave event
+            modelItem.on('mouseleave', function () {
+                $('.model-list-car').hide();
+            });
+
+            // show car description on mouserenter
+            modelCarItem.on('mouseenter', function () {
+               var $this = $(this),
+                   carData = $this.find('.car-data');
+
+               carData.show();
+            });
+
+            // hide car description on mouseleave
+            modelCarItem.on('mouseleave', function () {
+                var $this = $(this),
+                    carData = $this.find('.car-data');
+
+                carData.hide();
             });
         }
     };

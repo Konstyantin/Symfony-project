@@ -66,7 +66,8 @@
     list-style: none;
     color: #000;
     padding: 0;
-    outline: 1px solid #eee;
+    /*outline: 1px solid #eee;*/
+    display: none;
 }
 
 .model-item:hover .model-list-car {
@@ -83,6 +84,7 @@
     text-decoration: none;
     border-bottom: 1px solid #eee;
     font-size: 15px;
+    /*display: none;*/
 }
 
 .model-item .model-list-car .list-car-item:last-child {
@@ -100,6 +102,7 @@
     left: 310px;
     top: 0;
     width: 480px;
+    display: none;
 }
 
 .model-list-car .list-car-item .car-data img {
@@ -232,4 +235,8 @@
 .models-section .models-list .models-item a {
     text-decoration: none;
     color: #000;
+}
+
+.active {
+    display: block;
 }
