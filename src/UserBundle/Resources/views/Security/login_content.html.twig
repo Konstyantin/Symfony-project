@@ -1,7 +1,7 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<div class="container">
-    <div class="col-lg-offset-3 col-lg-6">
+<div class="container login-container">
+    <div class="col-lg-6">
         <h2>Login page</h2>
         {% if error %}
             <div class="alert alert-danger alert-dismissable fade in">
@@ -27,7 +27,7 @@
                 <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
             </div>
 
-            <input type="submit" id="_submit" class="btn btn-success" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+            <input type="submit" id="_submit" class="btn login-submit-btn" name="_submit" value="{{ 'security.login.submit'|trans }}" />
         </form>
     </div>
 </div>
