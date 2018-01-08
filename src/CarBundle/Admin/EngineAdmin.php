@@ -104,6 +104,14 @@ class EngineAdmin extends AbstractAdmin
                     'placeholder' => 'form.placeholder.compression'
                 ]
             ])
+            ->add('price', NumberType::class, [
+                'label' => 'form.label.price',
+                'translation_domain' => 'SonataEngineBundle',
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'form.placeholder.price'
+                ]
+            ])
         ;
     }
 
@@ -124,7 +132,8 @@ class EngineAdmin extends AbstractAdmin
             ->add('carDrive', null, ['label' => 'datagrid.filters.car_drive'])
             ->add('power', null, ['label' => 'datagrid.filters.power'])
             ->add('maxTorque', null, ['label' => 'datagrid.filters.max_torque'])
-            ->add('compression', null, ['label' => 'datagrid.filters.compression']);
+            ->add('compression', null, ['label' => 'datagrid.filters.compression'])
+            ->add('price', null, ['label' => 'datagrid.filters.price']);
     }
 
     /**
@@ -155,6 +164,10 @@ class EngineAdmin extends AbstractAdmin
             ])
             ->addIdentifier('maxTorque', null, [
                 'label' => 'datagrid.list.max_torque',
+                'row_align' => 'left'
+            ])
+            ->add('price', null, [
+                'label' => 'datagrid.list.price',
                 'row_align' => 'left'
             ])
             ->add('_action', null, [

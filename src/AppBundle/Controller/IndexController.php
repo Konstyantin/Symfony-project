@@ -27,6 +27,8 @@ class IndexController extends Controller
 
         $modelList = $em->getRepository('CarBundle:Model')->getModelsList();
 
+        $modelCarList = $em->getRepository('CarBundle:Model')->findAll();
+
         return $this->render('@App/Index/index.html.twig', [
             'sliderList' => $sliderList,
             'modelList' => $modelList

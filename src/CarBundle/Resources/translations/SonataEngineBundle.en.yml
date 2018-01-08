@@ -13,6 +13,7 @@ form:
     max_torque: 'Max Torque'
     r_hv: 'R/Hv'
     compression: 'Compression'
+    price: 'Price'
   placeholder:
     name: 'Engine Name'
     number_cylinders: 'Number Cylinders'
@@ -21,6 +22,7 @@ form:
     r_hv: 'R/Hv'
     max_torque: 'Max Torque'
     compression: 'Compression'
+    price: 'Price'
 
 datagrid:
   filters:
@@ -32,6 +34,7 @@ datagrid:
     max_torque: 'Max Torque'
     r_hv: 'R/Hv'
     compression: 'Compression'
+    price: 'Price'
   list:
     id: 'Id'
     name: 'Engine Name'
@@ -42,3 +45,4 @@ datagrid:
     max_torque: 'Max Torque'
     r_hv: 'R/Hv'
     compression: 'Compression'
+    price: 'Price'

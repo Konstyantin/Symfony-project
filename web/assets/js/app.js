@@ -12,7 +12,7 @@
          * Init methods
          */
         init: function () {
-            this.menuHover();
+            // this.menuHover();
         },
 
         /**
