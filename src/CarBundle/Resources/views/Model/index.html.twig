@@ -5,10 +5,15 @@
         <h2 class="text-center">Models</h2>
         <div class="model-list-section">
             {% for model in modelList %}
-                <div class="col-sm-4">
-                    <div class="model-logo">
-                        <img src="" alt="">
-                    </div>
+                <div class="col-sm-3 model-item">
+                    <a href="">
+                        <div class="model-logo">
+                            <img src="{% path model.imageLogo, 'reference' %}" alt="">
+                        </div>
+                        <div class="model-data">
+                            <span>{{ model.name }}</span>
+                        </div>
+                    </a>
                 </div>
             {% endfor %}
         </div>

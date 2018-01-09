@@ -10,6 +10,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
  */
 class ModelController extends Controller
 {
+    /**
+     * Index Action
+     *
+     * Show list existing model item
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function indexAction()
     {
         $em = $this->getDoctrine();

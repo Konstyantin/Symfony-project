@@ -255,3 +255,27 @@
     font-size: 16px;
     margin-top: 10px;
 }
+
+/* Model list section */
+
+.model-list-section .model-item a {
+    text-decoration: none;
+}
+
+.model-list-section .model-item .model-logo img{
+    width: 100%;
+}
+
+.model-list-section .model-item .model-data {
+    text-align: center;
+}
+
+.model-list-section .model-item .model-data span {
+    color: #000;
+    font-size: 16px;
+}
+
+.model-list-section .model-item:hover .model-data span {
+    color: #c00;
+}
+
