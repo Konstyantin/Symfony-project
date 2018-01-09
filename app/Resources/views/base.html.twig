@@ -49,7 +49,7 @@
                                                     <li class="list-car-item" id="car-item-{{ model.id }}">
                                                         <span>{{ car.name }}</span>
                                                         <div class="car-data">
-                                                            <img src="http://porsche.ua/images/doc/1/b/1b7410b-porsche-normal.jpg" alt="">
+                                                            <img src="{% path car.imagePreview, 'reference' %}" alt="">
                                                             <div class="car-data-name">
                                                                 <span class="data-name">{{ car.name }}</span>
                                                             </div>

@@ -2,9 +2,15 @@ index:
     resource: "@AppBundle/Resources/config/routing.yml"
     prefix: /
 
+
+# Car bundle routes
 car:
     resource: "@CarBundle/Resources/config/routing.yml"
     prefix:   /car
+
+model_list:
+    path:     /model
+    defaults: { _controller: CarBundle:Model:index}
 
 app:
     resource: '@AppBundle/Controller/'
