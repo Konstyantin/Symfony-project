@@ -3,15 +3,11 @@
 namespace CarBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Car Entity
- *
- * @Vich\Uploadable
  *
  * @ORM\Table(name="car")
  * @ORM\Entity(repositoryClass="CarBundle\Repository\CarRepository")
@@ -43,36 +39,6 @@ class Car
      * @ORM\Column(name="price", type="integer")
      */
     protected $price;
-
-    /**
-     * NOTE: This is not a mapped field of entity metadata, just a simple property.
-     *
-     * @Assert\Image(
-     *     mimeTypes={"image/jpeg", "image/png"},
-     *     mimeTypesMessage = "Wrong file type (jpg,gif)",
-     *     maxHeight="290",
-     *     maxWidth="520"
-     * )
-     *
-     * @Vich\UploadableField(mapping="car_image", fileNameProperty="imageName", size="imageSize")
-     *
-     * @var File
-     */
-    private $imageFile;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     *
-     * @var string
-     */
-    private $imageName;
-
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     *
-     * @var \DateTime
-     */
-    private $updatedAt;
 
     /**
      * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Model", inversedBy="car", cascade={"persist", "remove"})
@@ -114,14 +80,33 @@ class Car
 
     /**
      * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="logo_id", referencedColumnName="id")
+     */
+    protected $imageLogo;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="media_id", referencedColumnName="id")
      */
     protected $imagePreview;
 
     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->body = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->engine = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->fuel = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->dynamics = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->feature = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->transmission = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -201,23 +186,33 @@ class Car
     }
 
     /**
-     * Set body
+     * Add body
      *
      * @param \CarBundle\Entity\Body $body
      *
      * @return Car
      */
-    public function setBody(\CarBundle\Entity\Body $body = null)
+    public function addBody(\CarBundle\Entity\Body $body)
     {
-        $this->body = $body;
+        $this->body[] = $body;
 
         return $this;
     }
 
     /**
+     * Remove body
+     *
+     * @param \CarBundle\Entity\Body $body
+     */
+    public function removeBody(\CarBundle\Entity\Body $body)
+    {
+        $this->body->removeElement($body);
+    }
+
+    /**
      * Get body
      *
-     * @return \CarBundle\Entity\Body
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getBody()
     {
@@ -225,23 +220,33 @@ class Car
     }
 
     /**
-     * Set engine
+     * Add engine
      *
      * @param \CarBundle\Entity\Engine $engine
      *
      * @return Car
      */
-    public function setEngine(\CarBundle\Entity\Engine $engine = null)
+    public function addEngine(\CarBundle\Entity\Engine $engine)
     {
-        $this->engine = $engine;
+        $this->engine[] = $engine;
 
         return $this;
     }
 
     /**
+     * Remove engine
+     *
+     * @param \CarBundle\Entity\Engine $engine
+     */
+    public function removeEngine(\CarBundle\Entity\Engine $engine)
+    {
+        $this->engine->removeElement($engine);
+    }
+
+    /**
      * Get engine
      *
-     * @return \CarBundle\Entity\Engine
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getEngine()
     {
@@ -249,23 +254,33 @@ class Car
     }
 
     /**
-     * Set fuel
+     * Add fuel
      *
      * @param \CarBundle\Entity\Fuel $fuel
      *
      * @return Car
      */
-    public function setFuel(\CarBundle\Entity\Fuel $fuel = null)
+    public function addFuel(\CarBundle\Entity\Fuel $fuel)
     {
-        $this->fuel = $fuel;
+        $this->fuel[] = $fuel;
 
         return $this;
     }
 
     /**
+     * Remove fuel
+     *
+     * @param \CarBundle\Entity\Fuel $fuel
+     */
+    public function removeFuel(\CarBundle\Entity\Fuel $fuel)
+    {
+        $this->fuel->removeElement($fuel);
+    }
+
+    /**
      * Get fuel
      *
-     * @return \CarBundle\Entity\Fuel
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getFuel()
     {
@@ -273,122 +288,37 @@ class Car
     }
 
     /**
-     * Set dynamics
+     * Add dynamic
      *
-     * @param \CarBundle\Entity\Dynamics $dynamics
+     * @param \CarBundle\Entity\Dynamics $dynamic
      *
      * @return Car
      */
-    public function setDynamics(\CarBundle\Entity\Dynamics $dynamics = null)
+    public function addDynamic(\CarBundle\Entity\Dynamics $dynamic)
     {
-        $this->dynamics = $dynamics;
+        $this->dynamics[] = $dynamic;
 
         return $this;
+    }
+
+    /**
+     * Remove dynamic
+     *
+     * @param \CarBundle\Entity\Dynamics $dynamic
+     */
+    public function removeDynamic(\CarBundle\Entity\Dynamics $dynamic)
+    {
+        $this->dynamics->removeElement($dynamic);
     }
 
     /**
      * Get dynamics
      *
-     * @return \CarBundle\Entity\Dynamics
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getDynamics()
     {
         return $this->dynamics;
-    }
-
-    /**
-     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
-     * of 'UploadedFile' is injected into this setter to trigger the  update. If this
-     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
-     * must be able to accept an instance of 'File' as the bundle will inject one here
-     * during Doctrine hydration.
-     *
-     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
-     *
-     * @return Model
-     */
-    public function setImageFile(File $image = null)
-    {
-        $this->imageFile = $image;
-
-        if ($image) {
-            // It is required that at least one field changes if you are using doctrine
-            // otherwise the event listeners won't be called and the file is lost
-            $this->updatedAt = new \DateTimeImmutable();
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return File|null
-     */
-    public function getImageFile()
-    {
-        return $this->imageFile;
-    }
-
-    /**
-     * @param string $imageName
-     *
-     * @return Model
-     */
-    public function setImageName($imageName)
-    {
-        $this->imageName = $imageName;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getImageName()
-    {
-        return $this->imageName;
-    }
-
-    /**
-     * Get web path
-     *
-     * Get web path to upload image if record have image
-     *
-     * @return string
-     */
-    public function getWebPath()
-    {
-        return ($this->imageName) ? $this->imageName : false;
-    }
-
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     *
-     * @return Model
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->feature = new ArrayCollection();
     }
 
     /**
@@ -426,103 +356,6 @@ class Car
     }
 
     /**
-     * Add dynamic
-     *
-     * @param \CarBundle\Entity\Dynamics $dynamic
-     *
-     * @return Car
-     */
-    public function addDynamic(\CarBundle\Entity\Dynamics $dynamic)
-    {
-        $this->dynamics[] = $dynamic;
-
-        return $this;
-    }
-
-    /**
-     * Remove dynamic
-     *
-     * @param \CarBundle\Entity\Dynamics $dynamic
-     */
-    public function removeDynamic(\CarBundle\Entity\Dynamics $dynamic)
-    {
-        $this->dynamics->removeElement($dynamic);
-    }
-
-
-    /**
-     * Add fuel
-     *
-     * @param \CarBundle\Entity\Fuel $fuel
-     *
-     * @return Car
-     */
-    public function addFuel(\CarBundle\Entity\Fuel $fuel)
-    {
-        $this->fuel[] = $fuel;
-
-        return $this;
-    }
-
-    /**
-     * Remove fuel
-     *
-     * @param \CarBundle\Entity\Fuel $fuel
-     */
-    public function removeFuel(\CarBundle\Entity\Fuel $fuel)
-    {
-        $this->fuel->removeElement($fuel);
-    }
-
-    /**
-     * Add body
-     *
-     * @param \CarBundle\Entity\Body $body
-     *
-     * @return Car
-     */
-    public function addBody(\CarBundle\Entity\Body $body)
-    {
-        $this->body[] = $body;
-
-        return $this;
-    }
-
-    /**
-     * Remove body
-     *
-     * @param \CarBundle\Entity\Body $body
-     */
-    public function removeBody(\CarBundle\Entity\Body $body)
-    {
-        $this->body->removeElement($body);
-    }
-
-    /**
-     * Call magic method toString
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return (string) $this->getId();
-    }
-
-    /**
-     * Set feature
-     *
-     * @param \CarBundle\Entity\Feature $feature
-     *
-     * @return Car
-     */
-    public function setFeature(\CarBundle\Entity\Feature $feature = null)
-    {
-        $this->feature = $feature;
-
-        return $this;
-    }
-
-    /**
      * Add transmission
      *
      * @param \CarBundle\Entity\Transmission $transmission
@@ -557,27 +390,27 @@ class Car
     }
 
     /**
-     * Add engine
+     * Set imageLogo
      *
-     * @param \CarBundle\Entity\Engine $engine
+     * @param \Application\Sonata\MediaBundle\Entity\Media $imageLogo
      *
      * @return Car
      */
-    public function addEngine(\CarBundle\Entity\Engine $engine)
+    public function setImageLogo(\Application\Sonata\MediaBundle\Entity\Media $imageLogo = null)
     {
-        $this->engine[] = $engine;
+        $this->imageLogo = $imageLogo;
 
         return $this;
     }
 
     /**
-     * Remove engine
+     * Get imageLogo
      *
-     * @param \CarBundle\Entity\Engine $engine
+     * @return \Application\Sonata\MediaBundle\Entity\Media
      */
-    public function removeEngine(\CarBundle\Entity\Engine $engine)
+    public function getImageLogo()
     {
-        $this->engine->removeElement($engine);
+        return $this->imageLogo;
     }
 
     /**
@@ -602,5 +435,15 @@ class Car
     public function getImagePreview()
     {
         return $this->imagePreview;
+    }
+
+    /**
+     * Use Car entity as string
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getId();
     }
 }
