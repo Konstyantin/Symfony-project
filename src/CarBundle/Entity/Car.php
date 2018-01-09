@@ -113,6 +113,12 @@ class Car
     protected $transmission;
 
     /**
+     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="media_id", referencedColumnName="id")
+     */
+    protected $imagePreview;
+
+    /**
      * Get id
      *
      * @return int
@@ -572,5 +578,29 @@ class Car
     public function removeEngine(\CarBundle\Entity\Engine $engine)
     {
         $this->engine->removeElement($engine);
+    }
+
+    /**
+     * Set imagePreview
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $imagePreview
+     *
+     * @return Car
+     */
+    public function setImagePreview(\Application\Sonata\MediaBundle\Entity\Media $imagePreview = null)
+    {
+        $this->imagePreview = $imagePreview;
+
+        return $this;
+    }
+
+    /**
+     * Get imagePreview
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media
+     */
+    public function getImagePreview()
+    {
+        return $this->imagePreview;
     }
 }

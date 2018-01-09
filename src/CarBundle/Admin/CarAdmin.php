@@ -92,6 +92,10 @@ class CarAdmin extends AbstractAdmin
                         'allow_delete' => true,
                         'download_link' => true,
                     ])
+                    ->add('imagePreview', 'sonata_media_type', [
+                        'provider' => 'sonata.media.provider.image',
+                        'context' => 'CarPreview'
+                    ])
                 ->end()
             ->end()
             ->tab('Body')
