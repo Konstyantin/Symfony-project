@@ -46,11 +46,9 @@ class ModelAdmin extends AbstractAdmin
                     'placeholder' => 'form.placeholder.name'
                 ]
             ])
-            ->add('imageFile', VichImageType::class, [
-                'label' => false,
-                'required' => false,
-                'allow_delete' => true,
-                'download_link' => true,
+            ->add('imageLogo', 'sonata_media_type', [
+                'provider' => 'sonata.media.provider.image',
+                'context' => 'CarPreview'
             ])
         ;
     }

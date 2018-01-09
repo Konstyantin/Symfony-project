@@ -250,6 +250,21 @@ sonata_media:
             formats:
                 preview: { width: 100, quality: 100}
                 wide:    { width: 820, quality: 100}
+        CarLogo:
+            providers:
+              - sonata.media.provider.image
+
+            formats:
+                preview: { width: 100, quality: 100}
+                wide:    { width: 820, quality: 100}
+        ModelLogo:
+            providers:
+              - sonata.media.provider.image
+
+            formats:
+                preview: { width: 100, quality: 100}
+                wide:    { width: 820, quality: 100}
+
 
     cdn:
         server:

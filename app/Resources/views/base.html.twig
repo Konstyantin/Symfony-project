@@ -41,7 +41,7 @@
                                             <span>{{ model.name }}</span>
                                         </div>
                                         <div class="col-sm-7 item-logo">
-                                            <img src="{{ uploda_image_path }}/models/{{ model.imageName }}" alt="">
+                                            <img src="{% path model.imageLogo, 'reference' %}" alt="">
                                         </div>
                                         {% if model.car is not empty %}
                                             <ul class="model-list-car" id="{{ model.id }}">
