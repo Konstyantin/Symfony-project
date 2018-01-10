@@ -32,13 +32,15 @@
                             <ul class="dropdown-menu model-list">
                                 <li class="model-item clearfix" id="">
                                     <div class="col-sm-5 item-name">
-                                        <span>All Models</span>
+                                        <span><a href="{{ path('model_list') }}">Models list</a></span>
                                     </div>
                                 </li>
                                 {% for model in model_management.getList %}
                                     <li class="model-item clearfix" id="{{ model.id }}">
                                         <div class="col-sm-5 item-name">
-                                            <span>{{ model.name }}</span>
+                                            <span>
+                                                <a href="{{ path('model_cars_list', {'model': model.name}) }}">{{ model.name }}</a>
+                                            </span>
                                         </div>
                                         <div class="col-sm-7 item-logo">
                                             <img src="{% path model.imageLogo, 'reference' %}" alt="">
@@ -47,7 +49,9 @@
                                             <ul class="model-list-car" id="{{ model.id }}">
                                                 {% for car in model.car %}
                                                     <li class="list-car-item" id="car-item-{{ model.id }}">
-                                                        <span>{{ car.name }}</span>
+                                                        <span>
+                                                            <a href="{{ path('car_view', {'carName': car.name, 'model': model.name}) }}">{{ car.name }}</a>
+                                                        </span>
                                                         <div class="car-data">
                                                             <img src="{% path car.imagePreview, 'reference' %}" alt="">
                                                             <div class="car-data-name">
@@ -66,7 +70,7 @@
                                                                             <a href="">Configured</a>
                                                                         </li>
                                                                         <li class="menu-item view-car">
-                                                                            <a href="">View</a>
+                                                                            <a href="{{ path('car_view', {'carName': car.name, 'model': model.name}) }}">View</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>

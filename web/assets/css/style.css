@@ -26,6 +26,8 @@
 .item-content-menu,
 .item-content-data {
     padding: 0;
+    border: none;
+    border-radius: 0;
 }
 
 .dropdown-menu-item .menu-item a {
@@ -66,7 +68,6 @@
     list-style: none;
     color: #000;
     padding: 0;
-    /*outline: 1px solid #eee;*/
     display: none;
 }
 
@@ -74,17 +75,17 @@
     outline: none;
 }
 
-.model-item .model-list-car a {
+.model-item .model-list-car span,
+.model-item .model-list-car span a {
     text-decoration: none;
+    color: #000;
+    font-size: 15px;
 }
 
 .model-item .model-list-car .list-car-item {
-    padding: 10px;
+    padding: 9.5px;
     color: #000;
-    text-decoration: none;
     border-bottom: 1px solid #eee;
-    font-size: 15px;
-    /*display: none;*/
 }
 
 .model-item .model-list-car .list-car-item:last-child {
@@ -93,6 +94,10 @@
 
 .model-item .model-list-car .list-car-item:hover {
     background-color: #c00;
+    color: #fff;
+}
+
+.model-item .model-list-car .list-car-item:hover span a {
     color: #fff;
 }
 
@@ -145,8 +150,8 @@
     color: #00a7d0;
 }
 
-.car-data-menu .menu-list .view-car a,
-.car-data-menu .menu-list .view-car:hover a {
+.car-data-menu .menu-list .view-car span a,
+.car-data-menu .menu-list .view-car:hover span a {
     color: #fff;
     background-color: #c00;
     padding: 10px 30px;
@@ -165,7 +170,7 @@
     padding: 30px 15px;
 }
 
-.model-list .model-item .item-name span {
+.model-list .model-item .item-name span a{
     text-decoration: none;
     color: #000000;
     font-size: 15px;
@@ -180,7 +185,7 @@
 }
 
 .model-list .model-item:hover,
-.model-list .model-item:hover .item-name > span,
+.model-list .model-item:hover .item-name > span a,
 .dropdown-menu-item .menu-item:hover a{
     background-color: #c00;
     color: #fff;
@@ -232,7 +237,7 @@
     text-align: center;
 }
 
-.models-section .models-list .models-item a {
+.models-section .models-list .models-item span a {
     text-decoration: none;
     color: #000;
 }
