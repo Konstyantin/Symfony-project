@@ -48,7 +48,7 @@ class ModelAdmin extends AbstractAdmin
             ])
             ->add('imageLogo', 'sonata_media_type', [
                 'provider' => 'sonata.media.provider.image',
-                'context' => 'CarPreview'
+                'context' => 'ModelLogo'
             ])
         ;
     }
