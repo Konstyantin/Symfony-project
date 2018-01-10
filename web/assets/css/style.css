@@ -262,19 +262,23 @@
     text-decoration: none;
 }
 
-.model-list-section .model-item .model-logo img{
+.car-list-section .car-item .car-logo img,
+.model-list-section .model-item .model-logo img {
     width: 100%;
 }
 
+.car-list-section .car-item .car-data,
 .model-list-section .model-item .model-data {
     text-align: center;
 }
 
+.car-list-section .car-item .car-data span,
 .model-list-section .model-item .model-data span {
     color: #000;
     font-size: 16px;
 }
 
+.car-list-section .car-item:hover .car-data span,
 .model-list-section .model-item:hover .model-data span {
     color: #c00;
 }

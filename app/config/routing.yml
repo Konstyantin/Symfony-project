@@ -12,6 +12,10 @@ model_list:
     path:     /model
     defaults: { _controller: CarBundle:Model:index}
 
+model_cars_list:
+    path:     /model/{model}
+    defaults: { _controller: CarBundle:Model:modelCars}
+
 app:
     resource: '@AppBundle/Controller/'
     type: annotation

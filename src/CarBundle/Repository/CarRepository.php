@@ -66,4 +66,23 @@ class CarRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getOneOrNullResult();
     }
+
+    /**
+     * Get cars by model
+     *
+     * Get car list item by model item
+     *
+     * @param string $model
+     * @return array
+     */
+    public function getCarsByModel(string $model)
+    {
+        $query = $this->createQueryBuilder('c')
+            ->join('CarBundle:Model', 'm', 'WITH', 'c.model = m.id')
+            ->where('m.name =:model')
+            ->setParameter('model', $model)
+            ->getQuery();
+
+        return $query->getResult();
+    }
 }

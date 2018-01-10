@@ -2,6 +2,7 @@
 
 namespace CarBundle\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
@@ -25,6 +26,29 @@ class ModelController extends Controller
 
         return $this->render('@Car/Model/index.html.twig', [
             'modelList' => $modelList
+        ]);
+    }
+
+    /**
+     * Model cars Action
+     *
+     * Show cars list by model name
+     *
+     * @param Request $request
+     * @param string $model
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function modelCarsAction(Request $request, string $model)
+    {
+        $em = $this->getDoctrine();
+
+        $modelName = $request->get('model');
+
+        $carList = $em->getRepository('CarBundle:Car')->getCarsByModel($model);
+
+        return $this->render('CarBundle:Model:modelCars.html.twig', [
+            'carList' => $carList,
+            'model' => $model
         ]);
     }
 }
