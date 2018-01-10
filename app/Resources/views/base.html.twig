@@ -30,87 +30,93 @@
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu model-list">
-                                <li class="model-item clearfix" id="">
-                                    <div class="col-sm-5 item-name">
-                                        <span><a href="{{ path('model_list') }}">Models list</a></span>
-                                    </div>
-                                </li>
+                                <a href="{{ path('model_list') }}">
+                                    <li class="model-item clearfix" id="">
+                                        <div class="col-sm-5 item-name">
+                                            <span>Models list</span>
+                                        </div>
+                                    </li>
+                                </a>
                                 {% for model in model_management.getList %}
                                     <li class="model-item clearfix" id="{{ model.id }}">
-                                        <div class="col-sm-5 item-name">
-                                            <span>
-                                                <a href="{{ path('model_cars_list', {'model': model.name}) }}">{{ model.name }}</a>
-                                            </span>
-                                        </div>
-                                        <div class="col-sm-7 item-logo">
-                                            <img src="{% path model.imageLogo, 'reference' %}" alt="">
-                                        </div>
+                                        <a href="{{ path('model_cars_list', {'model': model.name}) }}">
+                                            <div class="col-sm-5 item-name">
+                                                <span>
+                                                    {{ model.name }}
+                                                </span>
+                                            </div>
+                                            <div class="col-sm-7 item-logo">
+                                                <img src="{% path model.imageLogo, 'reference' %}" alt="">
+                                            </div>
+                                        </a>
                                         {% if model.car is not empty %}
                                             <ul class="model-list-car" id="{{ model.id }}">
                                                 {% for car in model.car %}
-                                                    <li class="list-car-item" id="car-item-{{ model.id }}">
-                                                        <span>
-                                                            <a href="{{ path('car_view', {'carName': car.name, 'model': model.name}) }}">{{ car.name }}</a>
-                                                        </span>
-                                                        <div class="car-data">
-                                                            <img src="{% path car.imagePreview, 'reference' %}" alt="">
-                                                            <div class="car-data-name">
-                                                                <span class="data-name">{{ car.name }}</span>
-                                                            </div>
-                                                            <div class="clearfix">
-                                                                <div class="col-sm-6 car-data-menu">
-                                                                    <ul class="menu-list">
-                                                                        <li class="menu-item">
-                                                                            <a href="">Technical Params</a>
-                                                                        </li>
-                                                                        <li class="menu-item">
-                                                                            <a href="">Params</a>
-                                                                        </li>
-                                                                        <li class="menu-item">
-                                                                            <a href="">Configured</a>
-                                                                        </li>
-                                                                        <li class="menu-item view-car">
-                                                                            <a href="{{ path('car_view', {'carName': car.name, 'model': model.name}) }}">View</a>
-                                                                        </li>
-                                                                    </ul>
+                                                    <a href="{{ path('car_view', {'carName': car.name, 'model': model.name}) }}">
+                                                        <li class="list-car-item" id="car-item-{{ model.id }}">
+                                                            <p class="car-name">
+                                                                {{ car.name }}
+                                                            </p>
+                                                            <div class="car-data">
+                                                                <img src="{% path car.imagePreview, 'reference' %}" alt="">
+                                                                <div class="car-data-name">
+                                                                    <p class="data-name">{{ car.name }}</p>
                                                                 </div>
-                                                                <div class="col-sm-6 car-data-params">
-                                                                    {% if car.engine|first.power is not empty %}
-                                                                        <div class="car-params-item">
-                                                                            <p class="params-key">
-                                                                                <b>Power</b>
-                                                                            </p>
-                                                                            <p class="params-val">{{ car.engine|first.power }} horsepower</p>
-                                                                        </div>
-                                                                    {% endif %}
-                                                                    {% if car.dynamics|first.acceleration is not empty %}
-                                                                        <div class="car-params-item">
-                                                                            <p class="params-key">
-                                                                                <b>Acceleration from 0 - 100 km/h</b>
-                                                                            </p>
-                                                                            <p class="params-val">{{ car.dynamics|first.acceleration }} s</p>
-                                                                        </div>
-                                                                    {% endif %}
-                                                                    {% if car.dynamics|first.speed  is not empty%}
-                                                                        <div class="car-params-item">
-                                                                            <p class="params-key">
-                                                                                <b>Top speed</b>
-                                                                            </p>
-                                                                            <p class="params-val">{{ car.dynamics|first.speed }} km/h</p>
-                                                                        </div>
-                                                                    {% endif %}
-                                                                    {% if car.fuel|first.combined is not empty %}
-                                                                        <div class="car-params-item">
-                                                                            <p class="params-key">
-                                                                                <b>Combined in l/100 km</b>
-                                                                            </p>
-                                                                            <p class="params-val">{{ car.fuel|first.combined }} L</p>
-                                                                        </div>
-                                                                    {% endif %}
+                                                                <div class="clearfix">
+                                                                    <div class="col-sm-6 car-data-menu">
+                                                                        <ul class="menu-list">
+                                                                            <li class="menu-item">
+                                                                                <a href="">Technical Params</a>
+                                                                            </li>
+                                                                            <li class="menu-item">
+                                                                                <a href="">Params</a>
+                                                                            </li>
+                                                                            <li class="menu-item">
+                                                                                <a href="">Configured</a>
+                                                                            </li>
+                                                                            <li class="menu-item view-car">
+                                                                                <a href="{{ path('car_view', {'carName': car.name, 'model': model.name}) }}">View</a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="col-sm-6 car-data-params">
+                                                                        {% if car.engine|first.power is not empty %}
+                                                                            <div class="car-params-item">
+                                                                                <p class="params-key">
+                                                                                    <b>Power</b>
+                                                                                </p>
+                                                                                <p class="params-val">{{ car.engine|first.power }} horsepower</p>
+                                                                            </div>
+                                                                        {% endif %}
+                                                                        {% if car.dynamics|first.acceleration is not empty %}
+                                                                            <div class="car-params-item">
+                                                                                <p class="params-key">
+                                                                                    <b>Acceleration from 0 - 100 km/h</b>
+                                                                                </p>
+                                                                                <p class="params-val">{{ car.dynamics|first.acceleration }} s</p>
+                                                                            </div>
+                                                                        {% endif %}
+                                                                        {% if car.dynamics|first.speed  is not empty%}
+                                                                            <div class="car-params-item">
+                                                                                <p class="params-key">
+                                                                                    <b>Top speed</b>
+                                                                                </p>
+                                                                                <p class="params-val">{{ car.dynamics|first.speed }} km/h</p>
+                                                                            </div>
+                                                                        {% endif %}
+                                                                        {% if car.fuel|first.combined is not empty %}
+                                                                            <div class="car-params-item">
+                                                                                <p class="params-key">
+                                                                                    <b>Combined in l/100 km</b>
+                                                                                </p>
+                                                                                <p class="params-val">{{ car.fuel|first.combined }} L</p>
+                                                                            </div>
+                                                                        {% endif %}
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </li>
+                                                        </li>
+                                                    </a>
                                                 {% endfor %}
                                             </ul>
                                         {% endif %}

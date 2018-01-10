@@ -30,6 +30,7 @@
     border-radius: 0;
 }
 
+
 .dropdown-menu-item .menu-item a {
     padding: 10px;
     border-bottom: 1px solid #eee;
@@ -75,17 +76,32 @@
     outline: none;
 }
 
-.model-item .model-list-car span,
-.model-item .model-list-car span a {
+.model-item .model-list-car a p,
+.model-item .model-list-car a {
     text-decoration: none;
     color: #000;
     font-size: 15px;
 }
 
-.model-item .model-list-car .list-car-item {
+.model-item .model-list-car a p {
+    margin-bottom: 0;
+}
+
+.list-car-item {
+    border-bottom: 1px solid #eee;
+}
+
+.model-item .model-list-car .list-car-item:hover a p {
+    color: #fff;
+}
+
+.model-item .model-list-car .list-car-item:hover a .data-name {
+    color: #000;
+}
+
+.model-item .model-list-car .list-car-item p {
     padding: 9.5px;
     color: #000;
-    border-bottom: 1px solid #eee;
 }
 
 .model-item .model-list-car .list-car-item:last-child {
@@ -121,6 +137,11 @@
     font-size: 15px;
 }
 
+.car-data-name {
+    border-bottom: none;
+}
+
+
 .car-data-name .data-name {
     font-weight: 600;
     font-size: 20px;
@@ -150,8 +171,8 @@
     color: #00a7d0;
 }
 
-.car-data-menu .menu-list .view-car span a,
-.car-data-menu .menu-list .view-car:hover span a {
+.car-data-menu .menu-list .view-car a,
+.car-data-menu .menu-list .view-car:hover a {
     color: #fff;
     background-color: #c00;
     padding: 10px 30px;
@@ -185,7 +206,7 @@
 }
 
 .model-list .model-item:hover,
-.model-list .model-item:hover .item-name > span a,
+.model-list .model-item:hover .item-name > span,
 .dropdown-menu-item .menu-item:hover a{
     background-color: #c00;
     color: #fff;
@@ -242,6 +263,14 @@
     color: #000;
 }
 
+.params-val, .params-key {
+    border-bottom: none;
+}
+
+.data-name {
+    color: #000;
+}
+
 /* User section */
 .login-container, .register-container {
     margin: 0 10.5%;
@@ -260,6 +289,20 @@
     font-size: 16px;
     margin-top: 10px;
 }
+
+.model-list .model-item .item-name span {
+    color: #000;
+    font-size: 15px;
+}
+
+.model-list .model-item .item-name:hover span {
+    color: #fff;
+}
+
+.dropdown-menu>li>a {
+    padding: 0;
+}
+
 
 /* Model list section */
 
