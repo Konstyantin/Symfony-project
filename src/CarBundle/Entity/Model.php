@@ -53,15 +53,7 @@ class Model
      */
     protected $imageLogo;
 
-    /**
-     * Call magic method __toString
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return (string) $this->getName();
-    }
+
 
     /**
      * Set imageLogo
@@ -160,5 +152,15 @@ class Model
     public function getCar()
     {
         return $this->car;
+    }
+
+    /**
+     * Call for handle Model entity as string
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getId();
     }
 }
