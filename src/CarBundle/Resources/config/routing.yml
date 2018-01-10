@@ -1,3 +1,11 @@
-car_homepage:
-    path:     /
-    defaults: { _controller: CarBundle:Index:index }
+model_list:
+    path:     /model
+    defaults: { _controller: CarBundle:Model:index}
+
+model_cars_list:
+    path:     /model/{model}
+    defaults: { _controller: CarBundle:Model:modelCars}
+
+car_view:
+    path:     /models/{model}/{carName}
+    defaults: { _controller: CarBundle:Car:view}
