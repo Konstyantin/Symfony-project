@@ -3,10 +3,10 @@
 {% block body %}
     <div class="container">
         <h2 class="text-center">Models</h2>
-        <div class="model-list-section">
+        <div class="model-list-section row">
             {% for model in modelList %}
                 <div class="col-sm-3 model-item">
-                    <a href="">
+                    <a href="{{ path('model_cars_list', {'model': model.name}) }}">
                         <div class="model-logo">
                             <img src="{% path model.imageLogo, 'reference' %}" alt="">
                         </div>
@@ -16,6 +16,22 @@
                     </a>
                 </div>
             {% endfor %}
+        </div>
+        <div class="details-model">
+            <h3>Model details</h3>
+            <ul class="details-model-list">
+                {% for model in modelList %}
+                    {% if loop.last %}
+                        <li>
+                            <a href="{{ path('model_cars_list', {'model': model.name}) }}">{{ model.name }}</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="{{ path('model_cars_list', {'model': model.name}) }}">{{ model.name }}</a><span>|</span>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
         </div>
     </div>
 {% endblock %}

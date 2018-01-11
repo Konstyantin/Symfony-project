@@ -46,8 +46,11 @@ class ModelController extends Controller
 
         $carList = $em->getRepository('CarBundle:Car')->getCarsByModel($model);
 
+        $modelList = $em->getRepository('CarBundle:Model')->getModelsList();
+
         return $this->render('CarBundle:Model:modelCars.html.twig', [
             'carList' => $carList,
+            'modelList' => $modelList,
             'model' => $model
         ]);
     }
