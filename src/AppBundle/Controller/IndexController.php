@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class IndexController extends Controller
 {
     /**
-     * Index action
+     * Car action
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */

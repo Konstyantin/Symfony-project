@@ -86,7 +86,7 @@ class Car
 
     /**
      * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="media_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="preview_id", referencedColumnName="id")
      */
     protected $imagePreview;
 

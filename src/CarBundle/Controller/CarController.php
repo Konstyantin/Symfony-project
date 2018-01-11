@@ -25,7 +25,7 @@ class CarController extends Controller
 
         $car = $em->getRepository('CarBundle:Car')->getItemModelCar($model, $carName);
 
-        return $this->render('CarBundle:Index:index.html.twig', [
+        return $this->render('CarBundle:Car:index.html.twig', [
             'car' => $car
         ]);
     }

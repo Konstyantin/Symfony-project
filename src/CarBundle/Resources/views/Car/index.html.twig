@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="car-preview-container">
+        <img src="{% path car.imagePreview, 'reference' %}" alt="">
+        {% if car.imagePreview.description is not empty %}
+            <h1 class="preview-description">{{ car.imagePreview.description }}</h1>
+        {% endif %}
+    </div>
+    <div class="car-view-section clearfix">
+        <div class="car-view-navigation col-sm-7 clearfix">
+            <div class="car-nav-item car-nav-menu col-sm-3">
+                <div class="dropdown car-navigation-btn">
+                    <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <span class="glyphicon glyphicon-align-justify"></span>
+                        Dropdown
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li>
+                            <a href="#">Tech params</a>
+                        </li>
+                        <li>
+                            <a href="#">Features</a>
+                        </li>
+                        <li>
+                            <a href="#">Gallery</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-nav-item col-sm-3">
+                <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+                <a href="">
+                    <span>Tech params</span>
+                </a>
+            </div>
+            <div class="car-nav-item col-sm-3">
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                <a href="">
+                    <span>Features</span>
+                </a>
+            </div>
+            <div class="car-nav-item col-sm-3">
+                <span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span>
+                <a href="">
+                    <span>Gallery</span>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -387,5 +387,64 @@ body {
     color: #c00;
 }
 
+.car-preview-container img {
+    width: 100%;
+}
 
+.car-preview-container .preview-description {
+    color: #fff;
+    position: absolute;
+    top: 100px;
+    left: 60px;
+}
 
+.car-view-navigation {
+    background-color: #eee;
+    padding-left: 0;
+}
+
+.car-view-navigation .car-nav-item {
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    text-align: center;
+}
+
+.car-view-navigation .car-navigation-btn {
+    text-align: left;
+}
+
+.car-view-navigation .car-nav-item a {
+    text-decoration: none;
+    color: #000;
+    line-height: 45px;
+}
+
+.car-view-navigation .car-nav-item:hover a span{
+    color: #900;
+}
+
+.car-view-navigation .car-nav-item > a > span {
+    font-size: 16px;
+    color: #000;
+}
+
+.car-nav-menu .car-navigation-btn button {
+    border: none;
+    font-size: 16px;
+    width: 100%;
+    background: #900;
+    color: #fff;
+    padding: 12px;
+}
+
+.car-view-navigation .car-navigation-btn .dropdown-menu {
+    padding: 0;
+    width: 100%;
+    font-size: 15px;
+    border-radius: 0;
+}
+
+.car-view-navigation .dropdown-menu li a {
+    padding-left: 40px;
+}
