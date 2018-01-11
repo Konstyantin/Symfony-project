@@ -49,4 +49,50 @@
             </div>
         </div>
     </div>
+    <div class="car-tech-param-section">
+        <div class="container">
+            <h2 class="text-center">Technical params</h2>
+            <div class="col-sm-6">
+                <img src="{% path car.imageLogo, 'reference' %}" alt="">
+            </div>
+            <div class="col-sm-6">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Manual</th>
+                        <th>PDK</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Price</td>
+                            <td>{{ car.price }}</td>
+                            <td>{{ car.price }}</td>
+                        </tr>
+                        <tr>
+                            <td>Power</td>
+                            <td>{{ car.engine|first.power }}</td>
+                            <td>{{ car.engine|last.power }}</td>
+                        </tr>
+                        <tr>
+                            <td>Acceleration</td>
+                            <td>{{ car.dynamics|first.acceleration }}</td>
+                            <td>{{ car.dynamics|last.acceleration }}</td>
+                        </tr>
+                        <tr>
+                            <td>Speed</td>
+                            <td>{{ car.dynamics|first.speed }}</td>
+                            <td>{{ car.dynamics|last.speed }}</td>
+                        </tr>
+                        <tr>
+                            <td>Fuel consumption</td>
+                            <td>{{ car.fuel|first.combined }}</td>
+                            <td>{{ car.fuel|last.combined }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 {% endblock %}
