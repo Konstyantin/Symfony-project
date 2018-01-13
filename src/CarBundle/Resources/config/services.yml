@@ -58,8 +58,19 @@ services:
               label_catalogue: 'Engine'
         public: true
 
+    # Model manager
     model_management:
         class: CarBundle\Services\ModelManagement
         arguments: [ '@doctrine.orm.entity_manager' ]
 
-
+    # Engine admin service component
+    admin.configuration:
+        class: CarBundle\Admin\ConfigurationAdmin
+        arguments: [~, CarBundle\Entity\Configuration, ~]
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              group: CarBundle
+              label: 'Configuration'
+              label_catalogue: 'Configuration'
+        public: true
