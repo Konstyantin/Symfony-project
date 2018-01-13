@@ -58,14 +58,17 @@ class Transmission
     protected $type;
 
     /**
-     * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Car", mappedBy="transmission")
-     */
-    protected $car;
-
-    /**
      * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Configuration", mappedBy="transmission")
      */
     protected $configuration;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->configuration = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -172,47 +175,7 @@ class Transmission
     {
         return $this->price;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->car = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add car
-     *
-     * @param \CarBundle\Entity\Car $car
-     *
-     * @return Transmission
-     */
-    public function addCar(\CarBundle\Entity\Car $car)
-    {
-        $this->car[] = $car;
-
-        return $this;
-    }
-
-    /**
-     * Remove car
-     *
-     * @param \CarBundle\Entity\Car $car
-     */
-    public function removeCar(\CarBundle\Entity\Car $car)
-    {
-        $this->car->removeElement($car);
-    }
-
-    /**
-     * Get car
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCar()
-    {
-        return $this->car;
-    }
+    
 
     /**
      * Call magic __toString method

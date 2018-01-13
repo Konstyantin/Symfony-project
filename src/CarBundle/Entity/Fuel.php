@@ -58,12 +58,6 @@ class Fuel
     protected $emission;
 
     /**
-     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Car", inversedBy="fuel", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="car_id", referencedColumnName="id", nullable=true)
-     */
-    protected $car;
-
-    /**
      * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Configuration", inversedBy="fuel", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="configuration_id", referencedColumnName="id")
      */
@@ -183,59 +177,6 @@ class Fuel
     }
 
     /**
-     * Add car
-     *
-     * @param \CarBundle\Entity\Car $car
-     *
-     * @return Fuel
-     */
-    public function addCar(\CarBundle\Entity\Car $car)
-    {
-        $this->car[] = $car;
-
-        return $this;
-    }
-
-    /**
-     * Remove car
-     *
-     * @param \CarBundle\Entity\Car $car
-     */
-    public function removeCar(\CarBundle\Entity\Car $car)
-    {
-        $this->car->removeElement($car);
-    }
-
-    /**
-     * Get car
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCar()
-    {
-        return $this->car;
-    }
-
-    /**
-     * Set car
-     *
-     * @param \CarBundle\Entity\Car $car
-     *
-     * @return Fuel
-     */
-    public function setCar(\CarBundle\Entity\Car $car = null)
-    {
-        $this->car = $car;
-
-        return $this;
-    }
-
-    public function __toString()
-    {
-        return (string) $this->id;
-    }
-
-    /**
      * Set configuration
      *
      * @param \CarBundle\Entity\Configuration $configuration
@@ -258,4 +199,15 @@ class Fuel
     {
         return $this->configuration;
     }
+
+    /**
+     * Use when call use entity as string
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->id;
+    }
+
 }

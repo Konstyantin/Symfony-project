@@ -41,12 +41,6 @@ class Dynamics
     protected $speed;
 
     /**
-     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Car", inversedBy="dynamics")
-     * @ORM\JoinColumn(name="car_id", referencedColumnName="id", nullable=true)
-     */
-    protected $car;
-
-    /**
      * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Configuration", inversedBy="dynamics")
      * @ORM\JoinColumn(name="configuration_id", referencedColumnName="id")
      */
@@ -115,54 +109,6 @@ class Dynamics
     public function __construct()
     {
         $this->car = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add car
-     *
-     * @param \CarBundle\Entity\Car $car
-     *
-     * @return Dynamics
-     */
-    public function addCar(\CarBundle\Entity\Car $car)
-    {
-        $this->car[] = $car;
-
-        return $this;
-    }
-
-    /**
-     * Remove car
-     *
-     * @param \CarBundle\Entity\Car $car
-     */
-    public function removeCar(\CarBundle\Entity\Car $car)
-    {
-        $this->car->removeElement($car);
-    }
-
-    /**
-     * Get car
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCar()
-    {
-        return $this->car;
-    }
-
-    /**
-     * Set car
-     *
-     * @param \CarBundle\Entity\Car $car
-     *
-     * @return Dynamics
-     */
-    public function setCar(\CarBundle\Entity\Car $car = null)
-    {
-        $this->car = $car;
-
-        return $this;
     }
 
     /**

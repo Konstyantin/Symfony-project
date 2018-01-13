@@ -104,11 +104,6 @@ class Engine
     protected $price;
 
     /**
-     * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Car", mappedBy="engine")
-     */
-    protected $car;
-
-    /**
      * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Configuration", mappedBy="engine")
      */
     protected $configuration;
@@ -118,7 +113,7 @@ class Engine
      */
     public function __construct()
     {
-        $this->car = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->configuration = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -348,50 +343,6 @@ class Engine
     }
 
     /**
-     * Add car
-     *
-     * @param \CarBundle\Entity\Car $car
-     *
-     * @return Engine
-     */
-    public function addCar(\CarBundle\Entity\Car $car)
-    {
-        $this->car[] = $car;
-
-        return $this;
-    }
-
-    /**
-     * Remove car
-     *
-     * @param \CarBundle\Entity\Car $car
-     */
-    public function removeCar(\CarBundle\Entity\Car $car)
-    {
-        $this->car->removeElement($car);
-    }
-
-    /**
-     * Get car
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCar()
-    {
-        return $this->car;
-    }
-
-    /**
-     * Call magic method __toString
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return (string) $this->getName();
-    }
-
-    /**
      * Add configuration
      *
      * @param \CarBundle\Entity\Configuration $configuration
@@ -423,5 +374,15 @@ class Engine
     public function getConfiguration()
     {
         return $this->configuration;
+    }
+
+    /**
+     * Call magic method __toString
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getName();
     }
 }

@@ -71,12 +71,6 @@ class Body
     protected $weight;
 
     /**
-     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Car", inversedBy="body", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="car_id", referencedColumnName="id", nullable=true)
-     */
-    protected $car;
-
-    /**
      * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Configuration", inversedBy="body", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="configuration_id", referencedColumnName="id")
      */
@@ -234,30 +228,6 @@ class Body
     public function getWeight()
     {
         return $this->weight;
-    }
-
-    /**
-     * Set car
-     *
-     * @param \CarBundle\Entity\Car $car
-     *
-     * @return Body
-     */
-    public function setCar(\CarBundle\Entity\Car $car = null)
-    {
-        $this->car = $car;
-
-        return $this;
-    }
-
-    /**
-     * Get car
-     *
-     * @return \CarBundle\Entity\Car
-     */
-    public function getCar()
-    {
-        return $this->car;
     }
 
     /**

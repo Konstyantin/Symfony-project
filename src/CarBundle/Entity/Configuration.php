@@ -56,16 +56,21 @@ class Configuration
     protected $dynamics;
 
     /**
-     * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Engine", inversedBy="car", cascade={"persist", "remove"})
+     * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Engine", inversedBy="configuration", cascade={"persist", "remove"})
      * @ORM\JoinTable(name="configure_engines")
      */
     protected $engine;
 
     /**
-     * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Transmission", inversedBy="car")
+     * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Transmission", inversedBy="configuration")
      * @ORM\JoinTable(name="configuration_transmission")
      */
     protected $transmission;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Car", mappedBy="configurations")
+     */
+    protected $car;
 
     /**
      * Constructor
@@ -305,5 +310,49 @@ class Configuration
     public function getPrice()
     {
         return $this->price;
+    }
+
+    /**
+     * Add car
+     *
+     * @param \CarBundle\Entity\Car $car
+     *
+     * @return Configuration
+     */
+    public function addCar(\CarBundle\Entity\Car $car)
+    {
+        $this->car[] = $car;
+
+        return $this;
+    }
+
+    /**
+     * Remove car
+     *
+     * @param \CarBundle\Entity\Car $car
+     */
+    public function removeCar(\CarBundle\Entity\Car $car)
+    {
+        $this->car->removeElement($car);
+    }
+
+    /**
+     * Get car
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCar()
+    {
+        return $this->car;
+    }
+
+    /**
+     * Use when call use entity as string
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getCarName();
     }
 }

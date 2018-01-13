@@ -46,14 +46,6 @@ class DynamicsType extends AbstractType
                     new NotBlank()
                 ]
             ])
-            ->add('car', EntityType::class, [
-                'label' => false,
-                'class' => Car::class,
-                'choice_label' => 'id',
-                'attr' => [
-                    'style' => 'display:none'
-                ]
-            ])
         ;
     }
 

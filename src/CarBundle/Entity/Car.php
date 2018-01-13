@@ -47,36 +47,15 @@ class Car
     protected $model;
 
     /**
-     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Body", mappedBy="car", cascade={"persist", "remove"}, orphanRemoval=true)
-     */
-    protected $body;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Engine", inversedBy="car", cascade={"persist", "remove"})
-     * @ORM\JoinTable(name="car_engines")
-     */
-    protected $engine;
-
-    /**
-     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Fuel", mappedBy="car", cascade={"persist", "remove"}, orphanRemoval=true)
-     */
-    protected $fuel;
-
-    /**
-     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Dynamics", mappedBy="car", cascade={"persist", "remove"}, orphanRemoval=true)
-     */
-    protected $dynamics;
-
-    /**
      * @ORM\OneToMany(targetEntity="CarBundle\Entity\Feature", mappedBy="car", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     protected $feature;
 
     /**
-     * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Transmission", inversedBy="car")
-     * @ORM\JoinTable(name="car_transmission")
+     * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Configuration", inversedBy="car")
+     * @ORM\JoinTable(name="car_configuration")
      */
-    protected $transmission;
+    protected $configurations;
 
     /**
      * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist", "remove"})
@@ -95,12 +74,8 @@ class Car
      */
     public function __construct()
     {
-        $this->body = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->engine = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->fuel = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->dynamics = new \Doctrine\Common\Collections\ArrayCollection();
         $this->feature = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->transmission = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->configurations = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -186,142 +161,6 @@ class Car
     }
 
     /**
-     * Add body
-     *
-     * @param \CarBundle\Entity\Body $body
-     *
-     * @return Car
-     */
-    public function addBody(\CarBundle\Entity\Body $body)
-    {
-        $this->body[] = $body;
-
-        return $this;
-    }
-
-    /**
-     * Remove body
-     *
-     * @param \CarBundle\Entity\Body $body
-     */
-    public function removeBody(\CarBundle\Entity\Body $body)
-    {
-        $this->body->removeElement($body);
-    }
-
-    /**
-     * Get body
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getBody()
-    {
-        return $this->body;
-    }
-
-    /**
-     * Add engine
-     *
-     * @param \CarBundle\Entity\Engine $engine
-     *
-     * @return Car
-     */
-    public function addEngine(\CarBundle\Entity\Engine $engine)
-    {
-        $this->engine[] = $engine;
-
-        return $this;
-    }
-
-    /**
-     * Remove engine
-     *
-     * @param \CarBundle\Entity\Engine $engine
-     */
-    public function removeEngine(\CarBundle\Entity\Engine $engine)
-    {
-        $this->engine->removeElement($engine);
-    }
-
-    /**
-     * Get engine
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getEngine()
-    {
-        return $this->engine;
-    }
-
-    /**
-     * Add fuel
-     *
-     * @param \CarBundle\Entity\Fuel $fuel
-     *
-     * @return Car
-     */
-    public function addFuel(\CarBundle\Entity\Fuel $fuel)
-    {
-        $this->fuel[] = $fuel;
-
-        return $this;
-    }
-
-    /**
-     * Remove fuel
-     *
-     * @param \CarBundle\Entity\Fuel $fuel
-     */
-    public function removeFuel(\CarBundle\Entity\Fuel $fuel)
-    {
-        $this->fuel->removeElement($fuel);
-    }
-
-    /**
-     * Get fuel
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getFuel()
-    {
-        return $this->fuel;
-    }
-
-    /**
-     * Add dynamic
-     *
-     * @param \CarBundle\Entity\Dynamics $dynamic
-     *
-     * @return Car
-     */
-    public function addDynamic(\CarBundle\Entity\Dynamics $dynamic)
-    {
-        $this->dynamics[] = $dynamic;
-
-        return $this;
-    }
-
-    /**
-     * Remove dynamic
-     *
-     * @param \CarBundle\Entity\Dynamics $dynamic
-     */
-    public function removeDynamic(\CarBundle\Entity\Dynamics $dynamic)
-    {
-        $this->dynamics->removeElement($dynamic);
-    }
-
-    /**
-     * Get dynamics
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getDynamics()
-    {
-        return $this->dynamics;
-    }
-
-    /**
      * Add feature
      *
      * @param \CarBundle\Entity\Feature $feature
@@ -356,37 +195,37 @@ class Car
     }
 
     /**
-     * Add transmission
+     * Add configuration
      *
-     * @param \CarBundle\Entity\Transmission $transmission
+     * @param \CarBundle\Entity\Configuration $configuration
      *
      * @return Car
      */
-    public function addTransmission(\CarBundle\Entity\Transmission $transmission)
+    public function addConfiguration(\CarBundle\Entity\Configuration $configuration)
     {
-        $this->transmission[] = $transmission;
+        $this->configurations[] = $configuration;
 
         return $this;
     }
 
     /**
-     * Remove transmission
+     * Remove configuration
      *
-     * @param \CarBundle\Entity\Transmission $transmission
+     * @param \CarBundle\Entity\Configuration $configuration
      */
-    public function removeTransmission(\CarBundle\Entity\Transmission $transmission)
+    public function removeConfiguration(\CarBundle\Entity\Configuration $configuration)
     {
-        $this->transmission->removeElement($transmission);
+        $this->configurations->removeElement($configuration);
     }
 
     /**
-     * Get transmission
+     * Get configurations
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getTransmission()
+    public function getConfigurations()
     {
-        return $this->transmission;
+        return $this->configurations;
     }
 
     /**

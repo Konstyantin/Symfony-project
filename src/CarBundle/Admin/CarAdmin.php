@@ -9,10 +9,7 @@
 namespace CarBundle\Admin;
 
 use CarBundle\Entity\Car;
-use CarBundle\Form\BodyType;
-use CarBundle\Form\DynamicsType;
 use CarBundle\Form\FeatureType;
-use CarBundle\Form\FuelType;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -43,87 +40,49 @@ class CarAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $form)
     {
         $form
-            ->tab('Car')
-                ->with('Car')
-                    ->add('name', TextType::class, [
-                        'label' => 'form.label.name',
-                        'translation_domain' => 'SonataCarBundle',
-                        'required' => false,
-                        'attr' => [
-                            'placeholder' => 'form.placeholder.name'
-                        ]
-                    ])
-                    ->add('price', TextType::class, [
-                        'label' => 'form.label.price',
-                        'translation_domain' => 'SonataCarBundle',
-                        'required' => false,
-                        'attr' => [
-                            'placeholder' => 'form.label.price'
-                        ]
-                    ])
-                    ->add('model', EntityType::class, [
-                        'class' => 'CarBundle:Model',
-                        'choice_label' => 'name',
-                        'multiple' => false,
-                        'required' => false,
-                    ])
-                    ->add('model', 'sonata_type_model', [
-                        'class' => 'CarBundle:Model',
-                    ])
-                    ->add('engine', 'sonata_type_model', [
-                        'class' => 'CarBundle:Engine',
-                        'multiple' => true
-                    ])
-                    ->add('transmission', 'sonata_type_model', [
-                        'class' => 'CarBundle:Transmission',
-                        'multiple' => true
-                    ])
-                    ->add('feature', CollectionType::class, [
-                        'label' => 'Feature',
-                        'entry_type' => FeatureType::class,
-                        'allow_add' => true,
-                        'allow_delete' => true
-                    ])
-                    ->add('imageLogo', 'sonata_media_type', [
-                        'provider' => 'sonata.media.provider.image',
-                        'context' => 'CarLogo'
-                    ])
-                    ->add('imagePreview', 'sonata_media_type', [
-                        'provider' => 'sonata.media.provider.image',
-                        'context' => 'CarPreview'
-                    ])
-                ->end()
-            ->end()
-            ->tab('Body')
-                ->with('Body')
-                    ->add('body', CollectionType::class, [
-                        'label' => false,
-                        'entry_type' => BodyType::class,
-                        'allow_add' => true,
-                        'allow_delete' => true
-                    ])
-                ->end()
-            ->end()
-            ->tab('Fuel')
-                ->with('Fuel')
-                    ->add('fuel', CollectionType::class, [
-                        'label' => false,
-                        'entry_type' => FuelType::class,
-                        'allow_add' => true,
-                        'allow_delete' => true
-                    ])
-                ->end()
-            ->end()
-            ->tab('Dynamics')
-                ->with('Dynamics')
-                    ->add('dynamics', CollectionType::class, [
-                        'label' => false,
-                        'entry_type' => DynamicsType::class,
-                        'allow_add' => true,
-                        'allow_delete' => true
-                    ])
-                ->end()
-            ->end()
+            ->add('name', TextType::class, [
+                'label' => 'form.label.name',
+                'translation_domain' => 'SonataCarBundle',
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'form.placeholder.name'
+                ]
+            ])
+            ->add('price', TextType::class, [
+                'label' => 'form.label.price',
+                'translation_domain' => 'SonataCarBundle',
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'form.label.price'
+                ]
+            ])
+            ->add('model', EntityType::class, [
+                'class' => 'CarBundle:Model',
+                'choice_label' => 'name',
+                'multiple' => false,
+                'required' => false,
+            ])
+            ->add('model', 'sonata_type_model', [
+                'class' => 'CarBundle:Model',
+            ])
+            ->add('configurations', 'sonata_type_model', [
+                'class' => 'CarBundle:Configuration',
+                'multiple' => true
+            ])
+            ->add('feature', CollectionType::class, [
+                'label' => 'Feature',
+                'entry_type' => FeatureType::class,
+                'allow_add' => true,
+                'allow_delete' => true
+            ])
+            ->add('imageLogo', 'sonata_media_type', [
+                'provider' => 'sonata.media.provider.image',
+                'context' => 'CarLogo'
+            ])
+            ->add('imagePreview', 'sonata_media_type', [
+                'provider' => 'sonata.media.provider.image',
+                'context' => 'CarPreview'
+            ])
         ;
     }
 
@@ -134,14 +93,8 @@ class CarAdmin extends AbstractAdmin
      */
     public function postPersist($object)
     {
-        $bodyList = $object->getBody();
-        $fuelList = $object->getFuel();
-        $dynamicsList = $object->getDynamics();
         $featureList = $object->getFeature();
 
-        $this->setRelationData($bodyList, $object);
-        $this->setRelationData($fuelList, $object);
-        $this->setRelationData($dynamicsList, $object);
         $this->setRelationData($featureList, $object);
     }
 
@@ -152,14 +105,8 @@ class CarAdmin extends AbstractAdmin
      */
     public function postUpdate($object)
     {
-        $bodyList = $object->getBody();
-        $fuelList = $object->getFuel();
-        $dynamicsList = $object->getDynamics();
         $featureList = $object->getFeature();
 
-        $this->setRelationData($bodyList, $object);
-        $this->setRelationData($fuelList, $object);
-        $this->setRelationData($dynamicsList, $object);
         $this->setRelationData($featureList, $object);
     }
 
