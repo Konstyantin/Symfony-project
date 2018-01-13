@@ -32,6 +32,15 @@ class Configuration
     protected $carName;
 
     /**
+     * @var integer
+     *
+     * @Assert\NotBlank()
+     *
+     * @ORM\Column(name="price", type="integer")
+     */
+    protected $price;
+
+    /**
      * @ORM\OneToMany(targetEntity="CarBundle\Entity\Body", mappedBy="configuration", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     protected $body;
@@ -53,6 +62,12 @@ class Configuration
     protected $engine;
 
     /**
+     * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Transmission", inversedBy="car")
+     * @ORM\JoinTable(name="configuration_transmission")
+     */
+    protected $transmission;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -60,6 +75,8 @@ class Configuration
         $this->body = new \Doctrine\Common\Collections\ArrayCollection();
         $this->fuel = new \Doctrine\Common\Collections\ArrayCollection();
         $this->dynamics = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->engine = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->transmission = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -230,5 +247,63 @@ class Configuration
     public function getEngine()
     {
         return $this->engine;
+    }
+
+    /**
+     * Add transmission
+     *
+     * @param \CarBundle\Entity\Transmission $transmission
+     *
+     * @return Configuration
+     */
+    public function addTransmission(\CarBundle\Entity\Transmission $transmission)
+    {
+        $this->transmission[] = $transmission;
+
+        return $this;
+    }
+
+    /**
+     * Remove transmission
+     *
+     * @param \CarBundle\Entity\Transmission $transmission
+     */
+    public function removeTransmission(\CarBundle\Entity\Transmission $transmission)
+    {
+        $this->transmission->removeElement($transmission);
+    }
+
+    /**
+     * Get transmission
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTransmission()
+    {
+        return $this->transmission;
+    }
+
+    /**
+     * Set price
+     *
+     * @param integer $price
+     *
+     * @return Configuration
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return integer
+     */
+    public function getPrice()
+    {
+        return $this->price;
     }
 }

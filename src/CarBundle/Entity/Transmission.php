@@ -63,6 +63,11 @@ class Transmission
     protected $car;
 
     /**
+     * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Configuration", mappedBy="transmission")
+     */
+    protected $configuration;
+
+    /**
      * Get id
      *
      * @return int
@@ -217,5 +222,39 @@ class Transmission
     public function __toString()
     {
         return (string) $this->getName();
+    }
+
+    /**
+     * Add configuration
+     *
+     * @param \CarBundle\Entity\Configuration $configuration
+     *
+     * @return Transmission
+     */
+    public function addConfiguration(\CarBundle\Entity\Configuration $configuration)
+    {
+        $this->configuration[] = $configuration;
+
+        return $this;
+    }
+
+    /**
+     * Remove configuration
+     *
+     * @param \CarBundle\Entity\Configuration $configuration
+     */
+    public function removeConfiguration(\CarBundle\Entity\Configuration $configuration)
+    {
+        $this->configuration->removeElement($configuration);
+    }
+
+    /**
+     * Get configuration
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getConfiguration()
+    {
+        return $this->configuration;
     }
 }

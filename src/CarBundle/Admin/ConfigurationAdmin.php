@@ -18,6 +18,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 /**
@@ -48,6 +49,17 @@ class ConfigurationAdmin extends AbstractAdmin
                     ->add('engine', 'sonata_type_model', [
                         'class' => 'CarBundle:Engine',
                         'multiple' => true
+                    ])
+                    ->add('transmission', 'sonata_type_model', [
+                        'class' => 'CarBundle:Transmission',
+                        'multiple' => true
+                    ])
+                    ->add('price', NumberType::class, [
+                        'label' => 'Price',
+                        'required' => false,
+                        'attr' => [
+                            'placeholder' => 'Price'
+                        ]
                     ])
                 ->end()
             ->end()
