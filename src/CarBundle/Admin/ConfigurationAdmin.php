@@ -45,6 +45,10 @@ class ConfigurationAdmin extends AbstractAdmin
                             'placeholder' => 'Car name'
                         ]
                     ])
+                    ->add('engine', 'sonata_type_model', [
+                        'class' => 'CarBundle:Engine',
+                        'multiple' => true
+                    ])
                 ->end()
             ->end()
             ->tab('Body')

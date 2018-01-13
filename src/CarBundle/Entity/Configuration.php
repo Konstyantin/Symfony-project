@@ -45,7 +45,13 @@ class Configuration
      * @ORM\OneToMany(targetEntity="CarBundle\Entity\Dynamics", mappedBy="configuration", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     protected $dynamics;
-    
+
+    /**
+     * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Engine", inversedBy="car", cascade={"persist", "remove"})
+     * @ORM\JoinTable(name="configure_engines")
+     */
+    protected $engine;
+
     /**
      * Constructor
      */
@@ -190,5 +196,39 @@ class Configuration
     public function getDynamics()
     {
         return $this->dynamics;
+    }
+
+    /**
+     * Add engine
+     *
+     * @param \CarBundle\Entity\Engine $engine
+     *
+     * @return Configuration
+     */
+    public function addEngine(\CarBundle\Entity\Engine $engine)
+    {
+        $this->engine[] = $engine;
+
+        return $this;
+    }
+
+    /**
+     * Remove engine
+     *
+     * @param \CarBundle\Entity\Engine $engine
+     */
+    public function removeEngine(\CarBundle\Entity\Engine $engine)
+    {
+        $this->engine->removeElement($engine);
+    }
+
+    /**
+     * Get engine
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEngine()
+    {
+        return $this->engine;
     }
 }
