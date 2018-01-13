@@ -32,9 +32,34 @@ class Configuration
     protected $carName;
 
     /**
+     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Body", mappedBy="configuration", cascade={"persist", "remove"}, orphanRemoval=true)
+     */
+    protected $body;
+
+    /**
+     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Fuel", mappedBy="configuration", cascade={"persist", "remove"}, orphanRemoval=true)
+     */
+    protected $fuel;
+
+    /**
+     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Dynamics", mappedBy="configuration", cascade={"persist", "remove"}, orphanRemoval=true)
+     */
+    protected $dynamics;
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->body = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->fuel = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->dynamics = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -63,5 +88,107 @@ class Configuration
     public function getCarName()
     {
         return $this->carName;
+    }
+
+    /**
+     * Add body
+     *
+     * @param \CarBundle\Entity\Body $body
+     *
+     * @return Configuration
+     */
+    public function addBody(\CarBundle\Entity\Body $body)
+    {
+        $this->body[] = $body;
+
+        return $this;
+    }
+
+    /**
+     * Remove body
+     *
+     * @param \CarBundle\Entity\Body $body
+     */
+    public function removeBody(\CarBundle\Entity\Body $body)
+    {
+        $this->body->removeElement($body);
+    }
+
+    /**
+     * Get body
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBody()
+    {
+        return $this->body;
+    }
+
+    /**
+     * Add fuel
+     *
+     * @param \CarBundle\Entity\Fuel $fuel
+     *
+     * @return Configuration
+     */
+    public function addFuel(\CarBundle\Entity\Fuel $fuel)
+    {
+        $this->fuel[] = $fuel;
+
+        return $this;
+    }
+
+    /**
+     * Remove fuel
+     *
+     * @param \CarBundle\Entity\Fuel $fuel
+     */
+    public function removeFuel(\CarBundle\Entity\Fuel $fuel)
+    {
+        $this->fuel->removeElement($fuel);
+    }
+
+    /**
+     * Get fuel
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFuel()
+    {
+        return $this->fuel;
+    }
+
+    /**
+     * Add dynamic
+     *
+     * @param \CarBundle\Entity\Dynamics $dynamic
+     *
+     * @return Configuration
+     */
+    public function addDynamic(\CarBundle\Entity\Dynamics $dynamic)
+    {
+        $this->dynamics[] = $dynamic;
+
+        return $this;
+    }
+
+    /**
+     * Remove dynamic
+     *
+     * @param \CarBundle\Entity\Dynamics $dynamic
+     */
+    public function removeDynamic(\CarBundle\Entity\Dynamics $dynamic)
+    {
+        $this->dynamics->removeElement($dynamic);
+    }
+
+    /**
+     * Get dynamics
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDynamics()
+    {
+        return $this->dynamics;
     }
 }

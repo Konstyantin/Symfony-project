@@ -59,11 +59,15 @@ class Fuel
 
     /**
      * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Car", inversedBy="fuel", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="car_id", referencedColumnName="id")
-     *
-     * @var \Doctrine\Common\Collections\ArrayCollection
+     * @ORM\JoinColumn(name="car_id", referencedColumnName="id", nullable=true)
      */
     protected $car;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Configuration", inversedBy="fuel", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="configuration_id", referencedColumnName="id")
+     */
+    protected $configuration;
 
     /**
      * Get id
@@ -229,5 +233,29 @@ class Fuel
     public function __toString()
     {
         return (string) $this->id;
+    }
+
+    /**
+     * Set configuration
+     *
+     * @param \CarBundle\Entity\Configuration $configuration
+     *
+     * @return Fuel
+     */
+    public function setConfiguration(\CarBundle\Entity\Configuration $configuration = null)
+    {
+        $this->configuration = $configuration;
+
+        return $this;
+    }
+
+    /**
+     * Get configuration
+     *
+     * @return \CarBundle\Entity\Configuration
+     */
+    public function getConfiguration()
+    {
+        return $this->configuration;
     }
 }

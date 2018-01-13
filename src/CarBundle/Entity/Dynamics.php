@@ -33,6 +33,7 @@ class Dynamics
 
     /**
      * @var integer
+     *
      * @Assert\NotBlank()
      *
      * @ORM\Column(name="speed", type="integer")
@@ -41,9 +42,15 @@ class Dynamics
 
     /**
      * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Car", inversedBy="dynamics")
-     * @ORM\JoinColumn(name="car_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="car_id", referencedColumnName="id", nullable=true)
      */
     protected $car;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Configuration", inversedBy="dynamics")
+     * @ORM\JoinColumn(name="configuration_id", referencedColumnName="id")
+     */
+    protected $configuration;
 
     /**
      * Get id
@@ -156,5 +163,29 @@ class Dynamics
         $this->car = $car;
 
         return $this;
+    }
+
+    /**
+     * Set configuration
+     *
+     * @param \CarBundle\Entity\Configuration $configuration
+     *
+     * @return Dynamics
+     */
+    public function setConfiguration(\CarBundle\Entity\Configuration $configuration = null)
+    {
+        $this->configuration = $configuration;
+
+        return $this;
+    }
+
+    /**
+     * Get configuration
+     *
+     * @return \CarBundle\Entity\Configuration
+     */
+    public function getConfiguration()
+    {
+        return $this->configuration;
     }
 }

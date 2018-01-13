@@ -9,10 +9,15 @@
 namespace CarBundle\Admin;
 
 use CarBundle\Entity\Configuration;
+use CarBundle\Entity\Dynamics;
+use CarBundle\Form\BodyType;
+use CarBundle\Form\DynamicsType;
+use CarBundle\Form\FuelType;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Form\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 /**
@@ -31,13 +36,47 @@ class ConfigurationAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $form)
     {
         $form
-            ->add('carName', TextType::class, [
-                'label' => 'Car name',
-                'required' => false,
-                'attr' => [
-                    'placeholder' => 'Car name'
-                ]
-            ])
+            ->tab('Configuration')
+                ->with('Configuration')
+                    ->add('carName', TextType::class, [
+                        'label' => 'Car name',
+                        'required' => false,
+                        'attr' => [
+                            'placeholder' => 'Car name'
+                        ]
+                    ])
+                ->end()
+            ->end()
+            ->tab('Body')
+                ->with('Body')
+                    ->add('body', CollectionType::class, [
+                        'label' => false,
+                        'entry_type' => BodyType::class,
+                        'allow_add' => true,
+                        'allow_delete' => true
+                    ])
+                ->end()
+            ->end()
+            ->tab('Fuel')
+                ->with('Fuel')
+                    ->add('fuel', CollectionType::class, [
+                        'label' => false,
+                        'entry_type' => FuelType::class,
+                        'allow_add' => true,
+                        'allow_delete' => true
+                    ])
+                ->end()
+            ->end()
+            ->tab('Dynamics')
+                ->with('Dynamics')
+                    ->add('dynamics', CollectionType::class, [
+                        'label' => false,
+                        'entry_type' => DynamicsType::class,
+                        'allow_add' => true,
+                        'allow_delete' => true
+                    ])
+                ->end()
+            ->end()
         ;
     }
 
@@ -71,6 +110,58 @@ class ConfigurationAdmin extends AbstractAdmin
                 ]
             ]);
     }
+
+    /**
+     * Post persist
+     *
+     * @param mixed $object
+     */
+    public function postPersist($object)
+    {
+        $bodyList = $object->getBody();
+        $fuelList = $object->getFuel();
+        $dynamicsList = $object->getDynamics();
+
+        $this->setRelationData($bodyList, $object);
+        $this->setRelationData($fuelList, $object);
+        $this->setRelationData($dynamicsList, $object);
+    }
+
+    /**
+     * Post update
+     *
+     * @param mixed $object
+     */
+    public function postUpdate($object)
+    {
+        $bodyList = $object->getBody();
+        $fuelList = $object->getFuel();
+        $dynamicsList = $object->getDynamics();
+
+        $this->setRelationData($bodyList, $object);
+        $this->setRelationData($fuelList, $object);
+        $this->setRelationData($dynamicsList, $object);
+    }
+
+    /**
+     * Set relation data
+     *
+     * @param $collection
+     * @param Configuration $configuration
+     */
+    public function setRelationData($collection, Configuration $configuration)
+    {
+        if ($collection) {
+            $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
+
+            foreach ($collection as $item) {
+                $item->setConfiguration($configuration);
+                $em->persist($item);
+                $em->flush();
+            }
+        }
+    }
+
 
     /**
      * This receives the object to transform to a string as the first parameter
