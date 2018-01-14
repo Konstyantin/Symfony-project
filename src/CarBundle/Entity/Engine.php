@@ -104,7 +104,7 @@ class Engine
     protected $price;
 
     /**
-     * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Configuration", mappedBy="engine")
+     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Configuration", mappedBy="engine")
      */
     protected $configuration;
 

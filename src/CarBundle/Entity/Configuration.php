@@ -56,14 +56,14 @@ class Configuration
     protected $dynamics;
 
     /**
-     * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Engine", inversedBy="configuration", cascade={"persist", "remove"})
-     * @ORM\JoinTable(name="configure_engines")
+     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Engine", inversedBy="configuration", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="engine_id")
      */
     protected $engine;
 
     /**
-     * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Transmission", inversedBy="configuration")
-     * @ORM\JoinTable(name="configuration_transmission")
+     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Transmission", inversedBy="configuration", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="transmission_id", referencedColumnName="id")
      */
     protected $transmission;
 
@@ -80,8 +80,7 @@ class Configuration
         $this->body = new \Doctrine\Common\Collections\ArrayCollection();
         $this->fuel = new \Doctrine\Common\Collections\ArrayCollection();
         $this->dynamics = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->engine = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->transmission = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->car = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -116,6 +115,30 @@ class Configuration
     public function getCarName()
     {
         return $this->carName;
+    }
+
+    /**
+     * Set price
+     *
+     * @param integer $price
+     *
+     * @return Configuration
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return integer
+     */
+    public function getPrice()
+    {
+        return $this->price;
     }
 
     /**
@@ -221,33 +244,23 @@ class Configuration
     }
 
     /**
-     * Add engine
+     * Set engine
      *
      * @param \CarBundle\Entity\Engine $engine
      *
      * @return Configuration
      */
-    public function addEngine(\CarBundle\Entity\Engine $engine)
+    public function setEngine(\CarBundle\Entity\Engine $engine = null)
     {
-        $this->engine[] = $engine;
+        $this->engine = $engine;
 
         return $this;
     }
 
     /**
-     * Remove engine
-     *
-     * @param \CarBundle\Entity\Engine $engine
-     */
-    public function removeEngine(\CarBundle\Entity\Engine $engine)
-    {
-        $this->engine->removeElement($engine);
-    }
-
-    /**
      * Get engine
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \CarBundle\Entity\Engine
      */
     public function getEngine()
     {
@@ -255,61 +268,27 @@ class Configuration
     }
 
     /**
-     * Add transmission
+     * Set transmission
      *
      * @param \CarBundle\Entity\Transmission $transmission
      *
      * @return Configuration
      */
-    public function addTransmission(\CarBundle\Entity\Transmission $transmission)
+    public function setTransmission(\CarBundle\Entity\Transmission $transmission = null)
     {
-        $this->transmission[] = $transmission;
+        $this->transmission = $transmission;
 
         return $this;
-    }
-
-    /**
-     * Remove transmission
-     *
-     * @param \CarBundle\Entity\Transmission $transmission
-     */
-    public function removeTransmission(\CarBundle\Entity\Transmission $transmission)
-    {
-        $this->transmission->removeElement($transmission);
     }
 
     /**
      * Get transmission
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \CarBundle\Entity\Transmission
      */
     public function getTransmission()
     {
         return $this->transmission;
-    }
-
-    /**
-     * Set price
-     *
-     * @param integer $price
-     *
-     * @return Configuration
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
-    /**
-     * Get price
-     *
-     * @return integer
-     */
-    public function getPrice()
-    {
-        return $this->price;
     }
 
     /**

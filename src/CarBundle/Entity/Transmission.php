@@ -58,7 +58,7 @@ class Transmission
     protected $type;
 
     /**
-     * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Configuration", mappedBy="transmission")
+     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Configuration", mappedBy="transmission")
      */
     protected $configuration;
 
@@ -73,7 +73,7 @@ class Transmission
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -129,30 +129,6 @@ class Transmission
     }
 
     /**
-     * Set type
-     *
-     * @param \CarBundle\Entity\TransmissionType $type
-     *
-     * @return Transmission
-     */
-    public function setType(\CarBundle\Entity\TransmissionType $type = null)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return \CarBundle\Entity\TransmissionType
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
      * Set price
      *
      * @param integer $price
@@ -175,16 +151,29 @@ class Transmission
     {
         return $this->price;
     }
-    
 
     /**
-     * Call magic __toString method
+     * Set type
      *
-     * @return string
+     * @param \CarBundle\Entity\TransmissionType $type
+     *
+     * @return Transmission
      */
-    public function __toString()
+    public function setType(\CarBundle\Entity\TransmissionType $type = null)
     {
-        return (string) $this->getName();
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return \CarBundle\Entity\TransmissionType
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 
     /**
@@ -219,5 +208,15 @@ class Transmission
     public function getConfiguration()
     {
         return $this->configuration;
+    }
+
+    /**
+     * Call magic __toString method
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getName();
     }
 }

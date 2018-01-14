@@ -48,11 +48,11 @@ class ConfigurationAdmin extends AbstractAdmin
                     ])
                     ->add('engine', 'sonata_type_model', [
                         'class' => 'CarBundle:Engine',
-                        'multiple' => true
+                        'multiple' => false
                     ])
                     ->add('transmission', 'sonata_type_model', [
                         'class' => 'CarBundle:Transmission',
-                        'multiple' => true
+                        'multiple' => false
                     ])
                     ->add('price', NumberType::class, [
                         'label' => 'Price',
