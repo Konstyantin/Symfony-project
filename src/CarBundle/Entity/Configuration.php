@@ -51,7 +51,8 @@ class Configuration
     protected $fuel;
 
     /**
-     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Dynamics", mappedBy="configuration", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OneToOne(targetEntity="CarBundle\Entity\Dynamics", inversedBy="configuration", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="dynamics_id", referencedColumnName="id")
      */
     protected $dynamics;
 
@@ -72,6 +73,17 @@ class Configuration
      */
     protected $car;
 
+
+    /**
+     * Use when call use entity as string
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getCarName();
+    }
+
     /**
      * Constructor
      */
@@ -79,7 +91,6 @@ class Configuration
     {
         $this->body = new \Doctrine\Common\Collections\ArrayCollection();
         $this->fuel = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->dynamics = new \Doctrine\Common\Collections\ArrayCollection();
         $this->car = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -210,33 +221,23 @@ class Configuration
     }
 
     /**
-     * Add dynamic
+     * Set dynamics
      *
-     * @param \CarBundle\Entity\Dynamics $dynamic
+     * @param \CarBundle\Entity\Dynamics $dynamics
      *
      * @return Configuration
      */
-    public function addDynamic(\CarBundle\Entity\Dynamics $dynamic)
+    public function setDynamics(\CarBundle\Entity\Dynamics $dynamics = null)
     {
-        $this->dynamics[] = $dynamic;
+        $this->dynamics = $dynamics;
 
         return $this;
     }
 
     /**
-     * Remove dynamic
-     *
-     * @param \CarBundle\Entity\Dynamics $dynamic
-     */
-    public function removeDynamic(\CarBundle\Entity\Dynamics $dynamic)
-    {
-        $this->dynamics->removeElement($dynamic);
-    }
-
-    /**
      * Get dynamics
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \CarBundle\Entity\Dynamics
      */
     public function getDynamics()
     {
@@ -323,15 +324,5 @@ class Configuration
     public function getCar()
     {
         return $this->car;
-    }
-
-    /**
-     * Use when call use entity as string
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return (string) $this->getCarName();
     }
 }

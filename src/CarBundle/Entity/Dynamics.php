@@ -3,6 +3,7 @@
 namespace CarBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use function GuzzleHttp\Psr7\str;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -41,15 +42,15 @@ class Dynamics
     protected $speed;
 
     /**
-     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Configuration", inversedBy="dynamics")
-     * @ORM\JoinColumn(name="configuration_id", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="CarBundle\Entity\Configuration", mappedBy="dynamics")
      */
     protected $configuration;
+    
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -103,13 +104,6 @@ class Dynamics
     {
         return $this->speed;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->car = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Set configuration
@@ -133,5 +127,10 @@ class Dynamics
     public function getConfiguration()
     {
         return $this->configuration;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->getId();
     }
 }
