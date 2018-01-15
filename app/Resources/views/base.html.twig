@@ -80,38 +80,38 @@
                                                                         </ul>
                                                                     </div>
                                                                     <div class="col-sm-6 car-data-params">
-                                                                        {#{% if car.configurations|first.engine|first.power is not empty %}#}
-                                                                            {#<div class="car-params-item">#}
-                                                                                {#<p class="params-key">#}
-                                                                                    {#<b>Power</b>#}
-                                                                                {#</p>#}
-                                                                                {#<p class="params-val">{{ car.engine|first.power }} horsepower</p>#}
-                                                                            {#</div>#}
-                                                                        {#{% endif %}#}
-                                                                        {#{% if car.dynamics|first.acceleration is not empty %}#}
-                                                                            {#<div class="car-params-item">#}
-                                                                                {#<p class="params-key">#}
-                                                                                    {#<b>Acceleration from 0 - 100 km/h</b>#}
-                                                                                {#</p>#}
-                                                                                {#<p class="params-val">{{ car.dynamics|first.acceleration }} s</p>#}
-                                                                            {#</div>#}
-                                                                        {#{% endif %}#}
-                                                                        {#{% if car.dynamics|first.speed  is not empty%}#}
-                                                                            {#<div class="car-params-item">#}
-                                                                                {#<p class="params-key">#}
-                                                                                    {#<b>Top speed</b>#}
-                                                                                {#</p>#}
-                                                                                {#<p class="params-val">{{ car.dynamics|first.speed }} km/h</p>#}
-                                                                            {#</div>#}
-                                                                        {#{% endif %}#}
-                                                                        {#{% if car.fuel|first.combined is not empty %}#}
-                                                                            {#<div class="car-params-item">#}
-                                                                                {#<p class="params-key">#}
-                                                                                    {#<b>Combined in l/100 km</b>#}
-                                                                                {#</p>#}
-                                                                                {#<p class="params-val">{{ car.fuel|first.combined }} L</p>#}
-                                                                            {#</div>#}
-                                                                        {#{% endif %}#}
+                                                                        {% if car.configurations|first.engine.power is not empty %}
+                                                                            <div class="car-params-item">
+                                                                                <p class="params-key">
+                                                                                    <b>Power</b>
+                                                                                </p>
+                                                                                <p class="params-val">{{ car.configurations|first.engine.power }} horsepower</p>
+                                                                            </div>
+                                                                        {% endif %}
+                                                                        {% if car.configurations|first.dynamics.acceleration is not empty %}
+                                                                            <div class="car-params-item">
+                                                                                <p class="params-key">
+                                                                                    <b>Acceleration from 0 - 100 km/h</b>
+                                                                                </p>
+                                                                                <p class="params-val">{{ car.configurations|first.dynamics.acceleration }}</p>
+                                                                            </div>
+                                                                        {% endif %}
+                                                                        {% if car.configurations|first.dynamics.speed  is not empty%}
+                                                                            <div class="car-params-item">
+                                                                                <p class="params-key">
+                                                                                    <b>Top speed</b>
+                                                                                </p>
+                                                                                <p class="params-val">{{ car.configurations|first.dynamics.speed }} km/h</p>
+                                                                            </div>
+                                                                        {% endif %}
+                                                                        {% if car.configurations|first.fuel.combined is not empty %}
+                                                                            <div class="car-params-item">
+                                                                                <p class="params-key">
+                                                                                    <b>Combined in l/100 km</b>
+                                                                                </p>
+                                                                                <p class="params-val">{{ car.configurations|first.fuel.combined }} L</p>
+                                                                            </div>
+                                                                        {% endif %}
                                                                     </div>
                                                                 </div>
                                                             </div>
