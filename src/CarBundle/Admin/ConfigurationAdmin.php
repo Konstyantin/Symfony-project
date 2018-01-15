@@ -65,21 +65,15 @@ class ConfigurationAdmin extends AbstractAdmin
             ->end()
             ->tab('Body')
                 ->with('Body')
-                    ->add('body', CollectionType::class, [
+                    ->add('body', BodyType::class, [
                         'label' => false,
-                        'entry_type' => BodyType::class,
-                        'allow_add' => true,
-                        'allow_delete' => true
                     ])
                 ->end()
             ->end()
             ->tab('Fuel')
                 ->with('Fuel')
-                    ->add('fuel', CollectionType::class, [
+                    ->add('fuel', FuelType::class, [
                         'label' => false,
-                        'entry_type' => FuelType::class,
-                        'allow_add' => true,
-                        'allow_delete' => true
                     ])
                 ->end()
             ->end()
@@ -87,9 +81,6 @@ class ConfigurationAdmin extends AbstractAdmin
                 ->with('Dynamics')
                     ->add('dynamics', DynamicsType::class, [
                         'label' => false,
-//                        'entry_type' => DynamicsType::class,
-//                        'allow_add' => true,
-//                        'allow_delete' => true
                     ])
                 ->end()
             ->end()
@@ -137,7 +128,6 @@ class ConfigurationAdmin extends AbstractAdmin
         $bodyList = $object->getBody();
         $fuelList = $object->getFuel();
         $dynamicsList = $object->getDynamics();
-
 
         $this->setRelationData($bodyList, $object);
         $this->setRelationData($fuelList, $object);

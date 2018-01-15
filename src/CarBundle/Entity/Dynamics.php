@@ -129,6 +129,11 @@ class Dynamics
         return $this->configuration;
     }
 
+    /**
+     * Use entity as string
+     *
+     * @return string
+     */
     public function __toString()
     {
         return (string) $this->getId();

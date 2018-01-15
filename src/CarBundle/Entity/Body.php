@@ -71,8 +71,7 @@ class Body
     protected $weight;
 
     /**
-     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Configuration", inversedBy="body", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="configuration_id", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="CarBundle\Entity\Configuration", mappedBy="body")
      */
     protected $configuration;
 

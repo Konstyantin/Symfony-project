@@ -41,12 +41,14 @@ class Configuration
     protected $price;
 
     /**
-     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Body", mappedBy="configuration", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OneToOne(targetEntity="CarBundle\Entity\Body", inversedBy="configuration", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="body_id", referencedColumnName="id")
      */
     protected $body;
 
     /**
-     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Fuel", mappedBy="configuration", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OneToOne(targetEntity="CarBundle\Entity\Fuel", inversedBy="configuration", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="fuel_id", referencedColumnName="id")
      */
     protected $fuel;
 
@@ -82,16 +84,6 @@ class Configuration
     public function __toString()
     {
         return (string) $this->getCarName();
-    }
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->body = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->fuel = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->car = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -150,74 +142,6 @@ class Configuration
     public function getPrice()
     {
         return $this->price;
-    }
-
-    /**
-     * Add body
-     *
-     * @param \CarBundle\Entity\Body $body
-     *
-     * @return Configuration
-     */
-    public function addBody(\CarBundle\Entity\Body $body)
-    {
-        $this->body[] = $body;
-
-        return $this;
-    }
-
-    /**
-     * Remove body
-     *
-     * @param \CarBundle\Entity\Body $body
-     */
-    public function removeBody(\CarBundle\Entity\Body $body)
-    {
-        $this->body->removeElement($body);
-    }
-
-    /**
-     * Get body
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getBody()
-    {
-        return $this->body;
-    }
-
-    /**
-     * Add fuel
-     *
-     * @param \CarBundle\Entity\Fuel $fuel
-     *
-     * @return Configuration
-     */
-    public function addFuel(\CarBundle\Entity\Fuel $fuel)
-    {
-        $this->fuel[] = $fuel;
-
-        return $this;
-    }
-
-    /**
-     * Remove fuel
-     *
-     * @param \CarBundle\Entity\Fuel $fuel
-     */
-    public function removeFuel(\CarBundle\Entity\Fuel $fuel)
-    {
-        $this->fuel->removeElement($fuel);
-    }
-
-    /**
-     * Get fuel
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getFuel()
-    {
-        return $this->fuel;
     }
 
     /**
@@ -324,5 +248,60 @@ class Configuration
     public function getCar()
     {
         return $this->car;
+    }
+
+    /**
+     * Set fuel
+     *
+     * @param \CarBundle\Entity\Fuel $fuel
+     *
+     * @return Configuration
+     */
+    public function setFuel(\CarBundle\Entity\Fuel $fuel = null)
+    {
+        $this->fuel = $fuel;
+
+        return $this;
+    }
+
+    /**
+     * Get fuel
+     *
+     * @return \CarBundle\Entity\Fuel
+     */
+    public function getFuel()
+    {
+        return $this->fuel;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->car = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set body
+     *
+     * @param \CarBundle\Entity\Body $body
+     *
+     * @return Configuration
+     */
+    public function setBody(\CarBundle\Entity\Body $body = null)
+    {
+        $this->body = $body;
+
+        return $this;
+    }
+
+    /**
+     * Get body
+     *
+     * @return \CarBundle\Entity\Body
+     */
+    public function getBody()
+    {
+        return $this->body;
     }
 }

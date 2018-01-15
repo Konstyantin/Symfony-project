@@ -58,8 +58,7 @@ class Fuel
     protected $emission;
 
     /**
-     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Configuration", inversedBy="fuel", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="configuration_id", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="CarBundle\Entity\Configuration", mappedBy="fuel", cascade={"persist", "remove"})
      */
     protected $configuration;
 
@@ -168,12 +167,15 @@ class Fuel
     {
         return $this->emission;
     }
+
     /**
-     * Constructor
+     * Use when call use entity as string
+     *
+     * @return string
      */
-    public function __construct()
+    public function __toString()
     {
-        $this->car = new \Doctrine\Common\Collections\ArrayCollection();
+        return (string) $this->id;
     }
 
     /**
@@ -199,15 +201,4 @@ class Fuel
     {
         return $this->configuration;
     }
-
-    /**
-     * Use when call use entity as string
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return (string) $this->id;
-    }
-
 }
