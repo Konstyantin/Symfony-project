@@ -67,28 +67,28 @@
                     <tbody>
                         <tr>
                             <td>Price</td>
-                            <td>{{ car.price }}</td>
-                            <td>{{ car.price }}</td>
+                            <td>{{ car.configurations|first.price }}</td>
+                            <td>{{ car.configurations|last.price }}</td>
                         </tr>
                         <tr>
                             <td>Power</td>
-                            <td>{{ car.engine|first.power }}</td>
-                            <td>{{ car.engine|last.power }}</td>
+                            <td>{{ car.configurations|first.engine.power }}</td>
+                            <td>{{ car.configurations|last.engine.power }}</td>
                         </tr>
                         <tr>
                             <td>Acceleration</td>
-                            <td>{{ car.dynamics|first.acceleration }}</td>
-                            <td>{{ car.dynamics|last.acceleration }}</td>
+                            <td>{{ car.configurations|first.dynamics.acceleration }}</td>
+                            <td>{{ car.configurations|last.dynamics.acceleration }}</td>
                         </tr>
                         <tr>
                             <td>Speed</td>
-                            <td>{{ car.dynamics|first.speed }}</td>
-                            <td>{{ car.dynamics|last.speed }}</td>
+                            <td>{{ car.configurations|first.dynamics.speed }}</td>
+                            <td>{{ car.configurations|last.dynamics.speed }}</td>
                         </tr>
                         <tr>
                             <td>Fuel consumption</td>
-                            <td>{{ car.fuel|first.combined }}</td>
-                            <td>{{ car.fuel|last.combined }}</td>
+                            <td>{{ car.configurations|first.fuel.combined }}</td>
+                            <td>{{ car.configurations|last.fuel.combined }}</td>
                         </tr>
                     </tbody>
                 </table>
