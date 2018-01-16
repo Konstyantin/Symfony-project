@@ -118,57 +118,6 @@ class ConfigurationAdmin extends AbstractAdmin
             ]);
     }
 
-    /**
-     * Post persist
-     *
-     * @param mixed $object
-     */
-    public function postPersist($object)
-    {
-        $bodyList = $object->getBody();
-        $fuelList = $object->getFuel();
-        $dynamicsList = $object->getDynamics();
-
-        $this->setRelationData($bodyList, $object);
-        $this->setRelationData($fuelList, $object);
-        $this->setRelationData($dynamicsList, $object);
-    }
-
-    /**
-     * Post update
-     *
-     * @param mixed $object
-     */
-    public function postUpdate($object)
-    {
-        $bodyList = $object->getBody();
-        $fuelList = $object->getFuel();
-        $dynamicsList = $object->getDynamics();
-
-        $this->setRelationData($bodyList, $object);
-        $this->setRelationData($fuelList, $object);
-        $this->setRelationData($dynamicsList, $object);
-    }
-
-    /**
-     * Set relation data
-     *
-     * @param $collection
-     * @param Configuration $configuration
-     */
-    public function setRelationData($collection, Configuration $configuration)
-    {
-        if ($collection) {
-            $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
-
-            foreach ($collection as $item) {
-                $item->setConfiguration($configuration);
-                $em->persist($item);
-                $em->flush();
-            }
-        }
-    }
-
 
     /**
      * This receives the object to transform to a string as the first parameter
