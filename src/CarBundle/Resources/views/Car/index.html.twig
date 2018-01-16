@@ -29,19 +29,19 @@
                     </ul>
                 </div>
             </div>
-            <div class="car-nav-item col-sm-3">
+            <div class="car-nav-item page-nav-item col-sm-3">
                 <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
                 <a href="">
                     <span>Tech params</span>
                 </a>
             </div>
-            <div class="car-nav-item col-sm-3">
+            <div class="car-nav-item page-nav-item col-sm-3">
                 <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                 <a href="">
                     <span>Features</span>
                 </a>
             </div>
-            <div class="car-nav-item col-sm-3">
+            <div class="car-nav-item page-nav-item col-sm-3">
                 <span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span>
                 <a href="">
                     <span>Gallery</span>
@@ -50,45 +50,51 @@
         </div>
     </div>
     <div class="car-tech-param-section">
-        <div class="container">
+        <div class="clearfix">
             <h2 class="text-center">Technical params</h2>
-            <div class="col-sm-6">
+            <div class="col-sm-offset-1 col-sm-5">
                 <img src="{% path car.imageLogo, 'reference' %}" alt="">
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-5 configurations-data clearfix">
                 <table class="table">
                     <thead>
-                    <tr>
-                        <th></th>
-                        <th>Manual</th>
-                        <th>PDK</th>
-                    </tr>
+                        <tr>
+                            <th scope="col"></th>
+                            {% for configuration in car.configurations %}
+                                <th scope="col" class="configuration-type">{{ configuration.transmission.type }}</th>
+                            {% endfor %}
+                        </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Price</td>
-                            <td>{{ car.configurations|first.price }}</td>
-                            <td>{{ car.configurations|last.price }}</td>
+                            <th scope="row">Price</th>
+                            {% for configuration in car.configurations %}
+                                <th scope="col" class="configuration-val">{{ configuration.price }}</th>
+                            {% endfor %}
                         </tr>
                         <tr>
-                            <td>Power</td>
-                            <td>{{ car.configurations|first.engine.power }}</td>
-                            <td>{{ car.configurations|last.engine.power }}</td>
+                            <th scope="row">Power</th>
+                            {% for configuration in car.configurations %}
+                                <th scope="col" class="configuration-val">{{ configuration.engine.power }}</th>
+                            {% endfor %}
                         </tr>
                         <tr>
-                            <td>Acceleration</td>
-                            <td>{{ car.configurations|first.dynamics.acceleration }}</td>
-                            <td>{{ car.configurations|last.dynamics.acceleration }}</td>
+                            <th scope="row">Acceleration</th>
+                            {% for configuration in car.configurations %}
+                                <th scope="col" class="configuration-val">{{ configuration.dynamics.acceleration }}</th>
+                            {% endfor %}
                         </tr>
                         <tr>
-                            <td>Speed</td>
-                            <td>{{ car.configurations|first.dynamics.speed }}</td>
-                            <td>{{ car.configurations|last.dynamics.speed }}</td>
+                            <th scope="row">Speed</th>
+                            {% for configuration in car.configurations %}
+                                <th scope="col" class="configuration-val">{{ configuration.dynamics.speed }}</th>
+                            {% endfor %}
                         </tr>
                         <tr>
-                            <td>Fuel consumption</td>
-                            <td>{{ car.configurations|first.fuel.combined }}</td>
-                            <td>{{ car.configurations|last.fuel.combined }}</td>
+                            <th scope="row">Fuel</th>
+                            {% for configuration in car.configurations %}
+                                <th scope="col" class="configuration-val">{{ configuration.fuel.combined }}</th>
+                            {% endfor %}
                         </tr>
                     </tbody>
                 </table>
