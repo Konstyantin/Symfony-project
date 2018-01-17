@@ -28,6 +28,13 @@ class Feature
     /**
      * @var string
      *
+     * @ORM\Column(name="title", type="string")
+     */
+    protected $title;
+
+    /**
+     * @var string
+     *
      * @Assert\NotBlank()
      * @ORM\Column(name="short_description", type="string")
      */
@@ -310,5 +317,29 @@ class Feature
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return Feature
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 }

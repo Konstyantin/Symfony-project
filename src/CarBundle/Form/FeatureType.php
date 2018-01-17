@@ -32,6 +32,13 @@ class FeatureType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('title', TextType::class, [
+                'label' => 'Title',
+                'required' => true,
+                'attr' => [
+                    'placeholder' => 'Title'
+                ]
+            ])
             ->add('short_description', TextType::class, [
                 'label' => 'Short Description',
                 'required' => false,
