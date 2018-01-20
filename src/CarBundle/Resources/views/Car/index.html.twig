@@ -103,7 +103,7 @@
                 </tbody>
             </table>
             <div class="text-right">
-                <a href="" class="btn view-car-details-btn">All technical specs</a>
+                <a href="{{ path('car_view_specs', {'carName': car.name, 'model': car.model.name}) }}" class="btn view-car-details-btn">All technical specs</a>
             </div>
         </div>
     </div>

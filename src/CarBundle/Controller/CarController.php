@@ -29,4 +29,24 @@ class CarController extends Controller
             'car' => $car
         ]);
     }
+
+    /**
+     * View specs Action
+     *
+     * Show all car item information by model and car name
+     *
+     * @param string $model
+     * @param string $carName
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function viewSpecsAction(string $model, string $carName)
+    {
+        $em = $this->getDoctrine();
+
+        $car = $em->getRepository('CarBundle:Car')->getItemModelCar($model, $carName);
+
+        return $this->render('@Car/Car/specs.html.twig', [
+            'car' => $car
+        ]);
+    }
 }

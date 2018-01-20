@@ -9,3 +9,7 @@ model_cars_list:
 car_view:
     path:     /models/{model}/{carName}
     defaults: { _controller: CarBundle:Car:view}
+
+car_view_specs:
+    path:     /models/{model}/{carName}/specs
+    defaults: { _controller: CarBundle:Car:viewSpecs}
