@@ -55,52 +55,56 @@
             <img src="{% path car.imageLogo, 'reference' %}" alt="">
         </div>
         <div class="col-sm-5 configurations-data clearfix">
+            <h3 class="text-right">{{ car.name }}</h3>
             <table class="table">
                 <thead>
-                <tr>
-                    <th scope="col"></th>
-                    {% for configuration in car.configurations %}
-                        {% if loop.index is divisibleby(2) %}
-                            <th scope="col" class="configuration-type">{{ configuration.transmission.type }}</th>
-                        {% else %}
-                            <th scope="col" class="configuration-type">{{ configuration.transmission.type }}</th>
-                        {% endif %}
-                    {% endfor %}
-                </tr>
+                    <tr>
+                        <th scope="col"></th>
+                        {% for configuration in car.configurations %}
+                            {% if loop.index is divisibleby(2) %}
+                                <th scope="col" class="configuration-type">{{ configuration.transmission.type }}</th>
+                            {% else %}
+                                <th scope="col" class="configuration-type">{{ configuration.transmission.type }}</th>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">Price</th>
-                    {% for configuration in car.configurations %}
-                        <th scope="col" class="configuration-val">{{ configuration.price }}</th>
-                    {% endfor %}
-                </tr>
-                <tr>
-                    <th scope="row">Power</th>
-                    {% for configuration in car.configurations %}
-                        <th scope="col" class="configuration-val">{{ configuration.engine.power }}</th>
-                    {% endfor %}
-                </tr>
-                <tr>
-                    <th scope="row">Acceleration</th>
-                    {% for configuration in car.configurations %}
-                        <th scope="col" class="configuration-val">{{ configuration.dynamics.acceleration }}</th>
-                    {% endfor %}
-                </tr>
-                <tr>
-                    <th scope="row">Speed</th>
-                    {% for configuration in car.configurations %}
-                        <th scope="col" class="configuration-val">{{ configuration.dynamics.speed }}</th>
-                    {% endfor %}
-                </tr>
-                <tr>
-                    <th scope="row">Fuel</th>
-                    {% for configuration in car.configurations %}
-                        <th scope="col" class="configuration-val">{{ configuration.fuel.combined }}</th>
-                    {% endfor %}
-                </tr>
+                    <tr>
+                        <th scope="row">Price</th>
+                        {% for configuration in car.configurations %}
+                            <th scope="col" class="configuration-val">$ {{ configuration.price }}</th>
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                        <th scope="row">Power</th>
+                        {% for configuration in car.configurations %}
+                            <th scope="col" class="configuration-val">{{ configuration.engine.power }} hp</th>
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                        <th scope="row">Acceleration 0 - 100 km/h</th>
+                        {% for configuration in car.configurations %}
+                            <th scope="col" class="configuration-val">{{ configuration.dynamics.acceleration }} s</th>
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                        <th scope="row">Top Speed</th>
+                        {% for configuration in car.configurations %}
+                            <th scope="col" class="configuration-val">{{ configuration.dynamics.speed }} km/h</th>
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                        <th scope="row">Fuel Consumption Combine</th>
+                        {% for configuration in car.configurations %}
+                            <th scope="col" class="configuration-val">{{ configuration.fuel.combined }}</th>
+                        {% endfor %}
+                    </tr>
                 </tbody>
             </table>
+            <div class="text-right">
+                <a href="" class="btn view-car-details-btn">All technical specs</a>
+            </div>
         </div>
     </div>
     <div class="car-feature-section clearfix">

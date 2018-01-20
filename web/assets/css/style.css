@@ -464,12 +464,25 @@ body {
 .car-tech-param-section h2.text-center {
 }
 
-.configurations-data {
-    margin-top: 40px;
+.configurations-data h3.text-right {
+    margin: 0 0 20px;
 }
 
 .configuration-type, .configuration-val {
     text-align: right;
+}
+
+.configuration-val {
+    font-weight: 400;
+}
+
+.configurations-data .view-car-details-btn {
+    background-color: #c00;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 0;
+    font-size: 18px;
+    padding: 10px 40px;
 }
 
 .configurations-data .table>tbody>tr>th {
@@ -489,6 +502,10 @@ body {
 .car-feature-section {
     margin: 0 auto;
     padding: 50px 100px;
+}
+
+.car-feature-section h2.text-center {
+    margin: 0 0 50px;
 }
 
 .car-feature-section .feature-item img {
@@ -516,6 +533,10 @@ body {
     font-weight: 600;
     margin-bottom: 0;
     /*display: none;*/
+}
+
+.car-feature-section .feature-item .feature-description .short-description {
+    padding: 10px 0;
 }
 
 .car-feature-section .feature-item .feature-description .full-description {
