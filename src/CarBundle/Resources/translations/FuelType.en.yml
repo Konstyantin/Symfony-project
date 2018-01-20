@@ -1,11 +1,11 @@
 form:
   label:
-    city: 'City'
-    country: 'Country'
+    urban: 'Urban'
+    extraUrban: 'Extra Urban'
     combined: 'Combined'
     emission: 'Emission'
   placeholder:
-    city: 'City'
-    country: 'Country'
+    urban: 'Urban'
+    country: 'Extra Urban'
     combined: 'Combined'
     emission: 'Emission'

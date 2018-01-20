@@ -16,23 +16,23 @@ class FuelType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('city', NumberType::class, [
+            ->add('urban', NumberType::class, [
                 'translation_domain' => 'FuelType',
-                'label' => 'form.label.city',
+                'label' => 'form.label.urban',
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'form.placeholder.city',
+                    'placeholder' => 'form.placeholder.urban',
                 ],
                 'constraints' => [
                     new NotBlank()
                 ]
             ])
-            ->add('country', NumberType::class, [
+            ->add('extraUrban', NumberType::class, [
                 'translation_domain' => 'FuelType',
-                'label' => 'form.label.country',
+                'label' => 'form.label.extraUrban',
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'form.placeholder.country',
+                    'placeholder' => 'form.placeholder.extraUrban',
                 ],
                 'constraints' => [
                     new NotBlank()

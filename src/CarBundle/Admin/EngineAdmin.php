@@ -62,16 +62,6 @@ class EngineAdmin extends AbstractAdmin
                     'placeholder' => 'form.placeholder.engine_volume'
                 ]
             ])
-            ->add('carDrive', 'choice', [
-                'label' => 'form.label.car_drive',
-                'translation_domain' => 'SonataEngineBundle',
-                'required' => false,
-                'choices' => [
-                    'Font' => 'front',
-                    'Back' => 'back',
-                    'Full' => 'full'
-                ]
-            ])
             ->add('power', NumberType::class, [
                 'label' => 'form.label.power',
                 'translation_domain' => 'SonataEngineBundle',
@@ -129,7 +119,6 @@ class EngineAdmin extends AbstractAdmin
             ->add('name', null, ['label' => 'datagrid.filters.name'])
             ->add('numCylinders', null, ['label' => 'datagrid.filters.number_cylinders'])
             ->add('engineVolume', null, ['label' => 'datagrid.filters.engine_volume'])
-            ->add('carDrive', null, ['label' => 'datagrid.filters.car_drive'])
             ->add('power', null, ['label' => 'datagrid.filters.power'])
             ->add('maxTorque', null, ['label' => 'datagrid.filters.max_torque'])
             ->add('compression', null, ['label' => 'datagrid.filters.compression'])

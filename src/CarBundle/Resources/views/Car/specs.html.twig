@@ -2,5 +2,95 @@
 
 {% block body %}
 
+    <div class="car-specs-section clearfix">
+        <div class="col-lg-offset-1 col-sm-5">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Engine</th>
+                    {% for configuration in car.configurations %}
+                        <th scope="col" class="configuration-type">{{ configuration.transmission.type }}</th>
+                    {% endfor %}
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">Number of cylinders</th>
+                    {% for configuration in car.configurations %}
+                        <th scope="col" class="configuration-val">{{ configuration.engine.numCylinders }}</th>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th scope="row">Power</th>
+                    {% for configuration in car.configurations %}
+                        <th scope="col" class="configuration-val">{{ configuration.engine.power }} hp</th>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th scope="row">at rpm</th>
+                    {% for configuration in car.configurations %}
+                        <th scope="col" class="configuration-val">{{ configuration.engine.rHv }} 1/min</th>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th scope="row">Max. torque at rpm</th>
+                    {% for configuration in car.configurations %}
+                        <th scope="col" class="configuration-val">{{ configuration.engine.maxTorque }} km/h</th>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th scope="row">Compression ratio</th>
+                    {% for configuration in car.configurations %}
+                        <th scope="col" class="configuration-val">{{ configuration.engine.compression }}:1</th>
+                    {% endfor %}
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-5">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Fuel</th>
+                    {% for configuration in car.configurations %}
+                        <th scope="col" class="configuration-type">{{ configuration.transmission.type }}</th>
+                    {% endfor %}
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">Urban in l/100 km (mpg)</th>
+                    {% for configuration in car.configurations %}
+                        <th scope="col" class="configuration-val">{{ configuration.engine.numCylinders }}</th>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th scope="row">Power</th>
+                    {% for configuration in car.configurations %}
+                        <th scope="col" class="configuration-val">{{ configuration.engine.power }} hp</th>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th scope="row">at rpm</th>
+                    {% for configuration in car.configurations %}
+                        <th scope="col" class="configuration-val">{{ configuration.engine.rHv }} 1/min</th>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th scope="row">Max. torque at rpm</th>
+                    {% for configuration in car.configurations %}
+                        <th scope="col" class="configuration-val">{{ configuration.engine.maxTorque }} km/h</th>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th scope="row">Compression ratio</th>
+                    {% for configuration in car.configurations %}
+                        <th scope="col" class="configuration-val">{{ configuration.engine.compression }}:1</th>
+                    {% endfor %}
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
 {% endblock %}

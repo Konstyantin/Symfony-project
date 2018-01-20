@@ -50,15 +50,6 @@ class Engine
     protected $engineVolume;
 
     /**
-     * @var string
-     *
-     * @Assert\NotBlank()
-     *
-     * @ORM\Column(name="car_drive", type="string", columnDefinition="ENUM('front', 'full', 'back')")
-     */
-    protected $carDrive;
-
-    /**
      * @var integer
      *
      * @Assert\NotBlank()
@@ -196,30 +187,6 @@ class Engine
     public function getEngineVolume()
     {
         return $this->engineVolume;
-    }
-
-    /**
-     * Set carDrive
-     *
-     * @param string $carDrive
-     *
-     * @return Engine
-     */
-    public function setCarDrive($carDrive)
-    {
-        $this->carDrive = $carDrive;
-
-        return $this;
-    }
-
-    /**
-     * Get carDrive
-     *
-     * @return string
-     */
-    public function getCarDrive()
-    {
-        return $this->carDrive;
     }
 
     /**

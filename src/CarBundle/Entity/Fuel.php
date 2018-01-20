@@ -27,18 +27,18 @@ class Fuel
      *
      * @Assert\NotBlank()
      *
-     * @ORM\Column(name="city", type="integer")
+     * @ORM\Column(name="extra_urban", type="integer")
      */
-    protected $city;
+    protected $extraUrban;
 
     /**
      * @var integer
      *
      * @Assert\NotBlank()
      *
-     * @ORM\Column(name="country", type="integer")
+     * @ORM\Column(name="urban", type="integer")
      */
-    protected $country;
+    protected $urban;
 
     /**
      * @var integer
@@ -71,55 +71,7 @@ class Fuel
     {
         return $this->id;
     }
-
-    /**
-     * Set city
-     *
-     * @param integer $city
-     *
-     * @return Fuel
-     */
-    public function setCity($city)
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    /**
-     * Get city
-     *
-     * @return integer
-     */
-    public function getCity()
-    {
-        return $this->city;
-    }
-
-    /**
-     * Set country
-     *
-     * @param integer $country
-     *
-     * @return Fuel
-     */
-    public function setCountry($country)
-    {
-        $this->country = $country;
-
-        return $this;
-    }
-
-    /**
-     * Get country
-     *
-     * @return integer
-     */
-    public function getCountry()
-    {
-        return $this->country;
-    }
-
+    
     /**
      * Set combined
      *
@@ -200,5 +152,53 @@ class Fuel
     public function getConfiguration()
     {
         return $this->configuration;
+    }
+
+    /**
+     * Set extraUrban
+     *
+     * @param integer $extraUrban
+     *
+     * @return Fuel
+     */
+    public function setExtraUrban($extraUrban)
+    {
+        $this->extraUrban = $extraUrban;
+
+        return $this;
+    }
+
+    /**
+     * Get extraUrban
+     *
+     * @return integer
+     */
+    public function getExtraUrban()
+    {
+        return $this->extraUrban;
+    }
+
+    /**
+     * Set urban
+     *
+     * @param integer $urban
+     *
+     * @return Fuel
+     */
+    public function setUrban($urban)
+    {
+        $this->urban = $urban;
+
+        return $this;
+    }
+
+    /**
+     * Get urban
+     *
+     * @return integer
+     */
+    public function getUrban()
+    {
+        return $this->urban;
     }
 }
