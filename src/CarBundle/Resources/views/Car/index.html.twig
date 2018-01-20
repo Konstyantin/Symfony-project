@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    {{ car.name }}
+{% endblock %}
+
 {% block body %}
     <div class="car-preview-container">
         <img src="{% path car.imagePreview, 'reference' %}" alt="">
@@ -31,25 +35,25 @@
             </div>
             <div class="car-nav-item page-nav-item col-sm-3">
                 <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
-                <a href="">
+                <a href="#car-tech-param" class="car-nav-item-link">
                     <span>Tech params</span>
                 </a>
             </div>
             <div class="car-nav-item page-nav-item col-sm-3">
                 <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                <a href="">
+                <a href="#car-feature-section" class="car-nav-item-link">
                     <span>Features</span>
                 </a>
             </div>
             <div class="car-nav-item page-nav-item col-sm-3">
                 <span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span>
-                <a href="">
+                <a href="#car-gallery-section" class="car-nav-item-link">
                     <span>Gallery</span>
                 </a>
             </div>
         </div>
     </div>
-    <div class="car-tech-param-section clearfix">
+    <div class="car-tech-param-section clearfix" id="car-tech-param">
         <h2 class="text-center">Technical params</h2>
         <div class="col-sm-offset-1 col-sm-5">
             <img src="{% path car.imageLogo, 'reference' %}" alt="">
@@ -107,7 +111,7 @@
             </div>
         </div>
     </div>
-    <div class="car-feature-section clearfix">
+    <div class="car-feature-section clearfix" id="car-feature-section">
         <h2 class="text-center">Features</h2>
         {% for item in car.feature %}
             <div class="col-sm-6 feature-item clearfix">
@@ -126,5 +130,10 @@
             </div>
         {% endfor %}
     </div>
+    <div class="car-gallery-section" id="car-gallery-section"></div>
 
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('assets/js/car.js') }}"></script>
 {% endblock %}
