@@ -49,6 +49,7 @@ twig:
     globals:
         model_management: '@model_management'
         uploda_image_path: 'uploads/images/'
+        vich_uploda_image_path: '%path_to_project%/uploads/images'
 
 
 # Doctrine Configuration

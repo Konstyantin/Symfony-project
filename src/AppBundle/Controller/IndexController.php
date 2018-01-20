@@ -19,11 +19,9 @@ class IndexController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $sliderCategory = $em->getRepository('ApplicationSonataClassificationBundle:Category')
-            ->findOneBy(['name' => 'Slider']);
+        $sliderCategory = $em->getRepository('ApplicationSonataClassificationBundle:Category')->findOneBy(['name' => 'Slider']);
 
-        $sliderList = $em->getRepository('ApplicationSonataMediaBundle:Media')
-            ->findBy(['category' => $sliderCategory]);
+        $sliderList = $em->getRepository('ApplicationSonataMediaBundle:Media')->findBy(['category' => $sliderCategory]);
 
         $modelList = $em->getRepository('CarBundle:Model')->getModelsList();
 

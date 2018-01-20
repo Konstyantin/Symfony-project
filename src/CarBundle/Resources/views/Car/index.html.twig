@@ -49,56 +49,78 @@
             </div>
         </div>
     </div>
-    <div class="car-tech-param-section">
-        <div class="clearfix">
-            <h2 class="text-center">Technical params</h2>
-            <div class="col-sm-offset-1 col-sm-5">
-                <img src="{% path car.imageLogo, 'reference' %}" alt="">
-            </div>
-            <div class="col-sm-5 configurations-data clearfix">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col"></th>
-                            {% for configuration in car.configurations %}
-                                <th scope="col" class="configuration-type">{{ configuration.transmission.type }}</th>
-                            {% endfor %}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">Price</th>
-                            {% for configuration in car.configurations %}
-                                <th scope="col" class="configuration-val">{{ configuration.price }}</th>
-                            {% endfor %}
-                        </tr>
-                        <tr>
-                            <th scope="row">Power</th>
-                            {% for configuration in car.configurations %}
-                                <th scope="col" class="configuration-val">{{ configuration.engine.power }}</th>
-                            {% endfor %}
-                        </tr>
-                        <tr>
-                            <th scope="row">Acceleration</th>
-                            {% for configuration in car.configurations %}
-                                <th scope="col" class="configuration-val">{{ configuration.dynamics.acceleration }}</th>
-                            {% endfor %}
-                        </tr>
-                        <tr>
-                            <th scope="row">Speed</th>
-                            {% for configuration in car.configurations %}
-                                <th scope="col" class="configuration-val">{{ configuration.dynamics.speed }}</th>
-                            {% endfor %}
-                        </tr>
-                        <tr>
-                            <th scope="row">Fuel</th>
-                            {% for configuration in car.configurations %}
-                                <th scope="col" class="configuration-val">{{ configuration.fuel.combined }}</th>
-                            {% endfor %}
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+    <div class="car-tech-param-section clearfix">
+        <h2 class="text-center">Technical params</h2>
+        <div class="col-sm-offset-1 col-sm-5">
+            <img src="{% path car.imageLogo, 'reference' %}" alt="">
+        </div>
+        <div class="col-sm-5 configurations-data clearfix">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col"></th>
+                    {% for configuration in car.configurations %}
+                        {% if loop.index is divisibleby(2) %}
+                            <th scope="col" class="configuration-type">{{ configuration.transmission.type }}</th>
+                        {% else %}
+                            <th scope="col" class="configuration-type">{{ configuration.transmission.type }}</th>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">Price</th>
+                    {% for configuration in car.configurations %}
+                        <th scope="col" class="configuration-val">{{ configuration.price }}</th>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th scope="row">Power</th>
+                    {% for configuration in car.configurations %}
+                        <th scope="col" class="configuration-val">{{ configuration.engine.power }}</th>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th scope="row">Acceleration</th>
+                    {% for configuration in car.configurations %}
+                        <th scope="col" class="configuration-val">{{ configuration.dynamics.acceleration }}</th>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th scope="row">Speed</th>
+                    {% for configuration in car.configurations %}
+                        <th scope="col" class="configuration-val">{{ configuration.dynamics.speed }}</th>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th scope="row">Fuel</th>
+                    {% for configuration in car.configurations %}
+                        <th scope="col" class="configuration-val">{{ configuration.fuel.combined }}</th>
+                    {% endfor %}
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
+    <div class="car-feature-section clearfix">
+        <h2 class="text-center">Features</h2>
+        {% for item in car.feature %}
+            <div class="col-sm-6 feature-item clearfix">
+                <img src="{{ vich_uploda_image_path }}/feature/{{ item.imageName }}" alt="">
+                <div class="col-sm-12">
+                    <div class="feature-description clearfix">
+                        <p class="feature-title">{{ item.title }}</p>
+                        <div class="short-description">
+                            <span>{{ item.shortDescription }}</span>
+                        </div>
+                        <div class="full-description">
+                            <span>{{ item.fullDescription }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
 {% endblock %}
