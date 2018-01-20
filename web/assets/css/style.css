@@ -88,7 +88,7 @@ body {
 
 .model-item .model-list-car {
     position: absolute;
-    left: 308px;
+    left: 310px;
     width: 310px;
     background-color: #fff;
     list-style: none;
@@ -467,6 +467,7 @@ body {
 
 .configuration-type, .configuration-val {
     text-align: right;
+    width: 30%;
 }
 
 .configuration-val {
@@ -489,11 +490,6 @@ body {
 .configurations-data .table thead tr th,
 .configurations-data .table tbody tr th {
     width: 33.3%;
-}
-
-.configuration-type:nth-child(even),
-.configuration-val:nth-child(even) {
-    background: #eee;
 }
 
 .car-feature-section {
@@ -529,7 +525,6 @@ body {
     font-size: 15px;
     font-weight: 600;
     margin-bottom: 0;
-    /*display: none;*/
 }
 
 .car-feature-section .feature-item .feature-description .short-description {
@@ -545,3 +540,19 @@ body {
     display: block;
 }
 
+.car-specs-section .car-name {
+    background-color: #eee;
+    padding: 20px 25px;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.car-specs-section .car-name a {
+    text-decoration: none;
+    color: #000;
+}
+
+.car-specs-section .car-name:hover a {
+    color: #c00;
+}
