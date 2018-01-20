@@ -39,7 +39,7 @@ class FeatureType extends AbstractType
                     'placeholder' => 'Title'
                 ]
             ])
-            ->add('short_description', TextType::class, [
+            ->add('shortDescription', TextType::class, [
                 'label' => 'Short Description',
                 'required' => false,
                 'attr' => [
@@ -49,7 +49,7 @@ class FeatureType extends AbstractType
                     new NotBlank()
                 ]
             ])
-            ->add('full_description', TextareaType::class, [
+            ->add('fullDescription', TextareaType::class, [
                 'label' => 'Full Description',
                 'required' => false,
                 'attr' => [

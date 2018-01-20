@@ -38,7 +38,7 @@ class Feature
      * @Assert\NotBlank()
      * @ORM\Column(name="short_description", type="string")
      */
-    protected $short_description;
+    protected $shortDescription;
 
     /**
      * @var string
@@ -46,7 +46,7 @@ class Feature
      * @Assert\NotBlank()
      * @ORM\Column(name="full_description", type="string")
      */
-    protected $full_description;
+    protected $fullDescription;
 
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
@@ -94,53 +94,7 @@ class Feature
         return $this->id;
     }
 
-    /**
-     * Set shortDescription
-     *
-     * @param string $shortDescription
-     *
-     * @return Feature
-     */
-    public function setShortDescription($shortDescription)
-    {
-        $this->short_description = $shortDescription;
 
-        return $this;
-    }
-
-    /**
-     * Get shortDescription
-     *
-     * @return string
-     */
-    public function getShortDescription()
-    {
-        return $this->short_description;
-    }
-
-    /**
-     * Set fullDescription
-     *
-     * @param string $fullDescription
-     *
-     * @return Feature
-     */
-    public function setFullDescription($fullDescription)
-    {
-        $this->full_description = $fullDescription;
-
-        return $this;
-    }
-
-    /**
-     * Get fullDescription
-     *
-     * @return string
-     */
-    public function getFullDescription()
-    {
-        return $this->full_description;
-    }
     /**
      * Constructor
      */
@@ -341,5 +295,53 @@ class Feature
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set shortDescription
+     *
+     * @param string $shortDescription
+     *
+     * @return Feature
+     */
+    public function setShortDescription($shortDescription)
+    {
+        $this->shortDescription = $shortDescription;
+
+        return $this;
+    }
+
+    /**
+     * Get shortDescription
+     *
+     * @return string
+     */
+    public function getShortDescription()
+    {
+        return $this->shortDescription;
+    }
+
+    /**
+     * Set fullDescription
+     *
+     * @param string $fullDescription
+     *
+     * @return Feature
+     */
+    public function setFullDescription($fullDescription)
+    {
+        $this->fullDescription = $fullDescription;
+
+        return $this;
+    }
+
+    /**
+     * Get fullDescription
+     *
+     * @return string
+     */
+    public function getFullDescription()
+    {
+        return $this->fullDescription;
     }
 }
