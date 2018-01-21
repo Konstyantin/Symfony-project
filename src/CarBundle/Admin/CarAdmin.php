@@ -16,6 +16,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\CollectionType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 /**
@@ -68,6 +69,9 @@ class CarAdmin extends AbstractAdmin
             ->add('configurations', 'sonata_type_model', [
                 'class' => 'CarBundle:Configuration',
                 'multiple' => true
+            ])
+            ->add('available', CheckboxType::class, [
+                'label' => 'Available'
             ])
             ->add('feature', CollectionType::class, [
                 'label' => 'Feature',

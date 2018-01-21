@@ -69,6 +69,13 @@ class Car
     protected $imagePreview;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="available", type="boolean")
+     */
+    protected $available;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -283,5 +290,29 @@ class Car
     public function __toString()
     {
         return (string) $this->getId();
+    }
+
+    /**
+     * Set available
+     *
+     * @param boolean $available
+     *
+     * @return Car
+     */
+    public function setAvailable($available)
+    {
+        $this->available = $available;
+
+        return $this;
+    }
+
+    /**
+     * Get available
+     *
+     * @return boolean
+     */
+    public function getAvailable()
+    {
+        return $this->available;
     }
 }
