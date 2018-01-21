@@ -32,6 +32,13 @@ class DealerAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $form)
     {
         $form
+            ->add('name', TextType::class, [
+                'label' => 'Dealer Name',
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'Dealer name'
+                ]
+            ])
             ->add('city', TextType::class, [
                 'label' => 'City',
                 'required' => false,
@@ -79,6 +86,7 @@ class DealerAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $filter)
     {
         $filter
+            ->add('name', null, ['label' => 'Dealer name'])
             ->add('city', null, ['label' => 'City'])
             ->add('phone', null, ['label' => 'Phone'])
             ->add('postCode', null, ['label' => 'Post code']);
@@ -94,6 +102,10 @@ class DealerAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $list)
     {
         $list
+            ->addIdentifier('name', null, [
+                'label' => 'Dealer name',
+                'row_align' => 'left'
+            ])
             ->addIdentifier('city', null, [
                 'label' => 'City',
                 'row_align' => 'left'

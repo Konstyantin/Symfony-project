@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class ModelController extends Controller
 {
     /**
-     * Car Action
+     * Index Action
      *
      * Show list existing model item
      *

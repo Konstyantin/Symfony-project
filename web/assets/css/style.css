@@ -556,3 +556,20 @@ body {
 .car-specs-section .car-name:hover a {
     color: #c00;
 }
+
+.dealer-list-section {
+    margin: 0 auto;
+    padding: 20px 100px;
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.dealer-list-section .dealer-item-name:hover {
+    color: #c00;
+    transition: color .3s;
+    cursor: pointer;
+}

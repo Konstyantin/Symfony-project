@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Dealer list
+{% endblock %}
+
+{% block body %}
+    <h2 class="text-center">Dealers</h2>
+    <div class="dealer-list-section clearfix">
+        <div id="map"></div>
+        {% for dealer in dealerList %}
+            <div class="col-sm-4 dealer-item">
+                <h3 class="dealer-item-name">{{ dealer.name }}</h3>
+                <div class="dealer-item-address">
+                    <span>{{ dealer.postCode }},</span>
+                    <span>{{ dealer.city }},</span>
+                    <span>{{ dealer.street }},</span>
+                    <span>{{ dealer.number }}</span>
+                </div>
+                <div class="dealer-item-contact">
+                    <span>phone: +380{{ dealer.phone }}</span>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        function initMap() {
+            var uluru = {lat: 49.988358, lng: 36.232845};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 12,
+                center: uluru
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+            });
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuBIBIQVqda0vQzB0hFZRxiCTfB0FloAU&callback=initMap">
+    </script>
+{% endblock %}

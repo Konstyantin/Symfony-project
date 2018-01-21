@@ -24,6 +24,13 @@ class Dealer
     /**
      * @var string
      *
+     * @ORM\Column(name="name", type="string")
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="city", type="string")
      */
     protected $city;
@@ -185,5 +192,28 @@ class Dealer
     {
         return $this->postCode;
     }
-}
 
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Dealer
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+}
