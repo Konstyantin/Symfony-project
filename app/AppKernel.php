@@ -35,7 +35,8 @@ class AppKernel extends Kernel
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
             new Sonata\ClassificationBundle\SonataClassificationBundle(),
             new Snc\RedisBundle\SncRedisBundle(),
-            new Application\Sonata\ClassificationBundle\ApplicationSonataClassificationBundle()
+            new Application\Sonata\ClassificationBundle\ApplicationSonataClassificationBundle(),
+            new DealerBundle\DealerBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

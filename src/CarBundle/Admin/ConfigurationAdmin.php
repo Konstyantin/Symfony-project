@@ -9,7 +9,6 @@
 namespace CarBundle\Admin;
 
 use CarBundle\Entity\Configuration;
-use CarBundle\Entity\Dynamics;
 use CarBundle\Form\BodyType;
 use CarBundle\Form\DynamicsType;
 use CarBundle\Form\FuelType;
@@ -17,7 +16,6 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Form\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
@@ -30,7 +28,7 @@ class ConfigurationAdmin extends AbstractAdmin
     /**
      * Configure form field
      *
-     * Define form fields and set configuration and attibutes for fields
+     * Define form fields and set configuration and attributes for fields
      *
      * @param FormMapper $form
      */

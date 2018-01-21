@@ -1,0 +1,12 @@
+services:
+    # Dealer admin service component
+    admin.dealer:
+        class: DealerBundle\Admin\DealerAdmin
+        arguments: [~, DealerBundle\Entity\Dealer, ~]
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              group: DealerBundle
+              label: 'Dealer'
+              label_catalogue: 'Dealer'
+        public: true

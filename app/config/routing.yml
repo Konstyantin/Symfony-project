@@ -11,6 +11,10 @@ car:
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
+# Dealer bundle routes
+dealer:
+    resource: "@DealerBundle/Resources/config/routing.yml"
+    prefix:   /dealer
 
 user:
     resource: "@UserBundle/Resources/config/routing.yml"

@@ -1,6 +1,6 @@
 <?php
 
-namespace CarBundle\Entity;
+namespace DealerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Dealer
  *
  * @ORM\Table(name="dealer")
- * @ORM\Entity(repositoryClass="CarBundle\Repository\DealerRepository")
+ * @ORM\Entity(repositoryClass="DealerBundle\Repository\DealerRepository")
  */
 class Dealer
 {
@@ -52,14 +52,14 @@ class Dealer
     /**
      * @var integer
      *
-     * @ORM\Column(name="postcode", type="integer")
+     * @ORM\Column(name="post_code", type="integer")
      */
-    protected $postcode;
-    
+    protected $postCode;
+
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -163,26 +163,27 @@ class Dealer
     }
 
     /**
-     * Set postcode
+     * Set postCode
      *
-     * @param integer $postcode
+     * @param integer $postCode
      *
      * @return Dealer
      */
-    public function setPostcode($postcode)
+    public function setPostCode($postCode)
     {
-        $this->postcode = $postcode;
+        $this->postCode = $postCode;
 
         return $this;
     }
 
     /**
-     * Get postcode
+     * Get postCode
      *
      * @return integer
      */
-    public function getPostcode()
+    public function getPostCode()
     {
-        return $this->postcode;
+        return $this->postCode;
     }
 }
+
