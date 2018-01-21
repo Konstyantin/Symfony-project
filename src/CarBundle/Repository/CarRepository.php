@@ -108,4 +108,21 @@ class CarRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getOneOrNullResult();
     }
+
+    /**
+     * Get available car list
+     *
+     * Get car items list which is available
+     *
+     * @return array
+     */
+    public function getAvailableCarList()
+    {
+        $query = $this->createQueryBuilder('c')
+            ->join('CarBundle:Model', 'm', 'WITH', 'c.model = m.id')
+            ->where('c.available = 1')
+            ->getQuery();
+
+        return $query->getResult();
+    }
 }

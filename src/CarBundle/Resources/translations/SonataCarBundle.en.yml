@@ -8,10 +8,12 @@ form:
     name: 'Name'
     price: 'Price'
     model: 'Model'
+    available: 'Available'
   placeholder:
     name: 'Name'
     price: 'Price'
     model: 'Model'
+    available: 'Available'
 
 datagrid:
   filters:

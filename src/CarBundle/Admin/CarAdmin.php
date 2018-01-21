@@ -71,7 +71,9 @@ class CarAdmin extends AbstractAdmin
                 'multiple' => true
             ])
             ->add('available', CheckboxType::class, [
-                'label' => 'Available'
+                'label' => 'Available',
+                'translation_domain' => 'SonataCarBundle',
+                'required' => false,
             ])
             ->add('feature', CollectionType::class, [
                 'label' => 'Feature',

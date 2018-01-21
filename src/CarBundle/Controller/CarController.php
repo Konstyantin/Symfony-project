@@ -49,4 +49,22 @@ class CarController extends Controller
             'car' => $car
         ]);
     }
+
+    /**
+     * Available list Action
+     *
+     * Show all car item which is available
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function availableListAction()
+    {
+        $em = $this->getDoctrine();
+
+        $carList = $em->getRepository('CarBundle:Car')->getAvailableCarList();
+
+        return $this->render('@Car/Car/available.html.twig', [
+            'carList' => $carList
+        ]);
+    }
 }
