@@ -10,11 +10,11 @@ services:
         arguments: ['@request_redirect_handler']
 
     admin.category:
-        class: AppBundle\Admin\CategoryAdmin
-        arguments: [~, AppBundle\Entity\Category, ~]
+        class: AppBundle\Admin\OffersAdmin
+        arguments: [~, AppBundle\Entity\Offers, ~]
         tags:
             - name: sonata.admin
               manager_type: orm
               group: AppBundle
-              label: 'service.label'
-              label_catalogue: CategoryBundle
+              label: 'Offers'
+              label_catalogue: 'Offers'

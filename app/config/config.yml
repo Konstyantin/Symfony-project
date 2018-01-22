@@ -175,6 +175,8 @@ sonata_admin:
         # other configuration options
         search:              SonataAdminBundle:Core:search.html.twig
         search_result_block: SonataAdminBundle:Block:block_search_result.html.twig
+        edit:                base_edit.html.twig
+        layout:              standard_layout.html.twig
 
 # Vich_uploader configuration
 vich_uploader:
@@ -296,7 +298,7 @@ sonata_classification:
             translation:  SonataClassificationBundle
         category:
             class:        Sonata\ClassificationBundle\Admin\CategoryAdmin
-            controller:   SonataClassificationBundle:CategoryAdmin
+            controller:   SonataClassificationBundle:OffersAdmin
             translation:  SonataClassificationBundle
         collection:
             class:        Sonata\ClassificationBundle\Admin\CollectionAdmin
@@ -369,3 +371,12 @@ snc_redis:
     profiler_storage:
         client: profiler_storage
         ttl: 3600
+
+stfalcon_tinymce:
+    include_jquery: true
+    tinymce_jquery: true
+    selector: ".tinymce"
+    language: %locale%
+    theme:
+        simple:
+            theme: "modern"

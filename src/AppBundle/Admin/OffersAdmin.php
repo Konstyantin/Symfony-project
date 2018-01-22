@@ -9,18 +9,18 @@
 namespace AppBundle\Admin;
 
 use AppBundle\Entity\Category;
+use AppBundle\Entity\Offers;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 /**
- * Class CategoryAdmin
+ * Class OffersAdmin
  * @package AppBundle\Admin
  */
-class CategoryAdmin extends AbstractAdmin
+class OffersAdmin extends AbstractAdmin
 {
     /**
      * @var string $translationDomain
@@ -38,18 +38,29 @@ class CategoryAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $form)
     {
         $form
-            ->add('parent', EntityType::class, [
-                'class' => 'AppBundle:Category',
-                'choice_label' => 'name',
-                'multiple' => false,
-                'required' => false,
-            ])
-            ->add('name', TextType::class, [
-                'label' => 'Name',
-                'translation_domain' => 'SonataCategoryBundle',
+            ->add('title', TextType::class, [
+                'label' => 'Title',
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'form.placeholder.name'
+                    'placeholder' => 'Title'
+                ]
+            ])
+            ->add('shortDescription', 'textarea', [
+                'label' => 'Short Description',
+                'required' => false,
+                'attr' => [
+                    'class' => 'tinymce',
+                    'data-theme' => 'bbcode',
+                    'tinymce'=>'{"theme":"simple"}'// Skip it if you want to use default theme
+                ]
+            ])
+            ->add('description', 'textarea', [
+                'label' => 'Description',
+                'required' => false,
+                'attr' => [
+                    'class' => 'tinymce',
+                    'data-theme' => 'bbcode',
+                    'tinymce'=>'{"theme":"simple"}'// Skip it if you want to use default theme
                 ]
             ]);
     }
@@ -64,7 +75,7 @@ class CategoryAdmin extends AbstractAdmin
      */
     protected function configureDatagridFilters(DatagridMapper $filter)
     {
-        $filter->add('name', null, ['label' => 'datagrid.filters.name']);
+        $filter->add('title', null, ['label' => 'Title']);
     }
 
     /**
@@ -77,8 +88,8 @@ class CategoryAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $list)
     {
         $list
-            ->addIdentifier('name', null, [
-                'label' => 'datagrid.list.name'
+            ->addIdentifier('title', null, [
+                'label' => 'Title'
             ])
             ->add('_action', null, [
                 'actions' => [
@@ -96,8 +107,8 @@ class CategoryAdmin extends AbstractAdmin
      */
     public function toString($object)
     {
-        if ($object instanceof Category) {
-            return $object->getName();
+        if ($object instanceof Offers) {
+            return $object->getTitle();
         }
 
         return 'Category';
