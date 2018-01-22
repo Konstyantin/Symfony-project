@@ -18,7 +18,7 @@ class Version20180122213355 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('CREATE TABLE offers (id INT AUTO_INCREMENT NOT NULL, title VARCHAR(255) NOT NULL, short_description VARCHAR(255) NOT NULL, description VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE Offers (id INT AUTO_INCREMENT NOT NULL, title VARCHAR(255) NOT NULL, short_description VARCHAR(255) NOT NULL, description VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
         $this->addSql('DROP TABLE car_engines');
         $this->addSql('DROP TABLE car_transmission');
         $this->addSql('DROP TABLE configuration_engines');
@@ -49,6 +49,6 @@ class Version20180122213355 extends AbstractMigration
         $this->addSql('ALTER TABLE configuration_transmission ADD CONSTRAINT FK_213277F378D28519 FOREIGN KEY (transmission_id) REFERENCES transmission (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE configure_engines ADD CONSTRAINT FK_A27D12D573F32DD8 FOREIGN KEY (configuration_id) REFERENCES configuration (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE configure_engines ADD CONSTRAINT FK_A27D12D5E78C9C0A FOREIGN KEY (engine_id) REFERENCES engine (id) ON DELETE CASCADE');
-        $this->addSql('DROP TABLE offers');
+        $this->addSql('DROP TABLE Offers');
     }
 }
