@@ -8,7 +8,6 @@
  */
 namespace AppBundle\Admin;
 
-use AppBundle\Entity\Category;
 use AppBundle\Entity\Offers;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
