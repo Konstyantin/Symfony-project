@@ -42,6 +42,12 @@ class Offers
      */
     protected $description;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="offers_image_id", referencedColumnName="id")
+     */
+    protected $offersImage;
+
 
     /**
      * Get id
@@ -123,5 +129,29 @@ class Offers
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set offersImage
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $offersImage
+     *
+     * @return Offers
+     */
+    public function setOffersImage(\Application\Sonata\MediaBundle\Entity\Media $offersImage = null)
+    {
+        $this->offersImage = $offersImage;
+
+        return $this;
+    }
+
+    /**
+     * Get offersImage
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media
+     */
+    public function getOffersImage()
+    {
+        return $this->offersImage;
     }
 }

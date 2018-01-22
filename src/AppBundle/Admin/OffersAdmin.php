@@ -61,6 +61,10 @@ class OffersAdmin extends AbstractAdmin
                     'data-theme' => 'bbcode',
                     'tinymce'=>'{"theme":"simple"}'// Skip it if you want to use default theme
                 ]
+            ])
+            ->add('offersImage', 'sonata_media_type', [
+                'provider' => 'sonata.media.provider.image',
+                'context' => 'OffersLogo'
             ]);
     }
 

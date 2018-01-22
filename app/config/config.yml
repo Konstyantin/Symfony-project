@@ -268,6 +268,13 @@ sonata_media:
             formats:
                 preview: { width: 100, quality: 100}
                 wide:    { width: 820, quality: 100}
+        OffersLogo:
+            providers:
+              - sonata.media.provider.image
+
+            formats:
+                preview: { width: 100, quality: 100}
+                wide:    { width: 820, quality: 100}
 
 
     cdn:
@@ -372,11 +379,12 @@ snc_redis:
         client: profiler_storage
         ttl: 3600
 
+#StFalcon tinyMce
 stfalcon_tinymce:
     include_jquery: true
     tinymce_jquery: true
     selector: ".tinymce"
-    language: %locale%
+    language: '%locale%'
     theme:
         simple:
             theme: "modern"
