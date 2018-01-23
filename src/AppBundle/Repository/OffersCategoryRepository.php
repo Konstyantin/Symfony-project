@@ -10,4 +10,19 @@ namespace AppBundle\Repository;
  */
 class OffersCategoryRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Get category list
+     *
+     * Get category list sorted by name
+     *
+     * @return array
+     */
+    public function getCategoryList()
+    {
+        $query = $this->createQueryBuilder('c')
+            ->orderBy('c.name', 'DESC')
+            ->getQuery();
+
+        return $query->getResult();
+    }
 }

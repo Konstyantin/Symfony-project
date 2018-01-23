@@ -49,6 +49,7 @@ twig:
           - 'VichUploaderBundle:Form:fields.html.twig'
     globals:
         model_management: '@model_management'
+        offers_category_manager: '@offers_category_management'
         uploda_image_path: 'uploads/images/'
         vich_uploda_image_path: '%path_to_project%/uploads/images'
 

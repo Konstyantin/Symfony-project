@@ -9,6 +9,7 @@ services:
         class: AppBundle\Security\AccessDeniedHandler
         arguments: ['@request_redirect_handler']
 
+    # Admin offers service
     admin.offers:
         class: AppBundle\Admin\OffersAdmin
         arguments: [~, AppBundle\Entity\Offers, ~]
@@ -19,6 +20,7 @@ services:
               label: 'Offers'
               label_catalogue: 'Offers'
 
+    # Admin offers category service
     admin.offerscategory:
         class: AppBundle\Admin\OffersCategoryAdmin
         arguments: [~, AppBundle\Entity\OffersCategory, ~]
@@ -28,3 +30,9 @@ services:
               group: AppBundle
               label: 'Offers Category'
               label_catalogue: 'Offers Category'
+
+    # Offers category manager
+    offers_category_management:
+        class: AppBundle\Services\OffersCategoryManager
+        arguments: [ '@doctrine.orm.entity_manager' ]
+

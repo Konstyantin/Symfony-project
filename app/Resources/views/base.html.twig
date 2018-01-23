@@ -186,12 +186,11 @@
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-item">
-                                <li class="menu-item">
-                                    <a href="#">Special Offers</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#">Winner Finance</a>
-                                </li>
+                                {% for offerCategory in offers_category_manager.getList %}
+                                    <li class="menu-item">
+                                        <a href="#">{{ offerCategory.name }}</a>
+                                    </li>
+                                {% endfor %}
                             </ul>
                         </li>
                         <li class="dropdown">
