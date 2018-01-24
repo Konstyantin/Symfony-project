@@ -39,6 +39,11 @@ class OffersCategory
      */
     protected $parent;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Offers", mappedBy="offersCategory")
+     */
+    protected $offers;
+
 
     /**
      * Get id
@@ -147,5 +152,39 @@ class OffersCategory
     public function __toString()
     {
         return (string) $this->name;
+    }
+
+    /**
+     * Add offer
+     *
+     * @param \AppBundle\Entity\Offers $offer
+     *
+     * @return OffersCategory
+     */
+    public function addOffer(\AppBundle\Entity\Offers $offer)
+    {
+        $this->offers[] = $offer;
+
+        return $this;
+    }
+
+    /**
+     * Remove offer
+     *
+     * @param \AppBundle\Entity\Offers $offer
+     */
+    public function removeOffer(\AppBundle\Entity\Offers $offer)
+    {
+        $this->offers->removeElement($offer);
+    }
+
+    /**
+     * Get offers
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getOffers()
+    {
+        return $this->offers;
     }
 }

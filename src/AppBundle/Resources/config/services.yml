@@ -9,17 +9,6 @@ services:
         class: AppBundle\Security\AccessDeniedHandler
         arguments: ['@request_redirect_handler']
 
-    # Admin offers service
-    admin.offers:
-        class: AppBundle\Admin\OffersAdmin
-        arguments: [~, AppBundle\Entity\Offers, ~]
-        tags:
-            - name: sonata.admin
-              manager_type: orm
-              group: AppBundle
-              label: 'Offers'
-              label_catalogue: 'Offers'
-
     # Admin offers category service
     admin.offerscategory:
         class: AppBundle\Admin\OffersCategoryAdmin
@@ -30,6 +19,17 @@ services:
               group: AppBundle
               label: 'Offers Category'
               label_catalogue: 'Offers Category'
+
+    # Admin offers category service
+    admin.offers:
+        class: AppBundle\Admin\OffersAdmin
+        arguments: [~, AppBundle\Entity\Offers, ~]
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              group: AppBundle
+              label: 'Offers'
+              label_catalogue: 'Offers'
 
     # Offers category manager
     offers_category_management:

@@ -48,6 +48,12 @@ class Offers
      */
     protected $offersImage;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\OffersCategory", inversedBy="offers")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    protected $offersCategory;
+
 
     /**
      * Get id
@@ -153,5 +159,29 @@ class Offers
     public function getOffersImage()
     {
         return $this->offersImage;
+    }
+
+    /**
+     * Set offersCategory
+     *
+     * @param \AppBundle\Entity\OffersCategory $offersCategory
+     *
+     * @return Offers
+     */
+    public function setOffersCategory(\AppBundle\Entity\OffersCategory $offersCategory = null)
+    {
+        $this->offersCategory = $offersCategory;
+
+        return $this;
+    }
+
+    /**
+     * Get offersCategory
+     *
+     * @return \AppBundle\Entity\OffersCategory
+     */
+    public function getOffersCategory()
+    {
+        return $this->offersCategory;
     }
 }

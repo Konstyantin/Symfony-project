@@ -1,31 +1,24 @@
 <?php
-
 /**
  * Created by PhpStorm.
  * User: kostya
- * Date: 18.10.17
- * Time: 22:45
+ * Date: 24.01.18
+ * Time: 21:41
  */
+
 namespace AppBundle\Admin;
 
 use AppBundle\Entity\Offers;
+use AppBundle\Entity\OffersCategory;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
-/**
- * Class OffersAdmin
- * @package AppBundle\Admin
- */
 class OffersAdmin extends AbstractAdmin
 {
-    /**
-     * @var string $translationDomain
-     */
-    protected $translationDomain = 'SonataCategoryBundle';
-
     /**
      * Configure form field
      *
@@ -34,7 +27,7 @@ class OffersAdmin extends AbstractAdmin
      *
      * @param FormMapper $form
      */
-    protected function configureFormFields(FormMapper $form)
+    public function configureFormFields(FormMapper $form)
     {
         $form
             ->add('title', TextType::class, [
@@ -44,47 +37,49 @@ class OffersAdmin extends AbstractAdmin
                     'placeholder' => 'Title'
                 ]
             ])
-            ->add('shortDescription', 'textarea', [
-                'label' => 'Short Description',
+            ->add('shortDescription', TextType::class, [
+                'label' => 'Short description',
                 'required' => false,
                 'attr' => [
-                    'class' => 'tinymce',
-                    'data-theme' => 'bbcode',
-                    'tinymce'=>'{"theme":"simple"}'// Skip it if you want to use default theme
+                    'placeholder' => 'Short description'
                 ]
             ])
-            ->add('description', 'textarea', [
+            ->add('description', TextType::class, [
                 'label' => 'Description',
                 'required' => false,
                 'attr' => [
-                    'class' => 'tinymce',
-                    'data-theme' => 'bbcode',
-                    'tinymce'=>'{"theme":"simple"}'// Skip it if you want to use default theme
+                    'placeholder' => 'Description'
                 ]
             ])
             ->add('offersImage', 'sonata_media_type', [
                 'provider' => 'sonata.media.provider.image',
                 'context' => 'OffersLogo'
-            ]);
+            ])
+            ->add('offersCategory', 'sonata_type_model', [
+                'class' => 'AppBundle:OffersCategory',
+                'multiple' => false
+            ])
+        ;
     }
 
     /**
      * Configure datagrid filters
      *
      * Configure datagrid filters which will used for filtered and sort
-     * the list of model
+     * the list of car
      *
      * @param DatagridMapper $filter
      */
     protected function configureDatagridFilters(DatagridMapper $filter)
     {
-        $filter->add('title', null, ['label' => 'Title']);
+        $filter
+            ->add('title', null, ['label' => 'Title']);
     }
 
     /**
      * Configure list fields
      *
-     * Specific fields which are show all model are listed
+     * Specific fields which are show all car are listed
      *
      * @param ListMapper $list
      */
@@ -92,7 +87,8 @@ class OffersAdmin extends AbstractAdmin
     {
         $list
             ->addIdentifier('title', null, [
-                'label' => 'Title'
+                'label' => 'Title',
+                'row_align' => 'left'
             ])
             ->add('_action', null, [
                 'actions' => [
@@ -114,6 +110,6 @@ class OffersAdmin extends AbstractAdmin
             return $object->getTitle();
         }
 
-        return 'Category';
+        return 'Offers';
     }
 }
