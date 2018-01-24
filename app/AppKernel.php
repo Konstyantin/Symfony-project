@@ -37,7 +37,7 @@ class AppKernel extends Kernel
             new Snc\RedisBundle\SncRedisBundle(),
             new Application\Sonata\ClassificationBundle\ApplicationSonataClassificationBundle(),
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
-            new DealerBundle\DealerBundle(),
+            new DealerBundle\DealerBundle()
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

@@ -35,6 +35,28 @@
             </ul>
         </div>
     </div>
+    <div class="services-section">
+        <h3 class="text-center">Services</h3>
+        <div class="container service-list">
+            <div class="row">
+                <a href="{{ path('car_available_list') }}">
+                    <div class="service-item available-cars-service">
+                        <span class="service-item-title">Available cars</span>
+                    </div>
+                </a>
+                <a href="{{ path('dealer_homepage') }}">
+                    <div class="service-item dealers-service">
+                        <span class="service-item-title">Dealers</span>
+                    </div>
+                </a>
+                <a href="{{ path('offers_index') }}">
+                    <div class="service-item special-offers-service">
+                        <span class="service-item-title">Offers</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
 

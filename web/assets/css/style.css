@@ -573,3 +573,51 @@ body {
     transition: color .3s;
     cursor: pointer;
 }
+
+.services-section h3.text-center {
+    padding: 20px 0;
+}
+
+.service-list a {
+    text-decoration: none;
+}
+
+.service-list .service-item:hover .service-item-title {
+    color: #c00;
+}
+
+.services-section .service-list .service-item {
+    display: inline-block;
+}
+
+.available-cars-service {
+    background-image: url("/assets/img/fd29f75-porsche-normal--4-.jpg");
+    height: 285px;
+    background-size: cover;
+    background-position-y: -50px;
+    width: 47%;
+}
+
+.dealers-service {
+    height: 285px;
+    background-image: url("/assets/img/c7b37f3-porsche-normal--6-.jpg");
+    background-size: cover;
+    width: 25%;
+    margin: 0 10px;
+}
+
+.special-offers-service {
+    height: 285px;
+    background-image: url("/assets/img/90269c4-porsche-normal--5-.jpg");
+    background-size: cover;
+    width: 25%;
+}
+
+.services-section .service-list .service-item-title {
+    position: relative;
+    color: #eee;
+    z-index: 100;
+    top: 230px;
+    font-size: 20px;
+    padding: 20px;
+}
