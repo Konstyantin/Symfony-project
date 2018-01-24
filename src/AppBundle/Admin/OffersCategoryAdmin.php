@@ -35,7 +35,7 @@ class OffersCategoryAdmin extends AbstractAdmin
         $form
             ->add('parent', EntityType::class, [
                 'class' => 'AppBundle:OffersCategory',
-                'choice_label' => 'parent',
+                'choice_label' => 'name',
                 'multiple' => false,
                 'required' => false,
             ])
@@ -72,10 +72,11 @@ class OffersCategoryAdmin extends AbstractAdmin
     public function configureListFields(ListMapper $list)
     {
         $list
-            ->add('name', null, ['label' => 'Category name'])
+            ->addIdentifier('name', null, ['label' => 'Category name'])
             ->add('_action',null, [
                 'actions' => [
-                    'delete' => []
+                    'delete' => [],
+                    'edit' => []
                 ],
             ]);
     }
