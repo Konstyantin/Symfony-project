@@ -10,6 +10,13 @@ namespace DealerBundle\Repository;
  */
 class DealerRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Get dealer list
+     *
+     * Get all dealer list item
+     *
+     * @return array
+     */
     public function getDealerList()
     {
         $query = $this->createQueryBuilder('d')

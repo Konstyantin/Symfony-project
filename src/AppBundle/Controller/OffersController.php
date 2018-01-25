@@ -19,6 +19,10 @@ class OffersController extends Controller
     {
         $em = $this->getDoctrine();
 
-        return $this->render('@App/Offers/index.html.twig');
+        $offersList = $em->getRepository('AppBundle:Offers')->getOffersList();
+
+        return $this->render('@App/Offers/index.html.twig', [
+            'offersList' => $offersList
+        ]);
     }
 }
