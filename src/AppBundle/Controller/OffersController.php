@@ -19,10 +19,10 @@ class OffersController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $offersList = $em->getRepository('AppBundle:Offers')->getOffersList();
+        $offersCategoryList = $em->getRepository('AppBundle:OffersCategory')->getCategoryList();
 
         return $this->render('@App/Offers/index.html.twig', [
-            'offersList' => $offersList
+            'offersCategoryList' => $offersCategoryList
         ]);
     }
 }

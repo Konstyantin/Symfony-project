@@ -5,5 +5,19 @@
 {% endblock %}
 
 {% block body %}
-    <h2 class="text-center">Offers</h2>
+    <div class="offers-category-list">
+        <h2 class="text-center">Offers</h2>
+        {% for category in offersCategoryList %}
+            <div class="clearfix offers-category-item">
+                <div class="col-sm-4 item-logo">
+                    <img style="width: 100%" src="{% path category.offersCategoryImage, 'reference' %}" alt="">
+                </div>
+                <div class="col-sm-8 item-description">
+                    <h2 class="">{{ category.name }}</h2>
+                    <p>{{ category.description|raw }}</p>
+                    <a href="" class="btn more-offers-btn">Learn more</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
