@@ -14,6 +14,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 /**
@@ -38,6 +39,20 @@ class OffersCategoryAdmin extends AbstractAdmin
                 'choice_label' => 'name',
                 'multiple' => false,
                 'required' => false,
+            ])
+            ->add('description', TextareaType::class, [
+                'label' => 'Description',
+                'required' => false,
+                'attr' => [
+                    'class' => 'tinymce',
+                    'data-theme' => 'bbcode',
+                    'placeholder' => 'Description',
+                    'tinymce'=>'{"theme":"simple"}'// Skip it if you want to use default theme
+                ]
+            ])
+            ->add('offersCategoryImage', 'sonata_media_type', [
+                'provider' => 'sonata.media.provider.image',
+                'context' => 'OffersCategoryLogo'
             ])
             ->add('name', TextType::class, [
                 'label' => 'Category Name',

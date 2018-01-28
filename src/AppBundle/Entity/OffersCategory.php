@@ -40,9 +40,22 @@ class OffersCategory
     protected $parent;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text")
+     */
+    protected $description;
+
+    /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Offers", mappedBy="offersCategory")
      */
     protected $offers;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="offers_category_image_id", referencedColumnName="id")
+     */
+    protected $offersCategoryImage;
 
 
     /**
@@ -186,5 +199,53 @@ class OffersCategory
     public function getOffers()
     {
         return $this->offers;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return OffersCategory
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set offersCategoryImage
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $offersCategoryImage
+     *
+     * @return OffersCategory
+     */
+    public function setOffersCategoryImage(\Application\Sonata\MediaBundle\Entity\Media $offersCategoryImage = null)
+    {
+        $this->offersCategoryImage = $offersCategoryImage;
+
+        return $this;
+    }
+
+    /**
+     * Get offersCategoryImage
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media
+     */
+    public function getOffersCategoryImage()
+    {
+        return $this->offersCategoryImage;
     }
 }
