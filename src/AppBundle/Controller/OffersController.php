@@ -17,7 +17,7 @@ class OffersController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine();
+        $em = $this->getDoctrine()->getManager();
 
         $offersList = $em->getRepository('AppBundle:Offers')->getOffersList();
 

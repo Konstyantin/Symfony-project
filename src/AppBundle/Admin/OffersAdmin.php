@@ -15,6 +15,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class OffersAdmin extends AbstractAdmin
@@ -44,11 +45,14 @@ class OffersAdmin extends AbstractAdmin
                     'placeholder' => 'Short description'
                 ]
             ])
-            ->add('description', TextType::class, [
+            ->add('description', TextareaType::class, [
                 'label' => 'Description',
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Description'
+                    'class' => 'tinymce',
+                    'data-theme' => 'bbcode',
+                    'placeholder' => 'Description',
+                    'tinymce'=>'{"theme":"simple"}'// Skip it if you want to use default theme
                 ]
             ])
             ->add('offersImage', 'sonata_media_type', [

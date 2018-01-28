@@ -38,7 +38,7 @@ class Offers
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string")
+     * @ORM\Column(name="description", type="text")
      */
     protected $description;
 
