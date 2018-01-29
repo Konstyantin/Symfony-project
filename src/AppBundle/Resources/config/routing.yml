@@ -4,4 +4,8 @@ index:
 
 offers_index:
     path:     /offers
-    defaults: { _controller: AppBundle:Offers:index}
+    defaults: { _controller: AppBundle:Offers:index }
+
+category_offers_list:
+    path:     /offers/{category}
+    defaults: { _controller: AppBundle:Offers:categoryOffers }

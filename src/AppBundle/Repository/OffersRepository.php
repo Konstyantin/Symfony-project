@@ -24,4 +24,23 @@ class OffersRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getResult();
     }
+
+    /**
+     * Get offers by category
+     *
+     * Get offers by passed offers category name
+     *
+     * @param $category string
+     * @return array
+     */
+    public function getOffersByCategory(string $category)
+    {
+        $query = $this->createQueryBuilder('o')
+            ->join('AppBundle:OffersCategory', 'c', 'WITH', 'o.offersCategory = c.id')
+            ->where('c.name = :category')
+            ->setParameter('category', $category)
+            ->getQuery();
+
+        return $query->getResult();
+    }
 }
