@@ -38,8 +38,18 @@ class OffersController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
+        $pagination = $this->get('knp_paginator');
+
         $offersList = $em->getRepository('AppBundle:Offers')->getOffersByCategory($category);
 
-        return $this->render('@App/Offers/categoryOffers.html.twig');
+        $pagination = $pagination->paginate(
+            $offersList,
+            $request->query->getInt('page', 1),
+            1
+        );
+
+        return $this->render('@App/Offers/categoryOffers.html.twig', [
+            'pagination' => $pagination
+        ]);
     }
 }

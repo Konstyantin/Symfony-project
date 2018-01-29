@@ -41,6 +41,19 @@ class OffersRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('category', $category)
             ->getQuery();
 
-        return $query->getResult();
+//        return $query->getResult();
+
+        return $query;
+    }
+
+    public function getOffersCategoryPagination(string $category)
+    {
+        $em = $this->getEntityManager();
+
+//        $dql = "SELECT o FROM AppBundle:Offers o INNER JOIN AppBundle:OffersCategory c ON o.offersCategory = c.id WHERE c.name = '$category'";
+//
+//        $query = $em->createQuery($dql);
+//
+//        return $query;
     }
 }

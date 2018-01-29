@@ -38,7 +38,7 @@ class OffersAdmin extends AbstractAdmin
                     'placeholder' => 'Title'
                 ]
             ])
-            ->add('shortDescription', TextType::class, [
+            ->add('shortDescription', TextareaType::class, [
                 'label' => 'Short description',
                 'required' => false,
                 'attr' => [

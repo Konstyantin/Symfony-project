@@ -622,7 +622,7 @@ body {
     padding: 20px;
 }
 
-.offers-category-list {
+.offers-category-list, .offers-list {
     margin: 0 auto;
     padding: 0 100px;
 }
@@ -631,10 +631,12 @@ body {
     margin-bottom: 50px;
 }
 
+.offers-list .offers-item h2,
 .offers-category-list .offers-category-item .item-description h2 {
     margin-top: 0;
 }
 
+.offers-list .offers-item .offers-description .more-offers-btn,
 .offers-category-list .offers-category-item .item-description .more-offers-btn {
     background-color: #c00;
     text-decoration: none;
@@ -642,4 +644,22 @@ body {
     border-radius: 0;
     font-size: 18px;
     padding: 10px 40px;
+    margin-top: 20px;
+}
+
+.offers-pagination {
+    padding-left: 15px;
+}
+.offers-pagination .active>span:hover,
+.offers-pagination .pagination>.active>span{
+    background-color: #c00;
+    border-color: #c00;
+}
+
+.pagination>li>a, .pagination>li>span {
+    color: #000;
+}
+
+.pagination>li>a:hover, .pagination>li>span:hover {
+    color: #c00;
 }
