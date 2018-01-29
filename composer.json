@@ -34,7 +34,8 @@
         "symfony/swiftmailer-bundle": "^2.3.10",
         "symfony/symfony": "3.3.*",
         "twig/twig": "^1.0||^2.0",
-        "vich/uploader-bundle": "^1.4"
+        "vich/uploader-bundle": "^1.4",
+        "yceruto/breadcrumbs-bundle": "^1.0"
     },
     "require-dev": {
         "codeception/codeception": "^2.3",

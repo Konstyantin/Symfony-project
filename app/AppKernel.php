@@ -38,7 +38,8 @@ class AppKernel extends Kernel
             new Application\Sonata\ClassificationBundle\ApplicationSonataClassificationBundle(),
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
             new DealerBundle\DealerBundle(),
-            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle()
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new Yceruto\Bundle\BreadcrumbsBundle\BreadcrumbsBundle()
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

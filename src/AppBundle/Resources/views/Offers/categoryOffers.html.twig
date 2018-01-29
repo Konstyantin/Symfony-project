@@ -4,6 +4,7 @@
     <div class="offers-list">
         <h2 class="text-center">Offers by category</h2>
         <div>
+            {{ render_breadcrumbs() }}
             {% for offers in pagination %}
                 <div class="offers-item clearfix">
                     <div class="col-sm-4">

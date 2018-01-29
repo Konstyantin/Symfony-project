@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "883a728953848c33ae296b65bac53f02",
+    "content-hash": "17e3026c1c1cf50f74ae9ec5d3bec574",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -4850,6 +4850,53 @@
                 "upload"
             ],
             "time": "2017-07-11T09:11:07+00:00"
+        },
+        {
+            "name": "yceruto/breadcrumbs-bundle",
+            "version": "1.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yceruto/breadcrumbs-bundle.git",
+                "reference": "2277fd51bce9406cbab1175196ff1e98f9bd57dc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yceruto/breadcrumbs-bundle/zipball/2277fd51bce9406cbab1175196ff1e98f9bd57dc",
+                "reference": "2277fd51bce9406cbab1175196ff1e98f9bd57dc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "symfony/expression-language": "~2.6|~3.0",
+                "symfony/framework-bundle": "~2.3|~3.0",
+                "twig/twig": "~1.14,>=1.14.2|~2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.4"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Yceruto\\Bundle\\BreadcrumbsBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Yonel Ceruto",
+                    "email": "yonelceruto@gmail.com"
+                }
+            ],
+            "description": "Magic breadcrumbs bundle for Symfony application",
+            "homepage": "https://github.com/yceruto/breadscrumbs-bundle",
+            "keywords": [
+                "breadcrumbs",
+                "symfony"
+            ],
+            "time": "2016-02-01T01:25:07+00:00"
         },
         {
             "name": "zendframework/zend-code",

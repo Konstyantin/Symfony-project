@@ -663,3 +663,7 @@ body {
 .pagination>li>a:hover, .pagination>li>span:hover {
     color: #c00;
 }
+
+.breadcrumb li a {
+    color: #c00;
+}
