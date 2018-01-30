@@ -50,7 +50,7 @@ class OffersRepository extends \Doctrine\ORM\EntityRepository
      * Get offer item by passed title
      *
      * @param string $title
-     * @return array
+     * @return mixed
      */
     public function getOfferByTitle(string $title)
     {
@@ -59,6 +59,6 @@ class OffersRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('title', $title)
             ->getQuery();
 
-        return $query->getResult();
+        return $query->getOneOrNullResult();
     }
 }

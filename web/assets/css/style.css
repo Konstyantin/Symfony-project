@@ -622,7 +622,7 @@ body {
     padding: 20px;
 }
 
-.offers-category-list, .offers-list {
+.offers-category-list, .offers-list, .offer-view-container {
     margin: 0 auto;
     padding: 0 100px;
 }
@@ -666,4 +666,8 @@ body {
 
 .breadcrumb li a {
     color: #c00;
+}
+
+.offer-view-container img, .offers-item img {
+    width: 100%;
 }

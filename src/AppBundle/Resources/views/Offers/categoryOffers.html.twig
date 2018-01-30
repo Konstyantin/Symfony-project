@@ -6,14 +6,15 @@
         <div>
             {{ render_breadcrumbs() }}
             {% for offer in pagination %}
+
                 <div class="offers-item clearfix">
                     <div class="col-sm-4">
-                        <img style="width: 100%" src="{% path offer.offersImage, 'reference' %}" alt="">
+                        <img src="{% path offer.offersImage, 'reference' %}" alt="">
                     </div>
                     <div class="cols-sm-8 offers-description">
                         <h2>{{ offer.title }}</h2>
                         <div>{{ offer.shortDescription }}</div>
-                        <a href="{{ path('offers_view', {'name': offer.title}) }}" class="btn more-offers-btn">Learn more</a>
+                        <a href="{{ path('offers_view', {'title': offer.title}) }}" class="btn more-offers-btn">Learn more</a>
                     </div>
                 </div>
             {% endfor %}
