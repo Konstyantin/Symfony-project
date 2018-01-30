@@ -52,4 +52,21 @@ class OffersController extends Controller
             'pagination' => $pagination
         ]);
     }
+
+    /**
+     * View Action
+     *
+     * @param string $title
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function viewAction(string $title)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $offer = $em->getRepository('AppBundle:Offers')->getOfferByTitle($title);
+        
+        return $this->render('@App/Offers/view.html.twig', [
+            'offer' => $offer
+        ]);
+    }
 }

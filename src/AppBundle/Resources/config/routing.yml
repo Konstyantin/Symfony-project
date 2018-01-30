@@ -1,7 +1,14 @@
+index:
+    path:     /
+    defaults: { _controller: AppBundle:Index:index, breadcrumbs_label: 'Porsche' }
 
 offers_index:
     path:     /offers
     defaults: { _controller: AppBundle:Offers:index, breadcrumbs_label: 'Offers' }
+
+offers_view:
+    path:     /offer/{title}
+    defaults: { _controller: AppBundle:Offers:view}
 
 category_offers_list:
     path:     /offers/{category}

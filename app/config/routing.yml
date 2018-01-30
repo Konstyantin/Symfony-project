@@ -2,7 +2,6 @@ index:
     resource: "@AppBundle/Resources/config/routing.yml"
     prefix: /
 
-
 # Car bundle routes
 car:
     resource: "@CarBundle/Resources/config/routing.yml"
