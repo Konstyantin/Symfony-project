@@ -622,7 +622,12 @@ body {
     padding: 20px;
 }
 
-.offers-category-list, .offers-list, .offer-view-container {
+.offers-category-list,
+.offers-list,
+.offer-view-container,
+.fos_user_user_show,
+.fos-user-container,
+.profile-edit-container {
     margin: 0 auto;
     padding: 0 100px;
 }
@@ -636,6 +641,7 @@ body {
     margin-top: 0;
 }
 
+.profile-edit-container .btn-edit-profile,
 .offers-list .offers-item .offers-description .more-offers-btn,
 .offers-category-list .offers-category-item .item-description .more-offers-btn {
     background-color: #c00;
@@ -670,4 +676,13 @@ body {
 
 .offer-view-container img, .offers-item img {
     width: 100%;
+}
+
+.profile-edit-container .col-lg-6 {
+    padding: 0;
+}
+
+.profile-edit-container .col-lg-6 .form-control {
+    border-radius: 0;
+    padding: 18px;
 }

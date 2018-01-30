@@ -64,7 +64,7 @@ class OffersController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $offer = $em->getRepository('AppBundle:Offers')->getOfferByTitle($title);
-        
+
         return $this->render('@App/Offers/view.html.twig', [
             'offer' => $offer
         ]);
