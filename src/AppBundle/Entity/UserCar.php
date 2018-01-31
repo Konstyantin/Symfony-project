@@ -38,9 +38,9 @@ class UserCar
     /**
      * @var integer
      *
-     * @ORM\Column(name="years", type="integer")
+     * @ORM\Column(name="created_at", type="integer")
      */
-    protected $years;
+    protected $createdAt;
 
     /**
      * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Model", inversedBy="userCar")
@@ -124,29 +124,6 @@ class UserCar
         return $this->color;
     }
 
-    /**
-     * Set years
-     *
-     * @param integer $years
-     *
-     * @return UserCar
-     */
-    public function setYears($years)
-    {
-        $this->years = $years;
-
-        return $this;
-    }
-
-    /**
-     * Get years
-     *
-     * @return integer
-     */
-    public function getYears()
-    {
-        return $this->years;
-    }
 
     /**
      * Set model
@@ -242,5 +219,29 @@ class UserCar
     public function getTransmission()
     {
         return $this->transmission;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param integer $createdAt
+     *
+     * @return UserCar
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return integer
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
     }
 }

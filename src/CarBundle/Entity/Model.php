@@ -159,16 +159,6 @@ class Model
     }
 
     /**
-     * Call for handle Model entity as string
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return (string) $this->getName();
-    }
-
-    /**
      * Add userCar
      *
      * @param \AppBundle\Entity\UserCar $userCar
@@ -200,5 +190,15 @@ class Model
     public function getUserCar()
     {
         return $this->userCar;
+    }
+
+    /**
+     * Call for handle Model entity as string
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getName();
     }
 }
