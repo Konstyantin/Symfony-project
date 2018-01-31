@@ -31,6 +31,17 @@ services:
               label: 'Offers'
               label_catalogue: 'Offers'
 
+    admin.user_car:
+        class: AppBundle\Admin\UserCarAdmin
+        arguments: [~, AppBundle\Entity\UserCar, ~]
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              group: AppBundle
+              label: 'User car'
+              label_catalogue: 'User car'
+
+
     # Offers category manager
     offers_category_management:
         class: AppBundle\Services\OffersCategoryManager

@@ -47,6 +47,8 @@ twig:
           - 'bootstrap_3_layout.html.twig'
           - 'SonataMediaBundle:Form:media_widgets.html.twig'
           - 'VichUploaderBundle:Form:fields.html.twig'
+          - 'SonataCoreBundle:Form:datepicker.html.twig'
+          - 'SonataCoreBundle:Form:color.html.twig'
     globals:
         model_management: '@model_management'
         offers_category_manager: '@offers_category_management'

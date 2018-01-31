@@ -69,7 +69,7 @@ class UserCar
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -124,6 +124,29 @@ class UserCar
         return $this->color;
     }
 
+    /**
+     * Set createdAt
+     *
+     * @param integer $createdAt
+     *
+     * @return UserCar
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return integer
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
 
     /**
      * Set model
@@ -219,29 +242,5 @@ class UserCar
     public function getTransmission()
     {
         return $this->transmission;
-    }
-
-    /**
-     * Set createdAt
-     *
-     * @param integer $createdAt
-     *
-     * @return UserCar
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * Get createdAt
-     *
-     * @return integer
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
     }
 }

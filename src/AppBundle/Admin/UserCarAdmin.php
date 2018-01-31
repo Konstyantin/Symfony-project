@@ -8,19 +8,30 @@
 
 namespace AppBundle\Admin;
 
-use AppBundle\Entity\OffersCategory;
 use AppBundle\Entity\UserCar;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\CoreBundle\Form\Type\ColorType;
 use Sonata\CoreBundle\Form\Type\DateTimePickerType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
+/**
+ * Class UserCarAdmin
+ * @package AppBundle\Admin
+ */
 class UserCarAdmin extends AbstractAdmin
 {
+    /**
+     * Configure form field
+     *
+     * Set configuration for form field which are displayed on the edit
+     * and create action
+     *
+     * @param FormMapper $form
+     */
     protected function configureFormFields(FormMapper $form)
     {
         $form
@@ -55,8 +66,16 @@ class UserCarAdmin extends AbstractAdmin
                 'multiple' => false,
                 'required' => false,
             ])
-            ->add('createAt', DateTimePickerType::class)
-            ->add('color', TextType::class, [
+            ->add('createdAt', DateTimePickerType::class, [
+                'dp_side_by_side'       => true,
+                'dp_use_current'        => false,
+                'dp_use_seconds'        => false,
+                'dp_collapse'           => true,
+                'dp_calendar_weeks'     => false,
+                'dp_view_mode'          => 'days',
+                'dp_min_view_mode'      => 'days',
+            ])
+            ->add('color', ColorType::class, [
                 'label' => 'Color',
                 'required' => false,
                 'attr' => [
@@ -66,6 +85,13 @@ class UserCarAdmin extends AbstractAdmin
         ;
     }
 
+    /**
+     * Configure list fields
+     *
+     * Specific fields which are show all car are listed
+     *
+     * @param ListMapper $list
+     */
     protected function configureListFields(ListMapper $list)
     {
         $list
@@ -74,6 +100,14 @@ class UserCarAdmin extends AbstractAdmin
             ->add('model', null, ['label' => 'Model']);
     }
 
+    /**
+     * Configure datagrid filters
+     *
+     * Configure datagrid filters which will used for filtered and sort
+     * the list of car
+     *
+     * @param DatagridMapper $filter
+     */
     protected function configureDatagridFilters(DatagridMapper $filter)
     {
         $filter
@@ -82,6 +116,12 @@ class UserCarAdmin extends AbstractAdmin
             ->add('model', null, ['label' => 'Model']);
     }
 
+    /**
+     * This receives the object to transform to a string as the first parameter
+     *
+     * @param mixed $object
+     * @return string
+     */
     public function toString($object)
     {
         if ($object instanceof UserCar) {
