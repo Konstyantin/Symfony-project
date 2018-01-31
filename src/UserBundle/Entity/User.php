@@ -72,6 +72,11 @@ class User extends BaseUser
     protected $google_access_token;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\UserCar", mappedBy="user")
+     */
+    protected $userCar;
+
+    /**
      * Get id
      *
      * @return int
@@ -175,5 +180,39 @@ class User extends BaseUser
     public function getGoogleAccessToken()
     {
         return $this->google_access_token;
+    }
+
+    /**
+     * Add userCar
+     *
+     * @param \AppBundle\Entity\UserCar $userCar
+     *
+     * @return User
+     */
+    public function addUserCar(\AppBundle\Entity\UserCar $userCar)
+    {
+        $this->userCar[] = $userCar;
+
+        return $this;
+    }
+
+    /**
+     * Remove userCar
+     *
+     * @param \AppBundle\Entity\UserCar $userCar
+     */
+    public function removeUserCar(\AppBundle\Entity\UserCar $userCar)
+    {
+        $this->userCar->removeElement($userCar);
+    }
+
+    /**
+     * Get userCar
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUserCar()
+    {
+        return $this->userCar;
     }
 }

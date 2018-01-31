@@ -100,6 +100,11 @@ class Engine
     protected $configuration;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\UserCar", mappedBy="engine")
+     */
+    protected $userCar;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -351,5 +356,39 @@ class Engine
     public function __toString()
     {
         return (string) $this->getName();
+    }
+
+    /**
+     * Add userCar
+     *
+     * @param \AppBundle\Entity\UserCar $userCar
+     *
+     * @return Engine
+     */
+    public function addUserCar(\AppBundle\Entity\UserCar $userCar)
+    {
+        $this->userCar[] = $userCar;
+
+        return $this;
+    }
+
+    /**
+     * Remove userCar
+     *
+     * @param \AppBundle\Entity\UserCar $userCar
+     */
+    public function removeUserCar(\AppBundle\Entity\UserCar $userCar)
+    {
+        $this->userCar->removeElement($userCar);
+    }
+
+    /**
+     * Get userCar
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUserCar()
+    {
+        return $this->userCar;
     }
 }
