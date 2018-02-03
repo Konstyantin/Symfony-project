@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -37,7 +38,6 @@ class UserCar
 
     /**
      * @var integer
-     *
      * @ORM\Column(name="created_at", type="integer")
      */
     protected $createdAt;
@@ -56,13 +56,13 @@ class UserCar
 
     /**
      * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Engine", inversedBy="userCar")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="engine_id", referencedColumnName="id")
      */
     protected $engine;
 
     /**
      * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Transmission", inversedBy="userCar")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="transmission_id", referencedColumnName="id")
      */
     protected $transmission;
 

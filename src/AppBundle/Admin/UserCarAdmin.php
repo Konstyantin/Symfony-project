@@ -13,9 +13,8 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\CoreBundle\Form\Type\ColorType;
-use Sonata\CoreBundle\Form\Type\DateTimePickerType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 /**
@@ -66,16 +65,11 @@ class UserCarAdmin extends AbstractAdmin
                 'multiple' => false,
                 'required' => false,
             ])
-            ->add('createdAt', DateTimePickerType::class, [
-                'dp_side_by_side'       => true,
-                'dp_use_current'        => false,
-                'dp_use_seconds'        => false,
-                'dp_collapse'           => true,
-                'dp_calendar_weeks'     => false,
-                'dp_view_mode'          => 'days',
-                'dp_min_view_mode'      => 'days',
+            ->add('createdAt',DateType::class, [
+                'input' => 'timestamp',
+                'years' => range(date("Y", 0), date("Y"))
             ])
-            ->add('color', ColorType::class, [
+            ->add('color', TextType::class, [
                 'label' => 'Color',
                 'required' => false,
                 'attr' => [
@@ -95,9 +89,15 @@ class UserCarAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $list)
     {
         $list
-            ->add('carName', null, ['label' => 'Car name'])
+            ->addIdentifier('carName', null, ['label' => 'Car name'])
             ->add('user', null, ['label' => 'Username'])
-            ->add('model', null, ['label' => 'Model']);
+            ->add('model', null, ['label' => 'Model'])
+            ->add('_action',null, [
+                'actions' => [
+                    'delete' => [],
+                    'edit' => []
+                ],
+            ]);
     }
 
     /**
