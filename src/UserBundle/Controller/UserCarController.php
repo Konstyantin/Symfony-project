@@ -22,11 +22,11 @@ class UserCarController extends Controller
      */
     public function indexAction()
     {
-        $user = $this->getUser();
+        $userId = $this->getUser()->getId();
 
         $em = $this->getDoctrine()->getManager();
 
-        $carList = $em->getRepository('AppBundle:UserCar')->getUserCarList($user->getId());
+        $carList = $em->getRepository('AppBundle:UserCar')->getUserCarList($userId);
 
         return $this->render('@User/userCar/index.html.twig', [
             'carList' => $carList
@@ -70,6 +70,49 @@ class UserCarController extends Controller
         }
 
         return $this->render('@User/userCar/create.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * Edit action
+     *
+     * Edit user car item data value by passed car_id and user_id parameters
+     *
+     * @param Request $request
+     * @param int $carId
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function editAction(Request $request, int $carId)
+    {
+        $userId = $this->getUser()->getId();
+
+        $em = $this->getDoctrine()->getManager();
+
+        $userCar = $em->getRepository('AppBundle:UserCar')->getUserCar($carId, $userId);
+
+        $form = $this->createForm(UserCarType::class, $userCar);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid() && $form->isSubmitted()) {
+
+            $data = $form->getData();
+
+            $userCar->setCarName($data->getCarName());
+            $userCar->setModel($data->getModel());
+            $userCar->setEngine($data->getEngine());
+            $userCar->setTransmission($data->getTransmission());
+            $userCar->setCreatedAt($data->getCreatedAt());
+            $userCar->setColor($data->getColor());
+
+            $em->persist($userCar);
+            $em->flush();
+
+            $this->addFlash('success', 'Car edited success');
+        }
+
+        return $this->render('@User/userCar/edit.html.twig', [
             'form' => $form->createView()
         ]);
     }

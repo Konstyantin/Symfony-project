@@ -28,4 +28,24 @@ class UserCarRepository extends \Doctrine\ORM\EntityRepository
         return $query->getResult();
     }
 
+    /**
+     * Get user car
+     *
+     * Get user cat by passed car_id and user_id parameters
+     *
+     * @param int $carId
+     * @param int $userId
+     * @return array
+     */
+    public function getUserCar(int $carId, int $userId)
+    {
+        $query = $this->createQueryBuilder('c')
+            ->where('c.user =:user')
+            ->andWhere('c.id =:id')
+            ->setParameter('user', $userId)
+            ->setParameter('id', $carId)
+            ->getQuery();
+
+        return $query->getOneOrNullResult();
+    }
 }

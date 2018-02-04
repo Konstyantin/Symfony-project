@@ -15,7 +15,7 @@
                     <div class="item-transmission"><b>Transmission:</b> <span>{{ car.transmission.name }}</span></div>
                     <div class="item-color"><b>Color:</b> <span>{{ car.color }}</span></div>
                     <div class="manage">
-                        <a href="" class="btn user-car-btn">Edit</a>
+                        <a href="{{ path('user_car_edit', {'carId': car.id}) }}" class="btn user-car-btn">Edit</a>
                         <a href="" class="btn user-car-btn">Delete</a>
                     </div>
                 </div>
