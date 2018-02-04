@@ -1,3 +1,11 @@
 user_homepage:
     path:     /index
-    defaults: { _controller: UserBundle:Car:index }
+    defaults: { _controller: UserBundle:User:index }
+
+user_car_home:
+    path:     /cars/
+    defaults: { _controller: UserBundle:UserCar:index }
+
+user_car_create:
+    path:     /cars/create
+    defaults: { _controller: UserBundle:UserCar:create }

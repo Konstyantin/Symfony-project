@@ -5,10 +5,10 @@ namespace UserBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
- * Class IndexController
+ * Class UserController
  * @package UserBundle\Controller
  */
-class IndexController extends Controller
+class UserController extends Controller
 {
     /**
      * Car action
