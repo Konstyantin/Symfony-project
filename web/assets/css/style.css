@@ -628,7 +628,8 @@ body {
 .fos_user_user_show,
 .fos-user-container,
 .profile-edit-container,
-.footer-service-list {
+.footer-service-list,
+.user-car-container {
     margin: 0 auto;
     padding: 0 100px;
 }
@@ -644,7 +645,9 @@ body {
 
 .profile-edit-container .btn-edit-profile,
 .offers-list .offers-item .offers-description .more-offers-btn,
-.offers-category-list .offers-category-item .item-description .more-offers-btn {
+.offers-category-list .offers-category-item .item-description .more-offers-btn,
+.user-car-container .user-car-list .user-car-item .manage .user-car-btn
+{
     background-color: #c00;
     text-decoration: none;
     color: #fff;
@@ -713,4 +716,13 @@ body {
     text-decoration: none;
     color: #000;
     font-size: 15px;
+}
+
+.user-car-item {
+    margin: 30px 0;
+    font-size: 17px;
+}
+
+.user-car-wrap img {
+    width: 100%;
 }

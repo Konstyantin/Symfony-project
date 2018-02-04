@@ -16,11 +16,21 @@ class UserCarController extends Controller
     /**
      * Index action
      *
+     * Show car list for current user
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction()
     {
-        return $this->render('@User/userCar/index.html.twig');
+        $user = $this->getUser();
+
+        $em = $this->getDoctrine()->getManager();
+
+        $carList = $em->getRepository('AppBundle:UserCar')->getUserCarList($user->getId());
+
+        return $this->render('@User/userCar/index.html.twig', [
+            'carList' => $carList
+        ]);
     }
 
     /**

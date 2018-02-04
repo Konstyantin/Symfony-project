@@ -1,7 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container">
-        <h2 class="text-center">User car controller</h2>
+    <div class="user-car-wrap">
+        <img src="{{ asset('assets/img/44b61c0-porsche-normal--2-.jpg') }}" alt="">
+
+    </div>
+    <div class="user-car-container">
+        <div class="user-car-list clearfix">
+            {% for car in carList %}
+                <div class="user-car-item col-sm-6">
+                    <div class="item-name"><b>Name:</b> <span>{{ car.carName }}</span></div>
+                    <div class="item-model"><b>Model:</b> <span>{{ car.model.name }}</span></div>
+                    <div class="item-engine"><b>Engine:</b> <span>{{ car.engine.name }}</span></div>
+                    <div class="item-transmission"><b>Transmission:</b> <span>{{ car.transmission.name }}</span></div>
+                    <div class="item-color"><b>Color:</b> <span>{{ car.color }}</span></div>
+                    <div class="manage">
+                        <a href="" class="btn user-car-btn">Edit</a>
+                        <a href="" class="btn user-car-btn">Delete</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

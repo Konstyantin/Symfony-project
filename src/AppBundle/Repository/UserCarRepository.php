@@ -10,4 +10,22 @@ namespace AppBundle\Repository;
  */
 class UserCarRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Get user car list
+     *
+     * Get user car by passed user id
+     *
+     * @param int $userId
+     * @return array
+     */
+    public function getUserCarList(int $userId)
+    {
+        $query = $this->createQueryBuilder('c')
+            ->where('c.user =:user')
+            ->setParameter('user', $userId)
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
 }
