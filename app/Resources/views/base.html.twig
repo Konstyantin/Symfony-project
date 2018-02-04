@@ -224,6 +224,31 @@
                                 </li>
                             </ul>
                         </li>
+                        {% if app.user %}
+                        <li class="dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-item">
+                                <li class="menu-item">
+                                    <a href="{{ path('fos_user_profile_show') }}">View Profile</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="{{ path('fos_user_profile_edit') }}">Edit</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="">Car List</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="{{ path('fos_user_security_logout') }}">Logout</a>
+                                </li>
+                            </ul>
+                        </li>
+                        {% else %}
+                            <li class="dropdown">
+                                <a href="{{ path('fos_user_profile_show') }}">Login</a>
+                            </li>
+                        {% endif %}
                     </ul>
                 </div><!--/.nav-collapse -->
             </div><!--/.container-fluid -->
