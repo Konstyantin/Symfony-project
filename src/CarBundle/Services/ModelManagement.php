@@ -36,7 +36,6 @@ class ModelManagement
      * @return mixed
      */
     public function getList() {
-        return $this->em->getRepository('CarBundle:Model')
-            ->getModelsList();
+        return $this->em->getRepository('CarBundle:Model')->getModelsList();
     }
 }

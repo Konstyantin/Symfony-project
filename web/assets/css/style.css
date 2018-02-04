@@ -627,7 +627,8 @@ body {
 .offer-view-container,
 .fos_user_user_show,
 .fos-user-container,
-.profile-edit-container {
+.profile-edit-container,
+.footer-service-list {
     margin: 0 auto;
     padding: 0 100px;
 }
@@ -685,4 +686,31 @@ body {
 .profile-edit-container .col-lg-6 .form-control {
     border-radius: 0;
     padding: 18px;
+}
+
+.footer-service-list {
+    background-color: #f5f5f5;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    line-height: 45px;
+}
+
+.footer-service-list .footer-service-item .title {
+    color: #999;
+    font-size: 20px;
+}
+
+.footer-service-list .footer-service-item ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.footer-service-list .footer-service-item ul li:hover a {
+    color: #c00;
+}
+
+.footer-service-list .footer-service-item ul li a {
+    text-decoration: none;
+    color: #000;
+    font-size: 15px;
 }
