@@ -726,3 +726,7 @@ body {
 .user-car-wrap img {
     width: 100%;
 }
+
+.user-car-container .flash-message-container {
+    margin-top: 30px;
+}

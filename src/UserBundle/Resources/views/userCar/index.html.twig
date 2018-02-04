@@ -3,9 +3,16 @@
 {% block body %}
     <div class="user-car-wrap">
         <img src="{{ asset('assets/img/44b61c0-porsche-normal--2-.jpg') }}" alt="">
-
     </div>
     <div class="user-car-container">
+        <div class="flash-message-container">
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Success!</strong> {{ message }}
+                </div>
+            {% endfor %}
+        </div>
         <div class="user-car-list clearfix">
             {% for car in carList %}
                 <div class="user-car-item col-sm-6">
@@ -16,7 +23,7 @@
                     <div class="item-color"><b>Color:</b> <span>{{ car.color }}</span></div>
                     <div class="manage">
                         <a href="{{ path('user_car_edit', {'carId': car.id}) }}" class="btn user-car-btn">Edit</a>
-                        <a href="" class="btn user-car-btn">Delete</a>
+                        <a href="{{ path('user_car_delete', {'carId': car.id}) }}" class="btn user-car-btn">Delete</a>
                     </div>
                 </div>
             {% endfor %}

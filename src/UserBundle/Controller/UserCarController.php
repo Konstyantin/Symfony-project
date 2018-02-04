@@ -52,6 +52,7 @@ class UserCarController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid() && $form->isSubmitted()) {
+
             $data = $form->getData();
 
             $userCar = new UserCar();
@@ -115,5 +116,30 @@ class UserCarController extends Controller
         return $this->render('@User/userCar/edit.html.twig', [
             'form' => $form->createView()
         ]);
+    }
+
+    /**
+     * Delete action
+     *
+     * Delete user car item by id for current user
+     *
+     * @param $carId
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function deleteAction($carId)
+    {
+        $userId = $this->getUser()->getId();
+
+        $em = $this->getDoctrine()->getManager();
+
+        $userCar = $em->getRepository('AppBundle:UserCar')->getUserCar($carId, $userId);
+
+        $em->remove($userCar);
+
+        $em->flush();
+
+        $this->addFlash('success', 'car delete success');
+
+        return $this->redirectToRoute('user_car_home');
     }
 }
