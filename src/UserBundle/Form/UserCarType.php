@@ -65,7 +65,7 @@ class UserCarType extends AbstractType
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
-                    'class' => 'btn btn-success'
+                    'class' => 'btn btn-user-car'
                 ]
             ])
         ;
