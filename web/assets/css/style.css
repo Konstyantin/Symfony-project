@@ -647,7 +647,7 @@ body {
 .offers-list .offers-item .offers-description .more-offers-btn,
 .offers-category-list .offers-category-item .item-description .more-offers-btn,
 .user-car-container .user-car-list .user-car-item .manage .user-car-btn,
-.edit-user-section .btn-user-car {
+.edit-user-section .btn-user-car, .btn-user-car {
     background-color: #c00;
     text-decoration: none;
     color: #fff;
@@ -731,17 +731,19 @@ body {
     margin-top: 30px;
 }
 
-.edit-user-section .form-group .form-control {
+.edit-user-section .form-group .form-control, #user_bundle_user_car_type .form-group .form-control {
     border-radius: 0;
     height: inherit;
     padding: 10px;
 }
 
-.edit-user-section .form-group #user_bundle_user_car_type_createdAt .form-control {
+.edit-user-section .form-group #user_bundle_user_car_type_createdAt .form-control,
+#user_bundle_user_car_type .form-group #user_bundle_user_car_type_createdAt .form-control {
     width: 32.75%;
     margin-right: 10px;
 }
 
-.edit-user-section .form-group #user_bundle_user_car_type_createdAt .form-control:last-child {
+.edit-user-section .form-group #user_bundle_user_car_type_createdAt .form-control:last-child,
+#user_bundle_user_car_type .form-group #user_bundle_user_car_type_createdAt .form-control:last-child {
     margin-right: 0;
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace AppBundle\Repository;
+use AppBundle\Entity\UserCar;
 
 /**
  * UserCarRepository
@@ -47,5 +48,49 @@ class UserCarRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery();
 
         return $query->getOneOrNullResult();
+    }
+
+    /**
+     * Create user car
+     *
+     * @param $data
+     * @param $user
+     */
+    public function create($data, $user)
+    {
+        $em = $this->getEntityManager();
+
+        $userCar = new UserCar();
+        $userCar->setCarName($data->getCarName());
+        $userCar->setUser($user);
+        $userCar->setModel($data->getModel());
+        $userCar->setEngine($data->getEngine());
+        $userCar->setTransmission($data->getTransmission());
+        $userCar->setCreatedAt($data->getCreatedAt());
+        $userCar->setColor($data->getColor());
+
+        $em->persist($userCar);
+        $em->flush();
+    }
+
+    /**
+     * Edit user car
+     *
+     * @param $data
+     * @param $userCar
+     */
+    public function edit($data, $userCar)
+    {
+        $em = $this->getEntityManager();
+
+        $userCar->setCarName($data->getCarName());
+        $userCar->setModel($data->getModel());
+        $userCar->setEngine($data->getEngine());
+        $userCar->setTransmission($data->getTransmission());
+        $userCar->setCreatedAt($data->getCreatedAt());
+        $userCar->setColor($data->getColor());
+
+        $em->persist($userCar);
+        $em->flush();
     }
 }

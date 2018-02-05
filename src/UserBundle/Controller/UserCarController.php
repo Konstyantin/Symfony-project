@@ -55,19 +55,11 @@ class UserCarController extends Controller
 
             $data = $form->getData();
 
-            $userCar = new UserCar();
-            $userCar->setCarName($data['carName']);
-            $userCar->setUser($user);
-            $userCar->setModel($data['model']);
-            $userCar->setEngine($data['engine']);
-            $userCar->setTransmission($data['transmission']);
-            $userCar->setCreatedAt($data['createdAt']);
-            $userCar->setColor($data['color']);
-
-            $em->persist($userCar);
-            $em->flush();
+            $em->getRepository('AppBundle:UserCar')->create($data, $user);
 
             $this->addFlash('success', 'Car added success');
+
+            $this->redirectToRoute('user_car_home');
         }
 
         return $this->render('@User/userCar/create.html.twig', [
@@ -100,15 +92,7 @@ class UserCarController extends Controller
 
             $data = $form->getData();
 
-            $userCar->setCarName($data->getCarName());
-            $userCar->setModel($data->getModel());
-            $userCar->setEngine($data->getEngine());
-            $userCar->setTransmission($data->getTransmission());
-            $userCar->setCreatedAt($data->getCreatedAt());
-            $userCar->setColor($data->getColor());
-
-            $em->persist($userCar);
-            $em->flush();
+            $em->getRepository('AppBundle:UserCar')->edit($data, $userCar);
 
             $this->addFlash('success', 'Car edited success');
         }
