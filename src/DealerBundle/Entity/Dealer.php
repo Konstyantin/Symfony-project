@@ -64,6 +64,11 @@ class Dealer
     protected $postCode;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\CarService", mappedBy="dealer")
+     */
+    protected $carService;
+
+    /**
      * Get id
      *
      * @return integer
@@ -215,5 +220,46 @@ class Dealer
     public function getName()
     {
         return $this->name;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->carService = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add carService
+     *
+     * @param \AppBundle\Entity\CarService $carService
+     *
+     * @return Dealer
+     */
+    public function addCarService(\AppBundle\Entity\CarService $carService)
+    {
+        $this->carService[] = $carService;
+
+        return $this;
+    }
+
+    /**
+     * Remove carService
+     *
+     * @param \AppBundle\Entity\CarService $carService
+     */
+    public function removeCarService(\AppBundle\Entity\CarService $carService)
+    {
+        $this->carService->removeElement($carService);
+    }
+
+    /**
+     * Get carService
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCarService()
+    {
+        return $this->carService;
     }
 }

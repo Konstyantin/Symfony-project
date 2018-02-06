@@ -58,6 +58,10 @@ class Model
      */
     protected $userCar;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\CarService", mappedBy="model")
+     */
+    protected $carService;
 
     /**
      * Set imageLogo
@@ -200,5 +204,39 @@ class Model
     public function __toString()
     {
         return (string) $this->getName();
+    }
+
+    /**
+     * Add carService
+     *
+     * @param \AppBundle\Entity\CarService $carService
+     *
+     * @return Model
+     */
+    public function addCarService(\AppBundle\Entity\CarService $carService)
+    {
+        $this->carService[] = $carService;
+
+        return $this;
+    }
+
+    /**
+     * Remove carService
+     *
+     * @param \AppBundle\Entity\CarService $carService
+     */
+    public function removeCarService(\AppBundle\Entity\CarService $carService)
+    {
+        $this->carService->removeElement($carService);
+    }
+
+    /**
+     * Get carService
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCarService()
+    {
+        return $this->carService;
     }
 }
