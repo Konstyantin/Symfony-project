@@ -13,3 +13,7 @@ offers_view:
 category_offers_list:
     path:     /offers/{category}
     defaults: { _controller: AppBundle:Offers:categoryOffers }
+
+service_registration:
+    path:     /service/registration
+    defaults: { _controller: AppBundle:Service:registration}
