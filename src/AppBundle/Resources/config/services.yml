@@ -31,6 +31,7 @@ services:
               label: 'Offers'
               label_catalogue: 'Offers'
 
+    # User car service
     admin.user_car:
         class: AppBundle\Admin\UserCarAdmin
         arguments: [~, AppBundle\Entity\UserCar, ~]
@@ -46,4 +47,9 @@ services:
     offers_category_management:
         class: AppBundle\Services\OffersCategoryManager
         arguments: [ '@doctrine.orm.entity_manager' ]
+
+    # Register service
+    service.regirser_service:
+        class: AppBundle\EventListener\ServiceListener
+        autowire: true
 
