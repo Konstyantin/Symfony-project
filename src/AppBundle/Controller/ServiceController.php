@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\CarService;
 use AppBundle\Event\ServiceEvent;
 use AppBundle\EventListener\AppBundleEvent;
 use AppBundle\Form\RegistrationServiceType;
@@ -15,15 +16,28 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class ServiceController extends Controller
 {
+    /**
+     * Registration service
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function registrationAction(Request $request)
     {
         $form = $this->createForm(RegistrationServiceType::class);
 
-        $dispatcher = $this->get('event_dispatcher');
+        $form->handleRequest($request);
 
-        $event = new ServiceEvent();
+        if ($form->isSubmitted() && $form->isValid()) {
 
-        $dispatcher->dispatch(AppBundleEvent::SERVICE_REGISTER, $event);
+            $data = $form->getData();
+
+            $dispatcher = $this->get('event_dispatcher');
+
+            $event = new ServiceEvent($data);
+
+            $dispatcher->dispatch(AppBundleEvent::SERVICE_REGISTER, $event);
+        }
 
         return $this->render('@App/Service/register.html.twig', [
             'form' => $form->createView()

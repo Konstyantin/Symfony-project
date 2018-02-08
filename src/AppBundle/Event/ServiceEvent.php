@@ -8,6 +8,7 @@
  */
 namespace AppBundle\Event;
 
+use AppBundle\Entity\CarService;
 use Symfony\Component\EventDispatcher\Event;
 
 /**
@@ -17,10 +18,26 @@ use Symfony\Component\EventDispatcher\Event;
 class ServiceEvent extends Event
 {
     /**
-     * @return string
+     * @var CarService $carService
+     */
+    protected $carService;
+
+    /**
+     * ServiceEvent constructor.
+     * @param CarService $carService
+     */
+    public function __construct(CarService $carService)
+    {
+        $this->carService = $carService;
+    }
+
+    /**
+     * Get service
+     *
+     * @return CarService
      */
     public function getService()
     {
-        return 'service';
+        return $this->carService;
     }
 }

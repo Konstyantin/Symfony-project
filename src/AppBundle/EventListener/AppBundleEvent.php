@@ -14,5 +14,8 @@ namespace AppBundle\EventListener;
  */
 final class AppBundleEvent
 {
+    /**
+     * The SERVICE_REGISTER occurs when user make registration to service
+     */
     const SERVICE_REGISTER = 'service.register';
 }

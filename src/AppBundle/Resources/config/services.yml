@@ -46,7 +46,7 @@ services:
     # Offers category manager
     offers_category_management:
         class: AppBundle\Services\OffersCategoryManager
-        arguments: [ '@doctrine.orm.entity_manager' ]
+        arguments: [ '@doctrine.orm.entity_manager', '@session' ]
 
     # Register service
     service.regirser_service:
