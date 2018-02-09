@@ -38,7 +38,7 @@ class CarService
     /**
      * @var int
      *
-     * @ORM\Column(name="phone", type="integer")
+     * @ORM\Column(name="phone", type="string")
      */
     protected $phone;
 
@@ -48,6 +48,13 @@ class CarService
      * @ORM\Column(name="email", type="string")
      */
     protected $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="car_name", type="string")
+     */
+    protected $carName;
 
     /**
      * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Model", inversedBy="carService")
@@ -337,5 +344,29 @@ class CarService
     public function getDealer()
     {
         return $this->dealer;
+    }
+
+    /**
+     * Set carName
+     *
+     * @param string $carName
+     *
+     * @return CarService
+     */
+    public function setCarName($carName)
+    {
+        $this->carName = $carName;
+
+        return $this;
+    }
+
+    /**
+     * Get carName
+     *
+     * @return string
+     */
+    public function getCarName()
+    {
+        return $this->carName;
     }
 }

@@ -64,9 +64,40 @@ class ServiceListener implements EventSubscriberInterface
 
         $carService = $event->getService();
 
+        $this->sendNotifier($carService);
+
         $em->persist($carService);
         $em->flush();
 
         $this->session->getFlashBag()->add('success', 'Service register success');
+    }
+
+    /**
+     * Send notifier
+     *
+     * @param $data
+     */
+    private function sendNotifier($data)
+    {
+        $userMail = $this->serviceContainer->getParameter('mailer_user');
+
+        $template = $this->serviceContainer->get('templating');
+
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Registration service')
+            ->setFrom($userMail)
+            ->setTo($data->getEmail())
+            ->setBody(
+                $template->render(':Emails:service_register.html.twig', [
+                    'firstName' => $data->getFirstName(),
+                    'lastName' => $data->getLastName(),
+                    'carName' => $data->getCarName(),
+                    'model' => $data->getModel(),
+                    'dealer' => $data->getDealer()
+                ]),
+                'text/html'
+            );
+
+        $this->serviceContainer->get('mailer')->send($message);
     }
 }

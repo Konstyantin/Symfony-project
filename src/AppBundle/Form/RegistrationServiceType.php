@@ -57,6 +57,13 @@ class RegistrationServiceType extends AbstractType
                     'placeholder' => 'Email'
                 ]
             ])
+            ->add('carName', TextType::class, [
+                'label' => 'Car name',
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'Car name'
+                ]
+            ])
             ->add('model', EntityType::class, [
                 'class' => 'CarBundle:Model',
                 'choice_label' => 'name',
