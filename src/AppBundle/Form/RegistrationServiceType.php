@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Class RegistrationServiceType
@@ -18,6 +19,21 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class RegistrationServiceType extends AbstractType
 {
+    /**
+     * Count month in year
+     */
+    const MONTH_COUNT = 12;
+
+    /**
+     * Min hours work service
+     */
+    const MIN_HOURS = 9;
+
+    /**
+     * Max hour work service
+     */
+    const MAX_HOURS = 20;
+
     /**
      * Build form
      *
@@ -103,11 +119,13 @@ class RegistrationServiceType extends AbstractType
                     'hour' => 'Hour', 'minute' => 'Minute', 'second' => 'Second',
                 ],
                 'input' => 'timestamp',
-                'years' => range(date("Y", 0), date("Y"))
+                'years' => range(date("Y"), date("Y")),
+                'months' => range(date("M", strtotime('-1 month')), self::MONTH_COUNT),
+                'hours' => range(self::MIN_HOURS, self::MAX_HOURS),
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
-                    'class' => 'btn btn-success'
+                    'class' => 'btn btn-service-register'
                 ]
             ])
         ;

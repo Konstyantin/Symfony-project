@@ -1,9 +1,94 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container">
+    <div class="service-registration-image">
+        <img src="{{ asset('assets/img/heder.jpg') }}" alt="">
+    </div>
+    <div class="service-registration-title">
+        <p>Registration to service</p>
+    </div>
+    <div class="service-registration-container">
+        <div class="flash-message-container">
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Success!</strong> {{ message }}
+                </div>
+            {% endfor %}
+        </div>
         {{ form_start(form) }}
-        {{ form_widget(form) }}
+        <div class="row">
+            <div class="form-group col-sm-6">
+                {{ form_label(form.firstName) }}
+                {{ form_widget(form.firstName) }}
+                {{ form_errors(form.firstName) }}
+            </div>
+            <div class="form-group col-sm-6">
+                {{ form_label(form.lastName) }}
+                {{ form_widget(form.lastName) }}
+                {{ form_errors(form.lastName) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-6">
+                {{ form_label(form.email) }}
+                {{ form_widget(form.email) }}
+                {{ form_errors(form.email) }}
+            </div>
+            <div class="form-group col-sm-6">
+                {{ form_label(form.phone) }}
+                {{ form_widget(form.phone) }}
+                {{ form_errors(form.phone) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-6">
+                {{ form_label(form.carName) }}
+                {{ form_widget(form.carName) }}
+                {{ form_errors(form.carName) }}
+            </div>
+            <div class="form-group col-sm-6">
+                {{ form_label(form.model) }}
+                {{ form_widget(form.model) }}
+                {{ form_errors(form.model) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-6">
+                {{ form_label(form.vin) }}
+                {{ form_widget(form.vin) }}
+                {{ form_errors(form.vin) }}
+            </div>
+            <div class="form-group col-sm-6">
+                {{ form_label(form.mileage) }}
+                {{ form_widget(form.mileage) }}
+                {{ form_errors(form.mileage) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-6">
+                {{ form_label(form.licensePlate) }}
+                {{ form_widget(form.licensePlate) }}
+                {{ form_errors(form.licensePlate) }}
+            </div>
+            <div class="form-group col-sm-6">
+                {{ form_label(form.dealer) }}
+                {{ form_widget(form.dealer) }}
+                {{ form_errors(form.dealer) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-12">
+                {{ form_label(form.date) }}
+                {{ form_widget(form.date) }}
+                {{ form_errors(form.date) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-12">
+                {{ form_widget(form.submit) }}
+            </div>
+        </div>
         {{ form_end(form) }}
     </div>
 {% endblock %}

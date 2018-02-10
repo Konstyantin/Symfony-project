@@ -54,7 +54,6 @@ class Offers
      */
     protected $offersCategory;
 
-
     /**
      * Get id
      *

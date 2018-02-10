@@ -75,6 +75,8 @@ class ServiceListener implements EventSubscriberInterface
     /**
      * Send notifier
      *
+     * Send mail notifier to registered service customer with service data
+     *
      * @param $data
      */
     private function sendNotifier($data)
