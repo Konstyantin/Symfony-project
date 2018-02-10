@@ -83,7 +83,7 @@ class CarAdmin extends AbstractAdmin
             ])
             ->add('imageLogo', 'sonata_media_type', [
                 'provider' => 'sonata.media.provider.image',
-                'context' => 'CarLogo'
+                'context' => 'CarLogo',
             ])
             ->add('imagePreview', 'sonata_media_type', [
                 'provider' => 'sonata.media.provider.image',

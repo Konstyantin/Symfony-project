@@ -1,14 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div class="car-specs-title">
+        <a href="{{ path('car_view', {'carName': car.name, 'model': car.model.name}) }}">{{ car.name }}</a>
+    </div>
     <div class="car-specs-section">
-        <div class="car-name clearfix">
-            <div class="col-sm-offset-1">
-                <a href="{{ path('car_view', {'carName': car.name, 'model': car.model.name}) }}">{{ car.name }}</a>
-            </div>
-        </div>
         <div class="clearfix">
-            <div class="col-lg-offset-1 col-sm-5">
+            <div class="col-sm-6">
                 <table class="table">
                     <thead>
                     <tr>
@@ -52,7 +50,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-sm-5">
+            <div class="col-sm-6">
                 <table class="table">
                     <thead>
                     <tr>
@@ -92,7 +90,7 @@
             </div>
         </div>
         <div class="clearfix">
-            <div class="col-lg-offset-1 col-sm-5">
+            <div class="col-sm-6">
                 <table class="table">
                     <thead>
                         <tr>
@@ -118,7 +116,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-sm-5">
+            <div class="col-sm-6">
                 <table class="table">
                     <thead>
                     <tr>
@@ -140,7 +138,7 @@
             </div>
         </div>
         <div class="clearfix">
-            <div class="col-lg-offset-1 col-sm-5">
+            <div class="col-sm-6">
                 <table class="table">
                     <thead>
                         <tr>
@@ -192,7 +190,7 @@
             </div>
         </div>
         <div class="clearfix">
-            <div class="col-lg-offset-1 col-sm-5">
+            <div class="col-sm-6">
                 <table class="table">
                     <thead>
                         <tr>

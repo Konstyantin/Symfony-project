@@ -22,7 +22,7 @@
     </div>
     <div class="models-section">
         <h3 class="text-center">Models</h3>
-        <div class="container">
+        <div class="model-list-container clearfix">
             <ul class="models-list">
                 {% for model in modelList %}
                     <li class="col-sm-4 models-item">
@@ -37,7 +37,7 @@
     </div>
     <div class="services-section">
         <h3 class="text-center">Services</h3>
-        <div class="container service-list">
+        <div class="service-list-container service-list">
             <div class="row">
                 <a href="{{ path('car_available_list') }}">
                     <div class="service-item available-cars-service">

@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container">
-        <h2 class="text-center">{{ model }} Cars</h2>
+    <div class="model-cal-title">
+        <p>{{ model }} Cars</p>
+    </div>
+    <div class="model-car-container">
         <div class="car-list-section">
             {% for car in carList %}
                 <a href="{{ path('car_view', {'carName': car.name, 'model': model}) }}">

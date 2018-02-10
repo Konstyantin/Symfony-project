@@ -68,7 +68,7 @@ class FeatureType extends AbstractType
             ])
             ->add('imageFile', VichImageType::class, [
                 'required' => false,
-                'allow_delete' => true,
+                'allow_delete' => true
             ])
         ;
     }

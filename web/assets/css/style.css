@@ -5,7 +5,6 @@ html {
 body {
     margin-bottom: 100px;
     height: 100%;
-
 }
 
 .footer {
@@ -32,7 +31,7 @@ body {
 }
 
 .app-navigation nav .navbar-nav {
-    margin: 20px 10% 10px;
+    margin: 20px 70px 10px;
 }
 
 .app-navigation nav .navbar-nav .caret {
@@ -621,9 +620,20 @@ body {
 .profile-edit-container,
 .footer-service-list,
 .user-car-container,
-.service-registration-container {
+.service-registration-container,
+.model-list-container,
+.service-list-container,
+.model-container,
+.model-car-container,
+.car-specs-section,
+.available-car-container,
+.car-tech-param-section {
     margin: 0 auto;
     padding: 0 100px;
+}
+
+.car-tech-param-section .car-logo-img img {
+    width: 100%;
 }
 
 .offers-category-list .offers-category-item {
@@ -633,6 +643,18 @@ body {
 .offers-list .offers-item h2,
 .offers-category-list .offers-category-item .item-description h2 {
     margin-top: 0;
+}
+
+.offers-list .offers-item>.col-sm-4 {
+    padding-left: 0;
+}
+
+.offers-list .breadcrumb {
+    border-radius: 0;
+}
+
+.offers-list .offers-pagination {
+    padding-left: 0;
 }
 
 .profile-edit-container .btn-edit-profile,
@@ -755,15 +777,40 @@ body {
     width: 100%;
 }
 
-.service-registration-title {
+.service-registration-title,
+.offers-list-title,
+.model-cal-title,
+.offer-view-title,
+.car-specs-title,
+.dealer-list-title,
+.available-car-title {
     background-color: #eee;
     padding: 15px 100px;
     margin-bottom: 20px;
 }
 
-.service-registration-title p {
+.service-registration-title p,
+.offers-list-title p,
+.offer-view-title p,
+.model-cal-title p,
+.dealer-list-title p,
+.available-car-title p,
+.car-specs-title a {
     margin-bottom: 0;
     font-size: 20px;
+}
+
+.car-specs-title {
+    padding-left: 115px;
+}
+
+.car-specs-title a {
+    color: #000;
+    text-decoration: none;
+}
+
+.car-specs-title:hover a {
+    color: #c00;
 }
 
 .service-registration-container .form-group .help-block {

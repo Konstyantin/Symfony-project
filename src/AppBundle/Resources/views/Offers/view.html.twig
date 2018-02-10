@@ -1,9 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
+{% block title %}
+    {{ offer.title }}
+{% endblock %}
 
+{% block body %}
+    <div class="offer-view-title">
+        <p>{{ offer.title }}</p>
+    </div>
     <div class="offer-view-container">
-        <h2 class="">{{ offer.title }}</h2>
         <div class="offer-image">
             <img src="{% path offer.offersImage, 'reference' %}" alt="">
         </div>

@@ -5,8 +5,10 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container">
-        <h2 class="text-center">Available car list</h2>
+    <div class="available-car-title">
+        <p>Available car list</p>
+    </div>
+    <div class="available-car-container">
         <div class="car-list-section">
             {% for car in carList %}
                 <a href="{{ path('car_view', {'carName': car.name, 'model': car.model.name}) }}">
