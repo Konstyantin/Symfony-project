@@ -53,3 +53,15 @@ services:
         class: AppBundle\EventListener\ServiceListener
         autowire: true
 
+    # Service status service
+    admin.service_status:
+        class: AppBundle\Admin\ServiceStatusAdmin
+        arguments: [~, AppBundle\Entity\ServiceStatus, ~]
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              group: AppBundle
+              label: 'Service status'
+              label_catalogue: 'Service status'
+
+
