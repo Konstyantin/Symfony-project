@@ -262,4 +262,14 @@ class Dealer
     {
         return $this->carService;
     }
+
+    /**
+     * Return dealer name
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getName();
+    }
 }

@@ -64,4 +64,14 @@ services:
               label: 'Service status'
               label_catalogue: 'Service status'
 
+    # Service status service
+    admin.car_service:
+        class: AppBundle\Admin\CarServiceAdmin
+        arguments: [~, AppBundle\Entity\CarService, ~]
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              group: AppBundle
+              label: 'Car service'
+              label_catalogue: 'Car service'
 

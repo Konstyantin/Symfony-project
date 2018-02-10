@@ -97,6 +97,12 @@ class CarService
     protected $date;
 
     /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\ServiceStatus", inversedBy="carService")
+     * @ORM\JoinColumn(name="status_id", referencedColumnName="id")
+     */
+    protected $status;
+
+    /**
      * Get id
      *
      * @return int
@@ -368,5 +374,29 @@ class CarService
     public function getCarName()
     {
         return $this->carName;
+    }
+
+    /**
+     * Set status
+     *
+     * @param \AppBundle\Entity\ServiceStatus $status
+     *
+     * @return CarService
+     */
+    public function setStatus(\AppBundle\Entity\ServiceStatus $status = null)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return \AppBundle\Entity\ServiceStatus
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }

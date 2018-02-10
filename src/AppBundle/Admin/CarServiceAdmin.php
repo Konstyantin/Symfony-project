@@ -1,24 +1,31 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: kostya
+ * Date: 10.02.18
+ * Time: 14:12
+ */
 
-namespace AppBundle\Form;
+namespace AppBundle\Admin;
 
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use AppBundle\Entity\CarService;
+use Sonata\AdminBundle\Admin\AbstractAdmin;
+use Sonata\AdminBundle\Datagrid\ListMapper;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
+use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 /**
- * Class RegistrationServiceType
- * @package AppBundle\Form
+ * Class CarServiceAdmin
+ * @package AppBundle\Admin
  */
-class RegistrationServiceType extends AbstractType
+class CarServiceAdmin extends AbstractAdmin
 {
     /**
      * Count month in year
@@ -36,16 +43,16 @@ class RegistrationServiceType extends AbstractType
     const MAX_HOURS = 20;
 
     /**
-     * Build form
+     * Configure form field
      *
-     * Define form fields and set params and attributes for defined fields
+     * Set configuration for form field which are displayed on the edit
+     * and create action
      *
-     * @param FormBuilderInterface $builder
-     * @param array $options
+     * @param FormMapper $form
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function configureFormFields(FormMapper $form)
     {
-        $builder
+        $form
             ->add('firstName', TextType::class, [
                 'label' => 'First Name',
                 'required' => false,
@@ -161,6 +168,14 @@ class RegistrationServiceType extends AbstractType
                     new NotBlank()
                 ]
             ])
+            ->add('status', 'sonata_type_model', [
+                'class' => 'AppBundle:ServiceStatus',
+                'multiple' => false,
+                'required' => false,
+                'constraints' => [
+                    new NotBlank()
+                ]
+            ])
             ->add('date', DateTimeType::class, [
                 'placeholder' => [
                     'year' => 'Year', 'month' => 'Month', 'day' => 'Day',
@@ -175,33 +190,74 @@ class RegistrationServiceType extends AbstractType
                     new NotBlank()
                 ]
             ])
-            ->add('submit', SubmitType::class, [
-                'attr' => [
-                    'class' => 'btn btn-service-register'
-                ]
-            ])
         ;
     }
 
     /**
-     * Configure options
+     * Configure datagrid filters
      *
-     * @param OptionsResolver $resolver
+     * Configure datagrid filters which will used for filtered and sort
+     * the list of model
+     *
+     * @param DatagridMapper $filter
      */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureDatagridFilters(DatagridMapper $filter)
     {
-        $resolver->setDefaults([
-            'data_class' => 'AppBundle\Entity\CarService'
-        ]);
+        $filter
+            ->add('firstName', null, ['placeholder' => 'First name'])
+            ->add('lastName', null, ['placeholder' => 'Last name'])
+            ->add('email', null, ['placeholder' => 'Email'])
+            ->add('phone', null, ['placeholder' => 'Phone'])
+            ->add('carName', null, ['placeholder' => 'Car name'])
+            ->add('model', null, ['placeholder' => 'Model'])
+            ->add('vin', null, ['placeholder' => 'Vin'])
+            ->add('mileage', null, ['placeholder' => 'Mileage'])
+            ->add('licensePlate', null, ['placeholder' => 'License Plate'])
+            ->add('dealer', null, ['placeholder' => 'Dealer'])
+            ->add('date', null, ['placeholder' => 'Date'])
+            ->add('status', null, ['placeholder' => 'Status']);
     }
 
     /**
-     * Get block prefix
+     * Configure list fields
      *
+     * Specific fields which are show all model are listed
+     *
+     * @param ListMapper $list
+     */
+    public function configureListFields(ListMapper $list)
+    {
+        $list
+            ->addIdentifier('firstName', null, ['placeholder' => 'First name'])
+            ->addIdentifier('lastName', null, ['placeholder' => 'Last name'])
+            ->addIdentifier('email', null, ['placeholder' => 'Email'])
+            ->addIdentifier('phone', null, ['placeholder' => 'Phone'])
+            ->addIdentifier('carName', null, ['placeholder' => 'Car name'])
+            ->addIdentifier('vin', null, ['placeholder' => 'Vin'])
+            ->addIdentifier('mileage', null, ['placeholder' => 'Mileage'])
+            ->addIdentifier('licensePlate', null, ['placeholder' => 'License Plate'])
+            ->addIdentifier('dealer', null, ['placeholder' => 'Dealer'])
+            ->add('status', null, ['placeholder' => 'Status'])
+            ->add('_action', null, [
+                'actions' => [
+                    'delete' => [],
+                    'edit' => []
+                ]
+            ]);
+    }
+
+    /**
+     * This receives the object to transform to a string as the first parameter
+     *
+     * @param mixed $object
      * @return string
      */
-    public function getBlockPrefix()
+    public function toString($object)
     {
-        return 'app_bundle_registration_service_type';
+        if ($object instanceof CarService) {
+            return $object->getId();
+        }
+
+        return 'Car service';
     }
 }

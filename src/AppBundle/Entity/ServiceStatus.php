@@ -35,6 +35,11 @@ class ServiceStatus
     protected $status;
 
     /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\CarService", mappedBy="status")
+     */
+    protected $carService;
+
+    /**
      * Get id
      *
      * @return int
@@ -66,5 +71,39 @@ class ServiceStatus
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set carService
+     *
+     * @param \AppBundle\Entity\CarService $carService
+     *
+     * @return ServiceStatus
+     */
+    public function setCarService(\AppBundle\Entity\CarService $carService = null)
+    {
+        $this->carService = $carService;
+
+        return $this;
+    }
+
+    /**
+     * Get carService
+     *
+     * @return \AppBundle\Entity\CarService
+     */
+    public function getCarService()
+    {
+        return $this->carService;
+    }
+
+    /**
+     * Return status
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->status;
     }
 }
