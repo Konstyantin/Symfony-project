@@ -765,3 +765,7 @@ body {
     margin-bottom: 0;
     font-size: 20px;
 }
+
+.service-registration-container .form-group .help-block {
+    color: #B0413E;
+}

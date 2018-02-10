@@ -37,6 +37,8 @@ class ServiceController extends Controller
             $event = new ServiceEvent($data);
 
             $dispatcher->dispatch(AppBundleEvent::SERVICE_REGISTER, $event);
+
+            return $this->redirectToRoute('service_registration');
         }
 
         return $this->render('@App/Service/register.html.twig', [

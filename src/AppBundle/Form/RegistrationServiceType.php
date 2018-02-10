@@ -12,6 +12,9 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\DateTime;
+use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * Class RegistrationServiceType
@@ -50,6 +53,13 @@ class RegistrationServiceType extends AbstractType
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'First name'
+                ],
+                'constraints' => [
+                    new NotBlank(),
+                    new Length([
+                        'min' => 3,
+                        'max' => 45
+                    ])
                 ]
             ])
             ->add('lastName', TextType::class, [
@@ -57,20 +67,38 @@ class RegistrationServiceType extends AbstractType
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'Last name'
+                ],
+                'constraints' => [
+                    new NotBlank(),
+                    new Length([
+                        'min' => 3,
+                        'max' => 45
+                    ])
                 ]
             ])
             ->add('phone', NumberType::class, [
                 'label' => 'Phone',
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Phone'
+                    'placeholder' => '38066...'
+                ],
+                'constraints' => [
+                    new NotBlank(),
+                    new Length([
+                        'min' => 10,
+                        'max' => 13
+                    ])
                 ]
             ])
-            ->add('email', EmailType::class, [
+            ->add('email', TextType::class, [
                 'label' => 'Email',
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'Email'
+                ],
+                'constraints' => [
+                    new NotBlank(),
+                    new Email()
                 ]
             ])
             ->add('carName', TextType::class, [
@@ -78,6 +106,13 @@ class RegistrationServiceType extends AbstractType
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'Car name'
+                ],
+                'constraints' => [
+                    new NotBlank(),
+                    new Length([
+                        'min' => 3,
+                        'max' => 15
+                    ])
                 ]
             ])
             ->add('model', EntityType::class, [
@@ -85,12 +120,18 @@ class RegistrationServiceType extends AbstractType
                 'choice_label' => 'name',
                 'multiple' => false,
                 'required' => false,
+                'constraints' => [
+                    new NotBlank()
+                ]
             ])
             ->add('vin', NumberType::class, [
                 'label' => 'Vin',
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'Vin'
+                ],
+                'constraints' => [
+                    new NotBlank()
                 ]
             ])
             ->add('mileage', NumberType::class, [
@@ -98,6 +139,9 @@ class RegistrationServiceType extends AbstractType
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'Mileage'
+                ],
+                'constraints' => [
+                    new NotBlank()
                 ]
             ])
             ->add('licensePlate', NumberType::class, [
@@ -105,6 +149,9 @@ class RegistrationServiceType extends AbstractType
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'License plate'
+                ],
+                'constraints' => [
+                    new NotBlank()
                 ]
             ])
             ->add('dealer', EntityType::class, [
@@ -112,16 +159,23 @@ class RegistrationServiceType extends AbstractType
                 'choice_label' => 'name',
                 'multiple' => false,
                 'required' => false,
+                'constraints' => [
+                    new NotBlank()
+                ]
             ])
             ->add('date', DateTimeType::class, [
                 'placeholder' => [
                     'year' => 'Year', 'month' => 'Month', 'day' => 'Day',
                     'hour' => 'Hour', 'minute' => 'Minute', 'second' => 'Second',
                 ],
+                'required' => false,
                 'input' => 'timestamp',
                 'years' => range(date("Y"), date("Y")),
                 'months' => range(date("M", strtotime('-1 month')), self::MONTH_COUNT),
                 'hours' => range(self::MIN_HOURS, self::MAX_HOURS),
+                'constraints' => [
+                    new NotBlank()
+                ]
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
