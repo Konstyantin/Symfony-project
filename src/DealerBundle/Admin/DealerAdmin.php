@@ -53,7 +53,7 @@ class DealerAdmin extends AbstractAdmin
                     'placeholder' => 'Street'
                 ]
             ])
-            ->add('number', NumberType::class, [
+            ->add('number', TextType::class, [
                 'label' => 'Number',
                 'required' => false,
                 'attr' => [

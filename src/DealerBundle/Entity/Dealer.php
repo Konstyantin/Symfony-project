@@ -45,7 +45,7 @@ class Dealer
     /**
      * @var integer
      *
-     * @ORM\Column(name="number", type="integer")
+     * @ORM\Column(name="number", type="string")
      */
     protected $number;
 

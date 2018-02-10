@@ -12,10 +12,7 @@
             <div class="col-sm-4 dealer-item">
                 <h3 class="dealer-item-name">{{ dealer.name }}</h3>
                 <div class="dealer-item-address">
-                    <span>{{ dealer.postCode }},</span>
-                    <span>{{ dealer.city }},</span>
-                    <span>{{ dealer.street }},</span>
-                    <span>{{ dealer.number }}</span>
+                    <span class="dealer-address">{{ dealer.postCode }}, {{ dealer.city }}, {{ dealer.street }}, {{ dealer.number }}</span>
                 </div>
                 <div class="dealer-item-contact">
                     <span>phone: +380{{ dealer.phone }}</span>
@@ -27,19 +24,46 @@
 
 {% block javascripts %}
     <script>
-        function initMap() {
-            var uluru = {lat: 49.988358, lng: 36.232845};
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 12,
-                center: uluru
-            });
-            var marker = new google.maps.Marker({
-                position: uluru,
-                map: map
+
+        var geocoder, map;
+
+        function initialize() {
+            geocoder = new google.maps.Geocoder();
+            var latlng = new google.maps.LatLng(49.988358, 36.232845);
+            var mapOptions = {
+                zoom: 8,
+                center: latlng
+            };
+            map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        }
+
+        function codeAddress() {
+
+            var dealerList = document.getElementsByClassName('dealer-address');
+
+            Array.prototype.forEach.call(dealerList, function (el) {
+
+                var address = el.textContent;
+                geocoder.geocode( { 'address': address}, function(results, status) {
+                    if (status == 'OK') {
+                        map.setCenter(results[0].geometry.location);
+                        var marker = new google.maps.Marker({
+                            map: map,
+                            position: results[0].geometry.location
+                        });
+                    } else {
+                        alert('Geocode was not successful for the following reason: ' + status);
+                    }
+                });
             });
         }
+
+        setTimeout(function () {
+            codeAddress();
+        }, 500);
+
     </script>
     <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuBIBIQVqda0vQzB0hFZRxiCTfB0FloAU&callback=initMap">
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuBIBIQVqda0vQzB0hFZRxiCTfB0FloAU&callback=initialize">
     </script>
 {% endblock %}
