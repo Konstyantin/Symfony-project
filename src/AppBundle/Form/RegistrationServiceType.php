@@ -13,6 +13,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Doctrine\ORM\EntityRepository;
 
 /**
  * Class RegistrationServiceType
@@ -45,6 +46,8 @@ class RegistrationServiceType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $userId = $options['user'];
+
         $builder
             ->add('firstName', TextType::class, [
                 'label' => 'First Name',
@@ -118,6 +121,13 @@ class RegistrationServiceType extends AbstractType
                 'choice_label' => 'name',
                 'multiple' => false,
                 'required' => false,
+                'query_builder' => function (EntityRepository $er) use ($userId) {
+                    return $er->createQueryBuilder('model')
+                        ->join('AppBundle:UserCar', 'user_car', 'WITH', 'model.id = user_car.model')
+                        ->where('user_car.user =:userId')
+                        ->setParameter('userId', $userId)
+                        ->orderBy('model.id', 'ASC');
+                },
                 'constraints' => [
                     new NotBlank()
                 ]
@@ -191,7 +201,8 @@ class RegistrationServiceType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'AppBundle\Entity\CarService'
+            'data_class' => 'AppBundle\Entity\CarService',
+            'user' => null
         ]);
     }
 

@@ -57,8 +57,8 @@ class CarService
     protected $carName;
 
     /**
-     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Model", inversedBy="carService")
-     * @ORM\JoinColumn(name="model_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Model", inversedBy="carService", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="model_id", referencedColumnName="id", unique=false, nullable=false)
      */
     protected $model;
 
@@ -84,8 +84,8 @@ class CarService
     protected $licensePlate;
 
     /**
-     * @ORM\ManyToOne(targetEntity="DealerBundle\Entity\Dealer", inversedBy="carService")
-     * @ORM\JoinColumn(name="dealer_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="DealerBundle\Entity\Dealer", inversedBy="carService", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="dealer_id", referencedColumnName="id", unique=false, nullable=false)
      */
     protected $dealer;
 
@@ -97,8 +97,8 @@ class CarService
     protected $date;
 
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\ServiceStatus", inversedBy="carService")
-     * @ORM\JoinColumn(name="status_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ServiceStatus", inversedBy="carService", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="status_id", referencedColumnName="id", unique=false, nullable=false)
      */
     protected $status;
 
@@ -383,7 +383,7 @@ class CarService
      *
      * @return CarService
      */
-    public function setStatus(\AppBundle\Entity\ServiceStatus $status = null)
+    public function setStatus(\AppBundle\Entity\ServiceStatus $status)
     {
         $this->status = $status;
 

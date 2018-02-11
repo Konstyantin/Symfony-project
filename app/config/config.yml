@@ -327,7 +327,7 @@ sonata_classification:
             translation:  SonataClassificationBundle
 
 
-# Sonata media configuration
+# Redis configuration
 snc_redis:
     clients:
         default:

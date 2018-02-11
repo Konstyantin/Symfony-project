@@ -2,12 +2,10 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\CarService;
 use AppBundle\Event\ServiceEvent;
 use AppBundle\EventListener\AppBundleEvent;
 use AppBundle\Form\RegistrationServiceType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -24,7 +22,9 @@ class ServiceController extends Controller
      */
     public function registrationAction(Request $request)
     {
-        $form = $this->createForm(RegistrationServiceType::class);
+        $userId = $this->getUser()->getId();
+
+        $form = $this->createForm(RegistrationServiceType::class, null, ['user' => $userId]);
 
         $form->handleRequest($request);
 

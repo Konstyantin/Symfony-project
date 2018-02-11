@@ -228,15 +228,15 @@ class CarServiceAdmin extends AbstractAdmin
     public function configureListFields(ListMapper $list)
     {
         $list
-            ->addIdentifier('firstName', null, ['placeholder' => 'First name'])
-            ->addIdentifier('lastName', null, ['placeholder' => 'Last name'])
-            ->addIdentifier('email', null, ['placeholder' => 'Email'])
-            ->addIdentifier('phone', null, ['placeholder' => 'Phone'])
-            ->addIdentifier('carName', null, ['placeholder' => 'Car name'])
-            ->addIdentifier('vin', null, ['placeholder' => 'Vin'])
-            ->addIdentifier('mileage', null, ['placeholder' => 'Mileage'])
-            ->addIdentifier('licensePlate', null, ['placeholder' => 'License Plate'])
-            ->addIdentifier('dealer', null, ['placeholder' => 'Dealer'])
+            ->addIdentifier('firstName', null, ['placeholder' => 'First name', 'row_align' => 'left'])
+            ->addIdentifier('lastName', null, ['placeholder' => 'Last name', 'row_align' => 'left'])
+            ->addIdentifier('email', null, ['placeholder' => 'Email', 'row_align' => 'left'])
+            ->addIdentifier('phone', null, ['placeholder' => 'Phone', 'row_align' => 'left'])
+            ->addIdentifier('carName', null, ['placeholder' => 'Car name', 'row_align' => 'left'])
+            ->addIdentifier('vin', null, ['placeholder' => 'Vin', 'row_align' => 'left'])
+            ->addIdentifier('mileage', null, ['placeholder' => 'Mileage', 'row_align' => 'left'])
+            ->addIdentifier('licensePlate', null, ['placeholder' => 'License Plate', 'row_align' => 'left'])
+            ->addIdentifier('dealer', null, ['placeholder' => 'Dealer', 'row_align' => 'left'])
             ->add('status', null, ['placeholder' => 'Status'])
             ->add('_action', null, [
                 'actions' => [

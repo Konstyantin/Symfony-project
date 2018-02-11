@@ -35,14 +35,22 @@ class ServiceStatus
     protected $status;
 
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\CarService", mappedBy="status")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\CarService", mappedBy="status")
      */
     protected $carService;
 
     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->carService = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -74,23 +82,33 @@ class ServiceStatus
     }
 
     /**
-     * Set carService
+     * Add carService
      *
      * @param \AppBundle\Entity\CarService $carService
      *
      * @return ServiceStatus
      */
-    public function setCarService(\AppBundle\Entity\CarService $carService = null)
+    public function addCarService(\AppBundle\Entity\CarService $carService)
     {
-        $this->carService = $carService;
+        $this->carService[] = $carService;
 
         return $this;
     }
 
     /**
+     * Remove carService
+     *
+     * @param \AppBundle\Entity\CarService $carService
+     */
+    public function removeCarService(\AppBundle\Entity\CarService $carService)
+    {
+        $this->carService->removeElement($carService);
+    }
+
+    /**
      * Get carService
      *
-     * @return \AppBundle\Entity\CarService
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getCarService()
     {

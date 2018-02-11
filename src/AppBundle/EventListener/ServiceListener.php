@@ -62,14 +62,20 @@ class ServiceListener implements EventSubscriberInterface
     {
         $em = $this->serviceContainer->get('doctrine.orm.default_entity_manager');
 
-        $carService = $event->getService();
+        $serviceStatus = $em->getRepository('AppBundle:ServiceStatus')->findOneBy(['status' => 'Register']);
 
-        $this->sendNotifier($carService);
+        if ($serviceStatus) {
+            $carService = $event->getService();
 
-        $em->persist($carService);
-        $em->flush();
+            $carService->setStatus($serviceStatus);
 
-        $this->session->getFlashBag()->add('success', 'Service register success');
+            $this->sendNotifier($carService);
+
+            $em->persist($carService);
+            $em->flush();
+
+            $this->session->getFlashBag()->add('success', 'Service register success');
+        }
     }
 
     /**
