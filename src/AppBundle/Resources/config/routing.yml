@@ -2,6 +2,10 @@ index:
     path:     /
     defaults: { _controller: AppBundle:Index:index, breadcrumbs_label: 'Porsche' }
 
+contact:
+    path:     /contact
+    defaults: { _controller: AppBundle:Index:contact}
+
 offers_index:
     path:     /offers
     defaults: { _controller: AppBundle:Offers:index, breadcrumbs_label: 'Offers' }

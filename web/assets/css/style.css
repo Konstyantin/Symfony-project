@@ -628,12 +628,14 @@ body {
 .car-specs-section,
 .available-car-container,
 .car-tech-param-section,
-.car-service-container {
+.car-service-container,
+.contact-us-container{
     margin: 0 auto;
     padding: 0 100px;
 }
 
-.car-tech-param-section .car-logo-img img {
+.car-tech-param-section .car-logo-img img,
+.contact-us-image img {
     width: 100%;
 }
 
@@ -790,7 +792,8 @@ body {
 .car-specs-title,
 .dealer-list-title,
 .available-car-title,
-.service-create-title {
+.service-create-title,
+.contact-us-title {
     background-color: #eee;
     padding: 15px 100px;
     margin-bottom: 20px;
@@ -803,6 +806,7 @@ body {
 .dealer-list-title p,
 .available-car-title p,
 .service-create-title p,
+.contact-us-title p,
 .car-specs-title a {
     margin-bottom: 0;
     font-size: 20px;
@@ -823,4 +827,8 @@ body {
 
 .service-registration-container .form-group .help-block {
     color: #B0413E;
+}
+
+.contact-us-container .dealer-item {
+    padding-left: 0;
 }

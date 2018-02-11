@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="contact-us-image">
+        <img src="{{ asset('assets/img/porsche-normal (4).jpg') }}" alt="">
+    </div>
+    <div class="contact-us-title">
+        <p>Contact us</p>
+    </div>
+    <div class="contact-us-container clearfix">
+        <p>Dear user,</p>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci alias at aut commodi culpa dolor dolores
+            ducimus ex, expedita itaque, neque non numquam obcaecati odit omnis qui quis quod sunt ut voluptatum!
+            Debitis esse ex ipsa necessitatibus nesciunt quo? Animi aperiam assumenda quidem. Distinctio eligendi enim
+            impedit nisi numquam? At cumque delectus deleniti excepturi harum, in inventore iste laudantium magni
+            maiores necessitatibus nesciunt porro, praesentium quam quos repellat tempora! Adipisci delectus iure odio.
+            Accusantium ad beatae consequatur cum, dolor est eum facilis itaque molestiae, mollitia obcaecati omnis
+            optio porro quidem reprehenderit! Ab aut, corporis cumque incidunt magni maiores minus veniam?</p>
+        {% for dealer in dealerList %}
+            <div class="col-sm-4 dealer-item">
+                <h3 class="dealer-item-name">{{ dealer.name }}</h3>
+                <div class="dealer-item-address">
+                    <span class="dealer-address">{{ dealer.postCode }}, {{ dealer.city }}, {{ dealer.street }}, {{ dealer.number }}</span>
+                </div>
+                <div class="dealer-item-contact">
+                    <span>phone: +380{{ dealer.phone }}</span>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

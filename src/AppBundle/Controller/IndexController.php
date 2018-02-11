@@ -30,4 +30,15 @@ class IndexController extends Controller
             'modelList' => $modelList
         ]);
     }
+
+    public function contactAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $dealerList = $em->getRepository('DealerBundle:Dealer')->getDealerList();
+
+        return $this->render('@App/Index/contact.html.twig', [
+            'dealerList' => $dealerList
+        ]);
+    }
 }
