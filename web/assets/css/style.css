@@ -627,7 +627,8 @@ body {
 .model-car-container,
 .car-specs-section,
 .available-car-container,
-.car-tech-param-section {
+.car-tech-param-section,
+.car-service-container {
     margin: 0 auto;
     padding: 0 100px;
 }
@@ -661,7 +662,8 @@ body {
 .offers-list .offers-item .offers-description .more-offers-btn,
 .offers-category-list .offers-category-item .item-description .more-offers-btn,
 .user-car-container .user-car-list .user-car-item .manage .user-car-btn,
-.edit-user-section .btn-user-car, .btn-user-car, .btn-service-register {
+.edit-user-section .btn-user-car, .btn-user-car, .btn-service-register,
+.create-user-car-btn .create-user-car {
     background-color: #c00;
     text-decoration: none;
     color: #fff;
@@ -669,6 +671,10 @@ body {
     font-size: 18px;
     padding: 10px 40px;
     margin-top: 20px;
+}
+
+.create-user-car-btn .create-user-car {
+    margin-left: 15px;
 }
 
 .offers-pagination {
@@ -783,7 +789,8 @@ body {
 .offer-view-title,
 .car-specs-title,
 .dealer-list-title,
-.available-car-title {
+.available-car-title,
+.service-create-title {
     background-color: #eee;
     padding: 15px 100px;
     margin-bottom: 20px;
@@ -795,6 +802,7 @@ body {
 .model-cal-title p,
 .dealer-list-title p,
 .available-car-title p,
+.service-create-title p,
 .car-specs-title a {
     margin-bottom: 0;
     font-size: 20px;

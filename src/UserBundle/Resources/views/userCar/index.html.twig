@@ -14,6 +14,9 @@
             {% endfor %}
         </div>
         <div class="user-car-list clearfix">
+            <div class="create-user-car-btn">
+                <a href="{{ path('user_car_create') }}" class="btn create-user-car">Create</a>
+            </div>
             {% for car in carList %}
                 <div class="user-car-item col-sm-6">
                     <div class="item-name"><b>Name:</b> <span>{{ car.carName }}</span></div>

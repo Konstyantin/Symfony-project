@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container edit-user-section">
-        <h2 class="text-center">Edit user car</h2>
+    <div class="service-create-title">
+        <p>Edit user car</p>
+    </div>
+    <div class="car-service-container">
         {% for message in app.flashes('success') %}
             <div class="alert alert-success alert-dismissable">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

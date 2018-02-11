@@ -9,6 +9,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * Class UserCarType
@@ -32,6 +34,13 @@ class UserCarType extends AbstractType
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'Car name'
+                ],
+                'constraints' => [
+                    new NotBlank(),
+                    new Length([
+                        'min' => 3,
+                        'max' => 45
+                    ])
                 ]
             ])
             ->add('model', EntityType::class, [
@@ -39,28 +48,47 @@ class UserCarType extends AbstractType
                 'choice_label' => 'name',
                 'multiple' => false,
                 'required' => false,
+                'constraints' => [
+                    new NotBlank()
+                ]
             ])
             ->add('engine', EntityType::class, [
                 'class' => 'CarBundle:Engine',
                 'choice_label' => 'name',
                 'multiple' => false,
                 'required' => false,
+                'constraints' => [
+                    new NotBlank()
+                ]
             ])
             ->add('transmission', EntityType::class, [
                 'class' => 'CarBundle:Transmission',
                 'choice_label' => 'name',
                 'multiple' => false,
                 'required' => false,
+                'constraints' => [
+                    new NotBlank()
+                ]
             ])
             ->add('createdAt',DateType::class, [
                 'input' => 'timestamp',
-                'years' => range(date("Y", 0), date("Y"))
+                'years' => range(date("Y", 0), date("Y")),
+                'constraints' => [
+                    new NotBlank()
+                ]
             ])
             ->add('color', TextType::class, [
                 'label' => 'Color',
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'Color'
+                ],
+                'constraints' => [
+                    new NotBlank(),
+                    new Length([
+                        'min' => 3,
+                        'max' => 20
+                    ])
                 ]
             ])
             ->add('submit', SubmitType::class, [
