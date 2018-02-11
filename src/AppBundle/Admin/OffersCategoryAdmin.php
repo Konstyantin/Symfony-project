@@ -40,6 +40,13 @@ class OffersCategoryAdmin extends AbstractAdmin
                 'multiple' => false,
                 'required' => false,
             ])
+            ->add('name', TextType::class, [
+                'label' => 'Category name',
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'Category name'
+                ]
+            ])
             ->add('description', TextareaType::class, [
                 'label' => 'Description',
                 'required' => false,
