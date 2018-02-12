@@ -29,9 +29,9 @@ class Question
     protected $fullName;
 
     /**
-     * @var integer $phone
+     * @var string $phone
      *
-     * @ORM\Column(name="phone", type="integer")
+     * @ORM\Column(name="phone", type="string")
      */
     protected $phone;
 
@@ -59,7 +59,7 @@ class Question
     /**
      * @var string $time
      *
-     * @ORM\Column(name="date", type="datetime")
+     * @ORM\Column(name="date", type="integer")
      */
     protected $date;
 

@@ -71,7 +71,7 @@ class ServiceListener implements EventSubscriberInterface
 
         $question = $event->getQuestion();
 
-        $date = new DateTime();
+        $date = time();
 
         $question->setDate($date);
 
