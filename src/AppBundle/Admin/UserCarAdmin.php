@@ -16,6 +16,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * Class UserCarAdmin
@@ -34,11 +35,13 @@ class UserCarAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $form)
     {
         $form
-            ->add('carName', TextType::class, [
-                'label' => 'Car name',
+            ->add('car', EntityType::class, [
+                'class' => 'CarBundle:Model',
+                'choice_label' => 'name',
+                'multiple' => false,
                 'required' => false,
-                'attr' => [
-                    'placeholder' => 'Car name'
+                'constraints' => [
+                    new NotBlank()
                 ]
             ])
             ->add('user', EntityType::class, [
@@ -89,7 +92,7 @@ class UserCarAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $list)
     {
         $list
-            ->addIdentifier('carName', null, ['label' => 'Car name'])
+            ->addIdentifier('car', null, ['label' => 'Car name'])
             ->add('user', null, ['label' => 'Username'])
             ->add('model', null, ['label' => 'Model'])
             ->add('_action',null, [
@@ -111,7 +114,7 @@ class UserCarAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $filter)
     {
         $filter
-            ->add('carName', null, ['label' => 'Car name'])
+            ->add('car', null, ['label' => 'Car name'])
             ->add('user', null, ['label' => 'Username'])
             ->add('model', null, ['label' => 'Model']);
     }
@@ -125,7 +128,7 @@ class UserCarAdmin extends AbstractAdmin
     public function toString($object)
     {
         if ($object instanceof UserCar) {
-            return $object->getCarName();
+            return $object->getCar()->getName();
         }
 
         return 'User car';

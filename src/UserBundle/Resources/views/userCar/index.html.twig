@@ -19,7 +19,7 @@
             </div>
             {% for car in carList %}
                 <div class="user-car-item col-sm-6">
-                    <div class="item-name"><b>Name:</b> <span>{{ car.carName }}</span></div>
+                    <div class="item-name"><b>Name:</b> <span>{{ car.car.name }}</span></div>
                     <div class="item-model"><b>Model:</b> <span>{{ car.model.name }}</span></div>
                     <div class="item-engine"><b>Engine:</b> <span>{{ car.engine.name }}</span></div>
                     <div class="item-transmission"><b>Transmission:</b> <span>{{ car.transmission.name }}</span></div>

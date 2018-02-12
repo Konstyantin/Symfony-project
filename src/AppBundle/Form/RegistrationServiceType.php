@@ -107,6 +107,13 @@ class RegistrationServiceType extends AbstractType
                 'choice_label' => 'name',
                 'multiple' => false,
                 'required' => false,
+//                'query_builder' => function (EntityRepository $er) use ($userId) {
+//                    return $er->createQueryBuilder('car')
+//                        ->join('AppBundle:UserCar', 'user_car', 'WITH', 'model.id = user_car.model')
+//                        ->where('user_car.user =:userId')
+//                        ->setParameter('userId', $userId)
+//                        ->orderBy('model.id', 'ASC');
+//                },
                 'constraints' => [
                     new NotBlank(),
                 ]

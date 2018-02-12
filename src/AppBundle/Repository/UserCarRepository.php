@@ -60,16 +60,9 @@ class UserCarRepository extends \Doctrine\ORM\EntityRepository
     {
         $em = $this->getEntityManager();
 
-        $userCar = new UserCar();
-        $userCar->setCarName($data->getCarName());
-        $userCar->setUser($user);
-        $userCar->setModel($data->getModel());
-        $userCar->setEngine($data->getEngine());
-        $userCar->setTransmission($data->getTransmission());
-        $userCar->setCreatedAt($data->getCreatedAt());
-        $userCar->setColor($data->getColor());
+        $data->setUser($user);
 
-        $em->persist($userCar);
+        $em->persist($data);
         $em->flush();
     }
 
@@ -77,20 +70,12 @@ class UserCarRepository extends \Doctrine\ORM\EntityRepository
      * Edit user car
      *
      * @param $data
-     * @param $userCar
      */
-    public function edit($data, $userCar)
+    public function edit($data)
     {
         $em = $this->getEntityManager();
 
-        $userCar->setCarName($data->getCarName());
-        $userCar->setModel($data->getModel());
-        $userCar->setEngine($data->getEngine());
-        $userCar->setTransmission($data->getTransmission());
-        $userCar->setCreatedAt($data->getCreatedAt());
-        $userCar->setColor($data->getColor());
-
-        $em->persist($userCar);
+        $em->persist($data);
         $em->flush();
     }
 }

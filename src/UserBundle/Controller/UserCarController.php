@@ -92,7 +92,7 @@ class UserCarController extends Controller
 
             $data = $form->getData();
 
-            $em->getRepository('AppBundle:UserCar')->edit($data, $userCar);
+            $em->getRepository('AppBundle:UserCar')->edit($data);
 
             $this->addFlash('success', 'Car edited success');
         }

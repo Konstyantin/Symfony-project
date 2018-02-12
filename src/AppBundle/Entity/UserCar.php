@@ -23,11 +23,10 @@ class UserCar
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="car_name", type="string")
+     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Car", inversedBy="userCar")
+     * @ORM\JoinColumn(name="car_id", referencedColumnName="id")
      */
-    protected $carName;
+    protected $car;
 
     /**
      * @var string
@@ -76,29 +75,6 @@ class UserCar
         return $this->id;
     }
 
-    /**
-     * Set carName
-     *
-     * @param string $carName
-     *
-     * @return UserCar
-     */
-    public function setCarName($carName)
-    {
-        $this->carName = $carName;
-
-        return $this;
-    }
-
-    /**
-     * Get carName
-     *
-     * @return string
-     */
-    public function getCarName()
-    {
-        return $this->carName;
-    }
 
     /**
      * Set color
@@ -242,5 +218,29 @@ class UserCar
     public function getTransmission()
     {
         return $this->transmission;
+    }
+
+    /**
+     * Set car
+     *
+     * @param \CarBundle\Entity\Car $car
+     *
+     * @return UserCar
+     */
+    public function setCar(\CarBundle\Entity\Car $car = null)
+    {
+        $this->car = $car;
+
+        return $this;
+    }
+
+    /**
+     * Get car
+     *
+     * @return \CarBundle\Entity\Car
+     */
+    public function getCar()
+    {
+        return $this->car;
     }
 }
