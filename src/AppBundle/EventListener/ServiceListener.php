@@ -8,6 +8,9 @@
 
 namespace AppBundle\EventListener;
 
+
+use DateTime;
+use AppBundle\Event\QuestionEvent;
 use AppBundle\Event\ServiceEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -49,8 +52,30 @@ class ServiceListener implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            AppBundleEvent::SERVICE_REGISTER => 'onServiceRegister'
+            AppBundleEvent::SERVICE_REGISTER => 'onServiceRegister',
+            AppBundleEvent::QUESTION_REGISTER => 'onQuestionRegister'
         ];
+    }
+
+    /**
+     * Question register event
+     *
+     * @param QuestionEvent $event
+     */
+    public function onQuestionRegister(QuestionEvent $event)
+    {
+        $em = $this->serviceContainer->get('doctrine.orm.default_entity_manager');
+
+        $question = $event->getQuestion();
+
+        $date = new DateTime();
+
+        $question->setDate($date);
+
+        $em->persist($question);
+        $em->flush();
+
+        $this->session->getFlashBag()->add('success', 'Question sender success');
     }
 
     /**

@@ -58,8 +58,10 @@ class Question
 
     /**
      * @var string $time
+     *
+     * @ORM\Column(name="date", type="datetime")
      */
-    protected $time;
+    protected $date;
 
     /**
      * Get id
@@ -189,5 +191,29 @@ class Question
     public function getBody()
     {
         return $this->body;
+    }
+
+    /**
+     * Set date
+     *
+     * @param string $date
+     *
+     * @return Question
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return string
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 }

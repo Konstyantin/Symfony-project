@@ -18,4 +18,9 @@ final class AppBundleEvent
      * The SERVICE_REGISTER occurs when user make registration to service
      */
     const SERVICE_REGISTER = 'service.register';
+
+    /**
+     * The QUESTION_REGISTER occurs when make question registration
+     */
+    const QUESTION_REGISTER = 'question.register';
 }

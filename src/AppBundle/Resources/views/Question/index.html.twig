@@ -3,8 +3,15 @@
     <div class="question-title">
         <p>Question</p>
     </div>
-
     <div class="question-container">
+        <div class="flash-message-container">
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Success!</strong> {{ message }}
+                </div>
+            {% endfor %}
+        </div>
         {{ form_start(form) }}
         {{ form_widget(form) }}
         {{ form_end(form) }}
