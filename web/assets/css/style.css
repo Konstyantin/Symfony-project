@@ -143,7 +143,8 @@ body {
     display: none;
 }
 
-.model-list-car .list-car-item .car-data img {
+.model-list-car .list-car-item .car-data img,
+.museum-wrapper img {
     width: 100%;
 }
 .car-data-menu,
@@ -630,6 +631,7 @@ body {
 .car-tech-param-section,
 .car-service-container,
 .contact-us-container,
+.museum-container,
 .question-container {
     margin: 0 auto;
     padding: 0 100px;
@@ -666,7 +668,7 @@ body {
 .offers-category-list .offers-category-item .item-description .more-offers-btn,
 .user-car-container .user-car-list .user-car-item .manage .user-car-btn,
 .edit-user-section .btn-user-car, .btn-user-car, .btn-service-register,
-.create-user-car-btn .create-user-car, .question-btn {
+.create-user-car-btn .create-user-car, .question-btn, .museum-link a {
     background-color: #c00;
     text-decoration: none;
     color: #fff;
@@ -796,6 +798,7 @@ body {
 .available-car-title,
 .service-create-title,
 .question-title,
+.museum-title,
 .contact-us-title {
     background-color: #eee;
     padding: 15px 100px;
@@ -811,6 +814,7 @@ body {
 .service-create-title p,
 .contact-us-title p,
 .question-title p,
+.museum-title p,
 .car-specs-title a {
     margin-bottom: 0;
     font-size: 20px;
@@ -839,4 +843,9 @@ body {
 
 .question-body-textarea {
     resize: none;
+}
+
+.museum-container p {
+    font-size: 16px;
+    width: 60%;
 }

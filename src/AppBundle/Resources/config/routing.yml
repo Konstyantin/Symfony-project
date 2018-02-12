@@ -10,6 +10,10 @@ question:
     path:     /question
     defaults: { _controller: AppBundle:Question:index}
 
+museum:
+    path:     /museum
+    defaults: { _controller: AppBundle:Index:museum}
+
 offers_index:
     path:     /offers
     defaults: { _controller: AppBundle:Offers:index, breadcrumbs_label: 'Offers' }

@@ -31,6 +31,11 @@ class IndexController extends Controller
         ]);
     }
 
+    /**
+     * Contact action
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function contactAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -40,5 +45,10 @@ class IndexController extends Controller
         return $this->render('@App/Index/contact.html.twig', [
             'dealerList' => $dealerList
         ]);
+    }
+
+    public function museumAction()
+    {
+        return $this->render('@App/Index/museum.html.twig');
     }
 }
