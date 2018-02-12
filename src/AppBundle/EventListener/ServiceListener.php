@@ -131,7 +131,7 @@ class ServiceListener implements EventSubscriberInterface
                 $template->render(':Emails:service_register.html.twig', [
                     'firstName' => $data->getFirstName(),
                     'lastName' => $data->getLastName(),
-                    'carName' => $data->getCarName(),
+                    'carName' => $data->getCar(),
                     'model' => $data->getModel(),
                     'dealer' => $data->getDealer()
                 ]),

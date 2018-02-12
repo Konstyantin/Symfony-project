@@ -50,15 +50,14 @@ class CarService
     protected $email;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="car_name", type="string")
+     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Car", inversedBy="carService", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="car_id", referencedColumnName="id", unique=false, nullable=false)
      */
-    protected $carName;
+    protected $car;
 
     /**
      * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Model", inversedBy="carService", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="model_id", referencedColumnName="id", unique=false, nullable=false)
+     * @ORM\JoinColumn(name="car_id", referencedColumnName="id", unique=false, nullable=false)
      */
     protected $model;
 
@@ -353,30 +352,6 @@ class CarService
     }
 
     /**
-     * Set carName
-     *
-     * @param string $carName
-     *
-     * @return CarService
-     */
-    public function setCarName($carName)
-    {
-        $this->carName = $carName;
-
-        return $this;
-    }
-
-    /**
-     * Get carName
-     *
-     * @return string
-     */
-    public function getCarName()
-    {
-        return $this->carName;
-    }
-
-    /**
      * Set status
      *
      * @param \AppBundle\Entity\ServiceStatus $status
@@ -398,5 +373,29 @@ class CarService
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set car
+     *
+     * @param \CarBundle\Entity\Car $car
+     *
+     * @return CarService
+     */
+    public function setCar(\CarBundle\Entity\Car $car)
+    {
+        $this->car = $car;
+
+        return $this;
+    }
+
+    /**
+     * Get car
+     *
+     * @return \CarBundle\Entity\Car
+     */
+    public function getCar()
+    {
+        return $this->car;
     }
 }

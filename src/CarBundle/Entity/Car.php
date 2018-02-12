@@ -76,6 +76,11 @@ class Car
     protected $available;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\CarService", mappedBy="car")
+     */
+    protected $carService;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -289,7 +294,7 @@ class Car
      */
     public function __toString()
     {
-        return (string) $this->getId();
+        return (string) $this->getName();
     }
 
     /**
@@ -314,5 +319,39 @@ class Car
     public function getAvailable()
     {
         return $this->available;
+    }
+
+    /**
+     * Add carService
+     *
+     * @param \AppBundle\Entity\CarService $carService
+     *
+     * @return Car
+     */
+    public function addCarService(\AppBundle\Entity\CarService $carService)
+    {
+        $this->carService[] = $carService;
+
+        return $this;
+    }
+
+    /**
+     * Remove carService
+     *
+     * @param \AppBundle\Entity\CarService $carService
+     */
+    public function removeCarService(\AppBundle\Entity\CarService $carService)
+    {
+        $this->carService->removeElement($carService);
+    }
+
+    /**
+     * Get carService
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCarService()
+    {
+        return $this->carService;
     }
 }

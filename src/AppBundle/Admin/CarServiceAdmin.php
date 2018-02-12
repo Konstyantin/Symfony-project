@@ -106,18 +106,13 @@ class CarServiceAdmin extends AbstractAdmin
                     new Email()
                 ]
             ])
-            ->add('carName', TextType::class, [
-                'label' => 'Car name',
+            ->add('car', EntityType::class, [
+                'class' => 'CarBundle:Car',
+                'choice_label' => 'name',
+                'multiple' => false,
                 'required' => false,
-                'attr' => [
-                    'placeholder' => 'Car name'
-                ],
                 'constraints' => [
                     new NotBlank(),
-                    new Length([
-                        'min' => 3,
-                        'max' => 15
-                    ])
                 ]
             ])
             ->add('model', EntityType::class, [
@@ -208,7 +203,7 @@ class CarServiceAdmin extends AbstractAdmin
             ->add('lastName', null, ['placeholder' => 'Last name'])
             ->add('email', null, ['placeholder' => 'Email'])
             ->add('phone', null, ['placeholder' => 'Phone'])
-            ->add('carName', null, ['placeholder' => 'Car name'])
+            ->add('car', null, ['placeholder' => 'Car name'])
             ->add('model', null, ['placeholder' => 'Model'])
             ->add('vin', null, ['placeholder' => 'Vin'])
             ->add('mileage', null, ['placeholder' => 'Mileage'])
@@ -232,7 +227,7 @@ class CarServiceAdmin extends AbstractAdmin
             ->addIdentifier('lastName', null, ['placeholder' => 'Last name', 'row_align' => 'left'])
             ->addIdentifier('email', null, ['placeholder' => 'Email', 'row_align' => 'left'])
             ->addIdentifier('phone', null, ['placeholder' => 'Phone', 'row_align' => 'left'])
-            ->addIdentifier('carName', null, ['placeholder' => 'Car name', 'row_align' => 'left'])
+            ->addIdentifier('car', null, ['placeholder' => 'Car name', 'row_align' => 'left'])
             ->addIdentifier('vin', null, ['placeholder' => 'Vin', 'row_align' => 'left'])
             ->addIdentifier('mileage', null, ['placeholder' => 'Mileage', 'row_align' => 'left'])
             ->addIdentifier('licensePlate', null, ['placeholder' => 'License Plate', 'row_align' => 'left'])
