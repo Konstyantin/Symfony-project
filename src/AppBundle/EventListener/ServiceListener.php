@@ -9,6 +9,7 @@
 namespace AppBundle\EventListener;
 
 
+use AppBundle\Helper\QuestionMail;
 use DateTime;
 use AppBundle\Event\QuestionEvent;
 use AppBundle\Event\ServiceEvent;
@@ -64,6 +65,8 @@ class ServiceListener implements EventSubscriberInterface
      */
     public function onQuestionRegister(QuestionEvent $event)
     {
+        $questionMail = new QuestionMail($this->serviceContainer);
+
         $em = $this->serviceContainer->get('doctrine.orm.default_entity_manager');
 
         $question = $event->getQuestion();
@@ -74,6 +77,10 @@ class ServiceListener implements EventSubscriberInterface
 
         $em->persist($question);
         $em->flush();
+
+        $questionMail->newQuestion();
+
+        $questionMail->registerQuestion($question->getEmail());
 
         $this->session->getFlashBag()->add('success', 'Question sender success');
     }
