@@ -793,6 +793,7 @@ body {
 .dealer-list-title,
 .available-car-title,
 .service-create-title,
+.question-title,
 .contact-us-title {
     background-color: #eee;
     padding: 15px 100px;
@@ -807,6 +808,7 @@ body {
 .available-car-title p,
 .service-create-title p,
 .contact-us-title p,
+.question-title p,
 .car-specs-title a {
     margin-bottom: 0;
     font-size: 20px;
