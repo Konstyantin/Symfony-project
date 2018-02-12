@@ -629,7 +629,8 @@ body {
 .available-car-container,
 .car-tech-param-section,
 .car-service-container,
-.contact-us-container{
+.contact-us-container,
+.question-container {
     margin: 0 auto;
     padding: 0 100px;
 }
@@ -665,7 +666,7 @@ body {
 .offers-category-list .offers-category-item .item-description .more-offers-btn,
 .user-car-container .user-car-list .user-car-item .manage .user-car-btn,
 .edit-user-section .btn-user-car, .btn-user-car, .btn-service-register,
-.create-user-car-btn .create-user-car {
+.create-user-car-btn .create-user-car, .question-btn {
     background-color: #c00;
     text-decoration: none;
     color: #fff;
@@ -755,7 +756,8 @@ body {
 
 .edit-user-section .form-group .form-control,
 #user_bundle_user_car_type .form-group .form-control,
-.service-registration-container .form-group .form-control {
+.service-registration-container .form-group .form-control,
+.question-container .form-group .form-control {
     border-radius: 0;
     height: inherit;
     padding: 10px;
@@ -833,4 +835,8 @@ body {
 
 .contact-us-container .dealer-item {
     padding-left: 0;
+}
+
+.question-body-textarea {
+    resize: none;
 }
