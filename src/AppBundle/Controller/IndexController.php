@@ -21,13 +21,19 @@ class IndexController extends Controller
 
         $sliderCategory = $em->getRepository('ApplicationSonataClassificationBundle:Category')->findOneBy(['name' => 'Slider']);
 
+        $indexGalleryCategory = $em->getRepository('ApplicationSonataClassificationBundle:Category')
+            ->findOneBy(['name' => 'IndexGallery']);
+
         $sliderList = $em->getRepository('ApplicationSonataMediaBundle:Media')->findBy(['category' => $sliderCategory]);
+
+        $galleryList = $em->getRepository('ApplicationSonataMediaBundle:Media')->findBy(['category' => $indexGalleryCategory]);
 
         $modelList = $em->getRepository('CarBundle:Model')->getModelsList();
 
         return $this->render('@App/Index/index.html.twig', [
             'sliderList' => $sliderList,
-            'modelList' => $modelList
+            'modelList' => $modelList,
+            'galleryList' => $galleryList
         ]);
     }
 
@@ -47,6 +53,11 @@ class IndexController extends Controller
         ]);
     }
 
+    /**
+     * Museum action
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function museumAction()
     {
         return $this->render('@App/Index/museum.html.twig');

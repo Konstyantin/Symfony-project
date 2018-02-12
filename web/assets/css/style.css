@@ -632,6 +632,7 @@ body {
 .car-service-container,
 .contact-us-container,
 .museum-container,
+.lightgallery-container,
 .question-container {
     margin: 0 auto;
     padding: 0 100px;
@@ -848,4 +849,19 @@ body {
 .museum-container p {
     font-size: 16px;
     width: 60%;
+}
+
+.lightgallery-container {
+    margin-top: 50px;
+    background-color: #323232;
+    padding: 20px 100px 65px;
+}
+
+.lightgallery-container .lightgallery-title {
+    color: #fff;
+    font-size: 30px;
+}
+
+.lightgallery-item {
+    width: 24.7%;
 }
