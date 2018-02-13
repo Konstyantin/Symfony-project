@@ -57,7 +57,7 @@ class CarService
 
     /**
      * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Model", inversedBy="carService", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="car_id", referencedColumnName="id", unique=false, nullable=false)
+     * @ORM\JoinColumn(name="model_id", referencedColumnName="id", unique=false, nullable=false)
      */
     protected $model;
 

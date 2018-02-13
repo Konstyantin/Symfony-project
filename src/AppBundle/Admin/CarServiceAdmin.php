@@ -154,6 +154,12 @@ class CarServiceAdmin extends AbstractAdmin
                     new NotBlank()
                 ]
             ])
+            ->add('userCar', EntityType::class, [
+                'class' => 'AppBundle:UserCar',
+                'choice_label' => 'car',
+                'multiple' => false,
+                'required' => false,
+            ])
             ->add('dealer', EntityType::class, [
                 'class' => 'DealerBundle:Dealer',
                 'choice_label' => 'name',
