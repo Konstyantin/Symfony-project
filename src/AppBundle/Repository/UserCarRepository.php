@@ -1,7 +1,6 @@
 <?php
 
 namespace AppBundle\Repository;
-use AppBundle\Entity\UserCar;
 
 /**
  * UserCarRepository
@@ -42,7 +41,7 @@ class UserCarRepository extends \Doctrine\ORM\EntityRepository
     {
         $query = $this->createQueryBuilder('c')
             ->where('c.user =:user')
-            ->andWhere('c.id =:id')
+            ->andWhere('c.car =:id')
             ->setParameter('user', $userId)
             ->setParameter('id', $carId)
             ->getQuery();

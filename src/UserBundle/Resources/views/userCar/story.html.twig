@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Car story
+{% endblock %}
+
+{% block body %}
+    <div class="car-story-title">
+        <p>Car story</p>
+    </div>
+    <div class="car-story-container">
+        {% for service in serviceList %}
+            <div class="car-service-item">
+                <div><span>Car:</span> {{ service.userCar.car.name }}</div>
+                <div><span>Model:</span> {{ service.model.name }}</div>
+                <div><span>Dealer:</span> {{ service.dealer.name }}</div>
+                <div><span>Vin:</span> {{ service.vin }}</div>
+                <div><span>Mileage:</span> {{ service.mileage }}</div>
+                <div><span>Licence plate:</span> {{ service.licensePlate }}</div>
+                <div><span>Date:</span> {{ service.date|date }}</div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

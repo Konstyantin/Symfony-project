@@ -10,4 +10,19 @@ namespace AppBundle\Repository;
  */
 class CarServiceRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Get service list by car id
+     *
+     * @param int $id
+     * @return array
+     */
+    public function getServiceListByCarId(int $id)
+    {
+        $query = $this->createQueryBuilder('car_service')
+            ->where('car_service.userCar =:id')
+            ->setParameter('id', $id)
+            ->getQuery();
+
+        return $query->getResult();
+    }
 }

@@ -17,3 +17,7 @@ user_car_edit:
 user_car_delete:
     path:     /cars/delete/{carId}
     defaults: { _controller: UserBundle:UserCar:delete }
+
+user_car_story:
+    path:     /car/story/{carId}
+    defaults: { _controller: UserBundle:UserCar:story}

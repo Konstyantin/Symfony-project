@@ -1,8 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    User car
+{% endblock %}
+
 {% block body %}
     <div class="user-car-wrap">
         <img src="{{ asset('assets/img/44b61c0-porsche-normal--2-.jpg') }}" alt="">
+    </div>
+    <div class="user-car-title">
+        <p>User car list</p>
     </div>
     <div class="user-car-container">
         <div class="flash-message-container">
@@ -27,6 +34,7 @@
                     <div class="manage">
                         <a href="{{ path('user_car_edit', {'carId': car.id}) }}" class="btn user-car-btn">Edit</a>
                         <a href="{{ path('user_car_delete', {'carId': car.id}) }}" class="btn user-car-btn">Delete</a>
+                        <a href="{{ path('user_car_story', {'carId': car.id}) }}" class="btn user-car-btn">Story</a>
                     </div>
                 </div>
             {% endfor %}

@@ -126,4 +126,23 @@ class UserCarController extends Controller
 
         return $this->redirectToRoute('user_car_home');
     }
+
+    /**
+     * Story action
+     *
+     * Show car story
+     *
+     * @param $carId
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function storyAction($carId)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $serviceList = $em->getRepository('AppBundle:CarService')->getServiceListByCarId($carId);
+
+        return $this->render('@User/userCar/story.html.twig', [
+            'serviceList' => $serviceList
+        ]);
+    }
 }

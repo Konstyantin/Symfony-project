@@ -3,7 +3,7 @@ html {
     min-height: 100%;
 }
 body {
-    margin-bottom: 100px;
+    /*margin-bottom: 100px;*/
     height: 100%;
 }
 
@@ -633,6 +633,7 @@ body {
 .contact-us-container,
 .museum-container,
 .lightgallery-container,
+.car-story-container,
 .question-container {
     margin: 0 auto;
     padding: 0 100px;
@@ -800,6 +801,8 @@ body {
 .service-create-title,
 .question-title,
 .museum-title,
+.car-story-title,
+.user-car-title,
 .contact-us-title {
     background-color: #eee;
     padding: 15px 100px;
@@ -816,6 +819,8 @@ body {
 .contact-us-title p,
 .question-title p,
 .museum-title p,
+.user-car-title p,
+.car-story-title p,
 .car-specs-title a {
     margin-bottom: 0;
     font-size: 20px;
@@ -864,4 +869,12 @@ body {
 
 .lightgallery-item {
     width: 24.7%;
+}
+
+.car-service-item div {
+    font-size: 16px;
+}
+
+.car-service-item div span {
+    font-weight: 600;
 }
