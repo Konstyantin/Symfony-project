@@ -102,6 +102,12 @@ class CarService
     protected $status;
 
     /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\UserCar", inversedBy="carService", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="user_car_id", referencedColumnName="id", unique=false, nullable=true)
+     */
+    protected $userCar;
+
+    /**
      * Get id
      *
      * @return int
@@ -397,5 +403,30 @@ class CarService
     public function getCar()
     {
         return $this->car;
+    }
+    
+
+    /**
+     * Set userCar
+     *
+     * @param \AppBundle\Entity\UserCar $userCar
+     *
+     * @return CarService
+     */
+    public function setUserCar(\AppBundle\Entity\UserCar $userCar = null)
+    {
+        $this->userCar = $userCar;
+
+        return $this;
+    }
+
+    /**
+     * Get userCar
+     *
+     * @return \AppBundle\Entity\UserCar
+     */
+    public function getUserCar()
+    {
+        return $this->userCar;
     }
 }

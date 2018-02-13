@@ -88,6 +88,8 @@ class ServiceListener implements EventSubscriberInterface
     /**
      * Service register event
      *
+     * Service register event use for registration user car to service
+     *
      * @param ServiceEvent $event
      */
     public function onServiceRegister(ServiceEvent $event)
@@ -97,7 +99,21 @@ class ServiceListener implements EventSubscriberInterface
         $serviceStatus = $em->getRepository('AppBundle:ServiceStatus')->findOneBy(['status' => 'Register']);
 
         if ($serviceStatus) {
+
             $carService = $event->getService();
+
+            $user = $event->getUser();
+
+            if ($user) {
+
+                $userId = $user->getId();
+
+                $serviceCarId = $carService->getCar()->getId();
+
+                $userCar = $em->getRepository('AppBundle:UserCar')->getUserCar($serviceCarId, $userId);
+
+                $carService->setUserCar($userCar);
+            }
 
             $carService->setStatus($serviceStatus);
 

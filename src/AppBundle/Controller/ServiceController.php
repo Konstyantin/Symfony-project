@@ -22,9 +22,9 @@ class ServiceController extends Controller
      */
     public function registrationAction(Request $request)
     {
-        $userId = $this->getUser()->getId();
+        $user = $this->getUser();
 
-        $form = $this->createForm(RegistrationServiceType::class, null, ['user' => $userId]);
+        $form = $this->createForm(RegistrationServiceType::class, null, ['user' => $user->getId()]);
 
         $form->handleRequest($request);
 
@@ -34,7 +34,7 @@ class ServiceController extends Controller
 
             $dispatcher = $this->get('event_dispatcher');
 
-            $event = new ServiceEvent($data);
+            $event = new ServiceEvent($data, $user);
 
             $dispatcher->dispatch(AppBundleEvent::SERVICE_REGISTER, $event);
 

@@ -66,6 +66,11 @@ class UserCar
     protected $transmission;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\CarService", mappedBy="userCar")
+     */
+    protected $carService;
+
+    /**
      * Get id
      *
      * @return integer
@@ -242,5 +247,46 @@ class UserCar
     public function getCar()
     {
         return $this->car;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->carService = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add carService
+     *
+     * @param \AppBundle\Entity\CarService $carService
+     *
+     * @return UserCar
+     */
+    public function addCarService(\AppBundle\Entity\CarService $carService)
+    {
+        $this->carService[] = $carService;
+
+        return $this;
+    }
+
+    /**
+     * Remove carService
+     *
+     * @param \AppBundle\Entity\CarService $carService
+     */
+    public function removeCarService(\AppBundle\Entity\CarService $carService)
+    {
+        $this->carService->removeElement($carService);
+    }
+
+    /**
+     * Get carService
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCarService()
+    {
+        return $this->carService;
     }
 }
