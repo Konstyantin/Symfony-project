@@ -202,7 +202,7 @@ body {
 }
 
 .dropdown-menu-item .menu-item:last-child a {
-   border: none;
+    border: none;
 }
 
 .model-list .model-item .item-name {
@@ -632,6 +632,7 @@ body {
 .car-service-container,
 .contact-us-container,
 .museum-container,
+.drive-selection-container,
 .lightgallery-container,
 .car-story-container,
 .question-container {
@@ -801,6 +802,7 @@ body {
 .service-create-title,
 .question-title,
 .museum-title,
+.drive-selection-title,
 .car-story-title,
 .user-car-title,
 .contact-us-title {
@@ -821,6 +823,7 @@ body {
 .museum-title p,
 .user-car-title p,
 .car-story-title p,
+.drive-selection-title p,
 .car-specs-title a {
     margin-bottom: 0;
     font-size: 20px;
@@ -877,4 +880,46 @@ body {
 
 .car-service-item div span {
     font-weight: 600;
+}
+
+.drive-selection-wrapper img {
+    width: 100%;
+}
+
+.drive-selection-container {
+    margin-bottom: 50px;
+}
+
+.drive-selection-list {
+    margin-top: 20px;
+    padding-left: 0;
+}
+
+.drive-selection-list li {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+.drive-selection-list li:last-child {
+    margin-bottom: 0;
+}
+
+.drive-selection-list li div {
+    display: inline-block;
+}
+
+.drive-selection-list li div img {
+    width: 100%;
+}
+
+.drive-selection-item a {
+    vertical-align: top;
+    text-decoration: none;
+    color: #000;
+    font-size: 16px;
+    padding-left: 20px;
+}
+
+.drive-selection-item a:hover {
+    color: #c00;
 }

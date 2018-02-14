@@ -45,4 +45,14 @@ class ServiceController extends Controller
             'form' => $form->createView()
         ]);
     }
+
+    /**
+     * Drive selection action
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function driveSelectionAction()
+    {
+        return $this->render('@App/Service/drive-selection.html.twig');
+    }
 }
