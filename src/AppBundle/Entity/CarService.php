@@ -108,6 +108,11 @@ class CarService
     protected $userCar;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\ServiceAction", mappedBy="carService")
+     */
+    protected $serviceAction;
+
+    /**
      * Get id
      *
      * @return int
@@ -428,5 +433,46 @@ class CarService
     public function getUserCar()
     {
         return $this->userCar;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->serviceAction = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add serviceAction
+     *
+     * @param \AppBundle\Entity\ServiceAction $serviceAction
+     *
+     * @return CarService
+     */
+    public function addServiceAction(\AppBundle\Entity\ServiceAction $serviceAction)
+    {
+        $this->serviceAction[] = $serviceAction;
+
+        return $this;
+    }
+
+    /**
+     * Remove serviceAction
+     *
+     * @param \AppBundle\Entity\ServiceAction $serviceAction
+     */
+    public function removeServiceAction(\AppBundle\Entity\ServiceAction $serviceAction)
+    {
+        $this->serviceAction->removeElement($serviceAction);
+    }
+
+    /**
+     * Get serviceAction
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getServiceAction()
+    {
+        return $this->serviceAction;
     }
 }
