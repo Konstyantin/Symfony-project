@@ -14,6 +14,7 @@ use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Doctrine\ORM\EntityRepository;
+use AppBundle\Constants\RegistrationService;
 
 /**
  * Class RegistrationServiceType
@@ -21,21 +22,6 @@ use Doctrine\ORM\EntityRepository;
  */
 class RegistrationServiceType extends AbstractType
 {
-    /**
-     * Count month in year
-     */
-    const MONTH_COUNT = 12;
-
-    /**
-     * Min hours work service
-     */
-    const MIN_HOURS = 9;
-
-    /**
-     * Max hour work service
-     */
-    const MAX_HOURS = 20;
-
     /**
      * Build form
      *
@@ -181,8 +167,8 @@ class RegistrationServiceType extends AbstractType
                 'required' => false,
                 'input' => 'timestamp',
                 'years' => range(date("Y"), date("Y")),
-                'months' => range(date("M", strtotime('-1 month')), self::MONTH_COUNT),
-                'hours' => range(self::MIN_HOURS, self::MAX_HOURS),
+                'months' => range(date("M", strtotime('-1 month')), RegistrationService::MONTH_COUNT),
+                'hours' => range(RegistrationService::MIN_HOURS, RegistrationService::MAX_HOURS),
                 'constraints' => [
                     new NotBlank()
                 ]

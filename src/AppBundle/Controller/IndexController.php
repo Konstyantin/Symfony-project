@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Constants\SonataClassificationCategory;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
@@ -19,14 +20,16 @@ class IndexController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $sliderCategory = $em->getRepository('ApplicationSonataClassificationBundle:Category')->findOneBy(['name' => 'Slider']);
+        $sliderCategory = $em->getRepository('ApplicationSonataClassificationBundle:Category')
+            ->findOneBy(['name' => SonataClassificationCategory::SLIDER_CATEGORY]);
 
         $indexGalleryCategory = $em->getRepository('ApplicationSonataClassificationBundle:Category')
-            ->findOneBy(['name' => 'IndexGallery']);
+            ->findOneBy(['name' => SonataClassificationCategory::GALLERY_CATEGORY]);
 
         $sliderList = $em->getRepository('ApplicationSonataMediaBundle:Media')->findBy(['category' => $sliderCategory]);
 
-        $galleryList = $em->getRepository('ApplicationSonataMediaBundle:Media')->findBy(['category' => $indexGalleryCategory]);
+        $galleryList = $em->getRepository('ApplicationSonataMediaBundle:Media')
+            ->findBy(['category' => $indexGalleryCategory]);
 
         $modelList = $em->getRepository('CarBundle:Model')->getModelsList();
 
