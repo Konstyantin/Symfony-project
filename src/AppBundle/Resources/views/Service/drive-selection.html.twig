@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Porsche drive selection
+{% endblock %}
+
+{% block body %}
+    <div class="drive-selection-wrapper">
+        <img src="{{ asset('assets/img/fca3109-6.jpg') }}" alt="">
+    </div>
+    <div class="drive-selection-title">
+        <p>Porsche drive selection</p>
+    </div>
+    <div class="drive-selection-container">
+        <h2>The Porsche Shop – clothing and personal accessories, vehicle accessories and much more.</h2>
+        <p>In the Porsche Shop, you can purchase ladies', men's and children's clothing, personal accessories, toys and
+            vehicle accessories. Whether you're looking for a T-shirt, a model car or a car care kit, Porsche merchandising
+            offers Porsche drivers and enthusiasts high-quality Porsche branded products to suit every occasion. Sporty,
+            elegant and in the minimalist style that is typical of Porsche – this is what characterises the Porsche
+            Driver's Selection clothing and accessories range. Visit the Porsche Driver's Selection now.
+        </p>
+        <ul class="drive-selection-list">
+            <li class="drive-selection-item">
+                <div>
+                    <img src="{{ asset('assets/img/8094ed0-8.jpg') }}" alt="">
+                </div>
+                <a href="http://www.shop.porsche.ua/">Go to shop</a>
+            </li>
+            <li class="drive-selection-item">
+                <div>
+                    <img src="{{ asset('assets/img/825a9ce-22.jpg') }}" alt="">
+                </div>
+                <a href="http://porsche.ua/files/6/1/PDS_Product%20Catalogue_2015_2016.pdf" target="_blank">Porsche drive selection catalog</a>
+            </li>
+            <li class="drive-selection-item">
+                <div>
+                    <img src="{{ asset('assets/img/67f175d-pds-selectmagazin-02-2017-ukr-web2-19-2.jpg') }}" alt="">
+                </div>
+                <a href="http://porsche.ua/files/pdf/PDS_SelectMagazin_02_2017_UKR_web2.pdf" target="_blank">Last collection</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

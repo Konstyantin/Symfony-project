@@ -29,3 +29,7 @@ category_offers_list:
 service_registration:
     path:     /service/registration
     defaults: { _controller: AppBundle:Service:registration}
+
+driver_selection:
+    path:     /service/selection
+    defaults: { _controller: AppBundle:Service:driveSelection}
