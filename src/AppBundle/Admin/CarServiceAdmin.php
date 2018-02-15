@@ -9,6 +9,7 @@
 namespace AppBundle\Admin;
 
 use AppBundle\Entity\CarService;
+use AppBundle\Constants\RegistrationService;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -27,21 +28,6 @@ use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
  */
 class CarServiceAdmin extends AbstractAdmin
 {
-    /**
-     * Count month in year
-     */
-    const MONTH_COUNT = 12;
-
-    /**
-     * Min hours work service
-     */
-    const MIN_HOURS = 9;
-
-    /**
-     * Max hour work service
-     */
-    const MAX_HOURS = 20;
-
     /**
      * Configure form field
      *
@@ -185,8 +171,8 @@ class CarServiceAdmin extends AbstractAdmin
                 'required' => false,
                 'input' => 'timestamp',
                 'years' => range(date("Y"), date("Y")),
-                'months' => range(date("M", strtotime('-1 month')), self::MONTH_COUNT),
-                'hours' => range(self::MIN_HOURS, self::MAX_HOURS),
+                'months' => range(date("M", strtotime('-1 month')), RegistrationService::MONTH_COUNT),
+                'hours' => range(RegistrationService::MIN_HOURS, RegistrationService::MAX_HOURS),
                 'constraints' => [
                     new NotBlank()
                 ]

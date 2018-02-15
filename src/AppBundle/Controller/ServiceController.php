@@ -24,7 +24,9 @@ class ServiceController extends Controller
     {
         $user = $this->getUser();
 
-        $form = $this->createForm(RegistrationServiceType::class, null, ['user' => $user->getId()]);
+        $userId = ($user) ? $user->getId() : null;
+
+        $form = $this->createForm(RegistrationServiceType::class, null, ['user' => $userId]);
 
         $form->handleRequest($request);
 

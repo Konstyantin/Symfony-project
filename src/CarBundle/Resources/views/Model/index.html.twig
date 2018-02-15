@@ -1,8 +1,16 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    Models
+{% endblock %}
+
 {% block body %}
+
+    <div class="model-container-title">
+        <p>Models</p>
+    </div>
     <div class="model-container">
-        <h2 class="text-center">Models</h2>
+        {{ render_breadcrumbs() }}
         <div class="model-list-section row">
             {% for model in modelList %}
                 <div class="col-sm-3 model-item">

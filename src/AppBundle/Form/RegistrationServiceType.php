@@ -20,7 +20,7 @@ use AppBundle\Constants\RegistrationService;
  * Class RegistrationServiceType
  * @package AppBundle\Form
  */
-class RegistrationServiceType extends AbstractType
+class   RegistrationServiceType extends AbstractType
 {
     /**
      * Build form
@@ -95,10 +95,9 @@ class RegistrationServiceType extends AbstractType
                 'required' => false,
                 'query_builder' => function (EntityRepository $er) use ($userId) {
                     return $er->createQueryBuilder('car')
-                        ->join('AppBundle:UserCar', 'user_car', 'WITH', 'car.id = user_car.car')
-                        ->where('user_car.user =:userId')
-                        ->setParameter('userId', $userId)
-                        ->orderBy('car.id', 'ASC');
+                        ->getEntityManager()
+                        ->getRepository('CarBundle:Car')
+                        ->getCarsByUserId($userId);
                 },
                 'constraints' => [
                     new NotBlank(),
@@ -111,10 +110,9 @@ class RegistrationServiceType extends AbstractType
                 'required' => false,
                 'query_builder' => function (EntityRepository $er) use ($userId) {
                     return $er->createQueryBuilder('model')
-                        ->join('AppBundle:UserCar', 'user_car', 'WITH', 'model.id = user_car.model')
-                        ->where('user_car.user =:userId')
-                        ->setParameter('userId', $userId)
-                        ->orderBy('model.id', 'ASC');
+                        ->getEntityManager()
+                        ->getRepository('CarBundle:Model')
+                        ->getModelsByUserId($userId);
                 },
                 'constraints' => [
                     new NotBlank()

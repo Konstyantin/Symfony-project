@@ -1,6 +1,6 @@
 model_list:
     path:     /model
-    defaults: { _controller: CarBundle:Model:index}
+    defaults: { _controller: CarBundle:Model:index, breadcrumbs_label: 'Model'}
 
 model_cars_list:
     path:     /model/{model}
