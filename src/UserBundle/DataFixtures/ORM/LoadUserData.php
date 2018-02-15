@@ -34,8 +34,8 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $user->setPassword('$2y$13$.ZOC/S5AkL5sKhMoChoRDuvJKcE2xTn74mHjgkh2wJnaEBt5JVb6C'); // admin
         $user->setRoles(['ROLE_SUPER_ADMIN']);
 
-        $manager->persist($user);
-        $manager->flush();
+//        $manager->persist($user);
+//        $manager->flush();
     }
 
     /**

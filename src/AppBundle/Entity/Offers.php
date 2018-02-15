@@ -49,7 +49,7 @@ class Offers
     protected $offersImage;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\OffersCategory", inversedBy="offers")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\OffersCategory", inversedBy="offers", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     protected $offersCategory;
