@@ -108,7 +108,7 @@ class CarService
     protected $userCar;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\ServiceAction", mappedBy="carService")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\ServiceAction", mappedBy="carService", cascade={"persist"})
      */
     protected $serviceAction;
 

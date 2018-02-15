@@ -10,6 +10,7 @@ namespace AppBundle\Admin;
 
 use AppBundle\Entity\CarService;
 use AppBundle\Constants\RegistrationService;
+use AppBundle\Form\ServiceActionType;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -21,6 +22,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Sonata\AdminBundle\Form\Type\CollectionType;
 
 /**
  * Class CarServiceAdmin
@@ -177,7 +179,57 @@ class CarServiceAdmin extends AbstractAdmin
                     new NotBlank()
                 ]
             ])
+            ->add('serviceAction', CollectionType::class, [
+                'label' => 'Service action',
+                'entry_type' => ServiceActionType::class,
+                'allow_add' => true,
+                'allow_delete' => true
+            ])
         ;
+    }
+
+    /**
+     * Post persist event
+     *
+     * @param mixed $object
+     */
+    public function postPersist($object)
+    {
+        $actionList = $object->getServiceAction();
+
+        $this->setRelationData($actionList, $object);
+    }
+
+    /**
+     * Post update event
+     *
+     * @param mixed $object
+     */
+    public function postUpdate($object)
+    {
+        $actionList = $object->getServiceAction();
+
+        $this->setRelationData($actionList, $object);
+    }
+
+
+    /**
+     * Set relation data
+     *
+     * @param $collection
+     * @param CarService $carService
+     */
+    public function setRelationData($collection, CarService $carService)
+    {
+        if ($collection) {
+            $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
+
+            foreach ($collection as $item) {
+                $item->setCarService($carService);
+                $em->persist($item);
+                $em->flush();
+            }
+        }
     }
 
     /**

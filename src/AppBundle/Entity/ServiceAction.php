@@ -36,8 +36,8 @@ class ServiceAction
     protected $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CarService", inversedBy="serviceAction", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="car_service_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CarService", inversedBy="serviceAction", cascade={"persist"})
+     * @ORM\JoinColumn(name="car_service_id", referencedColumnName="id", nullable=true)
      */
     protected $carService;
 
@@ -121,5 +121,15 @@ class ServiceAction
     public function getCarService()
     {
         return $this->carService;
+    }
+
+    /**
+     * Handle as string
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getId();
     }
 }

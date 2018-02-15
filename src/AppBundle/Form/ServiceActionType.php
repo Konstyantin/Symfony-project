@@ -8,6 +8,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * Class ServiceActionType
@@ -31,6 +33,13 @@ class ServiceActionType extends AbstractType
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'Action'
+                ],
+                'constraints' => [
+                    new NotBlank(),
+                    new Length([
+                        'min' => 5,
+                        'max' => 45
+                    ])
                 ]
             ])
             ->add('description', TextareaType::class, [
@@ -38,6 +47,9 @@ class ServiceActionType extends AbstractType
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'Description'
+                ],
+                'constraints' => [
+                    new NotBlank()
                 ]
             ]);
     }
