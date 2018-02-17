@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * OffersCategory
@@ -57,6 +58,11 @@ class OffersCategory
      */
     protected $offersCategoryImage;
 
+    /**
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(length=128, unique=true)
+     */
+    protected $slug;
 
     /**
      * Get id
@@ -247,5 +253,29 @@ class OffersCategory
     public function getOffersCategoryImage()
     {
         return $this->offersCategoryImage;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return OffersCategory
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

@@ -188,7 +188,7 @@
                             <ul class="dropdown-menu dropdown-menu-item">
                                 {% for offerCategory in offers_category_manager.getList %}
                                     <li class="menu-item">
-                                        <a href="{{ path('category_offers_list', {'category': offerCategory.name}) }}">{{ offerCategory.name }}</a>
+                                        <a href="{{ path('category_offers_list', {'category': offerCategory.slug}) }}">{{ offerCategory.name }}</a>
                                     </li>
                                 {% endfor %}
                             </ul>
