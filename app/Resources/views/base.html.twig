@@ -39,7 +39,7 @@
                                 </a>
                                 {% for model in model_management.getList %}
                                     <li class="model-item clearfix" id="{{ model.id }}">
-                                        <a href="{{ path('model_cars_list', {'model': model.name}) }}">
+                                        <a href="{{ path('model_cars_list', {'model': model.slug}) }}">
                                             <div class="col-sm-5 item-name">
                                                 <span>
                                                     {{ model.name }}
@@ -52,7 +52,7 @@
                                         {% if model.car is not empty %}
                                             <ul class="model-list-car" id="{{ model.id }}">
                                                 {% for car in model.car %}
-                                                    <a href="{{ path('car_view', {'carName': car.name, 'model': model.name}) }}">
+                                                    <a href="{{ path('car_view', {'carName': car.slug, 'model': model.name}) }}">
                                                         <li class="list-car-item" id="car-item-{{ model.id }}">
                                                             <p class="car-name">
                                                                 {{ car.name }}
@@ -75,7 +75,7 @@
                                                                                 <a href="">Configured</a>
                                                                             </li>
                                                                             <li class="menu-item view-car">
-                                                                                <a href="{{ path('car_view', {'carName': car.name, 'model': model.name}) }}">View</a>
+                                                                                <a href="{{ path('car_view', {'carName': car.slug, 'model': model.name}) }}">View</a>
                                                                             </li>
                                                                         </ul>
                                                                     </div>

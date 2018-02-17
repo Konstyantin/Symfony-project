@@ -8,6 +8,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use ServiceBundle\Entity\CarService;
+use Gedmo\Mapping\Annotation as Gedmo;
+
 /**
  * Model
  *
@@ -62,6 +64,12 @@ class Model
      * @ORM\OneToMany(targetEntity="ServiceBundle\Entity\CarService", mappedBy="model")
      */
     protected $carService;
+
+    /**
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(length=128, unique=true, nullable=true)
+     */
+    protected $slug;
 
     /**
      * Set imageLogo
@@ -238,5 +246,29 @@ class Model
     public function getCarService()
     {
         return $this->carService;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Model
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

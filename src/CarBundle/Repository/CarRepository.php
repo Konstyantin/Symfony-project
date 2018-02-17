@@ -79,7 +79,7 @@ class CarRepository extends \Doctrine\ORM\EntityRepository
     {
         $query = $this->createQueryBuilder('c')
             ->join('CarBundle:Model', 'm', 'WITH', 'c.model = m.id')
-            ->where('m.name =:model')
+            ->where('m.slug =:model')
             ->setParameter('model', $model)
             ->getQuery();
 
@@ -99,8 +99,8 @@ class CarRepository extends \Doctrine\ORM\EntityRepository
     {
         $query = $this->createQueryBuilder('c')
             ->join('CarBundle:Model', 'm', 'WITH', 'c.model = m.id')
-            ->where('m.name =:model')
-            ->andwhere('c.name =:carName')
+            ->where('m.slug =:model')
+            ->andwhere('c.slug =:carName')
             ->setParameter('model', $model)
             ->setParameter('carName', $carName)
             ->getQuery();

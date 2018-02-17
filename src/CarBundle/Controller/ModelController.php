@@ -42,8 +42,6 @@ class ModelController extends Controller
     {
         $em = $this->getDoctrine();
 
-        $modelName = $request->get('model');
-
         $carList = $em->getRepository('CarBundle:Car')->getCarsByModel($model);
 
         $modelList = $em->getRepository('CarBundle:Model')->getModelsList();

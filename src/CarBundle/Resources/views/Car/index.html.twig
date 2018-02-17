@@ -27,9 +27,6 @@
                         <li>
                             <a href="#car-feature-section" class="car-nav-item-link">Features</a>
                         </li>
-                        <li>
-                            <a href="#car-gallery-section" class="car-nav-item-link">Gallery</a>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -43,12 +40,6 @@
                 <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                 <a href="#car-feature-section" class="car-nav-item-link">
                     <span>Features</span>
-                </a>
-            </div>
-            <div class="car-nav-item page-nav-item col-sm-3">
-                <span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span>
-                <a href="#car-gallery-section" class="car-nav-item-link">
-                    <span>Gallery</span>
                 </a>
             </div>
         </div>
@@ -107,7 +98,7 @@
                 </tbody>
             </table>
             <div class="text-right">
-                <a href="{{ path('car_view_specs', {'carName': car.name, 'model': car.model.name}) }}" class="btn view-car-details-btn">All technical specs</a>
+                <a href="{{ path('car_view_specs', {'carName': car.slug, 'model': car.model.slug}) }}" class="btn view-car-details-btn">All technical specs</a>
             </div>
         </div>
     </div>
