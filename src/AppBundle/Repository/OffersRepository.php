@@ -53,7 +53,7 @@ class OffersRepository extends \Doctrine\ORM\EntityRepository
     public function getOfferByTitle(string $title)
     {
         $query = $this->createQueryBuilder('o')
-            ->where('o.title =:title')
+            ->where('o.slug =:title')
             ->setParameter('title', $title)
             ->getQuery();
 

@@ -20,7 +20,7 @@
                     <div class="cols-sm-8 offers-description">
                         <h2>{{ offer.title }}</h2>
                         <div>{{ offer.shortDescription }}</div>
-                        <a href="{{ path('offers_view', {'title': offer.title}) }}" class="btn more-offers-btn">Learn more</a>
+                        <a href="{{ path('offers_view', {'title': offer.slug}) }}" class="btn more-offers-btn">Learn more</a>
                     </div>
                 </div>
             {% endfor %}
