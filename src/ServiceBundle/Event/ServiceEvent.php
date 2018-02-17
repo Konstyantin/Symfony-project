@@ -6,15 +6,15 @@
  * Date: 07.02.18
  * Time: 21:25
  */
-namespace AppBundle\Event;
+namespace ServiceBundle\Event;
 
-use AppBundle\Entity\CarService;
+use ServiceBundle\Entity\CarService;
 use Symfony\Component\EventDispatcher\Event;
 use UserBundle\Entity\User;
 
 /**
  * Class ServiceEvent
- * @package AppBundle\Event
+ * @package ServiceBundle\Event
  */
 class ServiceEvent extends Event
 {

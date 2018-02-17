@@ -6,9 +6,9 @@
  * Time: 13:52
  */
 
-namespace AppBundle\Admin;
+namespace ServiceBundle\Admin;
 
-use AppBundle\Entity\ServiceStatus;
+use ServiceBundle\Entity\ServiceStatus;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;

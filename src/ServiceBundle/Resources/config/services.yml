@@ -1,0 +1,30 @@
+services:
+    # Service status service
+    admin.service_status:
+        class: ServiceBundle\Admin\ServiceStatusAdmin
+        arguments: [~, ServiceBundle\Entity\ServiceStatus, ~]
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              group: AppBundle
+              label: 'Service status'
+              label_catalogue: 'Service status'
+
+    # Car service service
+    admin.car_service:
+        class: ServiceBundle\Admin\CarServiceAdmin
+        arguments: [~, ServiceBundle\Entity\CarService, ~]
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              group: AppBundle
+              label: 'Car service'
+              label_catalogue: 'Car service'
+
+    # Service event listener
+    service.service_bundle_event:
+        class: ServiceBundle\EventListener\ServiceListener
+        autowire: true
+        tags:
+            - { name: kernel.event_subscriber }
+

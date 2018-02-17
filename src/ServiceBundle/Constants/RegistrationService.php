@@ -6,11 +6,11 @@
  * Time: 20:51
  */
 
-namespace AppBundle\Constants;
+namespace ServiceBundle\Constants;
 
 /**
  * Class RegistrationService
- * @package AppBundle\Constants
+ * @package ServiceBundle\Constants
  */
 final class RegistrationService
 {

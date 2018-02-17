@@ -48,33 +48,6 @@ services:
         class: AppBundle\Services\OffersCategoryManager
         arguments: [ '@doctrine.orm.entity_manager', '@session' ]
 
-    # Register service
-    service.regirser_service:
-        class: AppBundle\EventListener\ServiceListener
-        autowire: true
-
-    # Service status service
-    admin.service_status:
-        class: AppBundle\Admin\ServiceStatusAdmin
-        arguments: [~, AppBundle\Entity\ServiceStatus, ~]
-        tags:
-            - name: sonata.admin
-              manager_type: orm
-              group: AppBundle
-              label: 'Service status'
-              label_catalogue: 'Service status'
-
-    # Service status service
-    admin.car_service:
-        class: AppBundle\Admin\CarServiceAdmin
-        arguments: [~, AppBundle\Entity\CarService, ~]
-        tags:
-            - name: sonata.admin
-              manager_type: orm
-              group: AppBundle
-              label: 'Car service'
-              label_catalogue: 'Car service'
-
     # Question service
     admin.question:
         class: AppBundle\Admin\QuestionAdmin
@@ -85,5 +58,12 @@ services:
               group: AppBundle
               label: 'Question'
               label_catalogue: 'Question'
+
+    # App event listener
+    service.app_event_listent:
+        class: AppBundle\EventListener\AppListener
+        autowire: true
+        tags:
+            - { name: kernel.event_subscriber }
 
 

@@ -64,7 +64,7 @@ class Dealer
     protected $postCode;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\CarService", mappedBy="dealer")
+     * @ORM\OneToMany(targetEntity="ServiceBundle\Entity\CarService", mappedBy="dealer")
      */
     protected $carService;
 
@@ -232,11 +232,11 @@ class Dealer
     /**
      * Add carService
      *
-     * @param \AppBundle\Entity\CarService $carService
+     * @param \ServiceBundle\Entity\CarService $carService
      *
      * @return Dealer
      */
-    public function addCarService(\AppBundle\Entity\CarService $carService)
+    public function addCarService(\ServiceBundle\Entity\CarService $carService)
     {
         $this->carService[] = $carService;
 
@@ -246,9 +246,9 @@ class Dealer
     /**
      * Remove carService
      *
-     * @param \AppBundle\Entity\CarService $carService
+     * @param \ServiceBundle\Entity\CarService $carService
      */
-    public function removeCarService(\AppBundle\Entity\CarService $carService)
+    public function removeCarService(\ServiceBundle\Entity\CarService $carService)
     {
         $this->carService->removeElement($carService);
     }

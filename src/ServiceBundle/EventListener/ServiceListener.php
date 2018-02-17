@@ -6,13 +6,9 @@
  * Time: 21:08
  */
 
-namespace AppBundle\EventListener;
+namespace ServiceBundle\EventListener;
 
-
-use AppBundle\Helper\QuestionMail;
-use DateTime;
-use AppBundle\Event\QuestionEvent;
-use AppBundle\Event\ServiceEvent;
+use ServiceBundle\Event\ServiceEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -53,37 +49,10 @@ class ServiceListener implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            AppBundleEvent::SERVICE_REGISTER => 'onServiceRegister',
-            AppBundleEvent::QUESTION_REGISTER => 'onQuestionRegister'
+            ServiceBundleEvent::SERVICE_REGISTER => 'onServiceRegister',
         ];
     }
 
-    /**
-     * Question register event
-     *
-     * @param QuestionEvent $event
-     */
-    public function onQuestionRegister(QuestionEvent $event)
-    {
-        $questionMail = new QuestionMail($this->serviceContainer);
-
-        $em = $this->serviceContainer->get('doctrine.orm.default_entity_manager');
-
-        $question = $event->getQuestion();
-
-        $date = time();
-
-        $question->setDate($date);
-
-        $em->persist($question);
-        $em->flush();
-
-        $questionMail->newQuestion();
-
-        $questionMail->registerQuestion($question->getEmail());
-
-        $this->session->getFlashBag()->add('success', 'Question sender success');
-    }
 
     /**
      * Service register event
@@ -96,7 +65,7 @@ class ServiceListener implements EventSubscriberInterface
     {
         $em = $this->serviceContainer->get('doctrine.orm.default_entity_manager');
 
-        $serviceStatus = $em->getRepository('AppBundle:ServiceStatus')->findOneBy(['status' => 'Register']);
+        $serviceStatus = $em->getRepository('ServiceBundle:ServiceStatus')->findOneBy(['status' => 'Register']);
 
         if ($serviceStatus) {
 

@@ -1,0 +1,7 @@
+service_registration:
+    path:     /service/registration
+    defaults: { _controller: ServiceBundle:Service:registration}
+
+driver_selection:
+    path:     /service/selection
+    defaults: { _controller: ServiceBundle:Service:driveSelection}

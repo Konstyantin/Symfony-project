@@ -39,7 +39,8 @@ class AppKernel extends Kernel
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
             new DealerBundle\DealerBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
-            new Yceruto\Bundle\BreadcrumbsBundle\BreadcrumbsBundle()
+            new Yceruto\Bundle\BreadcrumbsBundle\BreadcrumbsBundle(),
+            new ServiceBundle\ServiceBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

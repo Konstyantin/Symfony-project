@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Doctrine\ORM\EntityRepository;
-use AppBundle\Constants\RegistrationService;
+use ServiceBundle\Constants\RegistrationService;
 
 /**
  * Class RegistrationServiceType
@@ -187,7 +187,7 @@ class   RegistrationServiceType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'AppBundle\Entity\CarService',
+            'data_class' => 'ServiceBundle\Entity\CarService',
             'user' => null
         ]);
     }

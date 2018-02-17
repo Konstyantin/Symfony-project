@@ -6,12 +6,12 @@
  * Date: 18.10.17
  * Time: 0:21
  */
-namespace AppBundle\DataFixtures\ORM;
+namespace ServiceBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
-use AppBundle\Entity\ServiceStatus;
+use ServiceBundle\Entity\ServiceStatus;
 
 /**
  * Class LoadServiceStatus

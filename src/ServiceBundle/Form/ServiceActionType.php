@@ -1,8 +1,8 @@
 <?php
 
-namespace AppBundle\Form;
+namespace ServiceBundle\Form;
 
-use AppBundle\Entity\ServiceAction;
+use ServiceBundle\Entity\ServiceAction;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * Class ServiceActionType
- * @package AppBundle\Form
+ * @package ServiceBundle\Form
  */
 class ServiceActionType extends AbstractType
 {

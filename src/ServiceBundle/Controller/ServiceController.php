@@ -1,16 +1,16 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace ServiceBundle\Controller;
 
-use AppBundle\Event\ServiceEvent;
-use AppBundle\EventListener\AppBundleEvent;
+use ServiceBundle\Event\ServiceEvent;
+use ServiceBundle\EventListener\ServiceBundleEvent;
 use AppBundle\Form\RegistrationServiceType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class ServiceController
- * @package AppBundle\Controller
+ * @package ServiceBundle\Controller
  */
 class ServiceController extends Controller
 {
@@ -38,12 +38,12 @@ class ServiceController extends Controller
 
             $event = new ServiceEvent($data, $user);
 
-            $dispatcher->dispatch(AppBundleEvent::SERVICE_REGISTER, $event);
+            $dispatcher->dispatch(ServiceBundleEvent::SERVICE_REGISTER, $event);
 
             return $this->redirectToRoute('service_registration');
         }
 
-        return $this->render('@App/Service/register.html.twig', [
+        return $this->render('@Service/Service/register.html.twig', [
             'form' => $form->createView()
         ]);
     }
@@ -55,6 +55,6 @@ class ServiceController extends Controller
      */
     public function driveSelectionAction()
     {
-        return $this->render('@App/Service/drive-selection.html.twig');
+        return $this->render('@Service/Service/drive-selection.html.twig');
     }
 }

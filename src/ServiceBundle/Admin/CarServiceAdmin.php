@@ -6,11 +6,11 @@
  * Time: 14:12
  */
 
-namespace AppBundle\Admin;
+namespace ServiceBundle\Admin;
 
-use AppBundle\Entity\CarService;
-use AppBundle\Constants\RegistrationService;
-use AppBundle\Form\ServiceActionType;
+use ServiceBundle\Entity\CarService;
+use ServiceBundle\Constants\RegistrationService;
+use ServiceBundle\Form\ServiceActionType;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -158,7 +158,7 @@ class CarServiceAdmin extends AbstractAdmin
                 ]
             ])
             ->add('status', 'sonata_type_model', [
-                'class' => 'AppBundle:ServiceStatus',
+                'class' => 'ServiceBundle:ServiceStatus',
                 'multiple' => false,
                 'required' => false,
                 'constraints' => [

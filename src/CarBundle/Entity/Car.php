@@ -76,7 +76,7 @@ class Car
     protected $available;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\CarService", mappedBy="car")
+     * @ORM\OneToMany(targetEntity="ServiceBundle\Entity\CarService", mappedBy="car")
      */
     protected $carService;
 
@@ -329,11 +329,11 @@ class Car
     /**
      * Add carService
      *
-     * @param \AppBundle\Entity\CarService $carService
+     * @param \ServiceBundle\Entity\CarService $carService
      *
      * @return Car
      */
-    public function addCarService(\AppBundle\Entity\CarService $carService)
+    public function addCarService(\ServiceBundle\Entity\CarService $carService)
     {
         $this->carService[] = $carService;
 
@@ -343,9 +343,9 @@ class Car
     /**
      * Remove carService
      *
-     * @param \AppBundle\Entity\CarService $carService
+     * @param \ServiceBundle\Entity\CarService $carService
      */
-    public function removeCarService(\AppBundle\Entity\CarService $carService)
+    public function removeCarService(\ServiceBundle\Entity\CarService $carService)
     {
         $this->carService->removeElement($carService);
     }

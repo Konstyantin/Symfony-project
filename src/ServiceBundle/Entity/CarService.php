@@ -1,14 +1,17 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace ServiceBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use ServiceBundle\Entity\ServiceStatus;
 use Doctrine\ORM\Mapping as ORM;
+use CarBundle\Entity\Model;
 
 /**
  * CarService
  *
  * @ORM\Table(name="car_service")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\CarServiceRepository")
+ * @ORM\Entity(repositoryClass="ServiceBundle\Repository\CarServiceRepository")
  */
 class CarService
 {
@@ -96,7 +99,7 @@ class CarService
     protected $date;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ServiceStatus", inversedBy="carService", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="ServiceBundle\Entity\ServiceStatus", inversedBy="carService", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="status_id", referencedColumnName="id", unique=false, nullable=false)
      */
     protected $status;
@@ -108,7 +111,7 @@ class CarService
     protected $userCar;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\ServiceAction", mappedBy="carService", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="ServiceBundle\Entity\ServiceAction", mappedBy="carService", cascade={"persist"})
      */
     protected $serviceAction;
 
@@ -317,11 +320,11 @@ class CarService
     /**
      * Set model
      *
-     * @param \CarBundle\Entity\Model $model
+     * @param Model $model
      *
      * @return CarService
      */
-    public function setModel(\CarBundle\Entity\Model $model = null)
+    public function setModel(Model $model = null)
     {
         $this->model = $model;
 
@@ -331,7 +334,7 @@ class CarService
     /**
      * Get model
      *
-     * @return \CarBundle\Entity\Model
+     * @return Model
      */
     public function getModel()
     {
@@ -365,11 +368,11 @@ class CarService
     /**
      * Set status
      *
-     * @param \AppBundle\Entity\ServiceStatus $status
+     * @param ServiceStatus $status
      *
      * @return CarService
      */
-    public function setStatus(\AppBundle\Entity\ServiceStatus $status)
+    public function setStatus(ServiceStatus $status)
     {
         $this->status = $status;
 
@@ -379,7 +382,7 @@ class CarService
     /**
      * Get status
      *
-     * @return \AppBundle\Entity\ServiceStatus
+     * @return ServiceStatus
      */
     public function getStatus()
     {
@@ -434,22 +437,23 @@ class CarService
     {
         return $this->userCar;
     }
+
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->serviceAction = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->serviceAction = new ArrayCollection();
     }
 
     /**
      * Add serviceAction
      *
-     * @param \AppBundle\Entity\ServiceAction $serviceAction
+     * @param ServiceAction $serviceAction
      *
      * @return CarService
      */
-    public function addServiceAction(\AppBundle\Entity\ServiceAction $serviceAction)
+    public function addServiceAction(ServiceAction $serviceAction)
     {
         $this->serviceAction[] = $serviceAction;
 
@@ -459,9 +463,9 @@ class CarService
     /**
      * Remove serviceAction
      *
-     * @param \AppBundle\Entity\ServiceAction $serviceAction
+     * @param ServiceAction $serviceAction
      */
-    public function removeServiceAction(\AppBundle\Entity\ServiceAction $serviceAction)
+    public function removeServiceAction(ServiceAction $serviceAction)
     {
         $this->serviceAction->removeElement($serviceAction);
     }

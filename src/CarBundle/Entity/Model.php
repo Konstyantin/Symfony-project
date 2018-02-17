@@ -7,7 +7,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
-
+use ServiceBundle\Entity\CarService;
 /**
  * Model
  *
@@ -59,7 +59,7 @@ class Model
     protected $userCar;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\CarService", mappedBy="model")
+     * @ORM\OneToMany(targetEntity="ServiceBundle\Entity\CarService", mappedBy="model")
      */
     protected $carService;
 
@@ -209,11 +209,11 @@ class Model
     /**
      * Add carService
      *
-     * @param \AppBundle\Entity\CarService $carService
+     * @param CarService $carService
      *
      * @return Model
      */
-    public function addCarService(\AppBundle\Entity\CarService $carService)
+    public function addCarService(CarService $carService)
     {
         $this->carService[] = $carService;
 
@@ -223,9 +223,9 @@ class Model
     /**
      * Remove carService
      *
-     * @param \AppBundle\Entity\CarService $carService
+     * @param CarService $carService
      */
-    public function removeCarService(\AppBundle\Entity\CarService $carService)
+    public function removeCarService(CarService $carService)
     {
         $this->carService->removeElement($carService);
     }

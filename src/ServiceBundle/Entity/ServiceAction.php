@@ -1,14 +1,15 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace ServiceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ServiceBundle\Entity\CarService;
 
 /**
  * ServiceAction
  *
  * @ORM\Table(name="service_action")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ServiceActionRepository")
+ * @ORM\Entity(repositoryClass="ServiceBundle\Repository\ServiceActionRepository")
  */
 class ServiceAction
 {
@@ -36,7 +37,7 @@ class ServiceAction
     protected $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CarService", inversedBy="serviceAction", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="ServiceBundle\Entity\CarService", inversedBy="serviceAction", cascade={"persist"})
      * @ORM\JoinColumn(name="car_service_id", referencedColumnName="id", nullable=true)
      */
     protected $carService;
@@ -102,11 +103,11 @@ class ServiceAction
     /**
      * Set carService
      *
-     * @param \AppBundle\Entity\CarService $carService
+     * @param CarService $carService
      *
      * @return ServiceAction
      */
-    public function setCarService(\AppBundle\Entity\CarService $carService = null)
+    public function setCarService(CarService $carService = null)
     {
         $this->carService = $carService;
 
@@ -116,7 +117,7 @@ class ServiceAction
     /**
      * Get carService
      *
-     * @return \AppBundle\Entity\CarService
+     * @return CarService
      */
     public function getCarService()
     {

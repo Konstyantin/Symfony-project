@@ -66,7 +66,7 @@ class UserCar
     protected $transmission;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\CarService", mappedBy="userCar")
+     * @ORM\OneToMany(targetEntity="ServiceBundle\Entity\CarService", mappedBy="userCar")
      */
     protected $carService;
 
@@ -259,11 +259,11 @@ class UserCar
     /**
      * Add carService
      *
-     * @param \AppBundle\Entity\CarService $carService
+     * @param \ServiceBundle\Entity\CarService $carService
      *
      * @return UserCar
      */
-    public function addCarService(\AppBundle\Entity\CarService $carService)
+    public function addCarService(\ServiceBundle\Entity\CarService $carService)
     {
         $this->carService[] = $carService;
 
@@ -273,9 +273,9 @@ class UserCar
     /**
      * Remove carService
      *
-     * @param \AppBundle\Entity\CarService $carService
+     * @param \ServiceBundle\Entity\CarService $carService
      */
-    public function removeCarService(\AppBundle\Entity\CarService $carService)
+    public function removeCarService(\ServiceBundle\Entity\CarService $carService)
     {
         $this->carService->removeElement($carService);
     }
