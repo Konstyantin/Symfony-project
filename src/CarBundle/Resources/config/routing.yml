@@ -1,19 +1,24 @@
 model_list:
     path:     /model
     defaults: { _controller: CarBundle:Model:index, breadcrumbs_label: 'Model'}
+    methods: [GET]
 
 model_cars_list:
     path:     /model/{model}
     defaults: { _controller: CarBundle:Model:modelCars}
+    methods: [GET]
 
 car_view:
     path:     /models/{model}/{carName}
     defaults: { _controller: CarBundle:Car:view}
+    methods: [GET]
 
 car_view_specs:
     path:     /models/{model}/{carName}/specs
     defaults: { _controller: CarBundle:Car:viewSpecs}
+    methods: [GET]
 
 car_available_list:
     path:     /cars/available
     defaults: { _controller: CarBundle:Car:availableList}
+    methods: [GET]

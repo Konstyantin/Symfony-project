@@ -3,6 +3,13 @@
 namespace CarBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use CarBundle\Entity\Model;
+use CarBundle\Entity\Feature;
+use CarBundle\Entity\Configuration;
+use ServiceBundle\Entity\CarService;
+use AppBundle\Entity\UserCar;
+use Application\Sonata\MediaBundle\Entity\Media;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -27,7 +34,7 @@ class Car
      *
      * @Assert\NotBlank()
      * @Assert\Length(min="3", max="45")
-     * @ORM\Column(name="name", type="string")
+     * @ORM\Column(name="name", type="string", length=45)
      */
     protected $name;
 
@@ -38,6 +45,13 @@ class Car
      * @ORM\Column(name="price", type="integer")
      */
     protected $price;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="string", length=45)
+     */
+    protected $slug;
 
     /**
      * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Model", inversedBy="car", cascade={"persist", "remove"})
@@ -90,8 +104,8 @@ class Car
      */
     public function __construct()
     {
-        $this->feature = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->configurations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->feature = new ArrayCollection();
+        $this->configurations = new ArrayCollection();
     }
 
     /**
@@ -155,11 +169,11 @@ class Car
     /**
      * Set model
      *
-     * @param \CarBundle\Entity\Model $model
+     * @param Model $model
      *
      * @return Car
      */
-    public function setModel(\CarBundle\Entity\Model $model = null)
+    public function setModel(Model $model = null)
     {
         $this->model = $model;
 
@@ -169,7 +183,7 @@ class Car
     /**
      * Get model
      *
-     * @return \CarBundle\Entity\Model
+     * @return Model
      */
     public function getModel()
     {
@@ -179,11 +193,11 @@ class Car
     /**
      * Add feature
      *
-     * @param \CarBundle\Entity\Feature $feature
+     * @param Feature $feature
      *
      * @return Car
      */
-    public function addFeature(\CarBundle\Entity\Feature $feature)
+    public function addFeature(Feature $feature)
     {
         $this->feature[] = $feature;
 
@@ -213,11 +227,11 @@ class Car
     /**
      * Add configuration
      *
-     * @param \CarBundle\Entity\Configuration $configuration
+     * @param Configuration $configuration
      *
      * @return Car
      */
-    public function addConfiguration(\CarBundle\Entity\Configuration $configuration)
+    public function addConfiguration(Configuration $configuration)
     {
         $this->configurations[] = $configuration;
 
@@ -227,9 +241,9 @@ class Car
     /**
      * Remove configuration
      *
-     * @param \CarBundle\Entity\Configuration $configuration
+     * @param Configuration $configuration
      */
-    public function removeConfiguration(\CarBundle\Entity\Configuration $configuration)
+    public function removeConfiguration(Configuration $configuration)
     {
         $this->configurations->removeElement($configuration);
     }
@@ -247,11 +261,11 @@ class Car
     /**
      * Set imageLogo
      *
-     * @param \Application\Sonata\MediaBundle\Entity\Media $imageLogo
+     * @param Media $imageLogo
      *
      * @return Car
      */
-    public function setImageLogo(\Application\Sonata\MediaBundle\Entity\Media $imageLogo = null)
+    public function setImageLogo(Media $imageLogo = null)
     {
         $this->imageLogo = $imageLogo;
 
@@ -271,11 +285,11 @@ class Car
     /**
      * Set imagePreview
      *
-     * @param \Application\Sonata\MediaBundle\Entity\Media $imagePreview
+     * @param Media $imagePreview
      *
      * @return Car
      */
-    public function setImagePreview(\Application\Sonata\MediaBundle\Entity\Media $imagePreview = null)
+    public function setImagePreview(Media $imagePreview = null)
     {
         $this->imagePreview = $imagePreview;
 
@@ -329,11 +343,11 @@ class Car
     /**
      * Add carService
      *
-     * @param \ServiceBundle\Entity\CarService $carService
+     * @param CarService $carService
      *
      * @return Car
      */
-    public function addCarService(\ServiceBundle\Entity\CarService $carService)
+    public function addCarService(CarService $carService)
     {
         $this->carService[] = $carService;
 
@@ -343,9 +357,9 @@ class Car
     /**
      * Remove carService
      *
-     * @param \ServiceBundle\Entity\CarService $carService
+     * @param CarService $carService
      */
-    public function removeCarService(\ServiceBundle\Entity\CarService $carService)
+    public function removeCarService(CarService $carService)
     {
         $this->carService->removeElement($carService);
     }
@@ -363,11 +377,11 @@ class Car
     /**
      * Add userCar
      *
-     * @param \AppBundle\Entity\UserCar $userCar
+     * @param UserCar $userCar
      *
      * @return Car
      */
-    public function addUserCar(\AppBundle\Entity\UserCar $userCar)
+    public function addUserCar(UserCar $userCar)
     {
         $this->userCar[] = $userCar;
 
@@ -377,9 +391,9 @@ class Car
     /**
      * Remove userCar
      *
-     * @param \AppBundle\Entity\UserCar $userCar
+     * @param UserCar $userCar
      */
-    public function removeUserCar(\AppBundle\Entity\UserCar $userCar)
+    public function removeUserCar(UserCar $userCar)
     {
         $this->userCar->removeElement($userCar);
     }
@@ -392,5 +406,29 @@ class Car
     public function getUserCar()
     {
         return $this->userCar;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Car
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }
