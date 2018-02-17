@@ -8,6 +8,7 @@ use CarBundle\Entity\Feature;
 use CarBundle\Entity\Configuration;
 use ServiceBundle\Entity\CarService;
 use AppBundle\Entity\UserCar;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Application\Sonata\MediaBundle\Entity\Media;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -47,9 +48,8 @@ class Car
     protected $price;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="slug", type="string", length=45)
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(length=128, unique=true)
      */
     protected $slug;
 

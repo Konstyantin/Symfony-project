@@ -9,11 +9,13 @@ form:
     price: 'Price'
     model: 'Model'
     available: 'Available'
+    slug: 'Slug'
   placeholder:
     name: 'Name'
     price: 'Price'
     model: 'Model'
     available: 'Available'
+    slug: 'Slug'
 
 datagrid:
   filters:

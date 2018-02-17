@@ -49,6 +49,14 @@ class CarAdmin extends AbstractAdmin
                     'placeholder' => 'form.placeholder.name'
                 ]
             ])
+//            ->add('slug', TextType::class, [
+//                'label' => 'form.label.slug',
+//                'translation_domain' => 'SonataCarBundle',
+//                'required' => false,
+//                'attr' => [
+//                    'placeholder' => 'form.label.slug'
+//                ]
+//            ])
             ->add('price', TextType::class, [
                 'label' => 'form.label.price',
                 'translation_domain' => 'SonataCarBundle',

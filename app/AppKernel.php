@@ -41,6 +41,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Yceruto\Bundle\BreadcrumbsBundle\BreadcrumbsBundle(),
             new ServiceBundle\ServiceBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle()
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

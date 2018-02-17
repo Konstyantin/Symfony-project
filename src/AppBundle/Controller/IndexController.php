@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Constants\SonataClassificationCategory;
+use AppBundle\Entity\Article;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
@@ -18,8 +19,14 @@ class IndexController extends Controller
      */
     public function indexAction()
     {
-        
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
+//
+//        $article = new Article();
+//        $article->setTitle('the title');
+//        $article->setCode('my code');
+//
+//        $em->persist($article);
+//        $em->flush();
 
         $sliderCategory = $em->getRepository('ApplicationSonataClassificationBundle:Category')
             ->findOneBy(['name' => SonataClassificationCategory::SLIDER_CATEGORY]);
