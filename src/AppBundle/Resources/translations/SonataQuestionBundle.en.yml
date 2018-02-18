@@ -1,0 +1,31 @@
+form:
+  label:
+    fullName: 'FullName'
+    phone: 'Phone'
+    email: 'Email'
+    subject: 'Subject'
+    body: 'Body'
+    date: 'Date'
+  placeholder:
+    fullName: 'FullName'
+    phone: 'Phone'
+    email: 'Email'
+    subject: 'Subject'
+    body: 'Body'
+    date: 'Date'
+
+datagrid:
+  filters:
+    fullName: 'FullName'
+    phone: 'Phone'
+    email: 'Email'
+    subject: 'Subject'
+    body: 'Body'
+    date: 'Date'
+  list:
+    fullName: 'FullName'
+    phone: 'Phone'
+    email: 'Email'
+    subject: 'Subject'
+    body: 'Body'
+    date: 'Date'

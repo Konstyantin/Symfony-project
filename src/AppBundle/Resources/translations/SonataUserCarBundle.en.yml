@@ -1,0 +1,35 @@
+form:
+  label:
+    car: 'Car'
+    user: 'User'
+    model: 'Model'
+    engine: 'Engine'
+    transmission: 'Transmission'
+    createdAt: 'CreatedAt'
+    color: 'Color'
+  placeholder:
+    car: 'Car'
+    user: 'User'
+    model: 'Model'
+    engine: 'Engine'
+    transmission: 'Transmission'
+    createdAt: 'CreatedAt'
+    color: 'Color'
+
+datagrid:
+  filters:
+    car: 'Car'
+    user: 'User'
+    model: 'Model'
+    engine: 'Engine'
+    transmission: 'Transmission'
+    createdAt: 'CreatedAt'
+    color: 'Color'
+  list:
+    car: 'Car'
+    user: 'User'
+    model: 'Model'
+    engine: 'Engine'
+    transmission: 'Transmission'
+    createdAt: 'CreatedAt'
+    color: 'Color'

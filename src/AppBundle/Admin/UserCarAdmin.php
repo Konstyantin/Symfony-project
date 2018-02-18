@@ -25,6 +25,11 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 class UserCarAdmin extends AbstractAdmin
 {
     /**
+     * @var string $translationDomain
+     */
+    protected $translationDomain = 'SonataUserAdminBundle';
+
+    /**
      * Configure form field
      *
      * Set configuration for form field which are displayed on the edit
@@ -70,10 +75,13 @@ class UserCarAdmin extends AbstractAdmin
             ])
             ->add('createdAt',DateType::class, [
                 'input' => 'timestamp',
+                'label' => 'form.label.createdAt',
+                'translation_domain' => 'SonataUserCarBundle',
                 'years' => range(date("Y", 0), date("Y"))
             ])
             ->add('color', TextType::class, [
-                'label' => 'Color',
+                'label' => 'form.label.fullName',
+                'translation_domain' => 'SonataUserCarBundle',
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'Color'
@@ -92,9 +100,9 @@ class UserCarAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $list)
     {
         $list
-            ->addIdentifier('car', null, ['label' => 'Car name'])
-            ->add('user', null, ['label' => 'Username'])
-            ->add('model', null, ['label' => 'Model'])
+            ->addIdentifier('car', null, ['label' => 'datagrid.filter.car'])
+            ->add('user', null, ['label' => 'datagrid.filter.user'])
+            ->add('model', null, ['label' => 'datagrid.filter.model'])
             ->add('_action',null, [
                 'actions' => [
                     'delete' => [],
@@ -114,9 +122,9 @@ class UserCarAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $filter)
     {
         $filter
-            ->add('car', null, ['label' => 'Car name'])
-            ->add('user', null, ['label' => 'Username'])
-            ->add('model', null, ['label' => 'Model']);
+            ->add('car', null, ['label' => 'datagrid.list.car'])
+            ->add('user', null, ['label' => 'datagrid.list.user'])
+            ->add('model', null, ['label' => 'datagrid.list.model']);
     }
 
     /**

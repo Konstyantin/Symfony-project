@@ -24,6 +24,11 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 class OffersCategoryAdmin extends AbstractAdmin
 {
     /**
+     * @var string $translationDomain
+     */
+    protected $translationDomain = 'SonataOffersCategoryBundle';
+
+    /**
      * Configure form field
      *
      * Set configuration for form field which are displayed on the edit
@@ -41,15 +46,17 @@ class OffersCategoryAdmin extends AbstractAdmin
                 'required' => false,
             ])
             ->add('name', TextType::class, [
-                'label' => 'Category name',
+                'label' => 'form.label.name',
                 'required' => false,
+                'translation_domain' => 'SonataOffersCategoryBundle',
                 'attr' => [
-                    'placeholder' => 'Category name'
+                    'placeholder' => 'form.placeholder.name'
                 ]
             ])
             ->add('description', TextareaType::class, [
-                'label' => 'Description',
+                'label' => 'form.label.description',
                 'required' => false,
+                'translation_domain' => 'SonataOffersCategoryBundle',
                 'attr' => [
                     'class' => 'tinymce',
                     'data-theme' => 'bbcode',
@@ -59,14 +66,9 @@ class OffersCategoryAdmin extends AbstractAdmin
             ])
             ->add('offersCategoryImage', 'sonata_media_type', [
                 'provider' => 'sonata.media.provider.image',
-                'context' => 'OffersCategoryLogo'
-            ])
-            ->add('name', TextType::class, [
-                'label' => 'Category Name',
-                'required' => false,
-                'attr' => [
-                    'placeholder' => 'Category Name'
-                ]
+                'context' => 'OffersCategoryLogo',
+                'translation_domain' => 'SonataOffersCategoryBundle',
+                'label' => 'form.label.offersCategoryImage'
             ])
         ;
     }
@@ -81,7 +83,7 @@ class OffersCategoryAdmin extends AbstractAdmin
      */
     public function configureDatagridFilters(DatagridMapper $filter)
     {
-        $filter->add('name', null, ['label' => 'Category name']);
+        $filter->add('name', null, ['label' => 'datagrid.filters.name']);
     }
 
     /**
@@ -94,7 +96,7 @@ class OffersCategoryAdmin extends AbstractAdmin
     public function configureListFields(ListMapper $list)
     {
         $list
-            ->addIdentifier('name', null, ['label' => 'Category name'])
+            ->addIdentifier('name', null, ['label' => 'datagrid.list.name'])
             ->add('_action',null, [
                 'actions' => [
                     'delete' => [],

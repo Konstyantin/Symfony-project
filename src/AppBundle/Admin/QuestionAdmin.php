@@ -9,17 +9,18 @@
 namespace AppBundle\Admin;
 
 use AppBundle\Entity\Question;
+use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
+use AppBundle\Constants\RegistrationService;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
-use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Validator\Constraints\Email;
-use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * Class QuestionAdmin
@@ -28,19 +29,9 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 class QuestionAdmin extends AbstractAdmin
 {
     /**
-     * Count month in year
+     * @var string $translationDomain
      */
-    const MONTH_COUNT = 12;
-
-    /**
-     * Min hours work service
-     */
-    const MIN_HOURS = 9;
-
-    /**
-     * Max hour work service
-     */
-    const MAX_HOURS = 20;
+    protected $translationDomain = 'SonataQuestionBundle';
 
     /**
      * Configure form field
@@ -54,10 +45,11 @@ class QuestionAdmin extends AbstractAdmin
     {
         $form
             ->add('fullName', TextType::class, [
-                'label' => 'Full name',
+                'label' => 'form.label.fullName',
+                'translation_domain' => 'SonataQuestionBundle',
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Full name'
+                    'placeholder' => 'form.placeholder.fullName'
                 ],
                 'constraints' => [
                     new NotBlank(),
@@ -68,10 +60,11 @@ class QuestionAdmin extends AbstractAdmin
                 ]
              ])
             ->add('phone', TextType::class, [
-                'label' => 'Phone',
+                'label' => 'form.label.phone',
+                'translation_domain' => 'SonataQuestionBundle',
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Phone'
+                    'placeholder' => 'form.placeholder.phone'
                 ],
                 'constraints' => [
                     new NotBlank(),
@@ -82,10 +75,11 @@ class QuestionAdmin extends AbstractAdmin
                 ]
             ])
             ->add('email', EmailType::class, [
-                'label' => 'Email',
+                'label' => 'form.label.email',
+                'translation_domain' => 'SonataQuestionBundle',
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Email'
+                    'placeholder' => 'form.placeholder.email'
                 ],
                 'constraints' => [
                     new NotBlank(),
@@ -93,10 +87,11 @@ class QuestionAdmin extends AbstractAdmin
                 ]
             ])
             ->add('subject', TextType::class, [
-                'label' => 'Subject',
+                'label' => 'form.label.subject',
+                'translation_domain' => 'SonataQuestionBundle',
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Subject'
+                    'placeholder' => 'form.placeholder.subject'
                 ],
                 'constraints' => [
                     new NotBlank(),
@@ -106,10 +101,11 @@ class QuestionAdmin extends AbstractAdmin
                 ]
             ])
             ->add('body', TextareaType::class, [
-                'label' => 'Body',
+                'label' => 'form.label.body',
+                'translation_domain' => 'SonataQuestionBundle',
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Body',
+                    'placeholder' => 'form.placeholder.body',
                     'rows' => 7,
                     'class' => 'question-body-textarea'
                 ],
@@ -118,6 +114,8 @@ class QuestionAdmin extends AbstractAdmin
                 ]
             ])
             ->add('date', DateTimeType::class, [
+                'label' => 'Date',
+                'translation_domain' => 'SonataQuestionBundle',
                 'placeholder' => [
                     'year' => 'Year', 'month' => 'Month', 'day' => 'Day',
                     'hour' => 'Hour', 'minute' => 'Minute', 'second' => 'Second',
@@ -125,8 +123,8 @@ class QuestionAdmin extends AbstractAdmin
                 'required' => false,
                 'input' => 'timestamp',
                 'years' => range(date("Y"), date("Y")),
-                'months' => range(date("M", strtotime('-1 month')), self::MONTH_COUNT),
-                'hours' => range(self::MIN_HOURS, self::MAX_HOURS),
+                'months' => range(date("M", strtotime('-1 month')), RegistrationService::MONTH_COUNT),
+                'hours' => range(RegistrationService::MIN_HOURS, RegistrationService::MAX_HOURS),
                 'constraints' => [
                     new NotBlank()
                 ]
@@ -145,10 +143,10 @@ class QuestionAdmin extends AbstractAdmin
     public function configureDatagridFilters(DatagridMapper $filter)
     {
         $filter
-            ->add('fullName', null, ['label' => 'Full name'])
-            ->add('phone', null, ['label' => 'Phone'])
-            ->add('email', null, ['label' => 'Email'])
-            ->add('subject', null, ['label' => 'Subject'])
+            ->add('fullName', null, ['label' => 'datagrid.filter.fullName'])
+            ->add('phone', null, ['label' => 'datagrid.filter.phone'])
+            ->add('email', null, ['label' => 'datagrid.filter.email'])
+            ->add('subject', null, ['label' => 'datagrid.filter.subject'])
         ;
     }
 
@@ -162,10 +160,10 @@ class QuestionAdmin extends AbstractAdmin
     public function configureListFields(ListMapper $list)
     {
         $list
-            ->addIdentifier('fullName', null, ['label' => 'Full name'])
-            ->addIdentifier('phone', null, ['label' => 'Phone', 'row_align' => 'left'])
-            ->addIdentifier('email', null, ['label' => 'Email'])
-            ->addIdentifier('subject', null, ['label' => 'Subject'])
+            ->addIdentifier('fullName', null, ['label' => 'datagrid.list.fullName'])
+            ->addIdentifier('phone', null, ['label' => 'datagrid.list.phone', 'row_align' => 'left'])
+            ->addIdentifier('email', null, ['label' => 'datagrid.list.email'])
+            ->addIdentifier('subject', null, ['label' => 'datagrid.list.subject'])
             ->add('_action',null, [
                 'actions' => [
                     'delete' => [],

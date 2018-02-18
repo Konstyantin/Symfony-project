@@ -23,6 +23,11 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 class OffersAdmin extends AbstractAdmin
 {
     /**
+     * @var string $translationDomain
+     */
+    protected $translationDomain = 'SonataOffersBundle';
+
+    /**
      * Configure form field
      *
      * Set configuration for form field which are displayed on the edit
@@ -34,21 +39,24 @@ class OffersAdmin extends AbstractAdmin
     {
         $form
             ->add('title', TextType::class, [
-                'label' => 'Title',
+                'label' => 'form.label.title',
+                'translation_domain' => 'SonataOffersBundle',
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Title'
-                ]
+                    'placeholder' => 'form.placeholder.title'
+                ],
             ])
             ->add('shortDescription', TextareaType::class, [
-                'label' => 'Short description',
+                'label' => 'form.label.shortDescription',
+                'translation_domain' => 'SonataOffersBundle',
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Short description'
+                    'placeholder' => 'form.placeholder.shortDescription'
                 ]
             ])
             ->add('description', TextareaType::class, [
-                'label' => 'Description',
+                'label' => 'form.label.description',
+                'translation_domain' => 'SonataOffersBundle',
                 'required' => false,
                 'attr' => [
                     'class' => 'tinymce',
@@ -58,10 +66,14 @@ class OffersAdmin extends AbstractAdmin
                 ]
             ])
             ->add('offersImage', 'sonata_media_type', [
+                'label' => 'form.label.offersImage',
+                'translation_domain' => 'SonataOffersBundle',
                 'provider' => 'sonata.media.provider.image',
                 'context' => 'OffersLogo'
             ])
             ->add('offersCategory', 'sonata_type_model', [
+                'label' => 'form.label.offersCategory',
+                'translation_domain' => 'SonataOffersBundle',
                 'class' => 'AppBundle:OffersCategory',
                 'multiple' => false
             ])
@@ -79,7 +91,7 @@ class OffersAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $filter)
     {
         $filter
-            ->add('title', null, ['label' => 'Title']);
+            ->add('title', null, ['label' => 'datagrid.filters.title']);
     }
 
     /**
@@ -93,7 +105,7 @@ class OffersAdmin extends AbstractAdmin
     {
         $list
             ->addIdentifier('title', null, [
-                'label' => 'Title',
+                'label' => 'datagrid.list.title',
                 'row_align' => 'left'
             ])
             ->add('_action', null, [

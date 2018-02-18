@@ -1,0 +1,23 @@
+form:
+  label:
+    parent: 'Parent'
+    name: 'Name'
+    description: 'Description'
+    offersCategoryImage: 'Offers category image'
+  placeholder:
+    parent: 'Parent'
+    name: 'Name'
+    description: 'Description'
+    offersCategoryImage: 'Offers category image'
+
+datagrid:
+  filters:
+    parent: 'Parent'
+    name: 'Name'
+    description: 'Description'
+    offersCategoryImage: 'Offers category image'
+  list:
+    parent: 'Parent'
+    name: 'Name'
+    description: 'Description'
+    offersCategoryImage: 'Offers category image'
