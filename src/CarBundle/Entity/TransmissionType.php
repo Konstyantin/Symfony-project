@@ -3,6 +3,7 @@
 namespace CarBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use CarBundle\Entity\Transmission;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -25,10 +26,7 @@ class TransmissionType
     /**
      * @var string
      *
-     * @Assert\NotBlank()
-     *
-     * @Assert\Length(max="45")
-     * @ORM\Column(name="title", type="string", length=45)
+     * @ORM\Column(name="title", type="string", length=45, nullable=false)
      */
     protected $title;
 
@@ -81,11 +79,11 @@ class TransmissionType
     /**
      * Add transmission
      *
-     * @param \CarBundle\Entity\Transmission $transmission
+     * @param Transmission $transmission
      *
      * @return TransmissionType
      */
-    public function addTransmission(\CarBundle\Entity\Transmission $transmission)
+    public function addTransmission(Transmission $transmission)
     {
         $this->transmission[] = $transmission;
 
@@ -95,9 +93,9 @@ class TransmissionType
     /**
      * Remove transmission
      *
-     * @param \CarBundle\Entity\Transmission $transmission
+     * @param Transmission $transmission
      */
-    public function removeTransmission(\CarBundle\Entity\Transmission $transmission)
+    public function removeTransmission(Transmission $transmission)
     {
         $this->transmission->removeElement($transmission);
     }

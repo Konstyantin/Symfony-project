@@ -11,7 +11,6 @@ use AppBundle\Entity\UserCar;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Application\Sonata\MediaBundle\Entity\Media;
 use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Car Entity
@@ -33,17 +32,14 @@ class Car
     /**
      * @var string
      *
-     * @Assert\NotBlank()
-     * @Assert\Length(min="3", max="45")
-     * @ORM\Column(name="name", type="string", length=45)
+     * @ORM\Column(name="name", type="string", length=45, nullable=false)
      */
     protected $name;
 
     /**
      * @var string
      *
-     * @Assert\NotBlank()
-     * @ORM\Column(name="price", type="integer")
+     * @ORM\Column(name="price", type="integer", nullable=false)
      */
     protected $price;
 
@@ -95,7 +91,7 @@ class Car
     protected $carService;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\UserCar", mappedBy="car")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\UserCar", mappedBy="car", cascade={"persist", "remove"})
      */
     protected $userCar;
 
@@ -207,9 +203,9 @@ class Car
     /**
      * Remove feature
      *
-     * @param \CarBundle\Entity\Feature $feature
+     * @param Feature $feature
      */
-    public function removeFeature(\CarBundle\Entity\Feature $feature)
+    public function removeFeature(Feature $feature)
     {
         $this->feature->removeElement($feature);
     }

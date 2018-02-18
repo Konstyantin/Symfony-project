@@ -2,8 +2,14 @@
 
 namespace CarBundle\Entity;
 
+use CarBundle\Entity\Dynamics;
+use CarBundle\Entity\Engine;
+use CarBundle\Entity\Transmission;
+use CarBundle\Entity\Car;
+use CarBundle\Entity\Fuel;
+use CarBundle\Entity\Body;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Configuration
@@ -25,18 +31,14 @@ class Configuration
     /**
      * @var string
      *
-     * @Assert\NotBlank()
-     *
-     * @ORM\Column(name="car_name", type="string")
+     * @ORM\Column(name="car_name", type="string", length=45)
      */
     protected $carName;
 
     /**
      * @var integer
      *
-     * @Assert\NotBlank()
-     *
-     * @ORM\Column(name="price", type="integer")
+     * @ORM\Column(name="price", type="integer", length=11)
      */
     protected $price;
 
@@ -71,19 +73,16 @@ class Configuration
     protected $transmission;
 
     /**
-     * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Car", mappedBy="configurations")
+     * @ORM\ManyToMany(targetEntity="CarBundle\Entity\Car", mappedBy="configurations", cascade={"persist", "remove"})
      */
     protected $car;
 
-
     /**
-     * Use when call use entity as string
-     *
-     * @return string
+     * Constructor
      */
-    public function __toString()
+    public function __construct()
     {
-        return (string) $this->getCarName();
+        $this->car = new ArrayCollection();
     }
 
     /**
@@ -147,11 +146,11 @@ class Configuration
     /**
      * Set dynamics
      *
-     * @param \CarBundle\Entity\Dynamics $dynamics
+     * @param Dynamics $dynamics
      *
      * @return Configuration
      */
-    public function setDynamics(\CarBundle\Entity\Dynamics $dynamics = null)
+    public function setDynamics(Dynamics $dynamics = null)
     {
         $this->dynamics = $dynamics;
 
@@ -161,7 +160,7 @@ class Configuration
     /**
      * Get dynamics
      *
-     * @return \CarBundle\Entity\Dynamics
+     * @return Dynamics
      */
     public function getDynamics()
     {
@@ -171,11 +170,11 @@ class Configuration
     /**
      * Set engine
      *
-     * @param \CarBundle\Entity\Engine $engine
+     * @param Engine $engine
      *
      * @return Configuration
      */
-    public function setEngine(\CarBundle\Entity\Engine $engine = null)
+    public function setEngine(Engine $engine = null)
     {
         $this->engine = $engine;
 
@@ -185,7 +184,7 @@ class Configuration
     /**
      * Get engine
      *
-     * @return \CarBundle\Entity\Engine
+     * @return Engine
      */
     public function getEngine()
     {
@@ -195,11 +194,11 @@ class Configuration
     /**
      * Set transmission
      *
-     * @param \CarBundle\Entity\Transmission $transmission
+     * @param Transmission $transmission
      *
      * @return Configuration
      */
-    public function setTransmission(\CarBundle\Entity\Transmission $transmission = null)
+    public function setTransmission(Transmission $transmission = null)
     {
         $this->transmission = $transmission;
 
@@ -209,7 +208,7 @@ class Configuration
     /**
      * Get transmission
      *
-     * @return \CarBundle\Entity\Transmission
+     * @return Transmission
      */
     public function getTransmission()
     {
@@ -219,11 +218,11 @@ class Configuration
     /**
      * Add car
      *
-     * @param \CarBundle\Entity\Car $car
+     * @param Car $car
      *
      * @return Configuration
      */
-    public function addCar(\CarBundle\Entity\Car $car)
+    public function addCar(Car $car)
     {
         $this->car[] = $car;
 
@@ -233,9 +232,9 @@ class Configuration
     /**
      * Remove car
      *
-     * @param \CarBundle\Entity\Car $car
+     * @param Car $car
      */
-    public function removeCar(\CarBundle\Entity\Car $car)
+    public function removeCar(Car $car)
     {
         $this->car->removeElement($car);
     }
@@ -253,11 +252,11 @@ class Configuration
     /**
      * Set fuel
      *
-     * @param \CarBundle\Entity\Fuel $fuel
+     * @param Fuel $fuel
      *
      * @return Configuration
      */
-    public function setFuel(\CarBundle\Entity\Fuel $fuel = null)
+    public function setFuel(Fuel $fuel = null)
     {
         $this->fuel = $fuel;
 
@@ -267,28 +266,21 @@ class Configuration
     /**
      * Get fuel
      *
-     * @return \CarBundle\Entity\Fuel
+     * @return Fuel
      */
     public function getFuel()
     {
         return $this->fuel;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->car = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Set body
      *
-     * @param \CarBundle\Entity\Body $body
+     * @param Body $body
      *
      * @return Configuration
      */
-    public function setBody(\CarBundle\Entity\Body $body = null)
+    public function setBody(Body $body = null)
     {
         $this->body = $body;
 
@@ -298,10 +290,21 @@ class Configuration
     /**
      * Get body
      *
-     * @return \CarBundle\Entity\Body
+     * @return Body
      */
     public function getBody()
     {
         return $this->body;
     }
+
+    /**
+     * Use when call use entity as string
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getCarName();
+    }
+
 }

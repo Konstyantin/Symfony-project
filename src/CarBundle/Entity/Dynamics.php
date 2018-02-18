@@ -3,7 +3,7 @@
 namespace CarBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use function GuzzleHttp\Psr7\str;
+use CarBundle\Entity\Configuration;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -26,26 +26,21 @@ class Dynamics
     /**
      * @var integer
      *
-     * @Assert\NotBlank()
-     *
-     * @ORM\Column(name="acceleration", type="integer")
+     * @ORM\Column(name="acceleration", type="integer", length=11)
      */
     protected $acceleration;
 
     /**
      * @var integer
      *
-     * @Assert\NotBlank()
-     *
-     * @ORM\Column(name="speed", type="integer")
+     * @ORM\Column(name="speed", type="integer", length=11)
      */
     protected $speed;
 
     /**
-     * @ORM\OneToOne(targetEntity="CarBundle\Entity\Configuration", mappedBy="dynamics")
+     * @ORM\OneToOne(targetEntity="CarBundle\Entity\Configuration", mappedBy="dynamics", cascade={"persist", "remove"})
      */
     protected $configuration;
-    
 
     /**
      * Get id
@@ -108,11 +103,11 @@ class Dynamics
     /**
      * Set configuration
      *
-     * @param \CarBundle\Entity\Configuration $configuration
+     * @param Configuration $configuration
      *
      * @return Dynamics
      */
-    public function setConfiguration(\CarBundle\Entity\Configuration $configuration = null)
+    public function setConfiguration(Configuration $configuration = null)
     {
         $this->configuration = $configuration;
 
@@ -122,7 +117,7 @@ class Dynamics
     /**
      * Get configuration
      *
-     * @return \CarBundle\Entity\Configuration
+     * @return Configuration
      */
     public function getConfiguration()
     {

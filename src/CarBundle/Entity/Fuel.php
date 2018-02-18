@@ -3,6 +3,7 @@
 namespace CarBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use CarBundle\Entity\Configuration;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -25,35 +26,28 @@ class Fuel
     /**
      * @var integer
      *
-     * @Assert\NotBlank()
-     *
-     * @ORM\Column(name="extra_urban", type="integer")
+     * @ORM\Column(name="extra_urban", type="integer", length=11, nullable=false)
      */
     protected $extraUrban;
 
     /**
      * @var integer
      *
-     * @Assert\NotBlank()
-     *
-     * @ORM\Column(name="urban", type="integer")
+     * @ORM\Column(name="urban", type="integer", length=11, nullable=false)
      */
     protected $urban;
 
     /**
      * @var integer
      *
-     * @Assert\NotBlank()
-     *
-     * @ORM\Column(name="combined", type="integer")
+     * @ORM\Column(name="combined", type="integer", length=11, nullable=false)
      */
     protected $combined;
 
     /**
      * @var integer
-     * @Assert\NotBlank()
      *
-     * @ORM\Column(name="emission", type="integer")
+     * @ORM\Column(name="emission", type="integer", length=11, nullable=false)
      */
     protected $emission;
 
@@ -121,23 +115,13 @@ class Fuel
     }
 
     /**
-     * Use when call use entity as string
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return (string) $this->id;
-    }
-
-    /**
      * Set configuration
      *
-     * @param \CarBundle\Entity\Configuration $configuration
+     * @param Configuration $configuration
      *
      * @return Fuel
      */
-    public function setConfiguration(\CarBundle\Entity\Configuration $configuration = null)
+    public function setConfiguration(Configuration $configuration = null)
     {
         $this->configuration = $configuration;
 
@@ -147,7 +131,7 @@ class Fuel
     /**
      * Get configuration
      *
-     * @return \CarBundle\Entity\Configuration
+     * @return Configuration
      */
     public function getConfiguration()
     {
@@ -200,5 +184,15 @@ class Fuel
     public function getUrban()
     {
         return $this->urban;
+    }
+
+    /**
+     * Use when call use entity as string
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->id;
     }
 }

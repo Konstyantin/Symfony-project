@@ -2,13 +2,17 @@
 
 namespace CarBundle\Entity;
 
+use CarBundle\Entity\Car;
+use AppBundle\Entity\UserCar;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\HttpFoundation\File\File;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use ServiceBundle\Entity\CarService;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\HttpFoundation\File\File;
+use Application\Sonata\MediaBundle\Entity\Media;
+use Doctrine\Common\Collections\ArrayCollection;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Model
@@ -37,9 +41,6 @@ class Model
     /**
      * @var string
      *
-     * @Assert\NotBlank()
-     *
-     * @Assert\Length(min="3", max="45")
      * @ORM\Column(name="name", type="string", length=45)
      */
     protected $name;
@@ -56,12 +57,12 @@ class Model
     protected $imageLogo;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\UserCar", mappedBy="model")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\UserCar", mappedBy="model", cascade={"persist", "remove"})
      */
     protected $userCar;
 
     /**
-     * @ORM\OneToMany(targetEntity="ServiceBundle\Entity\CarService", mappedBy="model")
+     * @ORM\OneToMany(targetEntity="ServiceBundle\Entity\CarService", mappedBy="model", cascade={"persist", "remove"})
      */
     protected $carService;
 
@@ -74,11 +75,11 @@ class Model
     /**
      * Set imageLogo
      *
-     * @param \Application\Sonata\MediaBundle\Entity\Media $imageLogo
+     * @param Media $imageLogo
      *
      * @return Model
      */
-    public function setImageLogo(\Application\Sonata\MediaBundle\Entity\Media $imageLogo = null)
+    public function setImageLogo(Media $imageLogo = null)
     {
         $this->imageLogo = $imageLogo;
 
@@ -88,18 +89,19 @@ class Model
     /**
      * Get imageLogo
      *
-     * @return \Application\Sonata\MediaBundle\Entity\Media
+     * @return Media
      */
     public function getImageLogo()
     {
         return $this->imageLogo;
     }
+
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->car = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->car = new ArrayCollection();
     }
 
     /**
@@ -139,11 +141,11 @@ class Model
     /**
      * Add car
      *
-     * @param \CarBundle\Entity\Car $car
+     * @param Car $car
      *
      * @return Model
      */
-    public function addCar(\CarBundle\Entity\Car $car)
+    public function addCar(Car $car)
     {
         $this->car[] = $car;
 
@@ -153,9 +155,9 @@ class Model
     /**
      * Remove car
      *
-     * @param \CarBundle\Entity\Car $car
+     * @param Car $car
      */
-    public function removeCar(\CarBundle\Entity\Car $car)
+    public function removeCar(Car $car)
     {
         $this->car->removeElement($car);
     }
@@ -173,11 +175,11 @@ class Model
     /**
      * Add userCar
      *
-     * @param \AppBundle\Entity\UserCar $userCar
+     * @param UserCar $userCar
      *
      * @return Model
      */
-    public function addUserCar(\AppBundle\Entity\UserCar $userCar)
+    public function addUserCar(UserCar $userCar)
     {
         $this->userCar[] = $userCar;
 
@@ -187,9 +189,9 @@ class Model
     /**
      * Remove userCar
      *
-     * @param \AppBundle\Entity\UserCar $userCar
+     * @param UserCar $userCar
      */
-    public function removeUserCar(\AppBundle\Entity\UserCar $userCar)
+    public function removeUserCar(UserCar $userCar)
     {
         $this->userCar->removeElement($userCar);
     }
@@ -202,16 +204,6 @@ class Model
     public function getUserCar()
     {
         return $this->userCar;
-    }
-
-    /**
-     * Call for handle Model entity as string
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return (string) $this->getName();
     }
 
     /**
@@ -270,5 +262,15 @@ class Model
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Call for handle Model entity as string
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getName();
     }
 }

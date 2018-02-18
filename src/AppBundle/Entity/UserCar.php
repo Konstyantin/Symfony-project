@@ -23,7 +23,7 @@ class UserCar
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Car", inversedBy="userCar")
+     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Car", inversedBy="userCar", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="car_id", referencedColumnName="id")
      */
     protected $car;
@@ -42,31 +42,31 @@ class UserCar
     protected $createdAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Model", inversedBy="userCar")
+     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Model", inversedBy="userCar", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="model_id", referencedColumnName="id")
      */
     protected $model;
 
     /**
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="userCar")
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="userCar", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Engine", inversedBy="userCar")
+     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Engine", inversedBy="userCar", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="engine_id", referencedColumnName="id")
      */
     protected $engine;
 
     /**
-     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Transmission", inversedBy="userCar")
+     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Transmission", inversedBy="userCar", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="transmission_id", referencedColumnName="id")
      */
     protected $transmission;
 
     /**
-     * @ORM\OneToMany(targetEntity="ServiceBundle\Entity\CarService", mappedBy="userCar")
+     * @ORM\OneToMany(targetEntity="ServiceBundle\Entity\CarService", mappedBy="userCar", cascade={"persist", "remove"})
      */
     protected $carService;
 

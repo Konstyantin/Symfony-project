@@ -2,10 +2,13 @@
 
 namespace CarBundle\Entity;
 
+use CarBundle\Entity\Car;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Application\Sonata\MediaBundle\Entity\GalleryHasMedia;
 
 /**
  * Feature
@@ -28,7 +31,7 @@ class Feature
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string")
+     * @ORM\Column(name="title", type="string", length=45, nullable=false)
      */
     protected $title;
 
@@ -36,7 +39,7 @@ class Feature
      * @var string
      *
      * @Assert\NotBlank()
-     * @ORM\Column(name="short_description", type="string")
+     * @ORM\Column(name="short_description", type="string", length=45, nullable=false)
      */
     protected $shortDescription;
 
@@ -44,7 +47,7 @@ class Feature
      * @var string
      *
      * @Assert\NotBlank()
-     * @ORM\Column(name="full_description", type="string")
+     * @ORM\Column(name="full_description", type="string", length=45, nullable=false)
      */
     protected $fullDescription;
 
@@ -100,17 +103,17 @@ class Feature
      */
     public function __construct()
     {
-        $this->car = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->car = new ArrayCollection();
     }
 
     /**
      * Add car
      *
-     * @param \CarBundle\Entity\Car $car
+     * @param Car $car
      *
      * @return Feature
      */
-    public function addCar(\CarBundle\Entity\Car $car)
+    public function addCar(Car $car)
     {
         $this->car[] = $car;
 
@@ -120,9 +123,9 @@ class Feature
     /**
      * Remove car
      *
-     * @param \CarBundle\Entity\Car $car
+     * @param Car $car
      */
-    public function removeCar(\CarBundle\Entity\Car $car)
+    public function removeCar(Car $car)
     {
         $this->car->removeElement($car);
     }
@@ -140,11 +143,11 @@ class Feature
     /**
      * Set car
      *
-     * @param \CarBundle\Entity\Car $car
+     * @param Car $car
      *
      * @return Feature
      */
-    public function setCar(\CarBundle\Entity\Car $car = null)
+    public function setCar(Car $car = null)
     {
         $this->car = $car;
 
@@ -252,11 +255,11 @@ class Feature
     /**
      * Set image
      *
-     * @param \Application\Sonata\MediaBundle\Entity\GalleryHasMedia $image
+     * @param GalleryHasMedia $image
      *
      * @return Feature
      */
-    public function setImage(\Application\Sonata\MediaBundle\Entity\GalleryHasMedia $image = null)
+    public function setImage(GalleryHasMedia $image = null)
     {
         $this->image = $image;
 
@@ -266,7 +269,7 @@ class Feature
     /**
      * Get image
      *
-     * @return \Application\Sonata\MediaBundle\Entity\GalleryHasMedia
+     * @return GalleryHasMedia
      */
     public function getImage()
     {

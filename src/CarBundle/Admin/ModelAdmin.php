@@ -14,6 +14,8 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
 /**
@@ -44,6 +46,13 @@ class ModelAdmin extends AbstractAdmin
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.name'
+                ],
+                'constraints' => [
+                    new NotBlank(),
+                    new Length([
+                        'min' => 3,
+                        'max' => 15
+                    ])
                 ]
             ])
             ->add('imageLogo', 'sonata_media_type', [

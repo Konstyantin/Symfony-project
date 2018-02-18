@@ -2,7 +2,11 @@
 
 namespace CarBundle\Entity;
 
+use AppBundle\Entity\UserCar;
 use Doctrine\ORM\Mapping as ORM;
+use CarBundle\Entity\Configuration;
+use CarBundle\Entity\TransmissionType;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -25,19 +29,13 @@ class Transmission
     /**
      * @var string
      *
-     * @Assert\NotBlank()
-     *
-     * @Assert\Length(max="45")
-     * @ORM\Column(name="name", type="string", length=45)
+     * @ORM\Column(name="name", type="string", length=45, nullable=false)
      */
     protected $name;
 
     /**
      * @var integer
      *
-     * @Assert\NotBlank()
-     *
-     * @Assert\Length(max="2")
      * @ORM\Column(name="steps", type="integer")
      */
     protected $steps;
@@ -45,25 +43,23 @@ class Transmission
     /**
      * @var integer
      *
-     * @Assert\NotBlank()
-     *
-     * @ORM\Column(name="price", type="integer")
+     * @ORM\Column(name="price", type="integer", length=11, nullable=false)
      */
     protected $price;
 
     /**
-     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\TransmissionType", inversedBy="transmission")
+     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\TransmissionType", inversedBy="transmission", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
      */
     protected $type;
 
     /**
-     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Configuration", mappedBy="transmission")
+     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Configuration", mappedBy="transmission", cascade={"persist", "remove"})
      */
     protected $configuration;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\UserCar", mappedBy="transmission")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\UserCar", mappedBy="transmission", cascade={"persist", "remove"})
      */
     protected $userCar;
 
@@ -72,7 +68,7 @@ class Transmission
      */
     public function __construct()
     {
-        $this->configuration = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->configuration = new ArrayCollection();
     }
 
     /**
@@ -160,11 +156,11 @@ class Transmission
     /**
      * Set type
      *
-     * @param \CarBundle\Entity\TransmissionType $type
+     * @param TransmissionType $type
      *
      * @return Transmission
      */
-    public function setType(\CarBundle\Entity\TransmissionType $type = null)
+    public function setType(TransmissionType $type = null)
     {
         $this->type = $type;
 
@@ -174,7 +170,7 @@ class Transmission
     /**
      * Get type
      *
-     * @return \CarBundle\Entity\TransmissionType
+     * @return TransmissionType
      */
     public function getType()
     {
@@ -184,11 +180,11 @@ class Transmission
     /**
      * Add configuration
      *
-     * @param \CarBundle\Entity\Configuration $configuration
+     * @param Configuration $configuration
      *
      * @return Transmission
      */
-    public function addConfiguration(\CarBundle\Entity\Configuration $configuration)
+    public function addConfiguration(Configuration $configuration)
     {
         $this->configuration[] = $configuration;
 
@@ -198,9 +194,9 @@ class Transmission
     /**
      * Remove configuration
      *
-     * @param \CarBundle\Entity\Configuration $configuration
+     * @param Configuration $configuration
      */
-    public function removeConfiguration(\CarBundle\Entity\Configuration $configuration)
+    public function removeConfiguration(Configuration $configuration)
     {
         $this->configuration->removeElement($configuration);
     }
@@ -216,23 +212,13 @@ class Transmission
     }
 
     /**
-     * Call magic __toString method
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return (string) $this->getName();
-    }
-
-    /**
      * Add userCar
      *
-     * @param \AppBundle\Entity\UserCar $userCar
+     * @param UserCar $userCar
      *
      * @return Transmission
      */
-    public function addUserCar(\AppBundle\Entity\UserCar $userCar)
+    public function addUserCar(UserCar $userCar)
     {
         $this->userCar[] = $userCar;
 
@@ -242,9 +228,9 @@ class Transmission
     /**
      * Remove userCar
      *
-     * @param \AppBundle\Entity\UserCar $userCar
+     * @param UserCar $userCar
      */
-    public function removeUserCar(\AppBundle\Entity\UserCar $userCar)
+    public function removeUserCar(UserCar $userCar)
     {
         $this->userCar->removeElement($userCar);
     }
@@ -257,5 +243,15 @@ class Transmission
     public function getUserCar()
     {
         return $this->userCar;
+    }
+
+    /**
+     * Call magic __toString method
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getName();
     }
 }

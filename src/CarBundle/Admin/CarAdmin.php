@@ -17,7 +17,10 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\CollectionType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * Class ModelAdmin
@@ -47,22 +50,24 @@ class CarAdmin extends AbstractAdmin
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.name'
+                ],
+                'constraints' => [
+                    new NotBlank(),
+                    new Length([
+                        'min' => 3,
+                        'max' => 45
+                    ])
                 ]
             ])
-//            ->add('slug', TextType::class, [
-//                'label' => 'form.label.slug',
-//                'translation_domain' => 'SonataCarBundle',
-//                'required' => false,
-//                'attr' => [
-//                    'placeholder' => 'form.label.slug'
-//                ]
-//            ])
-            ->add('price', TextType::class, [
+            ->add('price', NumberType::class, [
                 'label' => 'form.label.price',
                 'translation_domain' => 'SonataCarBundle',
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'form.label.price'
+                ],
+                'constraints' => [
+                    new NotBlank()
                 ]
             ])
             ->add('model', EntityType::class, [

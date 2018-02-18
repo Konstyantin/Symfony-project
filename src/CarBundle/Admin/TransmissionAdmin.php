@@ -16,6 +16,8 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * Class TransmissionAdmin
@@ -45,6 +47,13 @@ class TransmissionAdmin extends AbstractAdmin
                 'translation_domain' => 'SonataTransmissionBundle',
                 'attr' => [
                     'placeholder' => 'form.placeholder.name'
+                ],
+                'constraints' => [
+                    new NotBlank(),
+                    new Length([
+                        'min' => 3,
+                        'max' => 45
+                    ])
                 ]
             ])
             ->add('steps', NumberType::class, [
@@ -53,6 +62,12 @@ class TransmissionAdmin extends AbstractAdmin
                 'translation_domain' => 'SonataTransmissionBundle',
                 'attr' => [
                     'placeholder' => 'form.placeholder.steps'
+                ],
+                'constraints' => [
+                    new NotBlank(),
+                    new Length([
+                        'max' => 2
+                    ])
                 ]
             ])
             ->add('price', NumberType::class, [
@@ -61,6 +76,9 @@ class TransmissionAdmin extends AbstractAdmin
                 'translation_domain' => 'SonataTransmissionBundle',
                 'attr' => [
                     'placeholder' => 'form.placeholder.price'
+                ],
+                'constraints' => [
+                    new NotBlank()
                 ]
             ])
             ->add('type', EntityType::class, [

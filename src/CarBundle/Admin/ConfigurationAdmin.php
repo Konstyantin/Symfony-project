@@ -18,6 +18,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * Class ConfigurationAdmin
@@ -42,6 +43,9 @@ class ConfigurationAdmin extends AbstractAdmin
                         'required' => false,
                         'attr' => [
                             'placeholder' => 'Car name'
+                        ],
+                        'constraints' => [
+                            new NotBlank()
                         ]
                     ])
                     ->add('engine', 'sonata_type_model', [
@@ -57,6 +61,9 @@ class ConfigurationAdmin extends AbstractAdmin
                         'required' => false,
                         'attr' => [
                             'placeholder' => 'Price'
+                        ],
+                        'constraints' => [
+                            new NotBlank(),
                         ]
                     ])
                 ->end()

@@ -15,6 +15,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * Class EngineAdmin
@@ -44,6 +45,9 @@ class EngineAdmin extends AbstractAdmin
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.name'
+                ],
+                'constraints' => [
+                    new NotBlank()
                 ]
             ])
             ->add('numCylinders', NumberType::class, [
@@ -52,6 +56,9 @@ class EngineAdmin extends AbstractAdmin
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.number_cylinders'
+                ],
+                'constraints' => [
+                    new NotBlank()
                 ]
             ])
             ->add('engineVolume', NumberType::class, [
@@ -60,6 +67,9 @@ class EngineAdmin extends AbstractAdmin
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.engine_volume'
+                ],
+                'constraints' => [
+                    new NotBlank()
                 ]
             ])
             ->add('power', NumberType::class, [
@@ -68,6 +78,9 @@ class EngineAdmin extends AbstractAdmin
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.power'
+                ],
+                'constraints' => [
+                    new NotBlank()
                 ]
             ])
             ->add('rHv', NumberType::class, [
@@ -76,6 +89,9 @@ class EngineAdmin extends AbstractAdmin
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.r_hv'
+                ],
+                'constraints' => [
+                    new NotBlank()
                 ]
             ])
             ->add('maxTorque', NumberType::class, [
@@ -84,6 +100,9 @@ class EngineAdmin extends AbstractAdmin
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.max_torque'
+                ],
+                'constraints' => [
+                    new NotBlank()
                 ]
             ])
             ->add('compression', NumberType::class, [
@@ -92,6 +111,9 @@ class EngineAdmin extends AbstractAdmin
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.compression'
+                ],
+                'constraints' => [
+                    new NotBlank()
                 ]
             ])
             ->add('price', NumberType::class, [
@@ -100,6 +122,9 @@ class EngineAdmin extends AbstractAdmin
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.price'
+                ],
+                'constraints' => [
+                    new NotBlank()
                 ]
             ])
         ;

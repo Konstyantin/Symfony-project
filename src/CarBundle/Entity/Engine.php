@@ -2,7 +2,10 @@
 
 namespace CarBundle\Entity;
 
+use AppBundle\Entity\UserCar;
 use Doctrine\ORM\Mapping as ORM;
+use CarBundle\Entity\Configuration;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -25,82 +28,66 @@ class Engine
     /**
      * @var string
      *
-     * @Assert\NotBlank()
-     *
-     * @ORM\Column(name="name", type="string")
+     * @ORM\Column(name="name", type="string", length=45, nullable=false)
      */
     protected $name;
 
     /**
      * @var integer
      *
-     * @Assert\NotBlank()
-     *
-     * @ORM\Column(name="num_cylinders", type="integer")
+     * @ORM\Column(name="num_cylinders", type="integer", length=11, nullable=false)
      */
     protected $numCylinders;
 
     /**
      * @var integer
      *
-     * @Assert\NotBlank()
-     *
-     * @ORM\Column(name="engine_volume", type="integer")
+     * @ORM\Column(name="engine_volume", type="integer", length=11, nullable=false)
      */
     protected $engineVolume;
 
     /**
      * @var integer
      *
-     * @Assert\NotBlank()
-     *
-     * @ORM\Column(name="power", type="integer")
+     * @ORM\Column(name="power", type="integer", length=11, nullable=false)
      */
     protected $power;
 
     /**
      * @var integer
      *
-     * @Assert\NotBlank()
-     *
-     * @ORM\Column(name="r_hv", type="integer")
+     * @ORM\Column(name="r_hv", type="integer", length=11, nullable=false)
      */
     protected $rHv;
 
     /**
      * @var integer
      *
-     * @Assert\NotBlank()
-     *
-     * @ORM\Column(name="max_torque", type="integer")
+     * @ORM\Column(name="max_torque", type="integer", length=11, nullable=false)
      */
     protected $maxTorque;
 
     /**
      * @var integer
      *
-     * @Assert\NotBlank()
-     *
-     * @ORM\Column(name="compression", type="integer")
+     * @ORM\Column(name="compression", type="integer", length=11, nullable=false)
      */
     protected $compression;
 
     /**
      * @var integer
      *
-     * @Assert\NotBlank()
-     *
-     * @ORM\Column(name="price", type="integer")
+     * @ORM\Column(name="price", type="integer", length=11, nullable=false)
      */
     protected $price;
 
     /**
-     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Configuration", mappedBy="engine")
+     * @ORM\OneToMany(targetEntity="CarBundle\Entity\Configuration", mappedBy="engine", cascade={"persist", "remove"})
      */
     protected $configuration;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\UserCar", mappedBy="engine")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\UserCar", mappedBy="engine", cascade={"persist", "remove"})
      */
     protected $userCar;
 
@@ -109,7 +96,7 @@ class Engine
      */
     public function __construct()
     {
-        $this->configuration = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->configuration = new ArrayCollection();
     }
 
     /**
@@ -317,11 +304,11 @@ class Engine
     /**
      * Add configuration
      *
-     * @param \CarBundle\Entity\Configuration $configuration
+     * @param Configuration $configuration
      *
      * @return Engine
      */
-    public function addConfiguration(\CarBundle\Entity\Configuration $configuration)
+    public function addConfiguration(Configuration $configuration)
     {
         $this->configuration[] = $configuration;
 
@@ -331,9 +318,9 @@ class Engine
     /**
      * Remove configuration
      *
-     * @param \CarBundle\Entity\Configuration $configuration
+     * @param Configuration $configuration
      */
-    public function removeConfiguration(\CarBundle\Entity\Configuration $configuration)
+    public function removeConfiguration(Configuration $configuration)
     {
         $this->configuration->removeElement($configuration);
     }
@@ -349,23 +336,13 @@ class Engine
     }
 
     /**
-     * Call magic method __toString
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return (string) $this->getName();
-    }
-
-    /**
      * Add userCar
      *
-     * @param \AppBundle\Entity\UserCar $userCar
+     * @param UserCar $userCar
      *
      * @return Engine
      */
-    public function addUserCar(\AppBundle\Entity\UserCar $userCar)
+    public function addUserCar(UserCar $userCar)
     {
         $this->userCar[] = $userCar;
 
@@ -375,9 +352,9 @@ class Engine
     /**
      * Remove userCar
      *
-     * @param \AppBundle\Entity\UserCar $userCar
+     * @param UserCar $userCar
      */
-    public function removeUserCar(\AppBundle\Entity\UserCar $userCar)
+    public function removeUserCar(UserCar $userCar)
     {
         $this->userCar->removeElement($userCar);
     }
@@ -390,5 +367,15 @@ class Engine
     public function getUserCar()
     {
         return $this->userCar;
+    }
+
+    /**
+     * Call magic method __toString
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getName();
     }
 }
