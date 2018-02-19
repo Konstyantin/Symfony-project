@@ -926,3 +926,22 @@ body {
 .drive-selection-item a:hover {
     color: #c00;
 }
+
+.car-service-container .form-group .btn-user-car,
+.service-registration-container .form-group .btn-service-register {
+    color: #fff;
+}
+
+.service-action-list {
+    padding-left: 20px;
+    display: none;
+}
+
+.action-story {
+    margin-top: 10px;
+}
+
+.car-story-container .action-list-btn {
+    text-decoration: none;
+    color: #c00;
+}

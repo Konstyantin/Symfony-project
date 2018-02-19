@@ -67,7 +67,4 @@ class CarController extends Controller
             'carList' => $carList
         ]);
     }
-
-//    winner finance
-//    special offers
 }

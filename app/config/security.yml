@@ -61,3 +61,4 @@ security:
         - { path: ^/profile/edit,  allow_if: "!has_role('ROLE_OAUTH')" }
         - { path: ^/profile/change-password,  allow_if: "!has_role('ROLE_OAUTH')" }
         - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/user/cars/, role: "!has_role('ROLE_OAUTH')" }

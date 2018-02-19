@@ -139,7 +139,7 @@ class UserCarController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $serviceList = $em->getRepository('AppBundle:CarService')->getServiceListByCarId($carId);
+        $serviceList = $em->getRepository('ServiceBundle:CarService')->getServiceListByCarId($carId);
 
         return $this->render('@User/userCar/story.html.twig', [
             'serviceList' => $serviceList

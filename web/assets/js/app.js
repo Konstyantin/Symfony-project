@@ -13,6 +13,7 @@
          */
         init: function () {
             this.menuHover();
+            this.actionListManage();
         },
 
         /**
@@ -73,6 +74,27 @@
 
                 carData.hide();
             });
+        },
+
+        /**
+         * Action list manage
+         *
+         * Use for change condition action list story show and hide
+         */
+        actionListManage: function () {
+            var actionListBtn = $('.action-list-btn');
+
+            actionListBtn.on('click', function (e) {
+                e.preventDefault();
+
+                console.log($(this));
+                var $this = $(this),
+                    actionList = $this.siblings('.service-action-list');
+
+
+
+                actionList.slideToggle();
+            })
         }
     };
 

@@ -75,7 +75,7 @@
                                                                                 <a href="">Configured</a>
                                                                             </li>
                                                                             <li class="menu-item view-car">
-                                                                                <a href="{{ path('car_view', {'carName': car.slug, 'model': model.name}) }}">View</a>
+                                                                                <a href="{{ path('car_view', {'carName': car.slug, 'model': model.slug}) }}">View</a>
                                                                             </li>
                                                                         </ul>
                                                                     </div>
@@ -122,41 +122,6 @@
                                         {% endif %}
                                     </li>
                                 {% endfor %}
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cars with mileage
-                                <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-item">
-                                <li class="menu-item">
-                                    <a href="#">Porsche Approved Cars with mileage</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#">Service subscriber service program</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#">Search for cars with mileage</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Events
-                                <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-item">
-                                <li class="menu-item">
-                                    <a href="#">AutoSport</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#">Porshe Clubs</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#">Porshe Driving Experience</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#">Porshe Golf Club</a>
-                                </li>
                             </ul>
                         </li>
                         <li class="dropdown">

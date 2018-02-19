@@ -8,9 +8,9 @@
     <div class="car-story-title">
         <p>Car story</p>
     </div>
-    <div class="car-story-container">
+    <div class="car-story-container clearfix">
         {% for service in serviceList %}
-            <div class="car-service-item">
+            <div class="car-service-item col-sm-6">
                 <div><span>Car:</span> {{ service.userCar.car.name }}</div>
                 <div><span>Model:</span> {{ service.model.name }}</div>
                 <div><span>Dealer:</span> {{ service.dealer.name }}</div>
@@ -18,6 +18,17 @@
                 <div><span>Mileage:</span> {{ service.mileage }}</div>
                 <div><span>Licence plate:</span> {{ service.licensePlate }}</div>
                 <div><span>Date:</span> {{ service.date|date }}</div>
+                <div class="action-story">
+                    <a href="#" class="action-list-btn" id="{{ service.id }}">Action list</a>
+                    <ul class="service-action-list">
+                        {% for actionItem in service.serviceAction %}
+                            <li id="{{ service.id }}">
+                                <p>{{ actionItem.action }}</p>
+                                <p>{{ actionItem.description }}</p>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
         {% endfor %}
     </div>

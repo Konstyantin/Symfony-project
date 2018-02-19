@@ -27,7 +27,7 @@ class UserCarAdmin extends AbstractAdmin
     /**
      * @var string $translationDomain
      */
-    protected $translationDomain = 'SonataUserAdminBundle';
+    protected $translationDomain = 'SonataUserCarBundle';
 
     /**
      * Configure form field
@@ -100,9 +100,9 @@ class UserCarAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $list)
     {
         $list
-            ->addIdentifier('car', null, ['label' => 'datagrid.filter.car'])
-            ->add('user', null, ['label' => 'datagrid.filter.user'])
-            ->add('model', null, ['label' => 'datagrid.filter.model'])
+            ->addIdentifier('car', null, ['label' => 'datagrid.list.car'])
+            ->add('user', null, ['label' => 'datagrid.list.user'])
+            ->add('model', null, ['label' => 'datagrid.list.model'])
             ->add('_action',null, [
                 'actions' => [
                     'delete' => [],
@@ -122,9 +122,9 @@ class UserCarAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $filter)
     {
         $filter
-            ->add('car', null, ['label' => 'datagrid.list.car'])
-            ->add('user', null, ['label' => 'datagrid.list.user'])
-            ->add('model', null, ['label' => 'datagrid.list.model']);
+            ->add('car', null, ['label' => 'datagrid.filters.car'])
+            ->add('user', null, ['label' => 'datagrid.filters.user'])
+            ->add('model', null, ['label' => 'datagrid.filters.model']);
     }
 
     /**
