@@ -2,7 +2,7 @@
 
 namespace UserBundle\Controller;
 
-use AppBundle\Entity\UserCar;
+use UserBundle\Entity\UserCar;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use UserBundle\Form\UserCarType;
@@ -26,7 +26,7 @@ class UserCarController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $carList = $em->getRepository('AppBundle:UserCar')->getUserCarList($userId);
+        $carList = $em->getRepository('UserBundle:UserCar')->getUserCarList($userId);
 
         return $this->render('@User/userCar/index.html.twig', [
             'carList' => $carList
@@ -55,7 +55,7 @@ class UserCarController extends Controller
 
             $data = $form->getData();
 
-            $em->getRepository('AppBundle:UserCar')->create($data, $user);
+            $em->getRepository('UserBundle:UserCar')->create($data, $user);
 
             $this->addFlash('success', 'Car added success');
 
@@ -82,7 +82,7 @@ class UserCarController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $userCar = $em->getRepository('AppBundle:UserCar')->getUserCar($carId, $userId);
+        $userCar = $em->getRepository('UserBundle:UserCar')->getUserCar($carId, $userId);
 
         $form = $this->createForm(UserCarType::class, $userCar);
 
@@ -92,7 +92,7 @@ class UserCarController extends Controller
 
             $data = $form->getData();
 
-            $em->getRepository('AppBundle:UserCar')->edit($data);
+            $em->getRepository('UserBundle:UserCar')->edit($data);
 
             $this->addFlash('success', 'Car edited success');
         }
@@ -116,7 +116,7 @@ class UserCarController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $userCar = $em->getRepository('AppBundle:UserCar')->getUserCar($carId, $userId);
+        $userCar = $em->getRepository('UserBundle:UserCar')->getUserCar($carId, $userId);
 
         $em->remove($userCar);
 

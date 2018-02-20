@@ -2,7 +2,7 @@
 
 namespace CarBundle\Entity;
 
-use AppBundle\Entity\UserCar;
+use UserBundle\Entity\UserCar;
 use Doctrine\ORM\Mapping as ORM;
 use CarBundle\Entity\Configuration;
 use CarBundle\Entity\TransmissionType;
@@ -59,7 +59,7 @@ class Transmission
     protected $configuration;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\UserCar", mappedBy="transmission", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="UserBundle\Entity\UserCar", mappedBy="transmission", cascade={"persist", "remove"})
      */
     protected $userCar;
 

@@ -102,7 +102,7 @@ class UserCarType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'AppBundle\Entity\UserCar'
+            'data_class' => 'UserBundle\Entity\UserCar'
         ]);
     }
 

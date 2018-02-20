@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace UserBundle\Entity;
 
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * UserCar
  *
  * @ORM\Table(name="user_car")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\UserCarRepository")
+ * @ORM\Entity(repositoryClass="UserBundle\Repository\UserCarRepository")
  */
 class UserCar
 {

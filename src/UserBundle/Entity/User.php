@@ -72,7 +72,7 @@ class User extends BaseUser
     protected $google_access_token;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\UserCar", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="UserBundle\Entity\UserCar", mappedBy="user")
      */
     protected $userCar;
 
@@ -185,11 +185,11 @@ class User extends BaseUser
     /**
      * Add userCar
      *
-     * @param \AppBundle\Entity\UserCar $userCar
+     * @param \UserBundle\Entity\UserCar $userCar
      *
      * @return User
      */
-    public function addUserCar(\AppBundle\Entity\UserCar $userCar)
+    public function addUserCar(\UserBundle\Entity\UserCar $userCar)
     {
         $this->userCar[] = $userCar;
 
@@ -199,9 +199,9 @@ class User extends BaseUser
     /**
      * Remove userCar
      *
-     * @param \AppBundle\Entity\UserCar $userCar
+     * @param \UserBundle\Entity\UserCar $userCar
      */
-    public function removeUserCar(\AppBundle\Entity\UserCar $userCar)
+    public function removeUserCar(\UserBundle\Entity\UserCar $userCar)
     {
         $this->userCar->removeElement($userCar);
     }

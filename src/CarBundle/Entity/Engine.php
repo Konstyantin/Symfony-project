@@ -2,7 +2,7 @@
 
 namespace CarBundle\Entity;
 
-use AppBundle\Entity\UserCar;
+use UserBundle\Entity\UserCar;
 use Doctrine\ORM\Mapping as ORM;
 use CarBundle\Entity\Configuration;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -87,7 +87,7 @@ class Engine
     protected $configuration;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\UserCar", mappedBy="engine", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="UserBundle\Entity\UserCar", mappedBy="engine", cascade={"persist", "remove"})
      */
     protected $userCar;
 

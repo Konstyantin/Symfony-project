@@ -7,7 +7,7 @@ use CarBundle\Entity\Model;
 use CarBundle\Entity\Feature;
 use CarBundle\Entity\Configuration;
 use ServiceBundle\Entity\CarService;
-use AppBundle\Entity\UserCar;
+use UserBundle\Entity\UserCar;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Application\Sonata\MediaBundle\Entity\Media;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -91,7 +91,7 @@ class Car
     protected $carService;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\UserCar", mappedBy="car", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="UserBundle\Entity\UserCar", mappedBy="car", cascade={"persist", "remove"})
      */
     protected $userCar;
 

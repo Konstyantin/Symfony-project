@@ -8,7 +8,7 @@
 
 namespace AppBundle\Admin;
 
-use AppBundle\Entity\UserCar;
+use UserBundle\Entity\UserCar;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;

@@ -3,7 +3,7 @@
 namespace CarBundle\Entity;
 
 use CarBundle\Entity\Car;
-use AppBundle\Entity\UserCar;
+use UserBundle\Entity\UserCar;
 use Doctrine\ORM\Mapping as ORM;
 use ServiceBundle\Entity\CarService;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -57,7 +57,7 @@ class Model
     protected $imageLogo;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\UserCar", mappedBy="model", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="UserBundle\Entity\UserCar", mappedBy="model", cascade={"persist", "remove"})
      */
     protected $userCar;
 

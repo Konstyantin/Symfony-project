@@ -79,7 +79,7 @@ class ServiceListener implements EventSubscriberInterface
 
                 $serviceCarId = $carService->getCar()->getId();
 
-                $userCar = $em->getRepository('AppBundle:UserCar')->getUserCar($serviceCarId, $userId);
+                $userCar = $em->getRepository('UserBundle:UserCar')->getUserCar($serviceCarId, $userId);
 
                 $carService->setUserCar($userCar);
             }

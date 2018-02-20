@@ -137,7 +137,7 @@ class CarRepository extends \Doctrine\ORM\EntityRepository
     public function getCarsByUserId($userId)
     {
         $query = $this->createQueryBuilder('car');
-        $query = ($userId) ? $query->join('AppBundle:UserCar', 'user_car', 'WITH', 'car.id = user_car.car')
+        $query = ($userId) ? $query->join('UserBundle:UserCar', 'user_car', 'WITH', 'car.id = user_car.car')
             ->where('user_car.user =:userId')
             ->setParameter('userId', $userId) : $query;
 
