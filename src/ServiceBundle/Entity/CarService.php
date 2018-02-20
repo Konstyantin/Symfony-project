@@ -54,13 +54,13 @@ class CarService
 
     /**
      * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Car", inversedBy="carService", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="car_id", referencedColumnName="id", unique=false, nullable=false)
+     * @ORM\JoinColumn(name="car_id", referencedColumnName="id", unique=false, nullable=false, onDelete="CASCADE")
      */
     protected $car;
 
     /**
      * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Model", inversedBy="carService", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="model_id", referencedColumnName="id", unique=false, nullable=false)
+     * @ORM\JoinColumn(name="model_id", referencedColumnName="id", unique=false, nullable=false, onDelete="CASCADE")
      */
     protected $model;
 
@@ -87,7 +87,7 @@ class CarService
 
     /**
      * @ORM\ManyToOne(targetEntity="DealerBundle\Entity\Dealer", inversedBy="carService", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="dealer_id", referencedColumnName="id", unique=false, nullable=false)
+     * @ORM\JoinColumn(name="dealer_id", referencedColumnName="id", unique=false, nullable=false, onDelete="CASCADE")
      */
     protected $dealer;
 
@@ -100,13 +100,13 @@ class CarService
 
     /**
      * @ORM\ManyToOne(targetEntity="ServiceBundle\Entity\ServiceStatus", inversedBy="carService", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="status_id", referencedColumnName="id", unique=false, nullable=false)
+     * @ORM\JoinColumn(name="status_id", referencedColumnName="id", unique=false, nullable=false, onDelete="CASCADE")
      */
     protected $status;
 
     /**
      * @ORM\ManyToOne(targetEntity="UserBundle\Entity\UserCar", inversedBy="carService", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="user_car_id", referencedColumnName="id", unique=false, nullable=true)
+     * @ORM\JoinColumn(name="user_car_id", referencedColumnName="id", unique=false, nullable=true, onDelete="CASCADE")
      */
     protected $userCar;
 

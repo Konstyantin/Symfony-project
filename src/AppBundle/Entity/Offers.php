@@ -45,13 +45,13 @@ class Offers
 
     /**
      * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="offers_image_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="offers_image_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $offersImage;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\OffersCategory", inversedBy="offers", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $offersCategory;
 

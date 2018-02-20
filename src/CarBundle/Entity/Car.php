@@ -51,7 +51,7 @@ class Car
 
     /**
      * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Model", inversedBy="car", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="model_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="model_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $model;
 
@@ -68,13 +68,13 @@ class Car
 
     /**
      * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="logo_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="logo_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $imageLogo;
 
     /**
      * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="preview_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="preview_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $imagePreview;
 

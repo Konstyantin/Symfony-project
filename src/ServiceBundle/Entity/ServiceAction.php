@@ -38,7 +38,7 @@ class ServiceAction
 
     /**
      * @ORM\ManyToOne(targetEntity="ServiceBundle\Entity\CarService", inversedBy="serviceAction", cascade={"persist"})
-     * @ORM\JoinColumn(name="car_service_id", referencedColumnName="id", nullable=true)
+     * @ORM\JoinColumn(name="car_service_id", referencedColumnName="id", nullable=true, onDelete="CASCADE")
      */
     protected $carService;
 

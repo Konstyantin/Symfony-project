@@ -44,31 +44,31 @@ class Configuration
 
     /**
      * @ORM\OneToOne(targetEntity="CarBundle\Entity\Body", inversedBy="configuration", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="body_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="body_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $body;
 
     /**
      * @ORM\OneToOne(targetEntity="CarBundle\Entity\Fuel", inversedBy="configuration", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="fuel_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="fuel_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $fuel;
 
     /**
      * @ORM\OneToOne(targetEntity="CarBundle\Entity\Dynamics", inversedBy="configuration", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="dynamics_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="dynamics_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $dynamics;
 
     /**
      * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Engine", inversedBy="configuration", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="engine_id")
+     * @ORM\JoinColumn(name="engine_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $engine;
 
     /**
      * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Transmission", inversedBy="configuration", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="transmission_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="transmission_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $transmission;
 

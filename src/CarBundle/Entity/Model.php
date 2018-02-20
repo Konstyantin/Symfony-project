@@ -52,7 +52,7 @@ class Model
 
     /**
      * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="logo_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="logo_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $imageLogo;
 

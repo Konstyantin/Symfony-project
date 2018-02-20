@@ -83,7 +83,7 @@ class Feature
 
     /**
      * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Car", inversedBy="feature")
-     * @ORM\JoinColumn(name="car_id", referencedColumnName="id", nullable=true)
+     * @ORM\JoinColumn(name="car_id", referencedColumnName="id", nullable=true, onDelete="CASCADE")
      */
     protected $car;
 

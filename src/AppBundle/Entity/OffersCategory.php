@@ -36,7 +36,7 @@ class OffersCategory
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\OffersCategory", inversedBy="children")
-     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $parent;
 
@@ -54,7 +54,7 @@ class OffersCategory
 
     /**
      * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="offers_category_image_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="offers_category_image_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $offersCategoryImage;
 
