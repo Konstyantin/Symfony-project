@@ -152,6 +152,18 @@
                             <a href="{{ path('offers_index') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Offers
                                 <span class="caret"></span>
                             </a>
+                            <ul class="dropdown-menu dropdown-menu-item">
+                                {% for category in offers_category_manager.getList %}
+                                    {% if category.parent == null %}
+                                        <li class="dropdown-submenu menu-item">
+                                            <a class="submenu" href="">{{ category.name }}</a>
+                                            {% if category.children|length > 0 %}
+                                                {{ macros.category_macros(category.children) }}
+                                            {% endif %}
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
                             {#<ul class="dropdown-menu dropdown-menu-item">#}
                                 {#{% for offerCategory in offers_category_manager.getList %}#}
                                     {#<li class="menu-item">#}
@@ -160,7 +172,7 @@
                                 {#{% endfor %}#}
 
                                 {#{{ dump(offers_category_manager.getList) }}#}
-                                {{ macros.category_macros(offers_category_manager.getList) }}
+                                {#{{ macros.category_macros(offers_category_manager.getList) }}#}
                             {#</ul>#}
                         </li>
                         <li class="dropdown">
