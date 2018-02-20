@@ -195,12 +195,14 @@
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-item">
-                                <li class="menu-item">
-                                    <a href="{{ path('fos_user_profile_show') }}">View Profile</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="{{ path('fos_user_profile_edit') }}">Edit</a>
-                                </li>
+                                {% if not is_granted('ROLE_OAUTH') %}
+                                    <li class="menu-item">
+                                        <a href="{{ path('fos_user_profile_show') }}">View Profile</a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="{{ path('fos_user_profile_edit') }}">Edit</a>
+                                    </li>
+                                {% endif %}
                                 <li class="menu-item">
                                     <a href="{{ path('user_car_home') }}">Car List</a>
                                 </li>

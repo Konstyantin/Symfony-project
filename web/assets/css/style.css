@@ -623,6 +623,8 @@ body {
 .footer-service-list,
 .user-car-container,
 .service-registration-container,
+.fos-user-confirmed-container,
+.show-profile-container,
 .model-list-container,
 .service-list-container,
 .model-container,
@@ -808,8 +810,10 @@ body {
 .drive-selection-title,
 .car-story-title,
 .login-container-title,
+.show-profile-title,
 .user-car-title,
 .register-container-title,
+.profile-edit-container-title,
 .contact-us-title {
     background-color: #eee;
     padding: 15px 100px;
@@ -823,6 +827,8 @@ body {
 
 .service-registration-title p,
 .offers-list-title p,
+.show-profile-title p,
+.profile-edit-container-title p,
 .register-container-title p,
 .model-container-title p,
 .offer-view-title p,

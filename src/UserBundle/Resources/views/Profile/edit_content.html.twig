@@ -1,8 +1,10 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
+<div class="profile-edit-container-title">
+    <p>Profile edit page</p>
+</div>
 <div class="clearfix profile-edit-container">
     <div class="col-lg-6">
-        <h2>Profile edit page </h2>
         {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
         {{ form_widget(form) }}
         <div>
