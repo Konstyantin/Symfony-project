@@ -45,6 +45,8 @@ class AppListener implements EventSubscriberInterface
     /**
      * Define subscriber events
      *
+     * Store list of subscriber events
+     *
      * @return array
      */
     public static function getSubscribedEvents()
@@ -56,6 +58,8 @@ class AppListener implements EventSubscriberInterface
 
     /**
      * Question register event
+     *
+     * Save new question after that send mail notification and create new flash alert
      *
      * @param QuestionEvent $event
      */

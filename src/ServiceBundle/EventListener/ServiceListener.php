@@ -8,6 +8,7 @@
 
 namespace ServiceBundle\EventListener;
 
+use ServiceBundle\Constants\RegistrationService;
 use ServiceBundle\Event\ServiceEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -44,6 +45,8 @@ class ServiceListener implements EventSubscriberInterface
     /**
      * Define subscriber events
      *
+     * Store list of subscriber events
+     *
      * @return array
      */
     public static function getSubscribedEvents()
@@ -65,7 +68,8 @@ class ServiceListener implements EventSubscriberInterface
     {
         $em = $this->serviceContainer->get('doctrine.orm.default_entity_manager');
 
-        $serviceStatus = $em->getRepository('ServiceBundle:ServiceStatus')->findOneBy(['status' => 'Register']);
+        $serviceStatus = $em->getRepository('ServiceBundle:ServiceStatus')
+            ->findOneBy(['status' => RegistrationService::DEFAULT_SERVICE_STATUS]);
 
         if ($serviceStatus) {
 

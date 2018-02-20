@@ -28,4 +28,9 @@ final class RegistrationService
      * The MAX_HOURS store max work hours
      */
     const MAX_HOURS = 20;
+
+    /**
+     * The DEFAULT_SERVICE_STATUS match default service status for new registration service
+     */
+    const DEFAULT_SERVICE_STATUS = 'Register';
 }

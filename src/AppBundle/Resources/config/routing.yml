@@ -8,7 +8,7 @@ contact:
 
 question:
     path:     /question
-    defaults: { _controller: AppBundle:Question:index}
+    defaults: { _controller: AppBundle:Question:create}
 
 museum:
     path:     /museum

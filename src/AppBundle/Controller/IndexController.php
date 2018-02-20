@@ -13,7 +13,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class IndexController extends Controller
 {
     /**
-     * Car action
+     * Index action
+     *
+     * Show mail page of the project with model list gallery and service
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -44,6 +46,8 @@ class IndexController extends Controller
     /**
      * Contact action
      *
+     * Show base contact information of company
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function contactAction()
@@ -59,6 +63,8 @@ class IndexController extends Controller
 
     /**
      * Museum action
+     *
+     * Show static museum data of company
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */

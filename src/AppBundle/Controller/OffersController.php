@@ -14,6 +14,8 @@ class OffersController extends Controller
     /**
      * Index Action
      *
+     * Show company offers list
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction()
@@ -29,6 +31,8 @@ class OffersController extends Controller
 
     /**
      * Category offers action
+     *
+     * Show offers list by passed offers category
      *
      * @param Request $request
      * @param string $category
@@ -55,6 +59,8 @@ class OffersController extends Controller
 
     /**
      * View Action
+     *
+     * Show information by current offer item
      *
      * @param string $title
      * @return \Symfony\Component\HttpFoundation\Response

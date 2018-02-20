@@ -16,11 +16,13 @@ use Symfony\Component\HttpFoundation\Request;
 class QuestionController extends Controller
 {
     /**
-     * Index action
+     * Create action
+     *
+     * Create new question and send notification about create created new question
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction(Request $request)
+    public function createAction(Request $request)
     {
         $form = $this->createForm(QuestionType::class);
 
@@ -37,7 +39,7 @@ class QuestionController extends Controller
             $dispatcher->dispatch(AppBundleEvent::QUESTION_REGISTER, $event);
         }
 
-        return $this->render('@App/Question/index.html.twig', [
+        return $this->render('@App/Question/create.html.twig', [
             'form' => $form->createView()
         ]);
     }

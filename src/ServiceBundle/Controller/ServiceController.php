@@ -17,6 +17,8 @@ class ServiceController extends Controller
     /**
      * Registration service
      *
+     * Registration user car item on company service
+     *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -50,6 +52,8 @@ class ServiceController extends Controller
 
     /**
      * Drive selection action
+     *
+     * Show static page about drive selection common information
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
