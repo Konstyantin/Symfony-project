@@ -1,10 +1,16 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<div class="container register-container">
+<div class="register-container-title">
+    <p>Registration page</p>
+</div>
+<div class="register-container">
     <div class="col-lg-6">
-        <h2>Registration page</h2>
         {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
         {{ form_widget(form) }}
+        <div class="social-login">
+            <a href="{{ path('login_social_facebook') }}" class="social-login-btn login-facebook-btn">Facebook</a>
+            <a href="{{ path('login_social_google') }}" class="social-login-btn login-google-btn">Google</a>
+        </div>
         <div>
             <input type="submit" name="_submit" class="btn register-submit-btn" value="{{ 'registration.submit'|trans }}" />
         </div>

@@ -1,8 +1,11 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<div class="container login-container">
+<div class="login-container-title">
+    <p>Login page</p>
+</div>
+
+<div class="login-container">
     <div class="col-lg-6">
-        <h2>Login page</h2>
         {% if error %}
             <div class="alert alert-danger alert-dismissable fade in">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -22,11 +25,14 @@
                 <label for="password">{{ 'security.login.password'|trans }}</label>
                 <input type="password" id="password" class="form-control" name="_password" placeholder="Password" />
             </div>
-            <div class="form-gropu">
+            <div class="form-group">
                 <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
                 <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
             </div>
-
+            <div class="social-login">
+                <a href="{{ path('login_social_facebook') }}" class="social-login-btn login-facebook-btn">Facebook</a>
+                <a href="{{ path('login_social_google') }}" class="social-login-btn login-google-btn">Google</a>
+            </div>
             <input type="submit" id="_submit" class="btn login-submit-btn" name="_submit" value="{{ 'security.login.submit'|trans }}" />
         </form>
     </div>

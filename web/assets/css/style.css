@@ -615,6 +615,7 @@ body {
 
 .offers-category-list,
 .offers-list,
+.register-container,
 .offer-view-container,
 .fos_user_user_show,
 .fos-user-container,
@@ -635,6 +636,7 @@ body {
 .drive-selection-container,
 .lightgallery-container,
 .car-story-container,
+.login-container,
 .question-container {
     margin: 0 auto;
     padding: 0 100px;
@@ -805,15 +807,23 @@ body {
 .model-container-title,
 .drive-selection-title,
 .car-story-title,
+.login-container-title,
 .user-car-title,
+.register-container-title,
 .contact-us-title {
     background-color: #eee;
     padding: 15px 100px;
     margin-bottom: 20px;
 }
 
+.login-container-title, .register-container-title {
+    padding-left: 115px;
+}
+
+
 .service-registration-title p,
 .offers-list-title p,
+.register-container-title p,
 .model-container-title p,
 .offer-view-title p,
 .model-cal-title p,
@@ -825,6 +835,7 @@ body {
 .museum-title p,
 .user-car-title p,
 .car-story-title p,
+.login-container-title p,
 .drive-selection-title p,
 .car-specs-title a {
     margin-bottom: 0;
@@ -944,4 +955,23 @@ body {
 .car-story-container .action-list-btn {
     text-decoration: none;
     color: #c00;
+}
+
+.social-login {
+    margin: 10px 0;
+}
+
+.social-login-btn, .social-login-btn:hover {
+    color: #fff;
+    padding: 10px 30px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.login-facebook-btn {
+    background-color: #3b5998;
+}
+
+.login-google-btn {
+    background-color: #E53935;
 }
