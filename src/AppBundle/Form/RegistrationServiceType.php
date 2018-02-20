@@ -188,7 +188,10 @@ class   RegistrationServiceType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => 'ServiceBundle\Entity\CarService',
-            'user' => null
+            'user' => null,
+            'csrf_protection' => true,
+            'csrf_field_name' => '_token',
+            'csrf_token_id'   => 'service_item',
         ]);
     }
 

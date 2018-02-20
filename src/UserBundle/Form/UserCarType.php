@@ -102,7 +102,10 @@ class UserCarType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'UserBundle\Entity\UserCar'
+            'data_class' => 'UserBundle\Entity\UserCar',
+            'csrf_protection' => true,
+            'csrf_field_name' => '_token',
+            'csrf_token_id'   => 'user_car_item',
         ]);
     }
 
