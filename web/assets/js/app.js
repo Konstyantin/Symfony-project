@@ -87,13 +87,11 @@
             actionListBtn.on('click', function (e) {
                 e.preventDefault();
 
-                console.log($(this));
                 var $this = $(this),
-                    actionList = $this.siblings('.service-action-list');
+                    serviceItem = $this.closest('.car-service-item'),
+                    actionStory = serviceItem.find('.action-story');
 
-
-
-                actionList.slideToggle();
+                actionStory.slideToggle();
             })
         }
     };

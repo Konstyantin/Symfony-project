@@ -10,24 +10,39 @@
     </div>
     <div class="car-story-container clearfix">
         {% for service in serviceList %}
-            <div class="car-service-item col-sm-6">
-                <div><span>Car:</span> {{ service.userCar.car.name }}</div>
-                <div><span>Model:</span> {{ service.model.name }}</div>
-                <div><span>Dealer:</span> {{ service.dealer.name }}</div>
-                <div><span>Vin:</span> {{ service.vin }}</div>
-                <div><span>Mileage:</span> {{ service.mileage }}</div>
-                <div><span>Licence plate:</span> {{ service.licensePlate }}</div>
-                <div><span>Date:</span> {{ service.date|date }}</div>
-                <div class="action-story">
+            <div class="car-service-item row">
+                <div class="col-sm-6">
+                    <div><span>Car:</span> {{ service.userCar.car.name }}</div>
+                    <div><span>Model:</span> {{ service.model.name }}</div>
+                    <div><span>Dealer:</span> {{ service.dealer.name }}</div>
+                    <div><span>Vin:</span> {{ service.vin }}</div>
+                    <div><span>Mileage:</span> {{ service.mileage }}</div>
+                    <div><span>Licence plate:</span> {{ service.licensePlate }}</div>
+                    <div><span>Date:</span> {{ service.date|date }}</div>
+                    <div><span>Status:</span> {{ service.status }}</div>
                     <a href="#" class="action-list-btn" id="{{ service.id }}">Action list</a>
-                    <ul class="service-action-list">
-                        {% for actionItem in service.serviceAction %}
-                            <li id="{{ service.id }}">
-                                <p>{{ actionItem.action }}</p>
-                                <p>{{ actionItem.description }}</p>
-                            </li>
-                        {% endfor %}
-                    </ul>
+                </div>
+                <div class="col-sm-6">
+                    <div class="action-story">
+                        {% if service.serviceAction is not empty %}
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th scope="col" width="30%">Action</th>
+                                    <th scope="col" width="70%">Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for actionItem in service.serviceAction %}
+                                    <tr>
+                                        <td>{{ actionItem.action }}</td>
+                                        <td>{{ actionItem.description }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         {% endfor %}

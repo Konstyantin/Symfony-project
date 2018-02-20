@@ -894,6 +894,9 @@ body {
     height: 230px;
 }
 
+.car-service-item {
+    margin-bottom: 20px;
+}
 .car-service-item div {
     font-size: 16px;
 }
@@ -956,6 +959,7 @@ body {
 
 .action-story {
     margin-top: 10px;
+    display: none;
 }
 
 .car-story-container .action-list-btn {
