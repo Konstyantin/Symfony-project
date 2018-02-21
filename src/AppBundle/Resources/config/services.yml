@@ -59,12 +59,3 @@ services:
               label: 'Question'
               label_catalogue: 'Question'
 
-    # App event listener
-    service.app_event_listent:
-        class: AppBundle\EventListener\AppListener
-        autowire: true
-        tags:
-            - { name: kernel.event_subscriber }
-
-
-
