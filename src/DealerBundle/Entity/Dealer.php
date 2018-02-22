@@ -52,7 +52,7 @@ class Dealer
     /**
      * @var integer
      *
-     * @ORM\Column(name="phone", type="integer")
+     * @ORM\Column(name="phone", type="string")
      */
     protected $phone;
 
