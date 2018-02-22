@@ -20,7 +20,7 @@ class DealerCest
     }
 
     /**
-     * See dealer list 
+     * See dealer list
      *
      * @param AcceptanceTester $I
      */
