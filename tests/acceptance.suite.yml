@@ -1,8 +1,16 @@
+actor: AcceptanceTester
 modules:
-   enabled:
-      - WebDriver:
-          url: 'http://symfony-project.com/'
-          window_size: false # disabled in ChromeDriver
-          browser: chrome
-          capabilities:
-             chromeOptions: # additional chrome options
+    enabled:
+        - WebDriver
+        - \Helper\Acceptance
+    config:
+        WebDriver:
+            url: 'http://symfony-project.com/'
+            browser: 'chrome'
+
+env:
+    chrome:
+         modules:
+            config:
+                WebDriver:
+                    browser: 'chrome'
