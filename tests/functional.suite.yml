@@ -1,0 +1,12 @@
+#actor: FunctionalTester
+#modules:
+#    enabled:
+#        - \Helper\Functional
+
+actor: FunctionalTester
+modules:
+    enabled:
+        - Symfony
+        - Doctrine2:
+            depends: Symfony # connect to Symfony
+        - \Helper\Functional
