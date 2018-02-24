@@ -29,6 +29,6 @@ class DealersTest extends \Codeception\Test\Unit
 
         $this->assertNotEmpty($dealerList);
 
-        $this->assertEquals('Kharkiv', $dealerList->getCity());
+        $this->assertGreaterThan(2, count($dealerList));
     }
 }
