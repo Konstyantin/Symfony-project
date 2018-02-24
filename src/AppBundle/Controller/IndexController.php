@@ -22,7 +22,6 @@ class IndexController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        
 
         $sliderCategory = $em->getRepository('ApplicationSonataClassificationBundle:Category')
             ->findOneBy(['name' => SonataClassificationCategory::SLIDER_CATEGORY]);

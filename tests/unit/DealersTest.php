@@ -1,9 +1,7 @@
 <?php
 
-/**
- * Class DealerTest
- */
-class DealerTest extends \Codeception\Test\Unit
+
+class DealersTest extends \Codeception\Test\Unit
 {
     /**
      * @var \UnitTester
@@ -30,5 +28,7 @@ class DealerTest extends \Codeception\Test\Unit
         $this->assertNotNull($dealerList);
 
         $this->assertNotEmpty($dealerList);
+
+        $this->assertEquals('Kharkiv', $dealerList->getCity());
     }
 }
