@@ -1,6 +1,8 @@
 <?php
 
-
+/**
+ * Class DealerTest
+ */
 class DealerTest extends \Codeception\Test\Unit
 {
     /**
@@ -25,7 +27,7 @@ class DealerTest extends \Codeception\Test\Unit
     {
         $I = $this->tester;
 
-        $I->amOnPage('/dealer/list');
+        $I->amOnPage('/dealer');
         $I->see('Kharkiv Center', 'h3');
         $I->see('Lviv Center', 'h3');
         $I->see('Kiev Aueroport', 'h3');

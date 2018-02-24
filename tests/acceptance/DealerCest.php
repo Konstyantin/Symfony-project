@@ -26,7 +26,7 @@ class DealerCest
      */
     public function dealerListTest(AcceptanceTester $I)
     {
-        $I->amOnPage('/dealer/list');
+        $I->amOnPage('/dealer');
 
         $I->see('Kharkiv Center', 'h3');
         $I->see('Lviv Center', 'h3');
