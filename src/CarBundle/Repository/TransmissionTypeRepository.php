@@ -10,4 +10,21 @@ namespace CarBundle\Repository;
  */
 class TransmissionTypeRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Get item by title
+     *
+     * Get transmission type item by passed title
+     *
+     * @param string $title
+     * @return mixed
+     */
+    public function getItemByTitle(string $title)
+    {
+        $query = $this->createQueryBuilder('transmission_type')
+            ->where('transmission_type.title =:title')
+            ->setParameter('title', $title)
+            ->getQuery();
+
+        return $query->getOneOrNullResult();
+    }
 }
