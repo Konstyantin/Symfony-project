@@ -10,4 +10,21 @@ namespace CarBundle\Repository;
  */
 class EngineRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Get item by name
+     *
+     * Get engine item by passed name param
+     *
+     * @param string $name
+     * @return mixed
+     */
+    public function getItemByName(string $name)
+    {
+        $query = $this->createQueryBuilder('engine')
+            ->where('engine.name =:name')
+            ->setParameter('name', $name)
+            ->getQuery();
+
+        return $query->getOneOrNullResult();
+    }
 }

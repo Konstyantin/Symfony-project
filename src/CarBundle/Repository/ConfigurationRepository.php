@@ -10,4 +10,21 @@ namespace CarBundle\Repository;
  */
 class ConfigurationRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Get item by car name
+     *
+     * Get configuration item by passed name param
+     *
+     * @param string $name
+     * @return mixed
+     */
+    public function getItemByCarName(string $name)
+    {
+        $query = $this->createQueryBuilder('configuration')
+            ->where('configuration.carName =:name')
+            ->setParameter('name', $name)
+            ->getQuery();
+
+        return $query->getOneOrNullResult();
+    }
 }

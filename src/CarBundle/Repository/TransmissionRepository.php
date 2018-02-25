@@ -10,4 +10,21 @@ namespace CarBundle\Repository;
  */
 class TransmissionRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Get item by name
+     *
+     * Get transmission item by passed name param
+     *
+     * @param string $name
+     * @return mixed
+     */
+    public function getItemByName(string $name)
+    {
+        $query = $this->createQueryBuilder('transmission')
+            ->where('transmission.name =:name')
+            ->setParameter('name', $name)
+            ->getQuery();
+
+        return $query->getOneOrNullResult();
+    }
 }
