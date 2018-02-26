@@ -12,7 +12,7 @@
         {{ render_breadcrumbs() }}
         <div class="car-list-section">
             {% for car in carList %}
-                <a href="{{ path('car_view', {'carName': car.slug, 'model': car.model.slug}) }}">
+                <a href="{{ path('car_view', {'carName': car.slug, 'model': car.model.slug}) }}" id="{{ car.name }}">
                     <div class="car-item col-sm-3">
                         <div class="car-logo">
                             <img src="{% path car.imageLogo, 'reference' %}" alt="">
