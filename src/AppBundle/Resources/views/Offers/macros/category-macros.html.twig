@@ -1,19 +1,8 @@
 {% macro category_macros(categories) %}
-    {#<ul class="dropdown-menu dropdown-menu-item">#}
-        {#{% for offerCategory in categories %}#}
-            {#<li class="dropdown-submenu menu-item">#}
-                {#<a class="submenu" href="">{{ offerCategory.name }}</a>#}
-                {#{% if offerCategory.children|length > 0 %}#}
-                    {#{{ _self.category_macros(offerCategory.children) }}#}
-                {#{% endif %}#}
-            {#</li>#}
-        {#{% endfor %}#}
-    {#</ul>#}
-
     <ul class="dropdown-menu dropdown-menu-item">
         {% for category in categories %}
             <li class="dropdown-submenu menu-item">
-                <a class="submenu" href="">{{ category.name }}</a>
+                <a class="submenu" href="{{ path('category_offers_list', {'category': category.slug}) }}">{{ category.name }}</a>
                 {% if category.children|length > 0 %}
                     {{ _self.category_macros(category.children) }}
                 {% endif %}

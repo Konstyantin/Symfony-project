@@ -15,7 +15,7 @@
                 <div class="col-sm-8 item-description">
                     <h2 class="">{{ category.name }}</h2>
                     <p>{{ category.description|raw }}</p>
-                    <a href="{{ path('category_offers_list', {'category': category.name}) }}" class="btn more-offers-btn">Learn more</a>
+                    <a href="{{ path('category_offers_list', {'category': category.slug}) }}" class="btn more-offers-btn">Learn more</a>
                 </div>
             </div>
         {% endfor %}

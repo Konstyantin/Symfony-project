@@ -49,7 +49,7 @@ class OffersController extends Controller
         $pagination = $pagination->paginate(
             $offersList,
             $request->query->getInt('page', 1),
-            1
+            2
         );
 
         return $this->render('@App/Offers/categoryOffers.html.twig', [
