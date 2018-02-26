@@ -63,4 +63,22 @@ class ModelRepository extends \Doctrine\ORM\EntityRepository
 
         return $query;
     }
+
+    /**
+     * Get model by name
+     *
+     * Get model item by passed name param
+     *
+     * @param string $name
+     * @return mixed
+     */
+    public function getModelByName(string $name)
+    {
+        $query = $this->createQueryBuilder('model')
+            ->where('model.name =:name')
+            ->setParameter('name', $name)
+            ->getQuery();
+
+        return $query->getOneOrNullResult();
+    }
 }

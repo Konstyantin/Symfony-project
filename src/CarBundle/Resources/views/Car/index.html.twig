@@ -6,9 +6,11 @@
 
 {% block body %}
     <div class="car-preview-container">
-        <img src="{% path car.imagePreview, 'reference' %}" alt="">
-        {% if car.imagePreview.description is not empty %}
-            <h1 class="preview-description">{{ car.imagePreview.description }}</h1>
+        {% if car.imagePreview is not empty %}
+            <img src="{% path car.imagePreview, 'reference' %}" alt="">
+            {% if car.imagePreview.description is not empty %}
+                <h1 class="preview-description">{{ car.imagePreview.description }}</h1>
+            {% endif %}
         {% endif %}
     </div>
     <div class="car-view-section clearfix">

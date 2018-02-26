@@ -34,7 +34,7 @@ class LoadModelData extends AbstractFixture implements OrderedFixtureInterface
 
         $model = new Model();
 
-        $model->setName('Panamer');
+        $model->setName('Panamera');
 
         $manager->persist($model);
 

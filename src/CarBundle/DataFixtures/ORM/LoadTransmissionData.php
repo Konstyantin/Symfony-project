@@ -44,7 +44,7 @@ class LoadTransmissionData extends AbstractFixture implements OrderedFixtureInte
         $transmission->setName('911 Manual');
         $transmission->setPrice('1000');
         $transmission->setSteps(6);
-        $transmission->setType($PDKType);
+        $transmission->setType($manualType);
 
         $manager->persist($transmission);
 
