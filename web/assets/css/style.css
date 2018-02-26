@@ -497,6 +497,10 @@ body {
     min-height: 300px;
 }
 
+.feature-item-data {
+    min-height: 100px;
+}
+
 .car-feature-section .feature-item {
     margin-bottom: 30px;
 }

@@ -15,7 +15,7 @@
     </div>
     <div class="car-view-section clearfix">
         <div class="car-view-navigation col-sm-7 clearfix">
-            <div class="car-nav-item car-nav-menu col-sm-3">
+            <div class="car-nav-item car-nav-menu col-sm-4">
                 <div class="dropdown car-navigation-btn">
                     <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         <span class="glyphicon glyphicon-align-justify"></span>
@@ -32,13 +32,13 @@
                     </ul>
                 </div>
             </div>
-            <div class="car-nav-item page-nav-item col-sm-3">
+            <div class="car-nav-item page-nav-item col-sm-4">
                 <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
                 <a href="#car-tech-param" class="car-nav-item-link">
                     <span>Tech params</span>
                 </a>
             </div>
-            <div class="car-nav-item page-nav-item col-sm-3">
+            <div class="car-nav-item page-nav-item col-sm-4">
                 <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                 <a href="#car-feature-section" class="car-nav-item-link">
                     <span>Features</span>
@@ -105,11 +105,13 @@
         </div>
     </div>
     <div class="car-feature-section clearfix" id="car-feature-section">
-        <h2 class="text-center">Features</h2>
+        <div class="col-sm-12">
+            <h2 class="text-center">Features</h2>
+        </div>
         {% for item in car.feature %}
             <div class="col-sm-6 feature-item clearfix">
                 <img src="{{ vich_uploda_image_path }}/feature/{{ item.imageName }}" alt="">
-                <div class="col-sm-12">
+                <div class="col-sm-12 feature-item-data">
                     <div class="feature-description clearfix">
                         <p class="feature-title">{{ item.title }}</p>
                         <div class="short-description">
