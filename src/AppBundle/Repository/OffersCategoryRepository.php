@@ -25,4 +25,22 @@ class OffersCategoryRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getResult();
     }
+
+    /**
+     * Get item by name
+     *
+     * Get offers category item by passed name params
+     *
+     * @param string $name
+     * @return mixed
+     */
+    public function getItemByName(string $name)
+    {
+        $query = $this->createQueryBuilder('offers_category')
+            ->where('offers_category.name =:name')
+            ->setParameter('name', $name)
+            ->getQuery();
+
+        return $query->getOneOrNullResult();
+    }
 }
