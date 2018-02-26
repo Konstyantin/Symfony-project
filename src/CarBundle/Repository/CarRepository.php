@@ -145,4 +145,22 @@ class CarRepository extends \Doctrine\ORM\EntityRepository
 
         return $query;
     }
+
+    /**
+     * Get car item by name
+     *
+     * Get car item by passer name param
+     *
+     * @param string $name
+     * @return mixed
+     */
+    public function getCarItemByName(string $name)
+    {
+        $query = $this->createQueryBuilder('car')
+            ->where('car.name =:name')
+            ->setParameter('name', $name)
+            ->getQuery();
+
+        return $query->getOneOrNullResult();
+    }
 }

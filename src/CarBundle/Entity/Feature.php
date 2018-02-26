@@ -47,7 +47,7 @@ class Feature
      * @var string
      *
      * @Assert\NotBlank()
-     * @ORM\Column(name="full_description", type="string", length=45, nullable=false)
+     * @ORM\Column(name="full_description", type="text", length=45, nullable=false)
      */
     protected $fullDescription;
 
