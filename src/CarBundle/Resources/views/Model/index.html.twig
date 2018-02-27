@@ -14,7 +14,7 @@
         <div class="model-list-section row">
             {% for model in modelList %}
                 <div class="col-sm-3 model-item">
-                    <a href="{{ path('model_cars_list', {'model': model.slug}) }}">
+                    <a href="{{ path('model_cars_list', {'model': model.slug}) }}" id="{{ model.name }}">
                         <div class="model-logo">
                             <img src="{% path model.imageLogo, 'reference' %}" alt="">
                         </div>
