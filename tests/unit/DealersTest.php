@@ -1,6 +1,8 @@
 <?php
 
-
+/**
+ * Class DealersTest
+ */
 class DealersTest extends \Codeception\Test\Unit
 {
     /**
