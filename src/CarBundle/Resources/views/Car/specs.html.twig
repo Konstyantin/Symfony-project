@@ -1,8 +1,12 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    Specs {{ car.name }}
+{% endblock %}
+
 {% block body %}
     <div class="car-specs-title">
-        <a href="{{ path('car_view', {'carName': car.name, 'model': car.model.name}) }}">{{ car.name }}</a>
+        <a href="{{ path('car_view', {'carName': car.name, 'model': car.model.name}) }}" id="{{ car.name }}">{{ car.name }}</a>
     </div>
     <div class="car-specs-section">
         <div class="clearfix">
