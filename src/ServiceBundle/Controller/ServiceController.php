@@ -51,6 +51,16 @@ class ServiceController extends Controller
     }
 
     /**
+     * Calculate action
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function calculateAction()
+    {
+        return $this->render('@Service/Service/calculate.html.twig');
+    }
+
+    /**
      * Drive selection action
      *
      * Show static page about drive selection common information

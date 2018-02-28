@@ -633,6 +633,7 @@ body {
 .service-list-container,
 .model-container,
 .model-car-container,
+.service-calculate-container,
 .car-specs-section,
 .available-car-container,
 .car-tech-param-section,
@@ -818,6 +819,7 @@ body {
 .show-profile-title,
 .user-car-title,
 .register-container-title,
+.service-calculate-title,
 .profile-edit-container-title,
 .contact-us-title {
     background-color: #eee;
@@ -833,6 +835,7 @@ body {
 .service-registration-title p,
 .offers-list-title p,
 .show-profile-title p,
+.service-calculate-title p,
 .profile-edit-container-title p,
 .register-container-title p,
 .model-container-title p,

@@ -5,3 +5,7 @@ service_registration:
 driver_selection:
     path:     /service/selection
     defaults: { _controller: ServiceBundle:Service:driveSelection}
+
+service_calculate:
+    path:     /service/calculate
+    defaults: { _controller: ServiceBundle:Service:calculate}
