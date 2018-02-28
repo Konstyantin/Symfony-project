@@ -43,4 +43,22 @@ class OffersCategoryRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getOneOrNullResult();
     }
+
+    /**
+     * Get category by slug
+     *
+     * Get offer category item by passed slug param
+     *
+     * @param string $slug
+     * @return mixed
+     */
+    public function getCategoryBySlug(string $slug)
+    {
+        $query = $this->createQueryBuilder('offers_category')
+            ->where('offers_category.slug =:slug')
+            ->setParameter('slug', $slug)
+            ->getQuery();
+
+        return $query->getOneOrNullResult();
+    }
 }

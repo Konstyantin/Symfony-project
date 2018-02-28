@@ -46,6 +46,8 @@ class OffersController extends Controller
 
         $offersList = $em->getRepository('AppBundle:Offers')->getOffersByCategory($category);
 
+        $category = $em->getRepository('AppBundle:OffersCategory')->getCategoryBySlug($category);
+
         $pagination = $pagination->paginate(
             $offersList,
             $request->query->getInt('page', 1),
@@ -53,7 +55,8 @@ class OffersController extends Controller
         );
 
         return $this->render('@App/Offers/categoryOffers.html.twig', [
-            'pagination' => $pagination
+            'pagination' => $pagination,
+            'category' => $category
         ]);
     }
 
