@@ -86,7 +86,7 @@ class IndexCest
 
         $I->seeCurrentUrlEquals('/offers');
 
-        $I->see('Offers', 'h2.text-center');
+        $I->see('Offers', 'p');
 
         $I->see('Winner finance', 'h2');
         $I->see('Service offers', 'h2');
