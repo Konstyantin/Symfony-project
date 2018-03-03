@@ -83,3 +83,8 @@ gallery:
 media:
     resource: '@SonataMediaBundle/Resources/config/routing/media.xml'
     prefix: /media
+
+api:
+    type: rest
+    prefix: /api
+    resource: "routing_api.yml"
