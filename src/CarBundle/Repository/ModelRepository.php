@@ -26,31 +26,16 @@ class ModelRepository extends \Doctrine\ORM\EntityRepository
         return $query->execute();
     }
 
-    /**
-     * Get Parent model
-     *
-     * Get Model list which don't have child model
-     *
-     * @return mixed
-     */
-    public function getParentModel()
-    {
-        $query = $this->createQueryBuilder('m')
-            ->where('m.parent IS NULL')
-            ->getQuery();
-
-        return $query->execute();
-    }
 
     /**
      * Get model by user id
      *
      * Get model list query by passed user id
      *
-     * @param $userId
+     * @param $userId int|null
      * @return \Doctrine\ORM\QueryBuilder
      */
-    public function getModelsByUserId($userId)
+    public function getModelsByUserId($userId = null)
     {
         $query = $this->createQueryBuilder('model');
 
@@ -80,5 +65,21 @@ class ModelRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery();
 
         return $query->getOneOrNullResult();
+    }
+
+    /**
+     * Get first model
+     *
+     * Get first model record from model list store
+     *
+     * @return array
+     */
+    public function getFirstModel()
+    {
+        $query = $this->createQueryBuilder('model')
+            ->setMaxResults(1)
+            ->getQuery();
+
+        return $query->getSingleResult();
     }
 }
