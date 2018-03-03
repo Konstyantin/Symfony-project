@@ -2,6 +2,7 @@
 
 namespace CarBundle\Controller;
 
+use CarBundle\Form\ModelSearchType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -22,10 +23,13 @@ class ModelController extends Controller
     {
         $em = $this->getDoctrine();
 
+        $form = $this->createForm(ModelSearchType::class);
+
         $modelList = $em->getRepository('CarBundle:Model')->getModelsList();
 
         return $this->render('@Car/Model/index.html.twig', [
-            'modelList' => $modelList
+            'modelList' => $modelList,
+            'form' => $form->createView()
         ]);
     }
 

@@ -81,4 +81,6 @@ class ModelRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getOneOrNullResult();
     }
+
+    public function searchModel(){}
 }

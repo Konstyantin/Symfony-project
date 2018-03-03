@@ -37,12 +37,10 @@ class ModelRESTController extends FOSRestController implements ClassResourceInte
      *     }
      * )
      */
-    public function cgetAction()
+    public function getAction(string $name)
     {
-//        $em = $this->getDoctrine()->getManager();
-//
-//        return $em->getRepository('CarBundle:Model')->getModelsList();
+        $em = $this->getDoctrine()->getManager();
 
-        return ['test' => 'test'];
+        return $em->getRepository('CarBundle:Model')->getModelByName($name);
     }
 }

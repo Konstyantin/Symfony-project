@@ -10,6 +10,7 @@
          */
         init: function () {
             this.pageNavigation();
+            this.modelSearch();
         },
 
         /**
@@ -27,6 +28,27 @@
                 $('html, body').animate({
                     scrollTop: $($.attr(this, 'href')).offset().top
                 }, 500);
+            });
+        },
+
+        /**
+         * Model search
+         */
+        modelSearch: function () {
+            var searchModelForm = $('.search-model');
+
+            searchModelForm.on('submit', function (e) {
+                e.preventDefault();
+
+                var $this = $(this),
+                    modelName = $this.find('.model-name-field').val();
+
+                $.ajax({
+                    url: 'http://symfony-project.com/api/models/' + modelName,
+                    success: function (data) {
+                        console.log(data.name);
+                    }
+                });
             });
         }
     };
