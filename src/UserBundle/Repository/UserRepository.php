@@ -25,4 +25,20 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getOneOrNullResult();
     }
+
+    /**
+     * Get first user
+     *
+     * Get the first user item form user list
+     *
+     * @return mixed
+     */
+    public function getFirstUser()
+    {
+        $query = $this->createQueryBuilder('user')
+            ->setMaxResults(1)
+            ->getQuery();
+
+        return $query->getSingleResult();
+    }
 }
