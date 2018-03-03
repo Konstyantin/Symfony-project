@@ -27,4 +27,20 @@ class EngineRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getOneOrNullResult();
     }
+
+    /**
+     * Get first engine
+     *
+     * Get the first engine item in engine list
+     *
+     * @return mixed
+     */
+    public function getFirstEngine()
+    {
+        $query = $this->createQueryBuilder('engine')
+            ->setMaxResults(1)
+            ->getQuery();
+
+        return $query->getSingleResult();
+    }
 }

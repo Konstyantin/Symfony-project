@@ -116,11 +116,9 @@ class UserCarController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $userCar = $em->getRepository('UserBundle:UserCar')->getUserCar($carId, $userId);
+        $userCar = $em->getRepository('UserBundle:UserCar')->find($carId);
 
-        $em->remove($userCar);
-
-        $em->flush();
+        $em->getRepository('UserBundle:UserCar')->delete($userCar);
 
         $this->addFlash('success', 'car delete success');
 

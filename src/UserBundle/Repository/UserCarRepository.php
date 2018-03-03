@@ -2,6 +2,8 @@
 
 namespace UserBundle\Repository;
 
+use UserBundle\Entity\UserCar;
+
 /**
  * UserCarRepository
  *
@@ -31,7 +33,7 @@ class UserCarRepository extends \Doctrine\ORM\EntityRepository
     /**
      * Get user car
      *
-     * Get user cat by passed car_id and user_id parameters
+     * Get user car by passed car_id and user_id parameters
      *
      * @param int $carId
      * @param int $userId
@@ -55,7 +57,7 @@ class UserCarRepository extends \Doctrine\ORM\EntityRepository
      * @param $data
      * @param $user
      */
-    public function create($data, $user)
+    public function create(UserCar $data, $user)
     {
         $em = $this->getEntityManager();
 
@@ -70,11 +72,40 @@ class UserCarRepository extends \Doctrine\ORM\EntityRepository
      *
      * @param $data
      */
-    public function edit($data)
+    public function edit(UserCar $data)
     {
         $em = $this->getEntityManager();
 
         $em->persist($data);
         $em->flush();
+    }
+
+    /**
+     * Delete user car
+     *
+     * @param $data
+     */
+    public function delete(UserCar $data)
+    {
+        $em = $this->getEntityManager();
+
+        $em->remove($data);
+        $em->flush();
+    }
+
+    /**
+     * Get first item
+     *
+     * Get some user car item in user car list
+     *
+     * @return mixed
+     */
+    public function getFirstItem()
+    {
+        $query = $this->createQueryBuilder('userCar')
+            ->setMaxResults(1)
+            ->getQuery();
+
+        return $query->getSingleResult();
     }
 }

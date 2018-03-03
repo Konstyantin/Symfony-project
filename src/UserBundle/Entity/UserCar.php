@@ -23,8 +23,8 @@ class UserCar
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Car", inversedBy="userCar", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="car_id", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Car", inversedBy="userCar")
+     * @ORM\JoinColumn(name="car_id", referencedColumnName="id")
      */
     protected $car;
 
