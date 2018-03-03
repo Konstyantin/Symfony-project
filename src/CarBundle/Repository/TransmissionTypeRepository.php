@@ -27,4 +27,20 @@ class TransmissionTypeRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getOneOrNullResult();
     }
+
+    /**
+     * Get first transmission type
+     *
+     * Get the first existing transmission type
+     *
+     * @return mixed
+     */
+    public function getFirstTransmissionType()
+    {
+        $query = $this->createQueryBuilder('transmission_type')
+            ->setMaxResults(1)
+            ->getQuery();
+
+        return $query->getSingleResult();
+    }
 }
