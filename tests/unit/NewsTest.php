@@ -39,12 +39,12 @@ class NewsTest extends \Codeception\Test\Unit
     {
         $em = $this->getModule('Doctrine2')->em;
 
-        $newsQuery = $em->getRepository('AppBundle:News')->getFirstItem();
+        $news = $em->getRepository('AppBundle:News')->getFirstItem();
 
-        $this->assertNotEmpty($newsQuery);
-        $this->assertNotEmpty($newsQuery);
+        $this->assertNotEmpty($news);
+        $this->assertNotEmpty($news);
 
-        $this->assertNotEmpty($newsQuery->getTitle());
+        $this->assertNotEmpty($news->getTitle());
     }
 
     /**
