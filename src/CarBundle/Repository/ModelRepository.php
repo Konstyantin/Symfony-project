@@ -82,5 +82,24 @@ class ModelRepository extends \Doctrine\ORM\EntityRepository
         return $query->getOneOrNullResult();
     }
 
-    public function searchModel(){}
+    /**
+     * Search model
+     *
+     * Search model record by passed model name param
+     *
+     * @param string $name
+     * @return array
+     */
+    public function searchModel(string $name)
+    {
+        $query = $this->createQueryBuilder('model')
+            ->leftJoin('model.imageLogo', 'image_logo')
+            ->select('model.name', 'model.id', 'model.slug')
+            ->addSelect('image_logo.id as imageId', 'image_logo.providerReference')
+            ->where('model.name LIKE :name')
+            ->setParameter('name', '%' . $name . '%')
+            ->getQuery();
+
+        return $query->getResult();
+    }
 }

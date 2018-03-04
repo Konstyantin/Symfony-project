@@ -55,7 +55,7 @@ twig:
         offers_category_manager: '@offers_category_management'
         uploda_image_path: 'uploads/images/'
         vich_uploda_image_path: '%path_to_project%/uploads/images'
-
+        cors_allow_origin: '%cors_allow_origin%'
 
 # Doctrine Configuration
 doctrine:

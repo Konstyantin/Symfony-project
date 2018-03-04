@@ -6,11 +6,33 @@
     var car = {
 
         /**
+         * Server path to project
+         */
+        severPath: null,
+
+        /**
          * Init methods
          */
         init: function () {
+            this.setServerPath();
             this.pageNavigation();
             this.modelSearch();
+        },
+
+        /**
+         * Set server path to project
+         */
+        setServerPath: function () {
+            this.severPath = $('meta[name=serverPath]').attr('content');
+        },
+
+        /**
+         * Get server path
+         *
+         * @returns {null}
+         */
+        getServerPath: function () {
+            return this.severPath;
         },
 
         /**
@@ -35,8 +57,32 @@
          * Model search
          */
         modelSearch: function () {
-            var searchModelForm = $('.search-model');
 
+            var that = this,
+                searchModelForm = $('.search-model'),
+                showSearchModelBtn = $('.show-search-form-btn');
+
+            /**
+             * Show and hide search model form
+             */
+            showSearchModelBtn.on('click', function () {
+
+                var icon =  $('.show-form-icon');
+
+                if (icon.hasClass('glyphicon-plus')) {
+                    $('.model-search').show();
+                } else {
+                    $('.model-search').hide();
+                }
+
+                icon.toggleClass('glyphicon-plus');
+                icon.toggleClass('glyphicon-minus');
+
+            });
+
+            /**
+             * Send search model request
+             */
             searchModelForm.on('submit', function (e) {
                 e.preventDefault();
 
@@ -44,9 +90,9 @@
                     modelName = $this.find('.model-name-field').val();
 
                 $.ajax({
-                    url: 'http://symfony-project.com/api/models/' + modelName,
+                    url: that.severPath + 'api/models/' + modelName,
                     success: function (data) {
-                        console.log(data.name);
+                        console.log(data);
                     }
                 });
             });

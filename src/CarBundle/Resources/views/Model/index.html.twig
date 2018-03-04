@@ -10,10 +10,17 @@
         <p>Models</p>
     </div>
     <div class="model-container">
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
-        {{ form_end(form) }}
         {{ render_breadcrumbs() }}
+
+        <button type="button" class="btn btn-default show-search-form-btn" aria-label="Left Align">
+            <span class="glyphicon glyphicon-plus show-form-icon" aria-hidden="true"></span>
+        </button>
+
+        <div class="model-search">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+        </div>
         <div class="model-list-section row">
             {% for model in modelList %}
                 <div class="col-sm-3 model-item">

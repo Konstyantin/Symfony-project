@@ -30,6 +30,7 @@ class ModelSearchType extends AbstractType
                 'label' => 'Name',
                 'required' => false,
                 'attr' => [
+                    'placeholder' => 'Model name',
                     'class' => 'model-name-field'
                 ]
             ])
