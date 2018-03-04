@@ -1,0 +1,23 @@
+form:
+  label:
+    title: 'Title'
+    shortDescription: 'Short description'
+    description: 'Description'
+    offersImage: 'News Image'
+  placeholder:
+    title: 'Title'
+    shortDescription: 'Short description'
+    description: 'Description'
+    offersImage: 'News Image'
+
+datagrid:
+  filters:
+    title: 'Title'
+    shortDescription: 'Short description'
+    description: 'Description'
+    offersImage: 'News Image'
+  list:
+    title: 'Title'
+    shortDescription: 'Short description'
+    description: 'Description'
+    offersImage: 'News Image'

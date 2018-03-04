@@ -1,0 +1,61 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * News
+ *
+ * @ORM\Table(name="news")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\NewsRepository")
+ */
+class News
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string")
+     */
+    protected $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="short_description", type="text")
+     */
+    protected $shortDescription;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text")
+     */
+    protected $description;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="news_image_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    protected $newsImage;
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+}
+
