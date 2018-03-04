@@ -15,6 +15,8 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * Class PrinciplesAdmin
@@ -45,6 +47,13 @@ class PrinciplesAdmin extends AbstractAdmin
                 'attr' => [
                     'placeholder' => 'form.placeholder.title'
                 ],
+                'constraints' => [
+                    new NotBlank(),
+                    new Length([
+                        'min' => 5,
+                        'max' => 40
+                    ])
+                ]
             ])
             ->add('shortDescription', TextareaType::class, [
                 'label' => 'form.label.shortDescription',
@@ -52,6 +61,13 @@ class PrinciplesAdmin extends AbstractAdmin
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'form.placeholder.shortDescription'
+                ],
+                'constraints' => [
+                    new NotBlank(),
+                    new Length([
+                        'min' => 5,
+                        'max' => 40
+                    ])
                 ]
             ])
             ->add('description', TextareaType::class, [
@@ -63,6 +79,12 @@ class PrinciplesAdmin extends AbstractAdmin
                     'data-theme' => 'bbcode',
                     'placeholder' => 'Description',
                     'tinymce'=>'{"theme":"simple"}'// Skip it if you want to use default theme
+                ],
+                'constraints' => [
+                    new NotBlank(),
+                    new Length([
+                        'min' => 3
+                    ])
                 ]
             ])
             ->add('offersImage', 'sonata_media_type', [

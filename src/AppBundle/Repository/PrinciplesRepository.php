@@ -10,4 +10,19 @@ namespace AppBundle\Repository;
  */
 class PrinciplesRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Get list
+     *
+     * Get collection of principles
+     *
+     * @return array
+     */
+    public function getList()
+    {
+        $query = $this->createQueryBuilder('principles')
+            ->orderBy('principles.id')
+            ->getQuery();
+
+        return $query->getResult();
+    }
 }

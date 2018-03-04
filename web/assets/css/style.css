@@ -621,6 +621,7 @@ body {
     padding: 20px;
 }
 
+.principle-list,
 .offers-category-list,
 .offers-list,
 .register-container,
@@ -658,10 +659,12 @@ body {
     width: 100%;
 }
 
+.principle-list .principle-item,
 .offers-category-list .offers-category-item {
     margin-bottom: 50px;
 }
 
+.principle-list .principle-item .item-description h2,
 .offers-list .offers-item h2,
 .offers-category-list .offers-category-item .item-description h2 {
     margin-top: 0;
@@ -681,6 +684,7 @@ body {
     padding-left: 0;
 }
 
+.principle-list .principle-item .more-principle-btn,
 .profile-edit-container .btn-edit-profile,
 .offers-list .offers-item .offers-description .more-offers-btn,
 .offers-category-list .offers-category-item .item-description .more-offers-btn,

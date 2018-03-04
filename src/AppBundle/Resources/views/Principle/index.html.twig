@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Principle
+{% endblock %}
+
+{% block body %}
+    <div class="offer-category-title">
+        <p>Offers</p>
+    </div>
+    <div class="principle-list">
+        {% for principle in principleList %}
+            <div class="clearfix principle-item">
+                <div class="col-sm-4 item-logo">
+                    <img style="width: 100%" src="{% path principle.offersImage, 'reference' %}" alt="">
+                </div>
+                <div class="col-sm-8 item-description">
+                    <h2 class="">{{ principle.title }}</h2>
+                    <p>{{ principle.description|raw }}</p>
+                    <a href="{{ path('principle_view', {'title': principle.slug}) }}" class="btn more-principle-btn">Learn more</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
