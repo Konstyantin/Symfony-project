@@ -9,10 +9,10 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class ModelSearchType
+ * Class CarSearchType
  * @package CarBundle\Form
  */
-class ModelSearchType extends AbstractType
+class CarSearchType extends AbstractType
 {
     /**
      * Build form
@@ -26,17 +26,18 @@ class ModelSearchType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
+                'translation_domain' => 'BodyType',
                 'label' => 'Name',
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'Model name',
-                    'class' => 'model-name-field'
+                    'class' => 'car-name-field'
                 ]
             ])
             ->add('search', SubmitType::class, [
                 'label' => 'Search',
                 'attr' => [
-                    'class' => 'btn btn-search-model'
+                    'class' => 'btn btn-search-car'
                 ]
             ])
         ;
@@ -52,10 +53,10 @@ class ModelSearchType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'CarBundle\Entity\Model',
-            'action' => 'api/models',
+            'data_class' => 'CarBundle\Entity\Car',
+            'action' => 'api/cars',
             'attr' => [
-                'class' => 'search-model'
+                'class' => 'search-car'
             ]
         ]);
     }

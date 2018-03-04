@@ -17,6 +17,7 @@
             this.setServerPath();
             this.pageNavigation();
             this.modelSearch();
+            this.carSearch();
         },
 
         /**
@@ -91,6 +92,47 @@
 
                 $.ajax({
                     url: that.severPath + 'api/models/' + modelName,
+                    success: function (data) {
+                        console.log(data);
+                    }
+                });
+            });
+        },
+
+        carSearch: function () {
+            var that = this,
+                searchModelForm = $('.search-car'),
+                showSearchModelBtn = $('.show-search-car-form-btn');
+
+            /**
+             * Show and hide search model form
+             */
+            showSearchModelBtn.on('click', function () {
+
+                var icon =  $('.show-form-icon');
+
+                if (icon.hasClass('glyphicon-plus')) {
+                    console.log(123);
+                    $('.car-search').show();
+                } else {
+                    $('.car-search').hide();
+                }
+
+                icon.toggleClass('glyphicon-plus');
+                icon.toggleClass('glyphicon-minus');
+            });
+
+            /**
+             * Send search model request
+             */
+            searchModelForm.on('submit', function (e) {
+                e.preventDefault();
+
+                var $this = $(this),
+                    modelName = $this.find('.car-name-field').val();
+
+                $.ajax({
+                    url: that.severPath + 'api/cars/' + modelName,
                     success: function (data) {
                         console.log(data);
                     }

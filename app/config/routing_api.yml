@@ -1,3 +1,7 @@
 model_rest:
     type: rest
     resource: CarBundle\Controller\ModelRESTController
+
+car_rest:
+    type: rest
+    resource: CarBundle\Controller\CarRESTController

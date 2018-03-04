@@ -10,6 +10,15 @@
     </div>
     <div class="available-car-container">
         {{ render_breadcrumbs() }}
+        <button type="button" class="btn btn-default show-search-car-form-btn" aria-label="Left Align">
+            <span class="glyphicon glyphicon-plus show-form-icon" aria-hidden="true"></span>
+        </button>
+
+        <div class="car-search">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+        </div>
         <div class="car-list-section">
             {% for car in carList %}
                 <a href="{{ path('car_view', {'carName': car.slug, 'model': car.model.slug}) }}" id="{{ car.name }}">
@@ -25,4 +34,8 @@
             {% endfor %}
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('assets/js/car.js') }}"></script>
 {% endblock %}

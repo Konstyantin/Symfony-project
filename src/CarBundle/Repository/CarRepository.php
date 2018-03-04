@@ -163,4 +163,25 @@ class CarRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getOneOrNullResult();
     }
+
+    /**
+     * Search car
+     *
+     * Search car collection by passed car name param
+     *
+     * @param string $name
+     * @return array
+     */
+    public function searchCar(string $name)
+    {
+        $query = $this->createQueryBuilder('car')
+            ->leftJoin('car.imagePreview', 'image_preview')
+            ->select('car.name', 'car.id', 'car.slug')
+            ->addSelect('image_preview.id as imageId', 'image_preview.providerReference')
+            ->where('car.name LIKE :name')
+            ->setParameter('name', '%' . $name . '%')
+            ->getQuery();
+
+        return $query->getResult();
+    }
 }

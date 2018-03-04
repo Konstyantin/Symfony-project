@@ -2,6 +2,7 @@
 
 namespace CarBundle\Controller;
 
+use CarBundle\Form\CarSearchType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
@@ -63,8 +64,11 @@ class CarController extends Controller
 
         $carList = $em->getRepository('CarBundle:Car')->getAvailableCarList();
 
+        $form = $this->createForm(CarSearchType::class);
+
         return $this->render('@Car/Car/available.html.twig', [
-            'carList' => $carList
+            'carList' => $carList,
+            'form' => $form->createView()
         ]);
     }
 }

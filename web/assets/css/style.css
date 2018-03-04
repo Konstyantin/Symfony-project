@@ -304,6 +304,7 @@ body {
     border-radius: 0;
 }
 
+.btn-search-car,
 .btn-search-model,
 .login-container .login-submit-btn,
 .register-container .register-submit-btn {
@@ -527,6 +528,7 @@ body {
     padding: 10px 0;
 }
 
+.car-search,
 .model-search,
 .car-feature-section .feature-item .feature-description .full-description {
     display: none;
@@ -669,6 +671,7 @@ body {
     padding-left: 0;
 }
 
+.show-search-car-form-btn,
 .show-search-form-btn,
 .offers-list .breadcrumb {
     border-radius: 0;
@@ -727,6 +730,7 @@ body {
 }
 
 .model-name-field,
+.car-name-field,
 .profile-edit-container .col-lg-6 .form-control {
     border-radius: 0;
     padding: 18px;
