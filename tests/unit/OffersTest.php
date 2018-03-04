@@ -19,7 +19,7 @@ class OffersTest extends \Codeception\Test\Unit
     }
 
     /**
-     *
+     * Test get offers list
      */
     public function testGetOffersList()
     {
@@ -32,6 +32,9 @@ class OffersTest extends \Codeception\Test\Unit
         $this->assertNotNull($offersList);
     }
 
+    /**
+     * Test get offer by title
+     */
     public function testGetOfferByTitle()
     {
         $em = $this->getModule('Doctrine2')->em;

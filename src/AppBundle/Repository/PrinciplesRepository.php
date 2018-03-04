@@ -43,4 +43,18 @@ class PrinciplesRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getOneOrNullResult();
     }
+
+    /**
+     * Get first item
+     *
+     * @return mixed
+     */
+    public function getFirstItem()
+    {
+        $query = $this->createQueryBuilder('principles')
+            ->setMaxResults(1)
+            ->getQuery();
+
+        return $query->getOneOrNullResult();
+    }
 }

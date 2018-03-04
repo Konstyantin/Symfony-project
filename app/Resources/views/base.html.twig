@@ -139,7 +139,13 @@
                                     <a href="{{ path('service_registration') }}">Porshe Services</a>
                                 </li>
                                 <li class="menu-item">
-                                    <a href="{{ path('driver_selection') }}">Porsche Driver Selection</a>
+                                    <a href="{{ path('dealer_homepage') }}">Find dealer</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="{{ path('car_available_list') }}">Available cars</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="{{ path('question') }}">Questions</a>
                                 </li>
                             </ul>
                         </li>
@@ -227,22 +233,20 @@
             <div class="col-sm-3 footer-service-item">
                 <p class="title">Online Services</p>
                 <ul>
-                    <li><a href="">Test drive</a></li>
                     <li><a href="{{ path('service_registration') }}">Service</a></li>
-                    <li><a href="">To contact with us</a></li>
+                    <li><a href="{{ path('contact') }}">To contact with us</a></li>
                 </ul>
             </div>
             <div class="col-sm-3 footer-service-item">
                 <p class="title">Behind the scenes</p>
                 <ul>
-                    <li><a href="">Auto sport</a></li>
-                    <li><a href="">Museum</a></li>
+                    <li><a href="{{ path('museum') }}">Museum</a></li>
                 </ul>
             </div>
             <div class="col-sm-3 footer-service-item">
                 <p class="title">Porsche Company</p>
                 <ul>
-                    <li><a href="">Porsche news</a></li>
+                    <li><a href="{{ path('news_index') }}">Porsche news</a></li>
                 </ul>
             </div>
         </div>

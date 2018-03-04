@@ -37,4 +37,18 @@ class NewsRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getOneOrNullResult();
     }
+
+    /**
+     * Get first item
+     *
+     * @return mixed
+     */
+    public function getFirstItem()
+    {
+        $query = $this->createQueryBuilder('news')
+            ->setMaxResults(1)
+            ->getQuery();
+
+        return $query->getOneOrNullResult();
+    }
 }
