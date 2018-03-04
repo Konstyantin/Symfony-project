@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * News
@@ -49,6 +50,12 @@ class News
     protected $newsImage;
 
     /**
+     * @Gedmo\Slug(fields={"title"})
+     * @ORM\Column(length=128, unique=true)
+     */
+    protected $slug;
+
+    /**
      * Get id
      *
      * @return int
@@ -57,5 +64,100 @@ class News
     {
         return $this->id;
     }
-}
 
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return News
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set shortDescription
+     *
+     * @param string $shortDescription
+     *
+     * @return News
+     */
+    public function setShortDescription($shortDescription)
+    {
+        $this->shortDescription = $shortDescription;
+
+        return $this;
+    }
+
+    /**
+     * Get shortDescription
+     *
+     * @return string
+     */
+    public function getShortDescription()
+    {
+        return $this->shortDescription;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return News
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set newsImage
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $newsImage
+     *
+     * @return News
+     */
+    public function setNewsImage(\Application\Sonata\MediaBundle\Entity\Media $newsImage = null)
+    {
+        $this->newsImage = $newsImage;
+
+        return $this;
+    }
+
+    /**
+     * Get newsImage
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media
+     */
+    public function getNewsImage()
+    {
+        return $this->newsImage;
+    }
+}

@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * News
@@ -47,6 +48,12 @@ class News
      * @ORM\JoinColumn(name="news_image_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $newsImage;
+
+    /**
+     * @Gedmo\Slug(fields={"title"})
+     * @ORM\Column(length=128, unique=true)
+     */
+    protected $slug;
 
     /**
      * Get id
@@ -152,5 +159,29 @@ class News
     public function getNewsImage()
     {
         return $this->newsImage;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return News
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

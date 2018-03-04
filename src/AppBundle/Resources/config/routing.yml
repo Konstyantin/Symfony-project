@@ -33,3 +33,11 @@ principle_index:
 principle_view:
     path:     /principle/{slug}
     defaults: { _controller: AppBundle:Principle:view}
+
+news_index:
+    path:     /news
+    defaults: { _controller: AppBundle:News:index}
+
+news_view:
+    path:     /news/{slug}
+    defaults: { _controller: AppBundle:News:view}

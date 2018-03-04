@@ -624,8 +624,10 @@ body {
 .principle-list,
 .offers-category-list,
 .offers-list,
+.news-list,
 .register-container,
 .offer-view-container,
+.news-view-container,
 .fos_user_user_show,
 .fos-user-container,
 .profile-edit-container,
@@ -670,22 +672,26 @@ body {
     margin-top: 0;
 }
 
+.news-list .news-item>.col-sm-4,
 .offers-list .offers-item>.col-sm-4 {
     padding-left: 0;
 }
 
 .show-search-car-form-btn,
 .show-search-form-btn,
+.news-list .breadcrumb,
 .offers-list .breadcrumb {
     border-radius: 0;
 }
 
+.news-list .offers-pagination,
 .offers-list .offers-pagination {
     padding-left: 0;
 }
 
 .principle-list .principle-item .more-principle-btn,
 .profile-edit-container .btn-edit-profile,
+.news-list .news-item .news-description .more-news-btn,
 .offers-list .offers-item .offers-description .more-offers-btn,
 .offers-category-list .offers-category-item .item-description .more-offers-btn,
 .user-car-container .user-car-list .user-car-item .manage .user-car-btn,
@@ -725,6 +731,8 @@ body {
     color: #c00;
 }
 
+.news-list img,
+.news-view-container img,
 .offer-view-container img, .offers-item img {
     width: 100%;
 }
@@ -832,6 +840,7 @@ body {
 .user-car-title,
 .register-container-title,
 .service-calculate-title,
+.news-view-title,
 .profile-edit-container-title,
 .contact-us-title {
     background-color: #eee;
@@ -846,6 +855,7 @@ body {
 
 .service-registration-title p,
 .offers-list-title p,
+.news-view-title p,
 .show-profile-title p,
 .service-calculate-title p,
 .profile-edit-container-title p,
@@ -915,6 +925,7 @@ body {
     height: 230px;
 }
 
+.news-item,
 .car-service-item {
     margin-bottom: 20px;
 }

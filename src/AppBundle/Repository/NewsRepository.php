@@ -10,4 +10,31 @@ namespace AppBundle\Repository;
  */
 class NewsRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Get list query
+     *
+     * @return \Doctrine\ORM\Query
+     */
+    public function getListQuery()
+    {
+        return $this->createQueryBuilder('news')->getQuery();
+    }
+
+    /**
+     * Get news by slug
+     *
+     * Get news item record by passed slug param
+     *
+     * @param string $slug
+     * @return mixed
+     */
+    public function getItemBySlug(string $slug)
+    {
+        $query = $this->createQueryBuilder('news')
+            ->where('news.slug =:slug')
+            ->setParameter('slug', $slug)
+            ->getQuery();
+
+        return $query->getOneOrNullResult();
+    }
 }

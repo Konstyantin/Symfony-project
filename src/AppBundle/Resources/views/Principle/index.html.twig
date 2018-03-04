@@ -17,7 +17,7 @@
                 <div class="col-sm-8 item-description">
                     <h2 class="">{{ principle.title }}</h2>
                     <p>{{ principle.description|raw }}</p>
-                    <a href="{{ path('principle_view', {'title': principle.slug}) }}" class="btn more-principle-btn">Learn more</a>
+                    <a href="{{ path('principle_view', {'slug': principle.slug}) }}" class="btn more-principle-btn">Learn more</a>
                 </div>
             </div>
         {% endfor %}
