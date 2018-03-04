@@ -31,5 +31,5 @@ principle_index:
     defaults: { _controller: AppBundle:Principle:index}
 
 principle_view:
-    path:     /principle/{title}
+    path:     /principle/{slug}
     defaults: { _controller: AppBundle:Principle:view}

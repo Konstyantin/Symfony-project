@@ -1,11 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    View Principle
+    item.title
 {% endblock %}
 
 {% block body %}
-    <div>
-        <h2>View Principle</h2>
+    <div class="offer-view-title">
+        <p>{{ item.title }}</p>
+    </div>
+    <div class="offer-view-container">
+        <div class="offer-image">
+            <img src="{% path item.offersImage, 'reference' %}" alt="">
+        </div>
+        <div class="offer-data">
+            <p>{{ item.description|raw }}</p>
+        </div>
     </div>
 {% endblock %}

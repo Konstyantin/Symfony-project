@@ -33,8 +33,22 @@ class PrincipleController extends Controller
         ]);
     }
 
-    public function viewAction()
+    /**
+     * View Action
+     *
+     * View principle item by slug
+     *
+     * @param string $slug
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function viewAction(string $slug)
     {
-        return $this->render('@App/Principle/view.html.twig');
+        $em = $this->getDoctrine()->getManager();
+
+        $item = $em->getRepository('AppBundle:Principles')->getItemBySlug($slug);
+
+        return $this->render('@App/Principle/view.html.twig', [
+            'item' => $item
+        ]);
     }
 }

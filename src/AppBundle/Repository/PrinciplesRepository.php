@@ -25,4 +25,22 @@ class PrinciplesRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getResult();
     }
+
+    /**
+     * Get slug by slug
+     *
+     * Get item principle by passed slug param
+     *
+     * @param string $slug
+     * @return array
+     */
+    public function getItemBySlug(string $slug)
+    {
+        $query = $this->createQueryBuilder('principles')
+            ->where('principles.slug =:slug')
+            ->setParameter('slug', $slug)
+            ->getQuery();
+
+        return $query->getOneOrNullResult();
+    }
 }
