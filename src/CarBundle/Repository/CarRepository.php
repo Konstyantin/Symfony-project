@@ -175,9 +175,9 @@ class CarRepository extends \Doctrine\ORM\EntityRepository
     public function searchCar(string $name)
     {
         $query = $this->createQueryBuilder('car')
-            ->leftJoin('car.imagePreview', 'image_preview')
+            ->leftJoin('car.imageLogo', 'image_logo')
             ->select('car.name', 'car.id', 'car.slug')
-            ->addSelect('image_preview.id as imageId', 'image_preview.providerReference')
+            ->addSelect('image_logo.id as imageId', 'image_logo.providerReference')
             ->where('car.name LIKE :name')
             ->setParameter('name', '%' . $name . '%')
             ->getQuery();

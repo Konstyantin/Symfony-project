@@ -93,12 +93,15 @@
                 $.ajax({
                     url: that.severPath + 'api/models/' + modelName,
                     success: function (data) {
-                        console.log(data);
+                        that.searchModelResult(data);
                     }
                 });
             });
         },
 
+        /**
+         * Car search
+         */
         carSearch: function () {
             var that = this,
                 searchModelForm = $('.search-car'),
@@ -112,7 +115,6 @@
                 var icon =  $('.show-form-icon');
 
                 if (icon.hasClass('glyphicon-plus')) {
-                    console.log(123);
                     $('.car-search').show();
                 } else {
                     $('.car-search').hide();
@@ -134,10 +136,58 @@
                 $.ajax({
                     url: that.severPath + 'api/cars/' + modelName,
                     success: function (data) {
-                        console.log(data);
+                        that.searchCarResult(data);
                     }
                 });
             });
+        },
+
+        searchCarResult: function (data) {
+
+            var template = '';
+
+            $.each(data, function () {
+                template = template +
+                    '<a href="/models/911/' + this.slug + '" id="' + this.name + '">' +
+                    '<div class="car-item col-sm-3">' +
+                    '<div class="car-logo">' +
+                    '<img src="/uploads/media/CarLogo/0001/01/' + this.providerReference + '" alt="">' +
+                    '</div>' +
+                    '<div class="car-data">' +
+                    '<span>' + this.name + '</span>' +
+                    '</div>' +
+                    '</div>' +
+                    '</a>';
+            });
+
+            $('.car-list-section').empty().append(template);
+        },
+
+        /**
+         * Search model result
+         *
+         * Build model list template by search result
+         *
+         * @param data
+         */
+        searchModelResult: function (data) {
+
+            var template = '';
+            $.each(data, function () {
+                template = template +
+                    '<div class="col-sm-3 model-item">' +
+                        '<a href="/model/' + this.slug + '" id="' + this.name + '">' +
+                            '<div class="model-logo">' +
+                                '<img src="/uploads/media/ModelLogo/0001/01/' + this.providerReference + '" alt=""> ' +
+                            '</div>' +
+                            '<div class="model-data">' +
+                                '<span>' + this.name + '</span>' +
+                            '</div>' +
+                        '</a>' +
+                    '</div>';
+            });
+
+            $('.model-list-section').empty().append(template);
         }
     };
 
@@ -147,3 +197,4 @@
     car.init();
 
 })(jQuery);
+
