@@ -59,3 +59,13 @@ services:
               label: 'Question'
               label_catalogue: 'Question'
 
+    # Admin offers category service
+    admin.principles:
+        class: AppBundle\Admin\PrinciplesAdmin
+        arguments: [~, AppBundle\Entity\Principles, ~]
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              group: AppBundle
+              label: 'Principles'
+              label_catalogue: 'Principles'
