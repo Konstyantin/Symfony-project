@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    News
+{% endblock %}
+
+{% block body %}
+    <div class="news-list">
+        <div>
+            {{ render_breadcrumbs() }}
+            {% for news in pagination %}
+                <div class="news-item clearfix">
+                    <div class="col-sm-4">
+                        <img src="{% path news.newsImage, 'reference' %}" alt="">
+                    </div>
+                    <div class="cols-sm-8 news-description">
+                        <h2>{{ news.title }}</h2>
+                        <div>{{ news.shortDescription }}</div>
+                        <a href="{{ path('news_view', {'slug': news.slug}) }}" class="btn more-news-btn">Learn more</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="navigation offers-pagination">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+{% endblock %}

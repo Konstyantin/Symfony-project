@@ -24,3 +24,4 @@ parameters:
     google_client_id: 723467426441-3j1rs5a35ga3uqcvs6tna2i7eaoqgfki.apps.googleusercontent.com
     google_client_secret: 6KeCeIeSE2PMMxdJmA0bQ7z2
     path_to_project: ''
+    cors_allow_origin: 'http://symfony-project.com/'

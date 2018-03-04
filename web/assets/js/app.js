@@ -132,7 +132,9 @@
             return elem.hasClass('active');
         },
 
-
+        /**
+         * Offer tree
+         */
         offersTree: function () {
             var that = this;
             $('.dropdown-submenu a.submenu').hover(function(e){

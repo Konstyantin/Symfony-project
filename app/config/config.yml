@@ -55,7 +55,7 @@ twig:
         offers_category_manager: '@offers_category_management'
         uploda_image_path: 'uploads/images/'
         vich_uploda_image_path: '%path_to_project%/uploads/images'
-
+        cors_allow_origin: '%cors_allow_origin%'
 
 # Doctrine Configuration
 doctrine:
@@ -279,7 +279,24 @@ sonata_media:
             formats:
                 preview: { width: 100, quality: 100}
                 wide:    { width: 820, quality: 100}
+
+        PrinciplesLogo:
+            providers:
+              - sonata.media.provider.image
+
+            formats:
+                preview: { width: 100, quality: 100}
+                wide:    { width: 820, quality: 100}
+
         OffersCategoryLogo:
+            providers:
+              - sonata.media.provider.image
+
+            formats:
+                preview: { width: 100, quality: 100}
+                wide:    { width: 820, quality: 100}
+
+        NewsLogo:
             providers:
               - sonata.media.provider.image
 
@@ -427,3 +444,57 @@ stof_doctrine_extensions:
     orm:
         default:
             sluggable: true
+
+
+nelmio_cors:
+    defaults:
+        allow_origin:  ["%cors_allow_origin%"]
+        allow_methods: ["POST", "PUT", "GET", "DELETE", "OPTIONS"]
+        allow_headers: ["content-type", "authorization"]
+        max_age:       3600
+    paths:
+        '^/': ~
+
+# Nelmio API Doc
+nelmio_api_doc:
+    sandbox:
+        accept_type:        "application/json"
+        body_format:
+            formats:        [ "json" ]
+            default_format: "json"
+        request_format:
+            formats:
+                json:       "application/json"
+
+# FOS REST Bundle
+fos_rest:
+    body_listener: true
+    param_fetcher_listener: true
+    format_listener:        true
+    view:
+        view_response_listener: 'force'
+#        exception_wrapper_handler:  null
+        formats:
+            jsonp: true
+            json: true
+            xml: false
+            rss: false
+        mime_types:
+            json: ['application/json', 'application/x-json']
+            jpg: 'image/jpeg'
+            png: 'image/png'
+        jsonp_handler: ~
+
+    routing_loader:
+        default_format: json
+        include_format:  false
+
+    param_fetcher_listener: true
+    body_listener: true
+    #disable_csrf_role: ROLE_USER
+    body_converter:
+        enabled: true
+    view:
+        view_response_listener: force
+    exception:
+        enabled: true

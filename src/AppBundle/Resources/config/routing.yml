@@ -25,3 +25,19 @@ offers_view:
 category_offers_list:
     path:     /offers/{category}
     defaults: { _controller: AppBundle:Offers:categoryOffers }
+
+principle_index:
+    path:     /principle
+    defaults: { _controller: AppBundle:Principle:index}
+
+principle_view:
+    path:     /principle/{slug}
+    defaults: { _controller: AppBundle:Principle:view}
+
+news_index:
+    path:     /news
+    defaults: { _controller: AppBundle:News:index}
+
+news_view:
+    path:     /news/{slug}
+    defaults: { _controller: AppBundle:News:view}
