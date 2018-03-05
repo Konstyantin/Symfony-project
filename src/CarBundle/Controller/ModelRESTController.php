@@ -46,7 +46,7 @@ class ModelRESTController extends FOSRestController implements ClassResourceInte
     }
 
     /**
-     * Get a collection of Posts
+     * Get a collection of Model
      *
      * @return array
      *

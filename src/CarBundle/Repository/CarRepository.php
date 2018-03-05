@@ -165,14 +165,14 @@ class CarRepository extends \Doctrine\ORM\EntityRepository
     }
 
     /**
-     * Search car
+     * Search car by name
      *
      * Search car collection by passed car name param
      *
      * @param string $name
      * @return array
      */
-    public function searchCar(string $name)
+    public function searchCarByName(string $name)
     {
         $query = $this->createQueryBuilder('car')
             ->leftJoin('car.imageLogo', 'image_logo')
@@ -180,6 +180,24 @@ class CarRepository extends \Doctrine\ORM\EntityRepository
             ->addSelect('image_logo.id as imageId', 'image_logo.providerReference')
             ->where('car.name LIKE :name')
             ->setParameter('name', '%' . $name . '%')
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+    /**
+     * Search car
+     *
+     * Get car list collection
+     *
+     * @return array
+     */
+    public function searchCar()
+    {
+        $query = $this->createQueryBuilder('car')
+            ->leftJoin('car.imageLogo', 'image_logo')
+            ->select('car.name', 'car.id', 'car.slug')
+            ->addSelect('image_logo.id as imageId', 'image_logo.providerReference')
             ->getQuery();
 
         return $query->getResult();
