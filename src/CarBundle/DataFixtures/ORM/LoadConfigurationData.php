@@ -11,7 +11,6 @@ namespace CarBundle\DataFixtures\ORM;
 use CarBundle\Entity\Body;
 use CarBundle\Entity\Configuration;
 use CarBundle\Entity\Dynamics;
-use CarBundle\Entity\Engine;
 use CarBundle\Entity\Fuel;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\AbstractFixture;
@@ -366,8 +365,6 @@ class LoadConfigurationData extends AbstractFixture implements OrderedFixtureInt
         $configuration->setDynamics($dynamics);
 
         $manager->persist($configuration);
-
-
 
         $manager->flush();
     }

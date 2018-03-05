@@ -2,17 +2,26 @@
 
 namespace CarBundle\Form;
 
-use CarBundle\Entity\Car;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
+/**
+ * Class FuelType
+ * @package CarBundle\Form
+ */
 class FuelType extends AbstractType
 {
+    /**
+     * Build form
+     *
+     * Define form field and set attributes for each form field
+     *
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder

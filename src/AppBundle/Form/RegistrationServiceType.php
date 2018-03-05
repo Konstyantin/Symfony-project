@@ -20,7 +20,7 @@ use ServiceBundle\Constants\RegistrationService;
  * Class RegistrationServiceType
  * @package AppBundle\Form
  */
-class   RegistrationServiceType extends AbstractType
+class RegistrationServiceType extends AbstractType
 {
     /**
      * Build form
