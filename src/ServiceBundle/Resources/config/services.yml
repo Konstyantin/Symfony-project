@@ -1,4 +1,5 @@
 services:
+
     # Service status service
     admin.service_status:
         class: ServiceBundle\Admin\ServiceStatusAdmin

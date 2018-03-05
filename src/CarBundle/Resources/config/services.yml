@@ -63,7 +63,7 @@ services:
         class: CarBundle\Services\ModelManagement
         arguments: [ '@doctrine.orm.entity_manager' ]
 
-    # Engine admin service component
+    # Configuration admin service component
     admin.configuration:
         class: CarBundle\Admin\ConfigurationAdmin
         arguments: [~, CarBundle\Entity\Configuration, ~]

@@ -1,4 +1,5 @@
 services:
+
     # Dealer admin service component
     admin.dealer:
         class: DealerBundle\Admin\DealerAdmin
