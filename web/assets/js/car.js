@@ -88,10 +88,15 @@
                 e.preventDefault();
 
                 var $this = $(this),
-                    modelName = $this.find('.model-name-field').val();
+                    modelName = $this.find('.model-name-field').val(),
+                    requestPath = that.severPath + 'api/models/' + modelName;
+
+                if (!modelName) {
+                    requestPath = that.severPath + 'api/models';
+                }
 
                 $.ajax({
-                    url: that.severPath + 'api/models/' + modelName,
+                    url: requestPath,
                     success: function (data) {
                         that.searchModelResult(data);
                     }
@@ -142,6 +147,11 @@
             });
         },
 
+        /**
+         * Build search result model list
+         *
+         * @param data
+         */
         searchCarResult: function (data) {
 
             var template = '';

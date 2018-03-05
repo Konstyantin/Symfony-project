@@ -83,14 +83,14 @@ class ModelRepository extends \Doctrine\ORM\EntityRepository
     }
 
     /**
-     * Search model
+     * Search model by name
      *
      * Search model record by passed model name param
      *
      * @param string $name
      * @return array
      */
-    public function searchModel(string $name)
+    public function searchModelByName(string $name)
     {
         $query = $this->createQueryBuilder('model')
             ->leftJoin('model.imageLogo', 'image_logo')
@@ -98,6 +98,24 @@ class ModelRepository extends \Doctrine\ORM\EntityRepository
             ->addSelect('image_logo.id as imageId', 'image_logo.providerReference')
             ->where('model.name LIKE :name')
             ->setParameter('name', '%' . $name . '%')
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+    /**
+     * Search model
+     *
+     * Get model collection for empty search param
+     *
+     * @return array
+     */
+    public function searchModel()
+    {
+        $query = $this->createQueryBuilder('model')
+            ->leftJoin('model.imageLogo', 'image_logo')
+            ->select('model.name', 'model.id', 'model.slug')
+            ->addSelect('image_logo.id as imageId', 'image_logo.providerReference')
             ->getQuery();
 
         return $query->getResult();
