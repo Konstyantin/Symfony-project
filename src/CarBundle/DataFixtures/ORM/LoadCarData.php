@@ -9,7 +9,6 @@
 namespace CarBundle\DataFixtures\ORM;
 
 use CarBundle\Entity\Car;
-use CarBundle\Entity\Model;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;

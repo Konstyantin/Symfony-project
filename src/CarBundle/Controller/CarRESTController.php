@@ -40,8 +40,31 @@ class CarRESTController extends FOSRestController implements ClassResourceInterf
     {
         $em = $this->getDoctrine()->getManager();
 
-        $modelList = $em->getRepository('CarBundle:Car')->searchCar($name);
+        $modelList = $em->getRepository('CarBundle:Car')->searchCarByName($name);
 
         return $modelList;
+    }
+
+    /**
+     * Get a collection of Model
+     *
+     * @return array
+     *
+     * @ApiDoc(
+     *     output="CarBundle\Entity\Car",
+     *     statusCodes={
+     *          200 = "Return when success",
+     *          404 = "Return when not found"
+     *     },
+     *     description="Get a collection of car"
+     * )
+     */
+    public function cgetAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $carList = $em->getRepository('CarBundle:Car')->searchCar();
+
+        return $carList;
     }
 }

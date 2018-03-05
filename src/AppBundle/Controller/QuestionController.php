@@ -2,7 +2,6 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Question;
 use AppBundle\Event\QuestionEvent;
 use AppBundle\EventListener\AppBundleEvent;
 use AppBundle\Form\QuestionType;

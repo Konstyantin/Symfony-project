@@ -8,7 +8,6 @@
  */
 namespace CarBundle\DataFixtures\ORM;
 
-use CarBundle\Entity\Model;
 use CarBundle\Entity\Transmission;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\AbstractFixture;

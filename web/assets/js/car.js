@@ -88,10 +88,15 @@
                 e.preventDefault();
 
                 var $this = $(this),
-                    modelName = $this.find('.model-name-field').val();
+                    modelName = $this.find('.model-name-field').val(),
+                    requestPath = that.severPath + 'api/models/' + modelName;
+
+                if (!modelName) {
+                    requestPath = that.severPath + 'api/models';
+                }
 
                 $.ajax({
-                    url: that.severPath + 'api/models/' + modelName,
+                    url: requestPath,
                     success: function (data) {
                         that.searchModelResult(data);
                     }
@@ -104,13 +109,13 @@
          */
         carSearch: function () {
             var that = this,
-                searchModelForm = $('.search-car'),
-                showSearchModelBtn = $('.show-search-car-form-btn');
+                searchCarForm = $('.search-car'),
+                showSearchCarBtn = $('.show-search-car-form-btn');
 
             /**
-             * Show and hide search model form
+             * Show and hide search car form
              */
-            showSearchModelBtn.on('click', function () {
+            showSearchCarBtn.on('click', function () {
 
                 var icon =  $('.show-form-icon');
 
@@ -125,16 +130,21 @@
             });
 
             /**
-             * Send search model request
+             * Send search car request
              */
-            searchModelForm.on('submit', function (e) {
+            searchCarForm.on('submit', function (e) {
                 e.preventDefault();
 
                 var $this = $(this),
-                    modelName = $this.find('.car-name-field').val();
+                    carName = $this.find('.car-name-field').val(),
+                    requestPath = that.severPath + 'api/cars/' + carName;
+
+                if (!carName) {
+                    requestPath = that.severPath + 'api/cars';
+                }
 
                 $.ajax({
-                    url: that.severPath + 'api/cars/' + modelName,
+                    url: requestPath,
                     success: function (data) {
                         that.searchCarResult(data);
                     }
@@ -142,6 +152,11 @@
             });
         },
 
+        /**
+         * Build search result model list
+         *
+         * @param data
+         */
         searchCarResult: function (data) {
 
             var template = '';

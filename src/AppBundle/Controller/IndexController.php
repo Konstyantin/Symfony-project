@@ -3,7 +3,6 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Constants\SonataClassificationCategory;
-use AppBundle\Entity\Article;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
@@ -15,7 +14,7 @@ class IndexController extends Controller
     /**
      * Index action
      *
-     * Show mail page of the project with model list gallery and service
+     * Show main page of the project
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */

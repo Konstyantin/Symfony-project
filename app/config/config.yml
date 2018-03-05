@@ -96,7 +96,7 @@ doctrine:
                     SonataMediaBundle: ~
                     SonataClassificationBundle: ~
 
-# Swiftmailer Configuration
+# Swiftmailer Configuration, is a component based mailing solution
 swiftmailer:
     transport: '%mailer_transport%'
     host: '%mailer_host%'
@@ -113,6 +113,8 @@ doctrine_migrations:
     organize_migrations: false # Version >=1.2 Possible values are: "BY_YEAR", "BY_YEAR_AND_MONTH", false
 
 # FOS User configuration
+# provides a flexible framework for user management that aims to handle common tasks
+# such as user registration and password retrieval
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
@@ -130,7 +132,7 @@ fos_user:
         form:
             type: UserBundle\Form\ChangePasswordFormType
 
-# HWIOAuth configuration
+# HWIOAuth configuration, adds support for authenticating users via OAuth1.0a or OAuth2
 hwi_oauth:
     #this is my custom user provider, created from FOSUBUserProvider - will manage the
     #automatic user registration on your site, with data from the provider (facebook. google, etc.)
@@ -182,7 +184,7 @@ sonata_admin:
         edit:                base_edit.html.twig
         layout:              standard_layout.html.twig
 
-# Vich_uploader configuration
+# Vich_uploader configuration, provides an easy way to link file uploads with a persistence layer
 vich_uploader:
     db_driver:  orm
     mappings:
@@ -358,26 +360,26 @@ snc_redis:
         default:
             type: predis
             alias: default
-            dsn: redis://localhost
+            dsn: redis://127.0.0.1:6379
             logging: %kernel.debug%
         cache:
             type: predis
             alias: cache
-            dsn: redis://localhost/1
+            dsn: redis://127.0.0.1:6379
             logging: true
         profiler_storage:
             type: predis
             alias: profiler_storage
-            dsn: redis://localhost/2
+            dsn: redis://127.0.0.1:6379
             logging: false
         cluster:
             type: predis
             alias: cluster
             dsn:
-                - redis://127.0.0.1/1
-                - redis://127.0.0.2/2
+                - redis://127.0.0.1:6379
+                - redis://127.0.0.1:6379
                 - redis://pw@/var/run/redis/redis-1.sock/10
-                - redis://pw@127.0.0.1:63790/10
+                - redis://pw@127.0.0.1:6379
             options:
                 prefix: foo
                 profile: 2.4
@@ -414,7 +416,7 @@ snc_redis:
         client: profiler_storage
         ttl: 3600
 
-#StFalcon tinyMce
+#StFalcon tinyMce configuration makes it very easy to add the TinyMCE WYSIWYG editor
 stfalcon_tinymce:
     include_jquery: true
     tinymce_jquery: true
@@ -446,6 +448,7 @@ stof_doctrine_extensions:
             sluggable: true
 
 
+# NelmioCorsBundle configuration, allows you to send Cross-Origin Resource Sharing headers
 nelmio_cors:
     defaults:
         allow_origin:  ["%cors_allow_origin%"]
@@ -455,7 +458,7 @@ nelmio_cors:
     paths:
         '^/': ~
 
-# Nelmio API Doc
+# Nelmio API Doc allows you to generate a decent documentation for your APIs.
 nelmio_api_doc:
     sandbox:
         accept_type:        "application/json"
@@ -466,7 +469,7 @@ nelmio_api_doc:
             formats:
                 json:       "application/json"
 
-# FOS REST Bundle
+# FOS REST Bundle configuration provides various tools to rapidly develop RESTful API's & applications
 fos_rest:
     body_listener: true
     param_fetcher_listener: true

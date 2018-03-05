@@ -20,6 +20,9 @@ class NewsController extends Controller
     /**
      * Index action
      *
+     * Show list of news collection
+     *
+     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction(Request $request)
@@ -44,7 +47,7 @@ class NewsController extends Controller
     /**
      * View Action
      *
-     * View principle item by slug
+     * View news item by slug
      *
      * @param string $slug
      * @return \Symfony\Component\HttpFoundation\Response

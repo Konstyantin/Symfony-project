@@ -2,30 +2,39 @@ parameters:
     my_user_provider.class: UserBundle\Entity\FOSUserProvider
 
 services:
+
+    # Registration form
     app.form.registration:
         class: UserBundle\Form\RegistrationType
         tags:
             - { name: form.type, alias: app_user_registration }
+
+    # Profile form
     app.form.profile:
         class: UserBundle\Form\ProfileFormType
         arguments: ['%fos_user.model.user.class%']
         tags:
             - { name: form.type, alias: app_user_profile}
+
+    # Change password
     app.form.change_password:
         class: UserBundle\Form\ChangePasswordFormType
         arguments: ['%fos_user.model.user.class%']
         tags:
             - { name: form.type, alias: app_user_change_password}
 
+    # My user provider use for OAuth
     my_user_provider:
         class: "%my_user_provider.class%"
         #this is the place where the properties are passed to the UserProvider - see config.yml
         arguments: ["@fos_user.user_manager", {facebook: facebook_id, google: google_id} ]
 
+    # Email provider
     email_user_provider:
         class: UserBundle\Security\EmailUserProvider
         arguments: ['@fos_user.user_manager.default']
 
+    # Sonata admin user
     admin.user:
         class: UserBundle\Admin\UserAdmin
         arguments: [~, UserBundle\Entity\User, ~]

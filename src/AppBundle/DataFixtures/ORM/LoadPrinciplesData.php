@@ -41,7 +41,6 @@ class LoadPrinciplesData extends AbstractFixture implements OrderedFixtureInterf
         $principles->setDescription('Second principles description');
 
         $manager->persist($principles);
-
         $manager->flush();
     }
 
