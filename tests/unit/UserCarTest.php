@@ -93,7 +93,5 @@ class UserCarTest extends \Codeception\Test\Unit
         $userCar = $em->getRepository('UserBundle:UserCar')->getFirstItem();
 
         $em->getRepository('UserBundle:UserCar')->delete($userCar);
-
-        $em->flush();
     }
 }

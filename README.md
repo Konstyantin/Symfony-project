@@ -1,69 +1,79 @@
-Symfony Standard Edition
+Symfony Project Edition
 ========================
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony
-application that you can use as the skeleton for your new applications.
+Welcome to the Symfony Project - a simple example catalog that you can 
+use as the skeleton for your new products catalog.
 
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
+Installation
+============
 
-What's inside?
---------------
+Symfony-project work with PHP 7.0 or later and MySQL 5.4 or later (please check requirements)
 
-The Symfony Standard Edition is configured with the following defaults:
+### From repository
 
-  * An AppBundle you can use to start coding;
+Get Symfony-Catalog source files from GitHub repository:
+```
+git clone https://github.com/Konstyantin/Symfony-project.git %path%
+```
 
-  * Twig as the only configured template engine;
+Download `composer.phar` to the project folder:
+```
+cd %path%
+curl -s https://getcomposer.org/installer | php
+```
 
-  * Doctrine ORM/DBAL;
+Install composer dependencies with the following command:
+```
+php composer.phar install
 
-  * Swiftmailer;
+```
 
-  * Annotations enabled for everything.
+Update schema
+================
+You can update schema via the command line by using the doctrine:schema:update --force command:
+  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+php bin/console doctrine:schema:update --force 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-It comes pre-configured with the following bundles:
+Migrations
+================
+All of the migrations functionality is contained in a few console commands:  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+php bin/console 
 
-  * **FrameworkBundle** - The core Symfony framework bundle
+doctrine:migrations
+  :diff     Generate a migration by comparing your current database to your mapping information.
+  :execute  Execute a single migration version up or down manually.
+  :generate Generate a blank migration class.
+  :migrate  Execute a migration to a specified version or the latest available version.
+  :status   View the status of a set of migrations.
+  :version  Manually add and delete migration versions from the version table.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
 
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
+Loading Fixtures
+================
+You can load fixtures via the command line by using the doctrine:fixtures:load command:
+  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+php bin/console doctrine:fixtures:load 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
+Running test suite
+==================
+Tests are located in tests directory. By default test suites:
+  
+  * unit
+  
+  * acceptance
+  
+Tests can be executed by running
 
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
+~~~~~~~~
+php vendor/bin/codecept run acceptance
+~~~~~~~~
 
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
-
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
-
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
-
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
-
-  * [**SensioGeneratorBundle**][13] (in dev/test env) - Adds code generation
-    capabilities
-
-  * **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
-    integration
-
-All libraries and bundles included in the Symfony Standard Edition are
-released under the MIT or BSD license.
-
-Enjoy!
-
-[1]:  https://symfony.com/doc/3.2/setup.html
-[6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  https://symfony.com/doc/3.2/doctrine.html
-[8]:  https://symfony.com/doc/3.2/templating.html
-[9]:  https://symfony.com/doc/3.2/security.html
-[10]: https://symfony.com/doc/3.2/email.html
-[11]: https://symfony.com/doc/3.2/logging.html
-[12]: https://symfony.com/doc/3.2/assetic/asset_management.html
-[13]: https://symfony.com/doc/current/bundles/SensioGeneratorBundle/index.html
+~~~~~~~~
+php vendor/bin/codecept run unit
+~~~~~~~~
