@@ -37,6 +37,8 @@ class ModelCest
 
         $I->see('Model details', 'h3');
         $I->see('Porsche', 'ol.breadcrumb');
+
+        $I->click(['link' => 'Macan']);
     }
 
     /**
@@ -46,7 +48,7 @@ class ModelCest
      */
     public function modelCarTest(AcceptanceTester $I)
     {
-        $I->am('model');
+        $I->amOnPage('/model');
 
         $I->see('911', '#911');
         $I->click(['id' => '911']);
