@@ -56,4 +56,55 @@ class UserCarCest
         $I->see('Cayenne PDK', 'div.item-transmission>span');
         $I->see('black', 'div.item-color>span');
     }
+
+    public function editUserCarItem(AcceptanceTester $I)
+    {
+        $I->amOnPage('/user/cars');
+
+        $I->seeElement('div.user-car-item');
+        $I->see('Cayenne', 'div>span');
+        $I->see('Cayenne Diesel', 'div.item-engine>span');
+        $I->see('Cayenne PDK', 'div.item-transmission>span');
+        $I->see('black', 'div.item-color>span');
+
+        $I->click(['link' => 'Edit']);
+
+        $I->submitForm('form.user-car-form', [
+            'user_bundle_user_car_type[car]' => 'Cayenne',
+            'user_bundle_user_car_type[model]' => 'Cayenne',
+            'user_bundle_user_car_type[engine]' => 'Cayenne Diesel',
+            'user_bundle_user_car_type[transmission]' => 'Cayenne PDK',
+            'user_bundle_user_car_type[createdAt][year]' => '2018',
+            'user_bundle_user_car_type[createdAt][month]' => '1',
+            'user_bundle_user_car_type[createdAt][day]' => '1',
+            'user_bundle_user_car_type[color]' => 'blue'
+        ]);
+
+        $I->dontsee('black', 'div.item-color>span');
+
+    }
+
+    /**
+     * Delete user car
+     *
+     * @param AcceptanceTester $I
+     */
+    public function deleteUserCarTest(AcceptanceTester $I)
+    {
+        $I->amOnPage('/user/cars');
+
+        $I->seeElement('div.user-car-item');
+        $I->see('Cayenne', 'div>span');
+        $I->see('Cayenne Diesel', 'div.item-engine>span');
+        $I->see('Cayenne PDK', 'div.item-transmission>span');
+        $I->see('blue', 'div.item-color>span');
+
+        $I->click(['link' => 'Delete']);
+
+        $I->dontseeElement('div.user-car-item');
+        $I->dontsee('Cayenne', 'div>span');
+        $I->dontsee('Cayenne Diesel', 'div.item-engine>span');
+        $I->dontsee('Cayenne PDK', 'div.item-transmission>span');
+        $I->dontsee('blue', 'div.item-color>span');
+    }
 }
