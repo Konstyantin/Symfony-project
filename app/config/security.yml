@@ -68,3 +68,4 @@ security:
         - { path: ^/profile/change-password,  allow_if: "!has_role('ROLE_OAUTH')" }
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/api/doc, role: "ROLE_ADMIN" }
+#        - { path: ^/user/cars, role: "ROLE_OAUTH" }
