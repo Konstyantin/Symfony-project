@@ -106,6 +106,9 @@ class UserCarType extends AbstractType
             'csrf_protection' => true,
             'csrf_field_name' => '_token',
             'csrf_token_id'   => 'user_car_item',
+            'attr' => [
+                'class' => 'user-car-form'
+            ]
         ]);
     }
 
