@@ -43,13 +43,9 @@ class CarCest
         $I->click(['link' => 'Cayenne']);
 
         $I->amOnPage('/models/cayenne/cayenne');
-//        $I->amOnPage('/model/911');
-//        $I->amOnPage('/models/911/911');
-//
         $I->see('Technical params', 'h2');
         $I->see('Features', 'h2');
         $I->see('Cayenne', 'h3.text-right');
-//
         $I->see('Manual', 'th.configuration-type');
         $I->see('PDK', 'th.configuration-type');
         $I->see('Price', 'th');

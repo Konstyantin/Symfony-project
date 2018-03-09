@@ -29,14 +29,12 @@ class OfferCest
         $I->amOnPage('/offers');
 
         $I->see('Winner finance', 'h2');
-        $I->seeLink('Learn more', '/offers/winner-finance');
+        $I->seeLink('Learn more');
 
         $I->see('Service offers', 'h2');
-        $I->seeLink('Learn more', '/offers/service-offers');
+        $I->seeLink('Learn more');
 
-        $I->click('Learn more');
-
-        $I->seeCurrentUrlEquals('/offers/winner-finance');
+        $I->seeNumberOfElements('div.offers-category-item', [0, 1000]);
     }
 
     /**
@@ -53,10 +51,30 @@ class OfferCest
 
         $I->seeElement('div.offers-pagination');
 
+        $I->seeNumberOfElements('div.offers-item', [1,2]);
+
         $I->see('« Previous');
         $I->see('Next »');
 
         $I->see('Learn more', ['class' => 'more-offers-btn']);
         $I->seeLink('Learn more');
+    }
+
+    /**
+     * Offer item test
+     *
+     * @param AcceptanceTester $I
+     */
+    public function offerItemTest(AcceptanceTester $I)
+    {
+        $I->amOnPage('/offers/service-offers');
+
+        $I->seeLink('Learn more');
+
+        $I->click(['link' => 'Learn more']);
+
+        $I->seeElement('div.offer-view-container');
+
+        $I->seeInCurrentUrl('/offer/');
     }
 }
