@@ -192,6 +192,9 @@ class RegistrationServiceType extends AbstractType
             'csrf_protection' => true,
             'csrf_field_name' => '_token',
             'csrf_token_id'   => 'service_item',
+            'attr' => [
+                'class' => 'service-registration-form'
+            ]
         ]);
     }
 

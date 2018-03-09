@@ -17,7 +17,9 @@
                             <img src="{% path car.imageLogo, 'reference' %}" alt="">
                         </div>
                         <div class="car-data">
-                            <span>{{ car.name }}</span>
+                            <span>
+                                <a href="{{ path('car_view', {'carName': car.slug, 'model': model}) }}">{{ car.name }}</a>
+                            </span>
                         </div>
                     </div>
                 </a>

@@ -43,7 +43,7 @@ class UserCarRepository extends \Doctrine\ORM\EntityRepository
     {
         $query = $this->createQueryBuilder('c')
             ->where('c.user =:user')
-            ->andWhere('c.car =:id')
+            ->andWhere('c.id =:id')
             ->setParameter('user', $userId)
             ->setParameter('id', $carId)
             ->getQuery();

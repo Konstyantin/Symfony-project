@@ -314,6 +314,15 @@ sonata_media:
                 preview: { width: 100, quality: 100}
                 wide:    { width: 820, quality: 100}
 
+        Slider:
+            providers:
+              - sonata.media.provider.image
+
+            formats:
+                preview: { width: 100, quality: 100}
+                wide:    { width: 820, quality: 100}
+
+
     cdn:
         server:
             path: "%path_to_project%/uploads/media" # http://media.sonata-project.org/

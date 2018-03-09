@@ -112,7 +112,10 @@ class QuestionType extends AbstractType
             'data_class' => 'AppBundle\Entity\Question',
             'csrf_protection' => true,
             'csrf_field_name' => '_token',
-            'csrf_token_id'   => 'question_item'
+            'csrf_token_id'   => 'question_item',
+            'attr' => [
+                'class' => 'question-form'
+            ]
         ]);
     }
 

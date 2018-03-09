@@ -344,13 +344,13 @@ body {
 }
 
 .car-list-section .car-item .car-data span,
-.model-list-section .model-item .model-data span {
+.model-list-section .model-item .model-data a {
     color: #000;
     font-size: 16px;
 }
 
 .car-list-section .car-item:hover .car-data span,
-.model-list-section .model-item:hover .model-data span {
+.model-list-section .model-item:hover .model-data  a {
     color: #c00;
 }
 

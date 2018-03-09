@@ -39,6 +39,8 @@ class ModelRepository extends \Doctrine\ORM\EntityRepository
     {
         $query = $this->createQueryBuilder('model');
 
+        $userId = ($userId && $this->getUserModels($userId)) ? $userId : null;
+
         $query = ($userId) ? $query
             ->join('UserBundle:UserCar', 'user_car', 'WITH', 'model.id = user_car.model')
             ->where('user_car.user =:userId')
@@ -47,6 +49,25 @@ class ModelRepository extends \Doctrine\ORM\EntityRepository
         $query->orderBy('model.id', 'ASC');
 
         return $query;
+    }
+
+    /**
+     * Get user models
+     *
+     * Get models collection by passed user id param
+     *
+     * @param int $userId
+     * @return array
+     */
+    public function getUserModels(int $userId)
+    {
+        $query = $this->createQueryBuilder('model')
+            ->join('model.userCar', 'user_car')
+            ->where('user_car.user =:userId')
+            ->setParameter('userId', $userId)
+            ->getQuery();
+
+        return $query->getResult();
     }
 
     /**

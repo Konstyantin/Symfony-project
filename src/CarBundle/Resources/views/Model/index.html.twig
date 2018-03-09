@@ -29,7 +29,9 @@
                             <img src="{% path model.imageLogo, 'reference' %}" alt="">
                         </div>
                         <div class="model-data">
-                            <span>{{ model.name }}</span>
+                            <span>
+                                <a href="{{ path('model_cars_list', {'model': model.slug}) }}">{{ model.name }}</a>
+                            </span>
                         </div>
                     </a>
                 </div>

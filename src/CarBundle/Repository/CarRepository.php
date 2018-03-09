@@ -80,7 +80,10 @@ class CarRepository extends \Doctrine\ORM\EntityRepository
      */
     public function getCarsByUserId($userId = null)
     {
+        $userId = ($userId && $this->getUsersCar($userId)) ? $userId : null;
+
         $query = $this->createQueryBuilder('car');
+
         $query = ($userId) ? $query->join('UserBundle:UserCar', 'user_car', 'WITH', 'car.id = user_car.car')
             ->where('user_car.user =:userId')
             ->setParameter('userId', $userId) : $query;
@@ -88,6 +91,23 @@ class CarRepository extends \Doctrine\ORM\EntityRepository
         $query->orderBy('car.id', 'ASC');
 
         return $query;
+    }
+
+    /**
+     * Get user car
+     *
+     * @param int $userId
+     * @return array
+     */
+    public function getUsersCar(int $userId)
+    {
+        $query = $this->createQueryBuilder('car')
+            ->join('car.userCar', 'user_car')
+            ->where('user_car.user =:userId')
+            ->setParameter('userId', $userId)
+            ->getQuery();
+
+        return $query->getResult();
     }
 
     /**

@@ -6,11 +6,23 @@ modules:
     config:
         WebDriver:
             url: 'http://symfony-project.com/'
-            browser: 'chrome'
+            browser: phantomjs
 
-env:
-    chrome:
-         modules:
-            config:
-                WebDriver:
-                    browser: 'chrome'
+#modules:
+#   enabled:
+#      - WebDriver:
+#          url: 'http://symfony-project/'
+#          window_size: false # disabled in ChromeDriver
+#          browser: chrome
+#          capabilities:
+#             chromeOptions: # additional chrome options
+#
+#class_name: AcceptanceTester
+#modules:
+#    enabled:
+#        # for real UI testing should be replaced with WebDriver
+#        - PhpBrowser:
+#            url: 'http://symfony-project/'
+#            headers:
+#                env: test
+#        - \Helper\Acceptance

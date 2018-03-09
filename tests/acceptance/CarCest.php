@@ -28,13 +28,24 @@ class CarCest
      */
     public function viewCarItemTest(AcceptanceTester $I)
     {
-        $I->amOnPage('/model/911');
-        $I->amOnPage('/models/911/911');
+        $I->amOnPage('/model');
 
+        $I->see('Cayenne', 'a');
+
+        $I->click(['link' => 'Cayenne']);
+
+        $I->amOnPage('/model/cayenne');
+
+        $I->see('Cayenne', 'a');
+
+        $I->seeLink('Cayenne');
+
+        $I->click(['link' => 'Cayenne']);
+
+        $I->amOnPage('/models/cayenne/cayenne');
         $I->see('Technical params', 'h2');
         $I->see('Features', 'h2');
-        $I->see('911', 'h3.text-right');
-
+        $I->see('Cayenne', 'h3.text-right');
         $I->see('Manual', 'th.configuration-type');
         $I->see('PDK', 'th.configuration-type');
         $I->see('Price', 'th');
@@ -56,6 +67,9 @@ class CarCest
         $I->see('Feature', 'p.feature-title');
         $I->see('New Feature', 'div.short-description>span');
 
+        $I->click(['link' => 'All technical specs']);
+
+        $I->amOnPage('/models/cayenne/cayenne/specs');
     }
 
     /**
@@ -78,7 +92,7 @@ class CarCest
         $I->see('Body', 'th');
         $I->see('Price', 'th');
 
-        $I->click(['id' => '911']);
+        $I->click(['link' => '911']);
 
         $I->seeCurrentUrlEquals('/models/911/911');
     }
