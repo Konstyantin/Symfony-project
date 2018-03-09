@@ -54,7 +54,7 @@ class ModelRepository extends \Doctrine\ORM\EntityRepository
     {
         $query = $this->createQueryBuilder('model');
 
-        $userId = ($this->getUserModels($userId)) ? $userId : null;
+        $userId = ($userId && $this->getUserModels($userId)) ? $userId : null;
 
         $query = ($userId) ? $query
             ->join('UserBundle:UserCar', 'user_car', 'WITH', 'model.id = user_car.model')

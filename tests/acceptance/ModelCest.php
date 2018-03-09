@@ -51,7 +51,7 @@ class ModelCest
     {
         $I->amOnPage('/model');
 
-        $I->see('911', '#911');
+        $I->see('911', 'a');
         $I->click(['link' => '911']);
 
         $I->dontSeeCurrentUrlEquals('/model/Caynne');

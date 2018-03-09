@@ -136,7 +136,7 @@ class CarRepository extends \Doctrine\ORM\EntityRepository
      */
     public function getCarsByUserId($userId)
     {
-        $userId = ($this->getUsersCar($userId)) ? $userId : null;
+        $userId = ($userId && $this->getUsersCar($userId)) ? $userId : null;
 
         $query = $this->createQueryBuilder('car');
 
